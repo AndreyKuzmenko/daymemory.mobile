@@ -56,7 +56,7 @@ jobs:
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/Configuration/ios'
         Contents: '**'
-        TargetFolder: '$(Build.SourcesDirectory)/android/ios'
+        TargetFolder: '$(Build.SourcesDirectory)/ios'
         CleanTargetFolder: false
       displayName: 'Copy ios'
 
