@@ -220,6 +220,7 @@ firebase_app_id_file.json
 Podfile.lock
 firebase_options.dart
 Info.plist
+google-services.json
 
 
 #Google sign in
