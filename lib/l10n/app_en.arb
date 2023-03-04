@@ -1,0 +1,279 @@
+{
+    "tab_timeline": "Timeline",
+    "tab_questions": "Questions",
+
+    "done_nav_button": "Done",
+    "memory_hint_text": "What is on your mind?",
+
+    "error_refresh": "Oops, some error occured. Ty again",
+    "minutes_label": "min",
+
+    "save_error_message": "Ooops. Can't save changes.",
+    "finish_error_message": "Oops. Can't finish the action.",
+    
+
+    "settings_page_title": "Settings",
+    "settings_passcode_page_title": "Passcode",
+    "settings_passcode_require_after_page_title": "Require Passcode",
+    "settings_passcode_require_after_explanation": "After leaving the app, how long until a passcode is required for re-opening?",
+    "settings_passcode_option": "Passcode & Biometrics",
+    "settings_passcode_require_after_option": "Require after",
+    "settings_encryption_key_page_title": "Encryption key",
+    "settings_encryption_key_placeholder": "Enter the encryption key",
+    "settings_encryption_key_explanation": "If you loose your private key, you will no be able to access the data anymore. Backup you key in the secured place.",
+    "settings_encryption_key_copy_option": "Copy",
+    "settings_sync_page_title": "Sync",
+    "settings_sync_enable_sync": "Enable Sync",
+    "settings_sync_disable_sync": "Disable Sync",
+    "settings_sync_encryption_explanation": "End-to-end encryption utilizes a private key to encrypt your data before it reaches the cloud",
+    "settings_sync_disable_explanation": "Disabling sync will not allow the app to backup your data in the cloud",
+    "settings_sync_enable_explanation": "With sync enabled, your data will be synced with the cloud. Right now, it is only stored on your device",
+    "settings_account_page_title": "Account",
+    "settings_enable_location_saving_option": "Save location",
+    "settings_enable_screen_locking_option": "Enable passcode",
+    "settings_biometric_title_option": "Biometric unlock",
+    "settings_logout_option": "Logout",
+    "settings_login_option": "Login",
+    "settings_privacy_policy_option": "Privacy Policy",
+    "settings_language_option" : "Language",
+    "settings_show_in_review_option": "Notebooks",
+    "settings_review_period_option": "Periods",
+    "settings_geo_location_disabled_error" : "Grant Location access to 'Always' is settings.",
+    "settings_sync_option": "Sync",
+    "settings_sync_status_option": "Status",
+    "settings_sync_status_failed": "Failed",
+    "settings_sync_status_on": "On",
+    "settings_sync_status_off": "Off",
+    "settings_encryption_set_key": "Set Encryption Key",
+    "settings_encryption_view_key": "View Encryption Key",
+    "settings_encryption_create_key": "Enable Encryption",
+    "settings_clear_data": "Clear all data",
+    "settings_tags_option": "Tags",
+    "settings_syncing_in_progress": "Syncing...",
+    "settings_last_sync_time": "Last sync time:",
+    "settings_signin_option": "Sign in",
+    "settings_sync_never_status": "Never",
+    "settings_clear_data_title": "Clearing data",
+    "settings_logged_in_as": "Logged in as:",
+    "settings_clear_data_message": "Are you sure you want to remove all data?",
+    "settings_blocking_explanation": "Secure access to the app with a passcode or biometrics",
+    "settings_show_in_review_explanation": "Review memories",
+    "settings_intro_option": "App intro",
+    "settings_account_email_option": "Email",
+    "settings_account_name_option": "Name",
+    "settings_account_explanation": "Day Memory account information",
+    "settings_account_clear_data_explanation": "Make sure that your data is synced with the cloud before deleting it. Otherwise, you won't be able to restore it.",
+
+    "settings_encryption_key_absent_error_title": "Encryption key is empty",
+    "settings_encryption_key_absent_error_message": "Data encryption in your account is enabled, but the encryption key is empty. Please, enter the encryption key manually.",
+    "settings_encryption_key_invalid_error_title": "Invalid Encryption key",
+    "settings_encryption_key_invalid_error_message": "The encryption key is invalid. Please check whether it's correctly entered.",
+    "settings_token_expired_error_title": "Token expired",
+    "settings_token_expired_error_message": "Sync to the cloud is stopped. Please sign in again and resume the sync process.",
+
+    
+    "settings_passcode_time_immediately": "Immediately",
+    "settings_passcode_time_1minute": "1 minute",
+    "settings_passcode_time_3minutes": "3 minutes",
+    "settings_passcode_time_5minutes": "5 minutes",
+    "settings_passcode_time_10minutes": "10 minutes",
+    "settings_passcode_time_30minutes": "30 minutes",
+    "settings_passcode_time_1hour": "1 hour",
+
+    "no_review_items": "No items to review yet",
+    "review_yearly": "Yearly",
+    "review_half_year": "Half a year ago",
+    "review_month": "A month ago",
+    "review_three_months": "Three months ago",
+    "review_10_days": "10 days ago",
+    "review_7_days": "7 days ago",
+
+    "review_one_year": "year ago",
+    "review_two_four_years": "years ago",
+    "review_many_years": "years ago",
+
+    "sync_loading_data": "Loading data...",
+    "sync_uploading_data": "Uploading data...",
+    "sync_loading_tags": "Loading tags...",
+    "sync_loading_notebooks": "Loading notebooks...",
+    "sync_loading_notes": "Loading notes. Remaining: {count}",
+        "@sync_loading_notes": {
+        "type": "text",
+        "placeholders": {
+            "count": {}
+        }
+    },
+
+    "review_memories_page_title": "Memories",
+    
+
+    "settings_select_language_title": "Select a language",
+
+
+    "edit_tags_title": "Tags",
+    "tag_family": "Family",
+    "tag_work": "Work",
+    "tag_life": "Life",
+
+    "notebook_general": "📘 General",
+
+    "side_menu_settings": "Settings",
+    "side_menu_review_memories": "Review memories",
+    "side_menu_new_notebook": "New notebook",
+    "side_menu_notebooks": "Notebooks",
+
+    "remove_note_message": "Confirm deletion",
+    "remove_question_list_message": "Confirm deletion",
+
+    "no_notes": "No memories yet",
+    "no_notebook_notes": "You don't have notebooks. Please start with creating one.",
+    "note_delete_title": "Delete note",
+    "note_delete_message": "Are you sure you want to delete the item?",
+    "note_use_photo_datetime": "Use photo date and time?",
+    "notebook_delete_title": "Delete notebook",
+    "notebook_delete_message": "Are you sure you want to delete the item?",
+
+    "edit_notebook_delete": "Delete notebook",
+    "edit_notebook_new_title": "New notebook",
+    "edit_notebook_edit_title": "Edit notebook",
+    "edit_notebook_title_placeholder": "Enter title",
+
+    "edit_notebook_sortby_option": "Sort notes by",
+    "edit_notebook_sortby_title": "Sort by",
+    "edit_notebook_sortby_created_date": "Entry Date",
+    "edit_notebook_sortby_modified_date": "Edit Date",
+
+    "note_options_title": "Options",
+    "note_select_notebook_title": "Select a notebook",
+    "note_options_date_label": "Date",
+    "note_options_notebook_label": "Notebook",
+    "note_options_location_label": "Location",
+    "note_options_no_location_text" : "No location",
+
+    "sort_notebooks_title": "Sort notebooks",
+    "sort_notebooks_no_items": "You don't have notebooks",
+
+    "show_in_review_notebooks_title": "Select notebooks",
+    "show_in_review_notebooks_no_items": "You don't have notebooks",
+
+    "select_review_period_title": "Select periods",
+
+    "question_lists_page_title": "Questions",
+
+    "menu_edit": "Edit",
+    "menu_delete": "Delete",
+    "menu_cancel": "Cancel",
+
+    "loading": "Loading, please wait",
+
+    "open_settings": "Open Settings",
+    "locations_blocked_title": "Can't track location",
+    "locations_blocked_message": "Please open Settings and allow usage of locations.",
+    
+    "biometric_blocked_title": "Can't use biometric",
+    "biometric_blocked_message": "Please open Settings and allow usage of biometric.",
+
+    "enter_pin_title": "Enter passcode",
+
+    "welcome": "Welcome to {appName}",
+    "@welcome": {
+        "type": "text",
+        "placeholders": {
+            "appName": {}
+        }
+    },
+
+    "email_field_label": "E-mail",
+    "email_field_placeholder": "Enter your e-mail",
+    "password_field_label": "Password",
+    "password_field_placeholder": "Enter your password",
+    "code_field_label": "Code",
+    "code_field_placeholder": "Enter the code",
+    "first_name_field_label": "First Name",
+    "first_name_field_placeholder": "Enter your first name",
+    "last_name_field_label": "Last name",
+    "last_name_field_placeholder": "Enter your last name",    
+    
+
+    "terms_of_use": "Terms of use",
+    "privacy_policy": "Privacy Policy",
+
+    "login_page_title": "Login",
+    "login_page_login_button": "Login",
+    "login_page_forgot_password_button": "Forgot your password?",
+    "login_page_create_account_button": "Create an account",
+    "login_page_and_separator": "and",
+
+
+    "signup_page_title": "Sign up",
+    "signup_page_signup_button": "Sign up",
+    "signup_page_and_separator": "and",
+    
+    "forgot_password_page_title": "Restore password",
+    "forgot_password_page_instruction": "Enter your user account's verified email address and we will send you a code.",
+    "forgot_password_page_button": "Restore password",
+
+    "restore_password_page_title": "Change password",
+    "restore_password_page_instruction": "Enter the code that we have sent to your e-mail and a new password.",
+    "restore_password_page_button": "Change password",
+
+
+
+    "loading_message": "loading...",
+
+    "required_field_validator": "Required field",
+    "invalid_email_password": "Invalid e-mail or password",
+    "email_is_in_use_error": "E-mail is already in use",
+    "short_password_validator": "Password should be at least 7 symbols",
+    "invalid_email_validator": "Invalid e-mail format",
+    "create_account_error": "Can't create an account. Try again later",
+    "restore_password_error": "Can't restore password. Try again later",
+    
+    "somethingWrong": "Oops, something went wrong. Please try again.",
+    "gotIt": "Got it!",
+    "error": "Error",
+
+
+
+
+
+    "jailbrakeTitle": "Rooted device",
+    "jailbrakeMessage": "This application cannot be used on a rooted device.",
+
+    
+    "skip": "Skip",
+    "play_store": "Play Store",
+    "apple_store": "Apple Store",
+    "maintenance_mode_title": "Application under Maintenance",
+    "maintenance_mode_description": "We are performing scheduled maintenance. We will be back on-line shortly!",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "close": "Close",
+    "delete": "Delete",
+    "create_pin_title": "Enter new passcode",
+    "confirm_pin_title": "Re-enter new passcode",
+    "face_id_subtitle": "Log in to the app without a PIN code",
+    "allow_face_id": "Allow Face ID",
+    "allow_touch_id": "Allow Touch ID",
+    "face_id_reason": "Unlock using Face ID",
+    "touch_id_reason": "Unlock using Touch ID",
+    
+    "no_internet": "There is no Internet connection",
+    "retry": "Retry",
+    "next": "Next",
+    "get_started": "Get started",
+
+
+    "tutorial2_title": "Write your story",
+    "tutorial3_title": "Review memories",
+    "tutorial4_title": "Write from any device",
+    "tutorial5_title": "Protect your data",
+    
+    "tutorial1_subtitle": "Your personal notebook that is always with you",
+    "tutorial2_subtitle": "Preserve important events from your life",
+    "tutorial3_subtitle": "Remember everything that happened in your life.",
+    "tutorial4_subtitle": "Download for free on iPhone, iPad, Android, Mac and Windows",
+    "tutorial5_subtitle": "Configure a passcode and biometric protection to keep your data safe"
+    
+}

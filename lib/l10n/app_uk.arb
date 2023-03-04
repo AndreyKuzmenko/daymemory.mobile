@@ -1,0 +1,271 @@
+{
+    "tab_timeline": "Записи",
+    "tab_questions": "Питання",
+
+    "done_nav_button": "Зберегти",
+    "memory_hint_text": "Що у вас на думці?",
+
+    "error_refresh": "Виникла помилка. Спробуйте ще раз",
+    "minutes_label": "хв",
+
+    "save_error_message": "Оой. Ми не змогли зберегти зміни.",
+    "finish_error_message": "Оой. Ми не змогли виконати дію.",
+
+    "settings_page_title": "Налаштування",
+    "settings_passcode_page_title": "Пін-код",
+    "settings_passcode_require_after_page_title": "Блокування екрану",
+    "settings_passcode_require_after_explanation": "Через який час після покидання додатку ви б хотіли заблокувати екран?",
+    "settings_passcode_option": "Пін-код і біометрика",
+    "settings_passcode_require_after_option": "Блокувати через",
+    "settings_encryption_key_page_title": "Ключ шифрування",
+    "settings_encryption_key_placeholder": "Введіть ключ шифрування",
+    "settings_encryption_key_explanation": "Якщо ви втратите ключ шифрування, ви не зможете більше отримати доступ до своїх даних. Збережіть ваш ключ в надійному місці.",
+    "settings_encryption_key_copy_option": "Скопіювати",
+    "settings_sync_page_title": "Синхронізація",
+    "settings_sync_enable_sync": "Включити синхронізацію",
+    "settings_sync_disable_sync": "Виключити синхронізацію",
+    "settings_sync_encryption_explanation": "End-to-end шифрування використовує приватий ключ для шифрування даних перед тим як їх буде надіслано на сервер",
+    "settings_sync_disable_explanation": "При виключеній синхронізації ваші дані будуть зберігатись лише на даному пристрої без можливості відновлення",
+    "settings_sync_enable_explanation": "Включена синхронізація дозволяє зберігати ваші дані на сервері. В даний момент інформація зберігається лише на поточному пристрої",
+    "settings_account_page_title": "Профіль",
+    "settings_enable_location_saving_option": "Зберігати локацію",
+    "settings_enable_screen_locking_option": "Включити пін-код",
+    "settings_biometric_title_option": "Біометричне розблокування екрану",
+    "settings_logout_option": "Вийти",
+    "settings_login_option": "Увійти",
+    "settings_privacy_policy_option": "Політика конфіденційності",
+    "settings_language_option" : "Мова",
+    "settings_show_in_review_option": "Блокноти",
+    "settings_review_period_option": "Періоди",
+    "settings_sync_option": "Синхронізація",
+    "settings_sync_status_option": "Статус",
+    "settings_clear_data": "Видалити всі дані",
+    "settings_sync_status_failed": "Помилка",
+    "settings_sync_status_on": "Вкл.",
+    "settings_sync_status_off": "Викл.",
+    "settings_encryption_set_key": "Ввести ключ шифрування",
+    "settings_encryption_view_key": "Переглянути ключ",
+    "settings_encryption_create_key": "Включити шифрування",
+    "settings_tags_option": "Теги",
+    "settings_syncing_in_progress": "Синхронізую...",
+    "settings_last_sync_time": "Час останнього збереження:",
+    "settings_signin_option": "Вхід в обліковий запис",
+    "settings_sync_never_status": "Ніколи",
+    "settings_clear_data_title": "Видалення даних",
+    "settings_logged_in_as": "Ви увійшли як:",
+    "settings_clear_data_message": "Ви впевнені, що хочете очистити пристрій?",
+    "settings_blocking_explanation": "Захистіть доступ до нотаток за допомогою пароля або біометрики",
+    "settings_show_in_review_explanation": "Перегляд спогадів",
+    "settings_intro_option": "Знайомство з додатком",
+    "settings_account_email_option": "Email",
+    "settings_account_name_option": "Ім'я",
+    "settings_account_explanation": "Інформація профілю Day Memory",
+    "settings_account_clear_data_explanation": "Перед видаленням даних важливо впевнитись, що ваші дані синхронізовані з сервером. В іншому випадку, ви не зможете їх більше відновити.",
+
+    "settings_encryption_key_absent_error_title": "Відсутній ключ шифрування",
+    "settings_encryption_key_absent_error_message": "У вашому профілі увімкнено шифрування даних, але відсутній ключ шифрування. Будь ласка, введіть ключ шифрування.",
+    "settings_encryption_key_invalid_error_title": "Невірний ключ шифрування",
+    "settings_encryption_key_invalid_error_message": "Перевірте чи ключ шифрування було введено коректно.",
+    "settings_token_expired_error_title": "Час дії токену вийшов",
+    "settings_token_expired_error_message": "Синхронізація даних з сервером призупинена. Увійдіть до свого профілю для відновлення процесу синхронізації.",
+
+
+    "settings_passcode_time_immediately": "Відразу",
+    "settings_passcode_time_1minute": "1 хвилина",
+    "settings_passcode_time_3minutes": "3 хвилини",
+    "settings_passcode_time_5minutes": "5 хвилин",
+    "settings_passcode_time_10minutes": "10 хвилин",
+    "settings_passcode_time_30minutes": "30 хвилин",
+    "settings_passcode_time_1hour": "1 година",
+
+    "no_review_items": "У вас немає спогадів для перегляду",
+    "review_yearly": "Щорічно",
+    "review_half_year": "Півроку тому",
+    "review_month": "Місяць тому",
+    "review_three_months": "Три місяці тому",
+    "review_10_days": "10 днів тому",
+    "review_7_days": "7 днів тому",
+
+    "review_one_year": "рік тому",
+    "review_two_four_years": "роки тому",
+    "review_many_years": "років тому",
+
+    "sync_loading_data": "Скачування даних...",
+    "sync_uploading_data": "Завантаження даних...",
+    "sync_loading_tags": "Завантаження тегів...",
+    "sync_loading_notebooks": "Завантаження блокнотів...",
+    "sync_loading_notes": "Завантаження нотаток. Залишилось: {count}",
+        "@sync_loading_notes": {
+        "type": "text",
+        "placeholders": {
+            "count": {}
+        }
+    },
+
+    "review_memories_page_title": "Спогади",
+
+    "settings_select_language_title": "Виберіть мову",
+
+    "edit_tags_title": "Теги",
+    "tag_family": "Сім'я",
+    "tag_work": "Робота",
+    "tag_life": "Життя",
+
+    "notebook_general": "📘 Загальні",
+
+    "side_menu_settings": "Налаштування",
+    "side_menu_review_memories": "Переглянути спогади",
+    "side_menu_new_notebook": "Новий блокнот",
+    "side_menu_notebooks": "Блокноти",
+
+    "remove_note_message": "Ви дійсно хочете видали запис?",
+    "remove_question_list_message": "Ви дійсно хочете видали список питань?",
+
+    "no_notes": "Нотатки відсутні",
+    "no_notebook_notes": "У вас немає блокнотів. Розпочніть зі створення першого.",
+    "note_delete_title": "Видалення нотатки",
+    "note_delete_message": "Ви впевнені, що хочете видалити нотатку?",
+    "note_use_photo_datetime": "Використовувати дату і час із фото?",
+    "notebook_delete_title": "Видалення блокноту",
+    "notebook_delete_message": "Ви впевнені, що хочете видалити блокнот?",    
+
+    "edit_notebook_delete": "Видалити блокнот",
+    "edit_notebook_new_title": "Новий блокнот",
+    "edit_notebook_edit_title": "Редагування блокноту",
+    "edit_notebook_title_placeholder": "Введіть заголовок",
+
+    "edit_notebook_sortby_option": "Сортування нотаток",
+    "edit_notebook_sortby_title": "Сортування нотаток",
+    "edit_notebook_sortby_created_date": "Дата створення",
+    "edit_notebook_sortby_modified_date": "Дата редагування",
+
+    "note_options_title": "Опції",
+    "note_select_notebook_title": "Вибрати блокнот",
+    "note_options_date_label": "Дата",
+    "note_options_notebook_label": "Блокнот",
+    "note_options_location_label": "Місце",
+    "note_options_no_location_text" : "Немає збереженого місця",
+
+
+    "sort_notebooks_title": "Сортувати ноубуки",
+    "sort_notebooks_no_items": "У вас немає блокнотів",
+
+    "show_in_review_notebooks_title": "Виберіть блокноти",
+    "show_in_review_notebooks_no_items": "У вас немає блокнотів",
+
+    "select_review_period_title": "Виберіть періоди",
+
+    "question_lists_page_title": "Питання",
+
+    "menu_edit": "Редагувати",
+    "menu_delete": "Видалити",
+    "menu_cancel": "Відмінити",
+
+    "loading": "Завантажуємо дані",
+
+    "open_settings": "Відкрити налаштування",
+    "locations_blocked_title": "Неможливо визначити локацію",
+    "locations_blocked_message": "Відкрийте Налаштування та дозвольте використання локацій.",
+    
+    "biometric_blocked_title": "Неможливо використати біометрику",
+    "biometric_blocked_message": "Відкрийте Налаштування та дозвольте використання біометрики.",
+
+
+    "welcome": "Вітаємо в {appName}",
+    "@welcome": {
+        "type": "text",
+        "placeholders": {
+            "appName": {}
+        }
+    },
+
+    "email_field_label": "E-mail",
+    "email_field_placeholder": "Введіть ваш e-mail",
+    "password_field_label": "Пароль",
+    "password_field_placeholder": "Введіть ваш password",
+    "code_field_label": "Код",
+    "code_field_placeholder": "Введіть код",
+    "first_name_field_label": "Ім'я",
+    "first_name_field_placeholder": "Введіть ваше ім'я",
+    "last_name_field_label": "Прізвище",
+    "last_name_field_placeholder": "Введіть ваше прізвище",    
+    
+
+    "terms_of_use": "Terms of use",
+    "privacy_policy": "Privacy Policy",
+    
+    "login_page_title": "Вхід",
+    "login_page_login_button": "Логін",
+    "login_page_forgot_password_button": "Забули ваш пароль?",
+    "login_page_create_account_button": "Створити обліковий запис",
+    "login_page_and_separator": "та",
+
+    "signup_page_title": "Реєстрація",
+    "signup_page_signup_button": "Реєстрація",
+    "signup_page_and_separator": "та",
+
+    "forgot_password_page_title": "Відновлення паролю",
+    "forgot_password_page_instruction": "Введіть ваш e-mail і ми надішлемо вам код на пошту",
+    "forgot_password_page_button": "Відновити пароль",
+
+    "restore_password_page_title": "Зміна паролю",
+    "restore_password_page_instruction": "Введіть код, який ми надіслали на вашу пошту, та новий пароль",
+    "restore_password_page_button": "Змінити пароль",
+
+
+    "loading_message": "завантаження...",
+
+    "required_field_validator": "Обов'язкове поле",
+    "invalid_email_password": "Невірний e-mail чи пароль",
+    "email_is_in_use_error": "Даний e-mail вже використовується",
+    "short_password_validator": "Пароль має бути мінімум 7 символів",
+    "invalid_email_validator": "Невірний формат e-mail",
+    "create_account_error": "Не вдалось створити обліковий запис. Спробуйте пізніше ще раз",
+    "restore_password_error": "Не вдалось відновити пароль. Спробуйте пізніше ще раз",
+
+    "somethingWrong": "Ой, щось пішло не так. Спробуйте ще раз.",
+    "gotIt": "Зрозуміло!",
+    "error": "Помилка",
+
+
+
+    
+    "jailbrakeTitle": "Пристрій з Root-доступом",
+    "jailbrakeMessage": "Даний додаток неможливо використовувати на пристрої з root-доступом.",
+
+    
+    "skip": "Пропустити",
+    "play_store": "Play Store",
+    "apple_store": "Apple Store",
+    "maintenance_mode_title": "Додаток на обслуговуванні",
+    "maintenance_mode_description": "Ми виконуємо заплановане обслуговування. Ми скоро повернемось!",
+    "yes": "Так",
+    "cancel": "Відмінити",
+    "ok": "OK",
+    "close": "Закрити",
+    "delete": "Видалити",
+    "enter_pin_title": "Введіть ПІН-код",
+    "create_pin_title": "Придумайте ПІН-код",
+    "confirm_pin_title": "Підтвердіть ПІН-код",
+    "face_id_subtitle": "Увійти додатку без введення ПІН-коду",
+    "allow_face_id": "Дозволити Face ID",
+    "allow_touch_id": "Дозволити Touch ID",
+    "face_id_reason": "Розблокувати за допомогою Face ID",
+    "touch_id_reason": "Розблокувати за допомогою Touch ID",
+    
+    "no_internet": "Немає інтернет з'єднання",
+    "retry": "Повторити",
+    "next": "Далі",
+    "get_started": "Розпочати",
+
+    "tutorial2_title": "Напишіть свою історію",
+    "tutorial3_title": "Переглядайте спогади",
+    "tutorial4_title": "Використовуйте будь-який пристрій",
+    "tutorial5_title": "Захистіть свої дані",
+    
+    "tutorial1_subtitle": "Персональний записник, який завжди з вами",
+    "tutorial2_subtitle": "Зберігайте важливі події з вашого життя",
+    "tutorial3_subtitle": "Згадуйте все, що відбувалось у вашому житті.",
+    "tutorial4_subtitle": "Завантажуйте безкоштовно додатки для iPhone, iPad, Android, Mac та Windows",
+    "tutorial5_subtitle": "Налаштуйте PIN-код та біометричну аутентифікацію для доступу до записів"
+}

@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DayMemory Prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/configuration/daymemory_prod.dart",
+            "args": [
+                "--flavor",
+                "daymemoryProd"
+            ]
+        },
+        {
+            "name": "DayMemory Windows",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/configuration/daymemory_desktop.dart",
+            "args": [
+                "--flavor",
+                "daymemoryDesktop"
+            ]
+        },
+        {
+            "name": "DayMemory MacOS",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/configuration/daymemory_desktop.dart"
+        }
+    ]
+}

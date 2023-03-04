@@ -1,0 +1,6 @@
+git_url(ENV["CERTIFICATES_GIT_URL"])
+git_user_email(ENV["GIT_USER_EMAIL"])
+git_bearer_authorization(ENV["GIT_USER_BEARER_AUTHORIZATION"])
+storage_mode("git")
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
+app_identifier([ENV["BUNDLE_IDENTIFIER"]])

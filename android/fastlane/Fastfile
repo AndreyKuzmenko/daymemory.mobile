@@ -1,0 +1,48 @@
+import "../../scripts/Fastfile"
+
+default_platform(:android)
+
+platform :android do
+  desc "Deploy Android beta build to firebase"
+  lane :deploy_firebase do |options|
+      build(type:"apk", buildNumber:options[:buildNumber], flavor:options[:flavor], main:options[:main])
+      firebase_app_distribution(
+            app: "#{options[:appId]}",
+            groups: "#{options[:qaGroup]}",
+            android_artifact_type: "APK",
+            android_artifact_path: "#{root_path}/build/app/outputs/flutter-apk/#{options[:apkName]}",
+            service_credentials_file: "#{root_path}/google/#{options[:jsonName]}"
+      )
+  end
+
+  desc "Deploy Android PROD build to Firebase"
+  lane :deploy_firebase_and_google do |options|
+      build(type:"appbundle", buildNumber:options[:buildNumber], flavor:options[:flavor], main:options[:main])
+      firebase_app_distribution(
+            app: "#{options[:appId]}",
+            groups: "#{options[:qaGroup]}",
+            android_artifact_type: "AAB",
+            android_artifact_path: "#{root_path}/build/app/outputs/bundle/#{options[:bundlePath]}",
+            service_credentials_file: "#{root_path}/google/#{options[:jsonName]}"
+      )
+      upload_to_play_store(
+            aab: "#{root_path}/build/app/outputs/bundle/#{options[:bundlePath]}",
+            track: "internal",
+            json_key: "#{root_path}/google/#{options[:serviceCredentialsName]}",
+            package_name: options[:packageName]
+      )
+  end
+
+  desc "Deploy Android beta build to Google Play"
+  lane :deploy_google_play_internal do |options|
+      build(type:"appbundle", buildNumber:options[:buildNumber], flavor:options[:flavor], main:options[:main])
+      upload_to_play_store(
+            aab: "#{root_path}/build/app/outputs/bundle/#{options[:bundlePath]}",
+            track: "internal",
+            # Should be removed when internal track will be fully available.
+            release_status: 'draft',
+            json_key: "#{root_path}/google/#{options[:jsonName]}",
+            package_name: options[:packageName]
+      )
+  end
+end

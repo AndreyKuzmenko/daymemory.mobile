@@ -1,0 +1,68 @@
+import "../../scripts/Fastfile"
+
+default_platform(:ios)
+
+platform :ios do
+# Uncomment if we decide deploy to Firebase
+#  desc "Deploy IOS beta build to firebase"
+#  lane :deploy_firebase do |options|
+#    prepare_signing(method:"adhoc", flavor:options[:flavor])
+#    build(type:"ios", buildNumber:options[:buildNumber], flavor:options[:flavor], main:options[:main])
+#    build_ipa(flavor:options[:flavor])
+#    upload_symbols_firebase(flavor:options[:flavor])
+#    firebase_app_distribution(
+#        app: "#{options[:appId]}",
+#        groups: "#{options[:qaGroup]}",
+#        ipa_path: "#{root_path}/ios/build/Runner.ipa",
+#        service_credentials_file: "#{root_path}/google/#{options[:jsonName]}"
+#    )
+#  end
+
+  desc "Push a new beta build to TestFlight"
+  lane :build_and_deploy_testflight do |options|
+    prepare_signing(method:"appstore", flavor:options[:flavor])
+    build(type:"ipa", buildNumber:options[:buildNumber], flavor:options[:flavor], main:options[:main])
+    build_ipa(flavor:options[:flavor])
+    #upload_symbols_firebase(flavor:options[:flavor], appId:options[:appId])
+    pilot(
+       ipa: "./build/Runner.ipa",
+       skip_submission: true,
+       skip_waiting_for_build_processing: true,
+       app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
+       apple_id: ENV['APP_APPLE_ID'],
+       username: ENV['APPLE_USER_EMAIL'],
+    )
+  end
+
+  desc "Disable code signing"
+  lane :prepare_signing do |options|
+    # could be used in future, if decide to migrate to match
+    # register_devices(devices_file: "./Config/devices.txt")
+    update_code_signing_settings(
+      team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
+      code_sign_identity: ENV['APPLE_CERTIFICATE_SIGNING_IDENTITY'],
+      profile_name: ENV['PROVISION_PROFILE_NAME'],
+      # could be used in future, if decide to migrate to match
+      # code_sign_identity: options[:method] == "development" ? "iPhone Developer" : "iPhone Distribution",
+      # profile_name: match(type: options[:method], git_branch: "surgicaseDev", force_for_new_devices: true)[CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)]
+    )
+  end
+
+  desc "Build IOS .ipa"
+  lane :build_ipa do |options|
+    build_ios_app(
+      scheme: options[:flavor],
+      clean: true,
+      output_directory: './build'
+    )
+  end
+
+  # desc "Upload symbols to Firebase"
+  # lane :upload_symbols_firebase do |options|
+  #   upload_symbols_to_crashlytics(
+  #     dsym_path: "./build/Runner.app.dSYM.zip",
+  #     gsp_path: "./Config/#{options[:flavor]}/GoogleService-Info.plist",
+  #     app_id: options[:appId]
+  #   )
+  # end
+end
