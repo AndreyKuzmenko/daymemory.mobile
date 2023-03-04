@@ -60,7 +60,7 @@ jobs:
         CleanTargetFolder: false
       displayName: 'Copy ios'
 
-          - task: CopyFiles@2
+    - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/Configuration/macos'
         Contents: '**'
