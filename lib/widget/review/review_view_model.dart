@@ -1,7 +1,4 @@
 import 'package:built_value/built_value.dart';
-import 'package:daymemory/data/dtos/review_category_dto.dart';
-import 'package:daymemory/data/dtos/review_item_dto.dart';
-import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/review/review_category_view_model.dart';
 
 part 'review_view_model.g.dart';
