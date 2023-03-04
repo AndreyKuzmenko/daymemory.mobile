@@ -60,13 +60,21 @@ jobs:
         CleanTargetFolder: false
       displayName: 'Copy ios'
 
+          - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/Configuration/macos'
+        Contents: '**'
+        TargetFolder: '$(Build.SourcesDirectory)/macos'
+        CleanTargetFolder: false
+      displayName: 'Copy macos'
+
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/Configuration/lib'
         Contents: '**'
         TargetFolder: '$(Build.SourcesDirectory)/lib'
         CleanTargetFolder: false
-      displayName: 'Copy Android Secrets'
+      displayName: 'Copy Lib Configs'
 
   # =================================================================================
   # Certificate
