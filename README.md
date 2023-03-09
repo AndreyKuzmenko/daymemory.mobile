@@ -38,3 +38,7 @@ https://developer.android.com/studio/write/image-asset-studio
 flutter pub run msix:create
 
 flutter run -d macos -t 'lib/configuration/daymemory_desktop.dart'
+
+#Android build
+flutter build appbundle -t lib/configuration/daymemory_prod.dart
+flutter build apk -t lib/configuration/daymemory_prod.dart

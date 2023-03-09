@@ -21,19 +21,19 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-// def keystoreProperties = new Properties()
-// def keystorePropertiesFile = rootProject.file('secret.properties')
-// if (keystorePropertiesFile.exists()) {
-//     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-//     def daymemoryDomain = keystoreProperties['daymemoryDomain']
-// }
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    //def daymemoryDomain = keystoreProperties['daymemoryDomain']
+}
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 33
@@ -53,7 +53,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.daymemory"
+        applicationId "net.daymemory"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 26
@@ -64,29 +64,32 @@ android {
         versionName flutterVersionName
     }
 
-    // signingConfigs {
-    //     release {
-    //         keyAlias keystoreProperties['keyAlias']
-    //         keyPassword keystoreProperties['keyPassword']
-    //         storeFile rootProject.file("key/daymemory")
-    //         storePassword keystoreProperties['storePassword']
-    //     }
-    // }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile rootProject.file("key/daymemory.jks")
+            storePassword keystoreProperties['storePassword']
+        }
+    }
 
 
-    // buildTypes {
-    //     release {
-    //         signingConfig signingConfigs.debug
-    //     }
-    // }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+        debug {
+            
+        }
+    }
 
     productFlavors {
         flavorDimensions "daymemory"
         daymemoryProd {
             dimension "daymemory"
-            applicationId = "com.daymemory"
+            applicationId = "net.daymemory"
             manifestPlaceholders = [
-                    'appAuthRedirectScheme': 'com.daymemory'
+                    'appAuthRedirectScheme': 'net.daymemory'
             ]
         }
     }

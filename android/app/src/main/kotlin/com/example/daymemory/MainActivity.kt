@@ -1,4 +1,4 @@
-package com.daymemory
+package net.daymemory
 
 import io.flutter.embedding.android.FlutterActivity
 
