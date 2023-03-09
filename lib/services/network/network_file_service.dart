@@ -24,10 +24,11 @@ class NetworkFileService extends NetworkBaseService implements INetworkFileServi
 
   @override
   Future<FileDto> uploadMediaFile(String fileId, String filePath, int width, int height, FileType fileType) async {
-    var request = http.MultipartRequest('POST', Uri.https(apiUrl, 'api/files/media/$fileId'));
+    var request = http.MultipartRequest('POST', Uri.https(apiUrl, 'api/files/media'));
     request.files.add(await http.MultipartFile.fromPath('file', filePath));
     request.fields["width"] = width.toString();
     request.fields["height"] = height.toString();
+    request.fields["fileId"] = fileId;
     request.fields["fileType"] = fileType.index.toString();
 
     var response = await client.send(request);
