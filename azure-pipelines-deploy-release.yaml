@@ -45,6 +45,14 @@ jobs:
         TargetFolder: '$(Build.SourcesDirectory)/env'
       displayName: 'Copy ENV variables scripts'
 
+
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/Configuration/google'
+        Contents: '**'
+        TargetFolder: '$(Build.SourcesDirectory)/google'
+      displayName: 'Copy Google Keys'
+
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/Configuration/android'
@@ -104,13 +112,14 @@ jobs:
       displayName: 'Installing Ruby'
 
     - bash: |
-        # cd android && \
-        # bundle install && \
-        # bundle update fastlane && \
-        # cd .. && \
-        cd ios && \
+        cd android && \
         bundle install && \
-        bundle update fastlane
+        bundle update fastlane 
+        # && \
+        # cd .. && \
+        # cd ios && \
+        # bundle install && \
+        # bundle update fastlane
       displayName: 'Setup Bundler & Fastlane'
 
     - bash: |
@@ -123,27 +132,45 @@ jobs:
   # =================================================================================
   # DAYMEMORY PROD IOS
   # =================================================================================
-    - task: InstallAppleProvisioningProfile@1
-      inputs:
-        provisioningProfileLocation: 'secureFiles'
-        provProfileSecureFile: '$(PROD_PROVISION_PROFILE)'
-        removeProfile: true
-      displayName: 'Provisioning DayMemory PROD'
+    # - task: InstallAppleProvisioningProfile@1
+    #   inputs:
+    #     provisioningProfileLocation: 'secureFiles'
+    #     provProfileSecureFile: '$(PROD_PROVISION_PROFILE)'
+    #     removeProfile: true
+    #   displayName: 'Provisioning DayMemory PROD'
 
+    # - bash: |
+    #     export PATH=`pwd`/flutter/bin:$PATH
+    #     cd ios && \
+    #     bundle exec fastlane build_and_deploy_testflight \
+    #     buildNumber:$(Build.BuildId) \
+    #     appId:1:312341156050:ios:6ddf4ecacbe8831c635d0b \
+    #     flavor:dayMemoryProd \
+    #     main:lib/configuration/daymemory_prod.dart
+    #   displayName: 'Building DayMemory PROD'
+    #   env:
+    #     APPLE_USER_EMAIL: $(APPLE_USER_EMAIL)
+    #     FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: $(FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD)
+    #     APP_STORE_CONNECT_TEAM_ID: $(APP_STORE_CONNECT_TEAM_ID)
+    #     DEVELOPER_PORTAL_TEAM_ID: $(DEVELOPER_PORTAL_TEAM_ID)
+    #     PROVISION_PROFILE_NAME: $(PROD_PROVISION_NAME)
+    #     BUNDLE_IDENTIFIER: "com.daymemory"
+    #     APP_APPLE_ID: "1639089867"
+
+
+  # =================================================================================
+  # DAYMEMORY PROD Android
+  # =================================================================================
     - bash: |
         export PATH=`pwd`/flutter/bin:$PATH
-        cd ios && \
-        bundle exec fastlane build_and_deploy_testflight \
+        cd android && \
+        bundle exec fastlane deploy_google_play_internal \
         buildNumber:$(Build.BuildId) \
-        appId:1:312341156050:ios:6ddf4ecacbe8831c635d0b \
         flavor:dayMemoryProd \
-        main:lib/configuration/daymemory_prod.dart
-      displayName: 'Building DayMemory PROD'
-      env:
-        APPLE_USER_EMAIL: $(APPLE_USER_EMAIL)
-        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: $(FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD)
-        APP_STORE_CONNECT_TEAM_ID: $(APP_STORE_CONNECT_TEAM_ID)
-        DEVELOPER_PORTAL_TEAM_ID: $(DEVELOPER_PORTAL_TEAM_ID)
-        PROVISION_PROFILE_NAME: $(PROD_PROVISION_NAME)
-        BUNDLE_IDENTIFIER: "com.daymemory"
-        APP_APPLE_ID: "1639089867"
+        main:lib/configuration/daymemory_prod.dart \
+        appId:1:312341156050:android:17896d06d3e21ee0635d0b \
+        qaGroup:Internal \
+        bundlePath:dayMemoryProdRelease/app-dayMemoryProd-release.aab \
+        jsonName:firebase_surgicase_prod.json \
+        packageName:net.daymemory
+      displayName: 'Android DayMemory PROD'
