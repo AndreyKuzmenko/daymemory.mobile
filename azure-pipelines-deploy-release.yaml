@@ -171,6 +171,6 @@ jobs:
         appId:1:312341156050:android:17896d06d3e21ee0635d0b \
         qaGroup:Internal \
         bundlePath:dayMemoryProdRelease/app-dayMemoryProd-release.aab \
-        jsonName:firebase_surgicase_prod.json \
+        jsonName:google_play_store_daymemory_prod.json \
         packageName:net.daymemory
       displayName: 'Android DayMemory PROD'
