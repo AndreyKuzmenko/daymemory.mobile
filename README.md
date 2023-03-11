@@ -50,6 +50,6 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 - Icons for Android are generated in the Android Studio https://developer.android.com/studio/write/image-asset-studio
 
 ## Day memory API
-
+The backend for the app is located in a separate repository - https://github.com/AndreyKuzmenko/daymemory.api
 
 
