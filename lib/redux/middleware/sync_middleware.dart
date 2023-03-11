@@ -184,7 +184,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     store.dispatch(SyncFinishedAction(syncFinishedDate: syncStartedDate, hasSucceeded: true));
 
     if (isFirstSync) {
-      store.dispatch(const LoadNotesAction(notebookId: null));
+      store.dispatch(LoadNotesAction(notebookId: settings.defaultNotebookId));
     }
 
     store.dispatch(LoadNotebooksAction());
