@@ -14,7 +14,11 @@
 I built this app to test the possibilities of Flutter. The goal was to create clients for different platforms with maximum reuse of code. Currently, there are apps for iOS (iPhone, iPad), Android (Mobile and Tablet), MacOS, and Windows. I haven't tried to build it for Linux, but it shouldn't be a problem.
 
 ## iPhone screenshots
-![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/assets/description/screenshots.png)
+![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/screenshots.png)
+
+## Windows screenshot
+![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/windows.png)
+
 
 ## Commands
 ### Android build
