@@ -147,7 +147,7 @@ jobs:
         appId:1:312341156050:ios:6ddf4ecacbe8831c635d0b \
         flavor:dayMemoryProd \
         main:lib/configuration/daymemory_prod.dart
-      displayName: 'Building DayMemory PROD'
+      displayName: 'iOS DayMemory PROD'
       env:
         APPLE_USER_EMAIL: $(APPLE_USER_EMAIL)
         FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: $(FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD)
