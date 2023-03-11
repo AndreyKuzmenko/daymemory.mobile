@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:core';
+import 'package:daymemory/services/network/errors/bad_request_exception.dart';
+import 'package:daymemory/services/network/errors/inner_error_dto.dart';
 import 'package:daymemory/services/network/network_base_service.dart';
 
 class SigninResult {
@@ -187,7 +189,13 @@ class NetworkUserService extends NetworkBaseService implements INetworkUserServi
         )
         .timeout(const Duration(seconds: 10));
 
-    return response.statusCode == 200;
+    if (response.statusCode == 200) {
+      return true;
+    } else if (response.statusCode == 400) {
+      throw BadRequestException(innerError: InnerErrorDto.fromJson(json.decode(response.body)));
+    } else {
+      throw Exception('Forgot password failed. Status code: ${response.statusCode}, body: ${response.body}');
+    }
   }
 
   @override

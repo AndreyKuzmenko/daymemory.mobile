@@ -10,6 +10,7 @@ import 'package:daymemory/services/encrypt_service/encrypt_service.dart';
 import 'package:daymemory/services/logging/config_service.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
 import 'package:daymemory/services/navigation/context_service.dart';
+import 'package:daymemory/services/network/errors/bad_request_exception.dart';
 import 'package:daymemory/services/network/network_user_service.dart';
 import 'package:daymemory/services/settings_service/settings_service.dart';
 import 'package:daymemory/services/settings_service/storage_user_info.dart';
@@ -95,9 +96,11 @@ class AuthMiddleware implements MiddlewareClass<AppState> {
   Future<void> _forgotPassword(Store<AppState> store, ForgotPasswordAction action) async {
     try {
       store.dispatch(const LoginIsLoadingAction(isSending: true));
-      var result = await networkUserService.forgotPassword(action.email);
-      if (result) {
-        store.dispatch(NavigateToRestorePasswordAction());
+      await networkUserService.forgotPassword(action.email);
+      store.dispatch(NavigateToRestorePasswordAction());
+    } on BadRequestException catch (e) {
+      if (e.innerError.code == 101) {
+        store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch, errorMessage: _locale!.user_is_not_found));
       } else {
         store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch, errorMessage: _locale!.restore_password_error));
       }

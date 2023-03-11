@@ -226,8 +226,9 @@
     "email_is_in_use_error": "E-mail is already in use",
     "short_password_validator": "Password should be at least 7 symbols",
     "invalid_email_validator": "Invalid e-mail format",
-    "create_account_error": "Can't create an account. Try again later",
-    "restore_password_error": "Can't restore password. Try again later",
+    "create_account_error": "Can't create an account. Try again.",
+    "restore_password_error": "Can't restore password. Try again.",
+    "user_is_not_found": "The user with such an e-mail is not found",
     
     "somethingWrong": "Oops, something went wrong. Please try again.",
     "gotIt": "Got it!",
