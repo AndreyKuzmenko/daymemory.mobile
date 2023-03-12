@@ -7,6 +7,7 @@ import 'package:daymemory/redux/state/note_state/note_state.dart';
 import 'package:daymemory/redux/state/settings_state/settings_state.dart';
 import 'package:daymemory/redux/state/states.dart';
 import 'package:daymemory/services/dialog/dialog_service.dart';
+import 'package:daymemory/services/file_selector_service/photo_access_denied_exception.dart';
 import 'package:daymemory/services/geolocator_service/geolocator_service.dart';
 import 'package:daymemory/services/file_selector_service/file_selector_service.dart';
 import 'package:daymemory/services/navigation/context_service.dart';
@@ -53,9 +54,9 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
     } else if (action is DeleteNoteAction) {
       await _deleteNote(action, store.dispatch);
     } else if (action is NoteSelectImagesAction) {
-      await _selectImages(action, store.state.noteState, store.dispatch);
+      await _selectImages(action, store.state.noteState, store);
     } else if (action is NoteSelectVideoAction) {
-      await _selectVideo(action, store.state.noteState, store.dispatch);
+      await _selectVideo(action, store.state.noteState, store);
     } else if (action is NoteLoadLocationAction) {
       await _loadLocation(action, store.state.settingsState, store.dispatch);
     }
@@ -131,9 +132,15 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
     );
   }
 
-  Future<void> _selectImages(NoteSelectImagesAction action, NoteState noteState, Function(dynamic action) dispatch) async {
-    var files = await fileSelectorService.selectImages();
-    dispatch(DelayedAction(nextAction: AppStateAction(isAppActive: false), delay: 1000));
+  Future<void> _selectImages(NoteSelectImagesAction action, NoteState noteState, Store<AppState> store) async {
+    List<String> files = List.empty();
+    try {
+      files = await fileSelectorService.selectImages();
+    } on PhotoAccessDeniedException {
+      store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch, errorMessage: _locale!.photo_library_no_access));
+    }
+
+    store.dispatch(DelayedAction(nextAction: AppStateAction(isAppActive: false), delay: 1000));
 
     var images = <FileDto>[];
 
@@ -160,7 +167,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
         fileSize: fileSize,
       );
       images.add(imageDto);
-      dispatch(NoteImageSelectedAction(image: imageDto));
+      store.dispatch(NoteImageSelectedAction(image: imageDto));
     }
 
     // if (!noteState.isImageDateUsed) {
@@ -178,9 +185,15 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
     // }
   }
 
-  Future<void> _selectVideo(NoteSelectVideoAction action, NoteState noteState, Function(dynamic action) dispatch) async {
-    var filePath = await fileSelectorService.selectVideo();
-    dispatch(DelayedAction(nextAction: AppStateAction(isAppActive: false), delay: 1000));
+  Future<void> _selectVideo(NoteSelectVideoAction action, NoteState noteState, Store<AppState> store) async {
+    String? filePath;
+    try {
+      filePath = await fileSelectorService.selectVideo();
+    } on PhotoAccessDeniedException {
+      store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch, errorMessage: _locale!.photo_library_no_access));
+    }
+
+    store.dispatch(DelayedAction(nextAction: AppStateAction(isAppActive: false), delay: 1000));
 
     if (filePath == null) {
       return;
@@ -254,7 +267,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
       fileSize: fileSize,
     );
 
-    dispatch(NoteVideoSelectedAction(file: fileDto));
+    store.dispatch(NoteVideoSelectedAction(file: fileDto));
   }
 
   Future _loadLocation(NoteLoadLocationAction action, SettingsState state, Function(dynamic action) dispatch) async {

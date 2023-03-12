@@ -1,0 +1,2 @@
+
+class PhotoAccessDeniedException implements Exception {}

@@ -1,3 +1,4 @@
+import 'package:daymemory/services/file_selector_service/photo_access_denied_exception.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,6 +22,9 @@ class FileSelectorService implements IFileSelectorService {
         return file.path;
       }
     } on PlatformException catch (e) {
+      if (e.code == "photo_access_denied") {
+        throw PhotoAccessDeniedException();
+      }
       loggingService.logError(e);
     }
     return null;
@@ -37,6 +41,9 @@ class FileSelectorService implements IFileSelectorService {
 
       return images.map((e) => e.path).toList();
     } on PlatformException catch (e) {
+      if (e.code == "photo_access_denied") {
+        throw PhotoAccessDeniedException();
+      }
       loggingService.logError(e);
     }
     return [];

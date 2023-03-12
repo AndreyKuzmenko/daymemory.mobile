@@ -11,7 +11,6 @@
     "save_error_message": "Ooops. Can't save changes.",
     "finish_error_message": "Oops. Can't finish the action.",
     
-
     "settings_page_title": "Settings",
     "settings_passcode_page_title": "Passcode",
     "settings_passcode_require_after_page_title": "Require Passcode",
@@ -234,8 +233,7 @@
     "gotIt": "Got it!",
     "error": "Error",
 
-
-
+    "photo_library_no_access": "Please open Settings and allow usage of Photo library",
 
 
     "jailbrakeTitle": "Rooted device",
