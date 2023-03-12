@@ -59,11 +59,11 @@ class SideMenuConverter extends ViewModelConverter<SideMenuViewModel> {
         dispatch(NavigateToSettingsAction());
       })
       ..selectNotebookCommand = TypedFunctionHolder<NotebookDto>((notebook) {
-        dispatch(NavigateToNotesAction());
+        //dispatch(NavigateToNotesAction());
 
         dispatch(SelectDefaultNotebookAction(
           notebook: notebook,
-          nextAction: LoadNotesAction(notebookId: notebook.id),
+          nextAction: NavigateToNotesAction(),
         ));
         // if (!isStatic) {
         //   dispatch(PopBackStackAction(key: RouteDirection.notes));
