@@ -18,11 +18,16 @@ I built this app to test the possibilities of Flutter. The goal was to create cl
 
 Download: https://apps.apple.com/us/app/day-memory-private-journal/id1639089867
 
+## MacOS screenshot
+![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/macos.png)
+
 ## Windows screenshot
 ![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/windows.png)
 
 
 ## Commands
+Leaving some portion of documentation not to forget how build the app
+
 ### Android build
 ```
 flutter build appbundle -t lib/configuration/daymemory_prod.dart
