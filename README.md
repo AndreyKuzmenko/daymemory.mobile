@@ -38,7 +38,7 @@ flutter pub run msix:create
 ```
 ### Macos build
 ```
-flutter run -d macos -t 'lib/configuration/daymemory_desktop.dart'
+flutter run -d macos -t 'lib/configuration/daymemory_desktop.dart' --release
 ```
 ### Generate classes
 ```
