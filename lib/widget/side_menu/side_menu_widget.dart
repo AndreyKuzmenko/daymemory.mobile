@@ -93,6 +93,12 @@ class SideMenuWidget extends StatelessWidget {
                 viewModel.settingsMenuOption,
                 style: appTheme.settingsLabel,
               ),
+              trailing: viewModel.hasError
+                  ? Icon(
+                      Icons.error_outline_outlined,
+                      color: appTheme.red,
+                    )
+                  : const SizedBox.shrink(),
               leading: const Icon(Icons.settings_outlined),
               onPressed: (context) {
                 viewModel.settingsMenuCommand.command();

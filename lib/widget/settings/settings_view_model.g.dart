@@ -48,6 +48,8 @@ class _$SettingsViewModel extends SettingsViewModel {
   @override
   final String syncStatus;
   @override
+  final bool hasSyncFailed;
+  @override
   final FunctionHolder syncCommand;
   @override
   final String locationOptionTitle;
@@ -99,6 +101,7 @@ class _$SettingsViewModel extends SettingsViewModel {
       required this.accountCommand,
       required this.syncOptionTitle,
       required this.syncStatus,
+      required this.hasSyncFailed,
       required this.syncCommand,
       required this.locationOptionTitle,
       required this.locationToogleCommand,
@@ -150,6 +153,8 @@ class _$SettingsViewModel extends SettingsViewModel {
         syncOptionTitle, r'SettingsViewModel', 'syncOptionTitle');
     BuiltValueNullFieldError.checkNotNull(
         syncStatus, r'SettingsViewModel', 'syncStatus');
+    BuiltValueNullFieldError.checkNotNull(
+        hasSyncFailed, r'SettingsViewModel', 'hasSyncFailed');
     BuiltValueNullFieldError.checkNotNull(
         syncCommand, r'SettingsViewModel', 'syncCommand');
     BuiltValueNullFieldError.checkNotNull(
@@ -210,6 +215,7 @@ class _$SettingsViewModel extends SettingsViewModel {
         accountCommand == other.accountCommand &&
         syncOptionTitle == other.syncOptionTitle &&
         syncStatus == other.syncStatus &&
+        hasSyncFailed == other.hasSyncFailed &&
         syncCommand == other.syncCommand &&
         locationOptionTitle == other.locationOptionTitle &&
         locationToogleCommand == other.locationToogleCommand &&
@@ -248,6 +254,7 @@ class _$SettingsViewModel extends SettingsViewModel {
     _$hash = $jc(_$hash, accountCommand.hashCode);
     _$hash = $jc(_$hash, syncOptionTitle.hashCode);
     _$hash = $jc(_$hash, syncStatus.hashCode);
+    _$hash = $jc(_$hash, hasSyncFailed.hashCode);
     _$hash = $jc(_$hash, syncCommand.hashCode);
     _$hash = $jc(_$hash, locationOptionTitle.hashCode);
     _$hash = $jc(_$hash, locationToogleCommand.hashCode);
@@ -288,6 +295,7 @@ class _$SettingsViewModel extends SettingsViewModel {
           ..add('accountCommand', accountCommand)
           ..add('syncOptionTitle', syncOptionTitle)
           ..add('syncStatus', syncStatus)
+          ..add('hasSyncFailed', hasSyncFailed)
           ..add('syncCommand', syncCommand)
           ..add('locationOptionTitle', locationOptionTitle)
           ..add('locationToogleCommand', locationToogleCommand)
@@ -407,6 +415,11 @@ class SettingsViewModelBuilder
   String? get syncStatus => _$this._syncStatus;
   set syncStatus(String? syncStatus) => _$this._syncStatus = syncStatus;
 
+  bool? _hasSyncFailed;
+  bool? get hasSyncFailed => _$this._hasSyncFailed;
+  set hasSyncFailed(bool? hasSyncFailed) =>
+      _$this._hasSyncFailed = hasSyncFailed;
+
   FunctionHolder? _syncCommand;
   FunctionHolder? get syncCommand => _$this._syncCommand;
   set syncCommand(FunctionHolder? syncCommand) =>
@@ -497,6 +510,7 @@ class SettingsViewModelBuilder
       _accountCommand = $v.accountCommand;
       _syncOptionTitle = $v.syncOptionTitle;
       _syncStatus = $v.syncStatus;
+      _hasSyncFailed = $v.hasSyncFailed;
       _syncCommand = $v.syncCommand;
       _locationOptionTitle = $v.locationOptionTitle;
       _locationToogleCommand = $v.locationToogleCommand;
@@ -559,6 +573,7 @@ class SettingsViewModelBuilder
             accountCommand: BuiltValueNullFieldError.checkNotNull(accountCommand, r'SettingsViewModel', 'accountCommand'),
             syncOptionTitle: BuiltValueNullFieldError.checkNotNull(syncOptionTitle, r'SettingsViewModel', 'syncOptionTitle'),
             syncStatus: BuiltValueNullFieldError.checkNotNull(syncStatus, r'SettingsViewModel', 'syncStatus'),
+            hasSyncFailed: BuiltValueNullFieldError.checkNotNull(hasSyncFailed, r'SettingsViewModel', 'hasSyncFailed'),
             syncCommand: BuiltValueNullFieldError.checkNotNull(syncCommand, r'SettingsViewModel', 'syncCommand'),
             locationOptionTitle: BuiltValueNullFieldError.checkNotNull(locationOptionTitle, r'SettingsViewModel', 'locationOptionTitle'),
             locationToogleCommand: BuiltValueNullFieldError.checkNotNull(locationToogleCommand, r'SettingsViewModel', 'locationToogleCommand'),

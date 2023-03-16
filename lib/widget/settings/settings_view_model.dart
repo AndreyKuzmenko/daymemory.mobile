@@ -44,6 +44,8 @@ abstract class SettingsViewModel implements Built<SettingsViewModel, SettingsVie
 
   String get syncStatus;
 
+  bool get hasSyncFailed;
+
   FunctionHolder get syncCommand;
 
   String get locationOptionTitle;

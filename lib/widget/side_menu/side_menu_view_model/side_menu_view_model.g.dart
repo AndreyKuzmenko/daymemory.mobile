@@ -18,6 +18,8 @@ class _$SideMenuViewModel extends SideMenuViewModel {
   @override
   final bool isDesktop;
   @override
+  final bool hasError;
+  @override
   final String settingsMenuOption;
   @override
   final String newNotebookMenuOption;
@@ -42,6 +44,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
       this.selectedNotebookId,
       required this.notebooks,
       required this.isDesktop,
+      required this.hasError,
       required this.settingsMenuOption,
       required this.newNotebookMenuOption,
       required this.reviewMemoriesMenuOption,
@@ -58,6 +61,8 @@ class _$SideMenuViewModel extends SideMenuViewModel {
         notebooks, r'SideMenuViewModel', 'notebooks');
     BuiltValueNullFieldError.checkNotNull(
         isDesktop, r'SideMenuViewModel', 'isDesktop');
+    BuiltValueNullFieldError.checkNotNull(
+        hasError, r'SideMenuViewModel', 'hasError');
     BuiltValueNullFieldError.checkNotNull(
         settingsMenuOption, r'SideMenuViewModel', 'settingsMenuOption');
     BuiltValueNullFieldError.checkNotNull(
@@ -91,6 +96,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
         selectedNotebookId == other.selectedNotebookId &&
         notebooks == other.notebooks &&
         isDesktop == other.isDesktop &&
+        hasError == other.hasError &&
         settingsMenuOption == other.settingsMenuOption &&
         newNotebookMenuOption == other.newNotebookMenuOption &&
         reviewMemoriesMenuOption == other.reviewMemoriesMenuOption &&
@@ -108,6 +114,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
     _$hash = $jc(_$hash, selectedNotebookId.hashCode);
     _$hash = $jc(_$hash, notebooks.hashCode);
     _$hash = $jc(_$hash, isDesktop.hashCode);
+    _$hash = $jc(_$hash, hasError.hashCode);
     _$hash = $jc(_$hash, settingsMenuOption.hashCode);
     _$hash = $jc(_$hash, newNotebookMenuOption.hashCode);
     _$hash = $jc(_$hash, reviewMemoriesMenuOption.hashCode);
@@ -127,6 +134,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
           ..add('selectedNotebookId', selectedNotebookId)
           ..add('notebooks', notebooks)
           ..add('isDesktop', isDesktop)
+          ..add('hasError', hasError)
           ..add('settingsMenuOption', settingsMenuOption)
           ..add('newNotebookMenuOption', newNotebookMenuOption)
           ..add('reviewMemoriesMenuOption', reviewMemoriesMenuOption)
@@ -166,6 +174,10 @@ class SideMenuViewModelBuilder
   bool? _isDesktop;
   bool? get isDesktop => _$this._isDesktop;
   set isDesktop(bool? isDesktop) => _$this._isDesktop = isDesktop;
+
+  bool? _hasError;
+  bool? get hasError => _$this._hasError;
+  set hasError(bool? hasError) => _$this._hasError = hasError;
 
   String? _settingsMenuOption;
   String? get settingsMenuOption => _$this._settingsMenuOption;
@@ -212,6 +224,7 @@ class SideMenuViewModelBuilder
       _selectedNotebookId = $v.selectedNotebookId;
       _notebooks = $v.notebooks;
       _isDesktop = $v.isDesktop;
+      _hasError = $v.hasError;
       _settingsMenuOption = $v.settingsMenuOption;
       _newNotebookMenuOption = $v.newNotebookMenuOption;
       _reviewMemoriesMenuOption = $v.reviewMemoriesMenuOption;
@@ -250,14 +263,15 @@ class SideMenuViewModelBuilder
                 notebooks, r'SideMenuViewModel', 'notebooks'),
             isDesktop: BuiltValueNullFieldError.checkNotNull(
                 isDesktop, r'SideMenuViewModel', 'isDesktop'),
+            hasError: BuiltValueNullFieldError.checkNotNull(
+                hasError, r'SideMenuViewModel', 'hasError'),
             settingsMenuOption: BuiltValueNullFieldError.checkNotNull(
                 settingsMenuOption, r'SideMenuViewModel', 'settingsMenuOption'),
             newNotebookMenuOption: BuiltValueNullFieldError.checkNotNull(
                 newNotebookMenuOption, r'SideMenuViewModel', 'newNotebookMenuOption'),
-            reviewMemoriesMenuOption: BuiltValueNullFieldError.checkNotNull(
-                reviewMemoriesMenuOption, r'SideMenuViewModel', 'reviewMemoriesMenuOption'),
-            notebooksMenuOption:
-                BuiltValueNullFieldError.checkNotNull(notebooksMenuOption, r'SideMenuViewModel', 'notebooksMenuOption'),
+            reviewMemoriesMenuOption:
+                BuiltValueNullFieldError.checkNotNull(reviewMemoriesMenuOption, r'SideMenuViewModel', 'reviewMemoriesMenuOption'),
+            notebooksMenuOption: BuiltValueNullFieldError.checkNotNull(notebooksMenuOption, r'SideMenuViewModel', 'notebooksMenuOption'),
             settingsMenuCommand: BuiltValueNullFieldError.checkNotNull(settingsMenuCommand, r'SideMenuViewModel', 'settingsMenuCommand'),
             reviewMemoriesCommand: BuiltValueNullFieldError.checkNotNull(reviewMemoriesCommand, r'SideMenuViewModel', 'reviewMemoriesCommand'),
             sortNotebooksCommand: BuiltValueNullFieldError.checkNotNull(sortNotebooksCommand, r'SideMenuViewModel', 'sortNotebooksCommand'));

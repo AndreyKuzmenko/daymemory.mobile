@@ -67,6 +67,7 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       ..locationOptionTitle = locale.settings_enable_location_saving_option
       ..isLocationEnabled = isLocationSavingEnabled
       ..isLocationVisible = isLocationVisible
+      ..hasSyncFailed = hasLastSyncSucceeded != null && !hasLastSyncSucceeded!
       ..locationToogleCommand = FunctionHolder(() => dispatch((SettingsSaveLocationAction(isEnabled: !isLocationSavingEnabled))))
       ..screenBlockingExplanation = locale.settings_blocking_explanation
       ..showInReviewExplanation = locale.settings_show_in_review_explanation

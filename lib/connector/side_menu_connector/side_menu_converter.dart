@@ -15,6 +15,7 @@ class SideMenuConverter extends ViewModelConverter<SideMenuViewModel> {
   final bool isStatic;
   final List<NotebookDto> notebooks;
   final bool isDesktop;
+  final bool hasError;
 
   SideMenuConverter({
     required this.dispatch,
@@ -23,6 +24,7 @@ class SideMenuConverter extends ViewModelConverter<SideMenuViewModel> {
     required this.selectedNotebookId,
     required this.isDesktop,
     required this.notebooks,
+    required this.hasError,
   });
 
   @override
@@ -32,6 +34,7 @@ class SideMenuConverter extends ViewModelConverter<SideMenuViewModel> {
       ..newNotebookMenuOption = locale.side_menu_new_notebook
       ..notebooks = notebooks
       ..isDesktop = isDesktop
+      ..hasError = hasError
       ..settingsMenuOption = locale.side_menu_settings
       ..reviewMemoriesMenuOption = locale.side_menu_review_memories
       ..notebooksMenuOption = locale.side_menu_notebooks

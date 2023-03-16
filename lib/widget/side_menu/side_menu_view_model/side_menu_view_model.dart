@@ -14,6 +14,8 @@ abstract class SideMenuViewModel implements Built<SideMenuViewModel, SideMenuVie
 
   bool get isDesktop;
 
+  bool get hasError;
+
   String get settingsMenuOption;
 
   String get newNotebookMenuOption;

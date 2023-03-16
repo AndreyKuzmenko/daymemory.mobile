@@ -117,7 +117,7 @@ class SettingsWidget extends StatelessWidget {
                     children: [
                       Text(
                         viewModel.syncStatus,
-                        style: appTheme.settingsValueLabel,
+                        style: appTheme.settingsValueLabel.copyWith(color: viewModel.hasSyncFailed ? appTheme.red : appTheme.black),
                       ),
                       const SizedBox(width: 5),
                       const Icon(Icons.arrow_forward_ios, size: 16),
