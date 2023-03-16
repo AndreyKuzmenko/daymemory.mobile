@@ -10,6 +10,7 @@ import 'package:daymemory/widget/note/toolbar.dart';
 import 'package:daymemory/widget/note/editnote_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:get_it/get_it.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tuple/tuple.dart';
@@ -20,6 +21,7 @@ import 'package:html2md/html2md.dart' as html2md;
 import 'package:delta_markdown/delta_markdown.dart';
 // ignore: implementation_imports
 import 'package:flutter_quill/src/models/documents/document.dart' as d;
+import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
 class EditNoteForm extends StatefulWidget {
   const EditNoteForm({Key? key, required this.viewModel}) : super(key: key);
@@ -56,6 +58,7 @@ class _EditFormState extends State<EditNoteForm> {
     _nodeText = FocusNode();
     _quillController = QuillController.basic();
     _scrollController = ScrollController();
+    _loggingService = GetIt.I.get<ILoggingService>();
 
     _nodeText.addListener(() {
       if (!_hasFocus) {
@@ -132,6 +135,16 @@ class _EditFormState extends State<EditNoteForm> {
   }
 
   String quillDeltaToHtml(Delta delta) {
+    // var converter = QuillDeltaToHtmlConverter(
+    //   List.castFrom(delta.toJson()),
+    // );
+
+    // final convertedValue = jsonEncode(delta.toJson());
+    // //return convertedValue;
+
+    // var html = converter.convert();
+    // return html;
+
     final convertedValue = jsonEncode(delta.toJson());
     final markdown = deltaToMarkdown(convertedValue);
     final markdown1 = markdown.replaceAll("\n", "\n\n");
@@ -143,6 +156,7 @@ class _EditFormState extends State<EditNoteForm> {
   String htmlToQuillDelta(String html) {
     var markdownString = html2md.convert(html);
     var delta = markdownToDelta(markdownString);
+
     return delta;
   }
 
