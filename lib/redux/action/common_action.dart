@@ -114,24 +114,6 @@ class CloseDialogAction implements ILoggingAction {
   }
 }
 
-class OpenExternalBrowserAction implements ILoggingAction {
-  final String url;
-
-  OpenExternalBrowserAction(this.url);
-
-  @override
-  String toLogString() => 'Open External Browser';
-}
-
-class AppUpdatesCheckVersionAction implements ILoggingAction {
-  final dynamic nextAction;
-
-  AppUpdatesCheckVersionAction(this.nextAction);
-
-  @override
-  String toLogString() => 'Checking app versions';
-}
-
 class DelayedAction implements ILoggingAction {
   final int delay;
   final dynamic nextAction;
