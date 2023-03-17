@@ -247,7 +247,9 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
 
     int width = 1024;
     int height = 768;
-    final uint8list = await videoThumbnailService.makeThumbnail(filePath);
+    final uint8list = await videoThumbnailService.makeThumbnail(
+      filePath,
+    );
     if (uint8list != null) {
       var decodedImage = await decodeImageFromList(uint8list);
       width = decodedImage.width;

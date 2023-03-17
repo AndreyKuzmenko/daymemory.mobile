@@ -4,16 +4,16 @@ import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoFilePlayer extends StatefulWidget {
+class MobileVideoFilePlayer extends StatefulWidget {
   final FileViewModel file;
 
-  const VideoFilePlayer({Key? key, required this.file}) : super(key: key);
+  const MobileVideoFilePlayer({Key? key, required this.file}) : super(key: key);
 
   @override
-  VideoFilePlayerState createState() => VideoFilePlayerState();
+  MobileVideoFilePlayerState createState() => MobileVideoFilePlayerState();
 }
 
-class VideoFilePlayerState extends State<VideoFilePlayer> {
+class MobileVideoFilePlayerState extends State<MobileVideoFilePlayer> {
   late VideoPlayerController _controller;
 
   @override

@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/widget/common/components/page_navigation.dart';
-import 'package:daymemory/widget/common/components/video_is_not_supported.dart';
-import 'package:daymemory/widget/common/components/video_player.dart';
+import 'package:daymemory/widget/common/components/video/desktop_mobile_video_player.dart';
+import 'package:daymemory/widget/common/components/video/mobile_video_player.dart';
+import 'package:daymemory/widget/common/components/video/video_is_not_supported.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
@@ -91,14 +92,19 @@ class _GalleryPhotoState extends State<GalleryPhoto> {
     final item = widget.galleryItems[index];
 
     if (item.fileType == FileType.video) {
-      if (!Platform.isAndroid && !Platform.isIOS) {
+      if (Platform.isWindows) {
         return PhotoViewGalleryPageOptions.customChild(
-          child: const VideoIsNotSupported(),
+          child: DesktopVideoFilePlayer(file: item),
+        );
+      }
+      if (Platform.isAndroid || Platform.isIOS) {
+        return PhotoViewGalleryPageOptions.customChild(
+          child: MobileVideoFilePlayer(file: item),
           //heroAttributes: PhotoViewHeroAttributes(tag: item.id),
         );
       }
       return PhotoViewGalleryPageOptions.customChild(
-        child: VideoFilePlayer(file: item),
+        child: const VideoIsNotSupported(),
         //heroAttributes: PhotoViewHeroAttributes(tag: item.id),
       );
     }

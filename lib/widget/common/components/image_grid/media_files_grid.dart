@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:daymemory/data/dtos/file_dto.dart';
-import 'package:daymemory/widget/common/components/video_preview.dart';
+import 'package:daymemory/widget/common/components/video/video_preview.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:flutter/material.dart';

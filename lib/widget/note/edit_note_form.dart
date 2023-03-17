@@ -4,7 +4,7 @@ import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/position_dto.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
-import 'package:daymemory/widget/common/components/video_preview.dart';
+import 'package:daymemory/widget/common/components/video/video_preview.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:daymemory/widget/note/toolbar.dart';
 import 'package:daymemory/widget/note/editnote_view_model.dart';
@@ -21,7 +21,7 @@ import 'package:html2md/html2md.dart' as html2md;
 import 'package:delta_markdown/delta_markdown.dart';
 // ignore: implementation_imports
 import 'package:flutter_quill/src/models/documents/document.dart' as d;
-import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
+// import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
 class EditNoteForm extends StatefulWidget {
   const EditNoteForm({Key? key, required this.viewModel}) : super(key: key);
