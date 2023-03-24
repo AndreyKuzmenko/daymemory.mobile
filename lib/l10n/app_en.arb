@@ -58,6 +58,7 @@
     "settings_blocking_explanation": "Secure access to the app with a passcode or biometrics",
     "settings_show_in_review_explanation": "Review memories",
     "settings_intro_option": "App intro",
+    "settings_send_email_to_developers_option": "Write an email to developers",
     "settings_account_email_option": "Email",
     "settings_account_name_option": "Name",
     "settings_account_explanation": "Day Memory account information",

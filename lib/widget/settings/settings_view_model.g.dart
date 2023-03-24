@@ -34,7 +34,11 @@ class _$SettingsViewModel extends SettingsViewModel {
   @override
   final String introOptionTitle;
   @override
+  final String sendEmailToDevelopersTitle;
+  @override
   final FunctionHolder introCommand;
+  @override
+  final FunctionHolder sendEmailToDevelopersCommand;
   @override
   final bool isAuthenticated;
   @override
@@ -94,7 +98,9 @@ class _$SettingsViewModel extends SettingsViewModel {
       required this.privacyPolicyUrl,
       required this.privacyPolicyOptionTitle,
       required this.introOptionTitle,
+      required this.sendEmailToDevelopersTitle,
       required this.introCommand,
+      required this.sendEmailToDevelopersCommand,
       required this.isAuthenticated,
       this.userName,
       required this.signinOptionTitle,
@@ -141,8 +147,12 @@ class _$SettingsViewModel extends SettingsViewModel {
         r'SettingsViewModel', 'privacyPolicyOptionTitle');
     BuiltValueNullFieldError.checkNotNull(
         introOptionTitle, r'SettingsViewModel', 'introOptionTitle');
+    BuiltValueNullFieldError.checkNotNull(sendEmailToDevelopersTitle,
+        r'SettingsViewModel', 'sendEmailToDevelopersTitle');
     BuiltValueNullFieldError.checkNotNull(
         introCommand, r'SettingsViewModel', 'introCommand');
+    BuiltValueNullFieldError.checkNotNull(sendEmailToDevelopersCommand,
+        r'SettingsViewModel', 'sendEmailToDevelopersCommand');
     BuiltValueNullFieldError.checkNotNull(
         isAuthenticated, r'SettingsViewModel', 'isAuthenticated');
     BuiltValueNullFieldError.checkNotNull(
@@ -208,7 +218,9 @@ class _$SettingsViewModel extends SettingsViewModel {
         privacyPolicyUrl == other.privacyPolicyUrl &&
         privacyPolicyOptionTitle == other.privacyPolicyOptionTitle &&
         introOptionTitle == other.introOptionTitle &&
+        sendEmailToDevelopersTitle == other.sendEmailToDevelopersTitle &&
         introCommand == other.introCommand &&
+        sendEmailToDevelopersCommand == other.sendEmailToDevelopersCommand &&
         isAuthenticated == other.isAuthenticated &&
         userName == other.userName &&
         signinOptionTitle == other.signinOptionTitle &&
@@ -247,7 +259,9 @@ class _$SettingsViewModel extends SettingsViewModel {
     _$hash = $jc(_$hash, privacyPolicyUrl.hashCode);
     _$hash = $jc(_$hash, privacyPolicyOptionTitle.hashCode);
     _$hash = $jc(_$hash, introOptionTitle.hashCode);
+    _$hash = $jc(_$hash, sendEmailToDevelopersTitle.hashCode);
     _$hash = $jc(_$hash, introCommand.hashCode);
+    _$hash = $jc(_$hash, sendEmailToDevelopersCommand.hashCode);
     _$hash = $jc(_$hash, isAuthenticated.hashCode);
     _$hash = $jc(_$hash, userName.hashCode);
     _$hash = $jc(_$hash, signinOptionTitle.hashCode);
@@ -288,7 +302,9 @@ class _$SettingsViewModel extends SettingsViewModel {
           ..add('privacyPolicyUrl', privacyPolicyUrl)
           ..add('privacyPolicyOptionTitle', privacyPolicyOptionTitle)
           ..add('introOptionTitle', introOptionTitle)
+          ..add('sendEmailToDevelopersTitle', sendEmailToDevelopersTitle)
           ..add('introCommand', introCommand)
+          ..add('sendEmailToDevelopersCommand', sendEmailToDevelopersCommand)
           ..add('isAuthenticated', isAuthenticated)
           ..add('userName', userName)
           ..add('signinOptionTitle', signinOptionTitle)
@@ -382,10 +398,22 @@ class SettingsViewModelBuilder
   set introOptionTitle(String? introOptionTitle) =>
       _$this._introOptionTitle = introOptionTitle;
 
+  String? _sendEmailToDevelopersTitle;
+  String? get sendEmailToDevelopersTitle => _$this._sendEmailToDevelopersTitle;
+  set sendEmailToDevelopersTitle(String? sendEmailToDevelopersTitle) =>
+      _$this._sendEmailToDevelopersTitle = sendEmailToDevelopersTitle;
+
   FunctionHolder? _introCommand;
   FunctionHolder? get introCommand => _$this._introCommand;
   set introCommand(FunctionHolder? introCommand) =>
       _$this._introCommand = introCommand;
+
+  FunctionHolder? _sendEmailToDevelopersCommand;
+  FunctionHolder? get sendEmailToDevelopersCommand =>
+      _$this._sendEmailToDevelopersCommand;
+  set sendEmailToDevelopersCommand(
+          FunctionHolder? sendEmailToDevelopersCommand) =>
+      _$this._sendEmailToDevelopersCommand = sendEmailToDevelopersCommand;
 
   bool? _isAuthenticated;
   bool? get isAuthenticated => _$this._isAuthenticated;
@@ -503,7 +531,9 @@ class SettingsViewModelBuilder
       _privacyPolicyUrl = $v.privacyPolicyUrl;
       _privacyPolicyOptionTitle = $v.privacyPolicyOptionTitle;
       _introOptionTitle = $v.introOptionTitle;
+      _sendEmailToDevelopersTitle = $v.sendEmailToDevelopersTitle;
       _introCommand = $v.introCommand;
+      _sendEmailToDevelopersCommand = $v.sendEmailToDevelopersCommand;
       _isAuthenticated = $v.isAuthenticated;
       _userName = $v.userName;
       _signinOptionTitle = $v.signinOptionTitle;
@@ -566,7 +596,9 @@ class SettingsViewModelBuilder
             privacyPolicyUrl: BuiltValueNullFieldError.checkNotNull(privacyPolicyUrl, r'SettingsViewModel', 'privacyPolicyUrl'),
             privacyPolicyOptionTitle: BuiltValueNullFieldError.checkNotNull(privacyPolicyOptionTitle, r'SettingsViewModel', 'privacyPolicyOptionTitle'),
             introOptionTitle: BuiltValueNullFieldError.checkNotNull(introOptionTitle, r'SettingsViewModel', 'introOptionTitle'),
+            sendEmailToDevelopersTitle: BuiltValueNullFieldError.checkNotNull(sendEmailToDevelopersTitle, r'SettingsViewModel', 'sendEmailToDevelopersTitle'),
             introCommand: BuiltValueNullFieldError.checkNotNull(introCommand, r'SettingsViewModel', 'introCommand'),
+            sendEmailToDevelopersCommand: BuiltValueNullFieldError.checkNotNull(sendEmailToDevelopersCommand, r'SettingsViewModel', 'sendEmailToDevelopersCommand'),
             isAuthenticated: BuiltValueNullFieldError.checkNotNull(isAuthenticated, r'SettingsViewModel', 'isAuthenticated'),
             userName: userName,
             signinOptionTitle: BuiltValueNullFieldError.checkNotNull(signinOptionTitle, r'SettingsViewModel', 'signinOptionTitle'),

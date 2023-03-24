@@ -28,6 +28,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
   @override
   final String emailValidator;
   @override
+  final String devContactEmail;
+  @override
   final String encryptedText;
 
   factory _$ConfigurationSettings(
@@ -45,6 +47,7 @@ class _$ConfigurationSettings extends ConfigurationSettings {
       required this.fullscreenMinWidth,
       required this.sideMenuWidth,
       required this.emailValidator,
+      required this.devContactEmail,
       required this.encryptedText})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -67,6 +70,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
         sideMenuWidth, r'ConfigurationSettings', 'sideMenuWidth');
     BuiltValueNullFieldError.checkNotNull(
         emailValidator, r'ConfigurationSettings', 'emailValidator');
+    BuiltValueNullFieldError.checkNotNull(
+        devContactEmail, r'ConfigurationSettings', 'devContactEmail');
     BuiltValueNullFieldError.checkNotNull(
         encryptedText, r'ConfigurationSettings', 'encryptedText');
   }
@@ -94,6 +99,7 @@ class _$ConfigurationSettings extends ConfigurationSettings {
         fullscreenMinWidth == other.fullscreenMinWidth &&
         sideMenuWidth == other.sideMenuWidth &&
         emailValidator == other.emailValidator &&
+        devContactEmail == other.devContactEmail &&
         encryptedText == other.encryptedText;
   }
 
@@ -110,6 +116,7 @@ class _$ConfigurationSettings extends ConfigurationSettings {
     _$hash = $jc(_$hash, fullscreenMinWidth.hashCode);
     _$hash = $jc(_$hash, sideMenuWidth.hashCode);
     _$hash = $jc(_$hash, emailValidator.hashCode);
+    _$hash = $jc(_$hash, devContactEmail.hashCode);
     _$hash = $jc(_$hash, encryptedText.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -128,6 +135,7 @@ class _$ConfigurationSettings extends ConfigurationSettings {
           ..add('fullscreenMinWidth', fullscreenMinWidth)
           ..add('sideMenuWidth', sideMenuWidth)
           ..add('emailValidator', emailValidator)
+          ..add('devContactEmail', devContactEmail)
           ..add('encryptedText', encryptedText))
         .toString();
   }
@@ -183,6 +191,11 @@ class ConfigurationSettingsBuilder
   set emailValidator(String? emailValidator) =>
       _$this._emailValidator = emailValidator;
 
+  String? _devContactEmail;
+  String? get devContactEmail => _$this._devContactEmail;
+  set devContactEmail(String? devContactEmail) =>
+      _$this._devContactEmail = devContactEmail;
+
   String? _encryptedText;
   String? get encryptedText => _$this._encryptedText;
   set encryptedText(String? encryptedText) =>
@@ -203,6 +216,7 @@ class ConfigurationSettingsBuilder
       _fullscreenMinWidth = $v.fullscreenMinWidth;
       _sideMenuWidth = $v.sideMenuWidth;
       _emailValidator = $v.emailValidator;
+      _devContactEmail = $v.devContactEmail;
       _encryptedText = $v.encryptedText;
       _$v = null;
     }
@@ -244,6 +258,7 @@ class ConfigurationSettingsBuilder
                 fullscreenMinWidth, r'ConfigurationSettings', 'fullscreenMinWidth'),
             sideMenuWidth: BuiltValueNullFieldError.checkNotNull(sideMenuWidth, r'ConfigurationSettings', 'sideMenuWidth'),
             emailValidator: BuiltValueNullFieldError.checkNotNull(emailValidator, r'ConfigurationSettings', 'emailValidator'),
+            devContactEmail: BuiltValueNullFieldError.checkNotNull(devContactEmail, r'ConfigurationSettings', 'devContactEmail'),
             encryptedText: BuiltValueNullFieldError.checkNotNull(encryptedText, r'ConfigurationSettings', 'encryptedText'));
     replace(_$result);
     return _$result;

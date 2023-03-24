@@ -244,6 +244,7 @@ IStoreService initStore() {
           settingsService: ServiceLocator.getIt.get(),
           encryptService: ServiceLocator.getIt.get(),
           configService: ServiceLocator.getIt.get(),
+          emailSenderService: ServiceLocator.getIt.get(),
         ),
         SyncMiddleware(
           settingsService: ServiceLocator.getIt.get(),

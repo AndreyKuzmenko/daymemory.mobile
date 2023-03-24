@@ -57,6 +57,7 @@
     "settings_blocking_explanation": "Захистіть доступ до нотаток за допомогою пароля або біометрики",
     "settings_show_in_review_explanation": "Перегляд спогадів",
     "settings_intro_option": "Знайомство з додатком",
+    "settings_send_email_to_developers_option": "Написати листа розробникам",
     "settings_account_email_option": "Email",
     "settings_account_name_option": "Ім'я",
     "settings_account_explanation": "Інформація профілю Day Memory",

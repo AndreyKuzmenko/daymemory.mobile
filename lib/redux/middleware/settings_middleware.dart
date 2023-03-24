@@ -9,6 +9,7 @@ import 'package:daymemory/redux/state/app_state.dart';
 import 'package:daymemory/redux/state/face_id_state/available_biometrics.dart';
 import 'package:daymemory/services/device_info_service/device_info_service.dart';
 import 'package:daymemory/services/dialog/dialog_service.dart';
+import 'package:daymemory/services/email_sender_service/email_sender_service.dart';
 import 'package:daymemory/services/encrypt_service/encrypt_service.dart';
 import 'package:daymemory/services/geolocator_service/geolocator_service.dart';
 import 'package:daymemory/services/logging/config_service.dart';
@@ -30,6 +31,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
   final IStorageService storageService;
   final IEncryptService encryptService;
   final IConfigService configService;
+  final IEmailSenderService emailSenderService;
 
   AppLocalizations? get _locale => contextService.locale;
 
@@ -42,6 +44,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
     required this.storageService,
     required this.encryptService,
     required this.configService,
+    required this.emailSenderService,
   });
 
   @override
@@ -50,6 +53,9 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
 
     if (action is ClearDeviceDataAction) {
       _clearAllData(action, store.dispatch);
+    }
+    if (action is SendEmailToDevelopersAction) {
+      _sendEmailToDevelopers(store.dispatch);
     } else if (action is LoadSettingsAction) {
       var settings = await settingsService.getSettings();
 
@@ -215,6 +221,10 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
       default:
         return false;
     }
+  }
+
+  Future<void> _sendEmailToDevelopers(Function(dynamic action) dispatch) async {
+    await emailSenderService.sendEmail(configService.settings.devContactEmail, "Day Memory", "");
   }
 
   Future<void> _clearAllData(ClearDeviceDataAction action, Function(dynamic action) dispatch) async {

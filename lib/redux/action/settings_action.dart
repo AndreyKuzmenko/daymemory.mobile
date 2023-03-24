@@ -135,6 +135,14 @@ class ClearDeviceDataAction implements ILoggingAction {
   }
 }
 
+class SendEmailToDevelopersAction implements ILoggingAction {
+  @override
+  String toLogString() {
+    return 'Send Email To Developers Action';
+  }
+}
+
+
 class DeviceDataClearedAction implements ILoggingAction {
   @override
   String toLogString() {

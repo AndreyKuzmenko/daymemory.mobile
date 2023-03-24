@@ -27,6 +27,8 @@ abstract class ConfigurationSettings implements Built<ConfigurationSettings, Con
 
   String get emailValidator;
 
+  String get devContactEmail;
+
   String get encryptedText;
 
   ConfigurationSettings._();
@@ -42,6 +44,7 @@ abstract class ConfigurationSettings implements Built<ConfigurationSettings, Con
           ..appName = dotenv.env[ConfigurationConst.appName]
           ..apiUrl = dotenv.env[ConfigurationConst.apiUrl]
           ..encryptedText = dotenv.env[ConfigurationConst.encryptedText]
+          ..devContactEmail = dotenv.env[ConfigurationConst.devContactEmail]
           ..defaultFont = dotenv.env[ConfigurationConst.defaultFont]
           ..privacyPolicyUrl = dotenv.env[ConfigurationConst.privacyPolicyUrl]
           ..termsOfUseUrl = dotenv.env[ConfigurationConst.termsOfUseUrl]

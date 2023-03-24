@@ -94,6 +94,8 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       ..reviewPeriodCommand = FunctionHolder(() => dispatch((NavigateToSelectPeriodReviewAction())))
       ..tagsOptionTitle = locale.settings_tags_option
       ..tagsCommand = FunctionHolder(() => dispatch((NavigateToTagsAction())))
+      ..sendEmailToDevelopersTitle = locale.settings_send_email_to_developers_option
+      ..sendEmailToDevelopersCommand = FunctionHolder(() => dispatch((SendEmailToDevelopersAction())))
       ..privacyPolicyUrl = privacyPolicyUrl
       ..introOptionTitle = locale.settings_intro_option
       ..introCommand = FunctionHolder(() => dispatch((NavigateToOnboardingAction())))

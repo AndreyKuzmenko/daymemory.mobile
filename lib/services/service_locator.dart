@@ -1,6 +1,7 @@
 import 'package:daymemory/configuration/settings/configuration_settings.dart';
 import 'package:daymemory/services/auth_service/auth_service.dart';
 import 'package:daymemory/services/clipboard_service/clipboard_service.dart';
+import 'package:daymemory/services/email_sender_service/email_sender_service.dart';
 import 'package:daymemory/services/encrypt_service/encrypt_service.dart';
 import 'package:daymemory/services/file_selector_service/file_selector_service.dart';
 import 'package:daymemory/services/image_resizer_service/image_resizer_service.dart';
@@ -137,6 +138,7 @@ class ServiceLocator {
     getIt.registerSingleton<IGeolocatorService>(GeolocatorService());
     getIt.registerSingleton<IJailbreakService>(JailbreakService());
     getIt.registerSingleton<IClipboardService>(ClipboardService());
+    getIt.registerSingleton<IEmailSenderService>(EmailSenderService());
     getIt.registerSingleton<IImageResizerService>(ImageResizerService());
 
     getIt.registerSingleton<IRouteDefinitionService>(MobileRouteDefinitionService(), instanceName: RouteType.mobile.toString());

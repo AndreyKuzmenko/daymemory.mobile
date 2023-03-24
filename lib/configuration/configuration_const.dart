@@ -9,4 +9,5 @@ abstract class ConfigurationConst {
   static const String fullscreenMinWidth = 'FULL_SCREEN_MIN_WIDTH';
   static const String sideMenuWidth = 'SIDE_MENU_WIDTH';
   static const String encryptedText = 'ENCRYPTED_TEXT';
+  static const String devContactEmail = 'DEV_CONTACT_EMAIL';
 }

@@ -192,6 +192,16 @@ class SettingsWidget extends StatelessWidget {
                 ),
                 SettingsTile(
                   title: Text(
+                    viewModel.sendEmailToDevelopersTitle,
+                    style: appTheme.settingsLabel,
+                  ),
+                  leading: const Icon(Icons.email_outlined),
+                  onPressed: (context) {
+                    viewModel.sendEmailToDevelopersCommand.command();
+                  },
+                ),
+                SettingsTile(
+                  title: Text(
                     viewModel.introOptionTitle,
                     style: appTheme.settingsLabel,
                   ),

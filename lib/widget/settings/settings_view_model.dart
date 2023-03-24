@@ -30,7 +30,11 @@ abstract class SettingsViewModel implements Built<SettingsViewModel, SettingsVie
 
   String get introOptionTitle;
 
+  String get sendEmailToDevelopersTitle;
+
   FunctionHolder get introCommand;
+
+  FunctionHolder get sendEmailToDevelopersCommand;
 
   bool get isAuthenticated;
 
