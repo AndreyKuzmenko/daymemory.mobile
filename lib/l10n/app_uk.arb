@@ -62,6 +62,8 @@
     "settings_account_name_option": "Ім'я",
     "settings_account_explanation": "Інформація профілю Day Memory",
     "settings_account_clear_data_explanation": "Перед видаленням даних важливо впевнитись, що ваші дані синхронізовані з сервером. В іншому випадку, ви не зможете їх більше відновити.",
+    "settings_sync_error_title": "Помилка синхронізації",
+    "settings_sync_error_generic_message": "Виникла невідома помилка. Спробуйте ще раз.",
 
     "settings_encryption_key_absent_error_title": "Відсутній ключ шифрування",
     "settings_encryption_key_absent_error_message": "У вашому профілі увімкнено шифрування даних, але відсутній ключ шифрування. Будь ласка, введіть ключ шифрування.",

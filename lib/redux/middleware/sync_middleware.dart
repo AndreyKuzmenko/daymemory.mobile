@@ -119,13 +119,33 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     } on InvalidDecryptionKeyException catch (e) {
       _handleInValidDecryptionKey(e, store, lastSyncDate);
     } catch (e) {
-      loggingService.logError(e);
-      store.dispatch(SyncFinishedAction(syncFinishedDate: lastSyncDate, hasSucceeded: false));
+      _handleGenericError(e, store, lastSyncDate, isManualSync);
     } finally {
       if (isManualSync) {
         deviceService.disableWakelock();
       }
     }
+  }
+
+  void _handleGenericError(dynamic e, Store<AppState> store, DateTime? lastSyncDate, bool isManualSync) {
+    loggingService.logError(e);
+
+    if (isManualSync) {
+      var message = "";
+      try {
+        message = e.message;
+      } on NoSuchMethodError {
+        message = _locale!.settings_sync_error_generic_message;
+      }
+
+      store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(
+        store.dispatch,
+        errorTitle: _locale!.settings_sync_error_title,
+        errorMessage: message,
+      ));
+    }
+
+    store.dispatch(SyncFinishedAction(syncFinishedDate: lastSyncDate, hasSucceeded: false));
   }
 
   void _handleDecryptionKeyAbsent(DecryptionKeyAbsentException e, Store<AppState> store, DateTime? lastSyncDate) {
@@ -163,6 +183,8 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
   }
 
   Future _startSync(Store<AppState> store, DateTime? lastSyncDate) async {
+    throw Exception("test");
+
     var isFirstSync = lastSyncDate == null;
     //extend to additional timeframe
     var syncStartedDate = DateTime.now().add(const Duration(seconds: -5)).toUtc();
