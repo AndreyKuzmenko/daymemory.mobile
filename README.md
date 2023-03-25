@@ -13,10 +13,15 @@
 ## Idea 💡
 I built this app to test the possibilities of Flutter. The goal was to create clients for different platforms with maximum reuse of code. Currently, there are apps for iOS (iPhone, iPad), Android (Mobile and Tablet), MacOS, and Windows. I haven't tried to build it for Linux, but it shouldn't be a problem.
 
-## iPhone screenshots
+## iPhone app
 ![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/screenshots.png)
 
 Download: https://apps.apple.com/us/app/day-memory-private-journal/id1639089867
+
+## Android app
+![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/android-screenshots.png)
+
+Download: https://play.google.com/store/apps/details?id=net.daymemory
 
 ## MacOS screenshot
 ![iphone screeenshots](https://github.com/AndreyKuzmenko/daymemory.mobile/blob/main/promo/macos.png)
