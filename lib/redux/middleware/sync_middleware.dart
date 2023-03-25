@@ -183,8 +183,6 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
   }
 
   Future _startSync(Store<AppState> store, DateTime? lastSyncDate) async {
-    throw Exception("test");
-
     var isFirstSync = lastSyncDate == null;
     //extend to additional timeframe
     var syncStartedDate = DateTime.now().add(const Duration(seconds: -5)).toUtc();
