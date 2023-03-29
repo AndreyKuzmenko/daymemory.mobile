@@ -116,7 +116,7 @@ dependencies:
   permission_handler: ^10.2.0
   flutter_dotenv: 5.0.2
   hexcolor: ^3.0.1
-  dio: ^4.0.6
+  
   devicelocale: ^0.5.5
   package_info_plus: ^3.0.1
   page_view_indicators: ^2.0.0
