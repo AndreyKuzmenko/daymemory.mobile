@@ -66,6 +66,9 @@ class DeviceInfoService implements IDeviceInfoService, IAsyncServiceInitializer<
     } on PlatformException {
       languageCode = "en";
     }
+    if (!["en", "uk"].contains(languageCode)) {
+      languageCode = "en";
+    }
     return languageCode;
   }
 
