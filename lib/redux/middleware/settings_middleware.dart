@@ -52,10 +52,10 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
     next(action);
 
     if (action is ClearDeviceDataAction) {
-      _clearAllData(action, store.dispatch);
+      await _clearAllData(action, store.dispatch);
     }
     if (action is SendEmailToDevelopersAction) {
-      _sendEmailToDevelopers(store.dispatch);
+      await _sendEmailToDevelopers(store.dispatch);
     } else if (action is LoadSettingsAction) {
       var settings = await settingsService.getSettings();
 
