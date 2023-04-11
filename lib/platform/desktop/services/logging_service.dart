@@ -1,9 +1,14 @@
+import 'package:daymemory/configuration/settings/configuration_settings.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/services/async_service_initializer.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
 import 'package:flutter/foundation.dart';
 
 class DesktopLoggingService implements ILoggingService, IAsyncServiceInitializer<ILoggingService> {
+  late ConfigurationSettings settings;
+
+  DesktopLoggingService({required this.settings});
+
   @override
   Future<ILoggingService> init() async {
     return this;
@@ -29,4 +34,7 @@ class DesktopLoggingService implements ILoggingService, IAsyncServiceInitializer
   void setUserId(String userId) {
     //_crashlytics.setUserIdentifier(userId);
   }
+
+  @override
+  void logInfo(String info) {}
 }

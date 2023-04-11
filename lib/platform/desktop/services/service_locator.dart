@@ -1,3 +1,4 @@
+import 'package:daymemory/configuration/settings/configuration_settings.dart';
 import 'package:daymemory/platform/desktop/services/dekstop_image_selector_service.dart';
 import 'package:daymemory/platform/desktop/services/desktop_video_thumbnail_service.dart';
 import 'package:daymemory/platform/desktop/services/folder_resolver.dart';
@@ -17,8 +18,8 @@ class DesktopPlatformDependencyResolver extends PlatformDependencyResolver {
   DesktopPlatformDependencyResolver({required super.getIt}) : super();
 
   @override
-  Future<ILoggingService> createLoggingService() async {
-    return await DesktopLoggingService().init();
+  Future<ILoggingService> createLoggingService(ConfigurationSettings settings) async {
+    return await DesktopLoggingService(settings: settings).init();
   }
 
   @override

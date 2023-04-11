@@ -31,6 +31,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
   final String devContactEmail;
   @override
   final String encryptedText;
+  @override
+  final String mixPanelKey;
 
   factory _$ConfigurationSettings(
           [void Function(ConfigurationSettingsBuilder)? updates]) =>
@@ -48,7 +50,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
       required this.sideMenuWidth,
       required this.emailValidator,
       required this.devContactEmail,
-      required this.encryptedText})
+      required this.encryptedText,
+      required this.mixPanelKey})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, r'ConfigurationSettings', 'type');
@@ -74,6 +77,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
         devContactEmail, r'ConfigurationSettings', 'devContactEmail');
     BuiltValueNullFieldError.checkNotNull(
         encryptedText, r'ConfigurationSettings', 'encryptedText');
+    BuiltValueNullFieldError.checkNotNull(
+        mixPanelKey, r'ConfigurationSettings', 'mixPanelKey');
   }
 
   @override
@@ -100,7 +105,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
         sideMenuWidth == other.sideMenuWidth &&
         emailValidator == other.emailValidator &&
         devContactEmail == other.devContactEmail &&
-        encryptedText == other.encryptedText;
+        encryptedText == other.encryptedText &&
+        mixPanelKey == other.mixPanelKey;
   }
 
   @override
@@ -118,6 +124,7 @@ class _$ConfigurationSettings extends ConfigurationSettings {
     _$hash = $jc(_$hash, emailValidator.hashCode);
     _$hash = $jc(_$hash, devContactEmail.hashCode);
     _$hash = $jc(_$hash, encryptedText.hashCode);
+    _$hash = $jc(_$hash, mixPanelKey.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -136,7 +143,8 @@ class _$ConfigurationSettings extends ConfigurationSettings {
           ..add('sideMenuWidth', sideMenuWidth)
           ..add('emailValidator', emailValidator)
           ..add('devContactEmail', devContactEmail)
-          ..add('encryptedText', encryptedText))
+          ..add('encryptedText', encryptedText)
+          ..add('mixPanelKey', mixPanelKey))
         .toString();
   }
 }
@@ -201,6 +209,10 @@ class ConfigurationSettingsBuilder
   set encryptedText(String? encryptedText) =>
       _$this._encryptedText = encryptedText;
 
+  String? _mixPanelKey;
+  String? get mixPanelKey => _$this._mixPanelKey;
+  set mixPanelKey(String? mixPanelKey) => _$this._mixPanelKey = mixPanelKey;
+
   ConfigurationSettingsBuilder();
 
   ConfigurationSettingsBuilder get _$this {
@@ -218,6 +230,7 @@ class ConfigurationSettingsBuilder
       _emailValidator = $v.emailValidator;
       _devContactEmail = $v.devContactEmail;
       _encryptedText = $v.encryptedText;
+      _mixPanelKey = $v.mixPanelKey;
       _$v = null;
     }
     return this;
@@ -259,7 +272,8 @@ class ConfigurationSettingsBuilder
             sideMenuWidth: BuiltValueNullFieldError.checkNotNull(sideMenuWidth, r'ConfigurationSettings', 'sideMenuWidth'),
             emailValidator: BuiltValueNullFieldError.checkNotNull(emailValidator, r'ConfigurationSettings', 'emailValidator'),
             devContactEmail: BuiltValueNullFieldError.checkNotNull(devContactEmail, r'ConfigurationSettings', 'devContactEmail'),
-            encryptedText: BuiltValueNullFieldError.checkNotNull(encryptedText, r'ConfigurationSettings', 'encryptedText'));
+            encryptedText: BuiltValueNullFieldError.checkNotNull(encryptedText, r'ConfigurationSettings', 'encryptedText'),
+            mixPanelKey: BuiltValueNullFieldError.checkNotNull(mixPanelKey, r'ConfigurationSettings', 'mixPanelKey'));
     replace(_$result);
     return _$result;
   }

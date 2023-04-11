@@ -131,6 +131,7 @@ dependencies:
   wakelock: ^0.6.2
   encrypt: ^5.0.1
   jiffy: ^5.0.0
+  mixpanel_flutter: ^2.1.1
 
   video_thumbnail: ^0.5.3
   video_player: ^2.4.10

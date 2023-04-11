@@ -53,7 +53,7 @@ abstract class PlatformDependencyResolver {
 
   PlatformDependencyResolver({required this.getIt});
 
-  Future<ILoggingService> createLoggingService();
+  Future<ILoggingService> createLoggingService(ConfigurationSettings settings);
 
   IFolderResolver createFolderResolver();
 
@@ -70,8 +70,8 @@ class MobileTabletPlatformDependencyResolver extends PlatformDependencyResolver 
   MobileTabletPlatformDependencyResolver({required super.getIt}) : super();
 
   @override
-  Future<ILoggingService> createLoggingService() async {
-    return await LoggingService().init();
+  Future<ILoggingService> createLoggingService(ConfigurationSettings settings) async {
+    return await LoggingService(settings: settings).init();
   }
 
   @override
@@ -226,7 +226,7 @@ class ServiceLocator {
       () => DeviceInfoService().init(),
     );
 
-    getIt.registerSingletonAsync<ILoggingService>(() => dependencyResolver.createLoggingService());
+    getIt.registerSingletonAsync<ILoggingService>(() => dependencyResolver.createLoggingService(settings));
 
     getIt.registerSingletonWithDependencies<IFileSelectorService>(
       () => dependencyResolver.createFileSelectorService(),

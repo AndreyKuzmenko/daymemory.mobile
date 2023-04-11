@@ -10,4 +10,5 @@ abstract class ConfigurationConst {
   static const String sideMenuWidth = 'SIDE_MENU_WIDTH';
   static const String encryptedText = 'ENCRYPTED_TEXT';
   static const String devContactEmail = 'DEV_CONTACT_EMAIL';
+  static const String mixPanelKey = 'MIXPANEL_KEY';
 }

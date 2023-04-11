@@ -31,6 +31,8 @@ abstract class ConfigurationSettings implements Built<ConfigurationSettings, Con
 
   String get encryptedText;
 
+  String get mixPanelKey;
+
   ConfigurationSettings._();
 
   factory ConfigurationSettings([void Function(ConfigurationSettingsBuilder) updates]) = _$ConfigurationSettings;
@@ -43,6 +45,7 @@ abstract class ConfigurationSettings implements Built<ConfigurationSettings, Con
           ..type = type
           ..appName = dotenv.env[ConfigurationConst.appName]
           ..apiUrl = dotenv.env[ConfigurationConst.apiUrl]
+          ..mixPanelKey = dotenv.env[ConfigurationConst.mixPanelKey]
           ..encryptedText = dotenv.env[ConfigurationConst.encryptedText]
           ..devContactEmail = dotenv.env[ConfigurationConst.devContactEmail]
           ..defaultFont = dotenv.env[ConfigurationConst.defaultFont]
