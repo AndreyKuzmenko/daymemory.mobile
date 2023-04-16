@@ -33,7 +33,7 @@ class FileSelectorService implements IFileSelectorService {
   @override
   Future<List<String>> selectImages() async {
     try {
-      final images = await ImagePicker().pickMultiImage();
+      final images = await ImagePicker().pickMultiImage(requestFullMetadata: true);
 
       if (images.isEmpty) {
         return [];
