@@ -91,7 +91,7 @@ class ReorderImagesAction implements ILoggingAction {
 
   @override
   String toLogString() {
-    return 'Reorde rImages Action';
+    return 'Reorder Images Action';
   }
 }
 
