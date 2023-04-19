@@ -51,7 +51,6 @@ class NetworkSyncService extends NetworkBaseService implements INetworkSyncServi
     }
 
     var p = params.isNotEmpty ? "?${params.join("&")}" : "";
-
     var uri = Uri.parse("https://$apiUrl/api/sync/notes$p");
 
     final response = await client.get(uri).timeout(const Duration(seconds: 10));
