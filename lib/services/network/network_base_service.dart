@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'package:daymemory/services/network/token_http_interceptor.dart';
-import 'package:daymemory/services/network/token_http_retry_policy.dart';
+import 'package:daymemory/services/network/http_retry_policy.dart';
 import 'package:daymemory/services/settings_service/settings_service.dart';
 import 'package:daymemory/services/network/locale_http_interceptor.dart';
 import 'package:http/http.dart';
