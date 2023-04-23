@@ -6,12 +6,12 @@ import 'package:daymemory/services/settings_service/settings_service.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 import 'package:http/http.dart' as http;
 
-class ExpiredTokenRetryPolicy extends RetryPolicy {
+class ErrorRetryPolicy extends RetryPolicy {
   final ISettingsService settingsService;
 
   final String apiUrl;
 
-  ExpiredTokenRetryPolicy({required this.apiUrl, required this.settingsService});
+  ErrorRetryPolicy({required this.apiUrl, required this.settingsService});
 
   @override
   int get maxRetryAttempts => 2;

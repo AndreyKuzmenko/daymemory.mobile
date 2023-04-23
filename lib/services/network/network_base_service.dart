@@ -22,7 +22,7 @@ abstract class NetworkBaseService {
             settingsService: settingsService,
           ),
         ],
-        retryPolicy: ExpiredTokenRetryPolicy(
+        retryPolicy: ErrorRetryPolicy(
           apiUrl: apiUrl,
           settingsService: settingsService,
         ));
