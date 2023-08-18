@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:daymemory/services/image_resizer_service/image_resizer_service.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
 import 'package:daymemory/services/storage/file-storage/folder_resolver.dart';
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:http/http.dart' as http;
 import 'package:video_compress/video_compress.dart';
@@ -92,7 +93,10 @@ class FileService implements IFileService {
     int errorCount = 0;
     do {
       try {
-        await _savePhotoFileLocally(filePath, fileStoragePath, fileThumbnailPath);
+        await compute((message) {
+          _savePhotoFileLocally(filePath, fileStoragePath, fileThumbnailPath);
+        }, "save files");
+
         break;
       } catch (e) {
         loggingService.logError(e);
