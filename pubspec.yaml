@@ -103,7 +103,7 @@ dependencies:
   drift: ^2.11.0
   sqlite3_flutter_libs: ^0.5.15
   path_provider: ^2.1.0
-  path: ^1.8.3
+  path: ^1.8.2
 
   flutter_redux: ^0.10.0
   built_collection: ^5.1.1

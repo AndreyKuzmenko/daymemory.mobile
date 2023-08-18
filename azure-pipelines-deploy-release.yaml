@@ -7,7 +7,7 @@ pr: none
 
 jobs:
 - job: Deployment
-  timeoutInMinutes: 200
+  timeoutInMinutes: 45
   pool:
     vmImage: 'macos-latest'
 
@@ -100,7 +100,7 @@ jobs:
   # Flutter & Fastlane
   # =================================================================================
     - bash: |
-        git clone https://github.com/flutter/flutter.git -b 3.7.5
+        git clone https://github.com/flutter/flutter.git -b 3.13.0
         export PATH=`pwd`/flutter/bin:$PATH
         # flutter channel stable
         flutter doctor
