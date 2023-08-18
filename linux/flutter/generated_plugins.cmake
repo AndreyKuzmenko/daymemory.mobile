@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   dart_vlc
   devicelocale
+  file_selector_linux
   flutter_acrylic
   flutter_secure_storage_linux
   pasteboard

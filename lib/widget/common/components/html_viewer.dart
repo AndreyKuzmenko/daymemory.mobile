@@ -26,7 +26,7 @@ class HtmlViewer extends StatelessWidget {
 
     return Html(
       data: text == null ? "" : text!.replaceAll("\n", ""), //innerText,
-      onLinkTap: (url, context, attributes, element) {
+      onLinkTap: (url, attributes, element) {
         // if (url == null) {
         //   return;
         // }
@@ -39,13 +39,18 @@ class HtmlViewer extends StatelessWidget {
         // });
       },
       style: {
-        "body": Style(lineHeight: const LineHeight(1.3), fontSize: FontSize(16 * scaleFactor), margin: Margins.zero, padding: const EdgeInsets.fromLTRB(0, 0, 0, 0)),
+        "body": Style(
+          lineHeight: const LineHeight(1.3),
+          fontSize: FontSize(16 * scaleFactor),
+          margin: Margins.zero,
+          padding: HtmlPaddings.all(0),
+        ),
         "p": Style(lineHeight: const LineHeight(1.3), fontSize: FontSize(16 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 0, bottom: 5, unit: Unit.px)),
         "h2": Style(lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(22 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 5, bottom: 5, unit: Unit.px)),
         "h3": Style(lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(18 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 5, bottom: 5, unit: Unit.px)),
         "li": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+          padding: HtmlPaddings.only(left: 5, top: 0, bottom: 5, right: 0),
           margin: Margins.only(left: 0, right: 0, top: 0, bottom: 0, unit: Unit.px),
         ),
         "a": Style(
@@ -54,17 +59,17 @@ class HtmlViewer extends StatelessWidget {
         ),
         "ol": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: const EdgeInsets.all(0),
+          padding: HtmlPaddings.all(0),
           margin: Margins.zero,
         ),
         "ul": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: const EdgeInsets.all(0),
+          padding: HtmlPaddings.all(0),
           margin: Margins.zero,
         ),
         "ul p": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: const EdgeInsets.all(0),
+          padding: HtmlPaddings.all(0),
           margin: Margins.only(left: 0, right: 0, top: 0, bottom: 0, unit: Unit.px),
         ),
 

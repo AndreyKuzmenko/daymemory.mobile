@@ -1,7 +1,6 @@
 import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/redux/action/notebook_action.dart';
-import 'package:daymemory/services/navigation/route_direction.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/side_menu/side_menu_view_model/side_menu_view_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

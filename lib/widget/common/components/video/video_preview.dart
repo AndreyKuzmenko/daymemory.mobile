@@ -5,7 +5,6 @@ import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
 
 class VideoPreview extends StatefulWidget {
   const VideoPreview({

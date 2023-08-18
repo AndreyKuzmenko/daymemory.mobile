@@ -10,7 +10,6 @@ import 'package:daymemory/connector/note_image_gallery_connector/note_image_gall
 import 'package:daymemory/connector/note_options_connector/note_options_connector.dart';
 import 'package:daymemory/connector/passcode_require_after_connector/passcode_require_after_connector.dart';
 import 'package:daymemory/connector/passcode_settings_connector/passcode_settings_connector.dart';
-import 'package:daymemory/connector/review_connector/review_connector.dart';
 import 'package:daymemory/connector/select_notebook_connector/select_notebook_connector.dart';
 import 'package:daymemory/connector/select_review_period_connector/select_review_period_connector.dart';
 import 'package:daymemory/connector/show_notebooks_in_review_connector/show_notebooks_in_review_connector.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
+//import 'package:wakelock/wakelock.dart';
 
 abstract class IDeviceService {
   void selectionClickFeedback();
@@ -17,11 +18,11 @@ class DeviceService implements IDeviceService {
 
   @override
   void enableWakelock() {
-    Wakelock.enable();
+    WakelockPlus.enable();
   }
 
   @override
   void disableWakelock() {
-    Wakelock.disable();
+    WakelockPlus.disable();
   }
 }

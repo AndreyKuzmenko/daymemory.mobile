@@ -1,7 +1,4 @@
-import 'package:daymemory/data/dtos/file_dto.dart';
-import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/review_category_dto.dart';
-import 'package:daymemory/data/dtos/review_item_dto.dart';
 import 'package:daymemory/redux/action/reviews_action.dart';
 import 'package:daymemory/redux/state/states.dart';
 import 'package:daymemory/services/device_service/device_service.dart';
@@ -11,7 +8,6 @@ import 'package:daymemory/services/permission/permission_service.dart';
 import 'package:daymemory/services/settings_service/settings_service.dart';
 import 'package:daymemory/services/settings_service/storage_review_settings.dart';
 import 'package:daymemory/services/storage/interfaces/interface_note_service.dart';
-import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:jiffy/jiffy.dart';
 // ignore: depend_on_referenced_packages
 import 'package:redux/redux.dart';
@@ -77,31 +73,31 @@ class ReviewsMiddleware implements MiddlewareClass<AppState> {
       result.addAll(yearlyCategories);
     }
     if (reviewSettings.is6MonthsEnabled) {
-      var notes = await noteRepository.fetchNotesByDate(Jiffy().add(months: -6).dateTime);
+      var notes = await noteRepository.fetchNotesByDate(Jiffy.now().add(months: -6).dateTime);
       if (notes.isNotEmpty) {
         result.add(ReviewCategoryDto(id: const Uuid().v4(), notes: notes, title: _locale!.review_half_year));
       }
     }
     if (reviewSettings.is3MonthsEnabled) {
-      var notes = await noteRepository.fetchNotesByDate(Jiffy().add(months: -3).dateTime);
+      var notes = await noteRepository.fetchNotesByDate(Jiffy.now().add(months: -3).dateTime);
       if (notes.isNotEmpty) {
         result.add(ReviewCategoryDto(id: const Uuid().v4(), notes: notes, title: _locale!.review_three_months));
       }
     }
     if (reviewSettings.is1MonthEnabled) {
-      var notes = await noteRepository.fetchNotesByDate(Jiffy().add(months: -1).dateTime);
+      var notes = await noteRepository.fetchNotesByDate(Jiffy.now().add(months: -1).dateTime);
       if (notes.isNotEmpty) {
         result.add(ReviewCategoryDto(id: const Uuid().v4(), notes: notes, title: _locale!.review_month));
       }
     }
     if (reviewSettings.is10DaysEnabled) {
-      var notes = await noteRepository.fetchNotesByDate(Jiffy().add(days: -10).dateTime);
+      var notes = await noteRepository.fetchNotesByDate(Jiffy.now().add(days: -10).dateTime);
       if (notes.isNotEmpty) {
         result.add(ReviewCategoryDto(id: const Uuid().v4(), notes: notes, title: _locale!.review_10_days));
       }
     }
     if (reviewSettings.is7DaysEnabled) {
-      var notes = await noteRepository.fetchNotesByDate(Jiffy().add(days: -7).dateTime);
+      var notes = await noteRepository.fetchNotesByDate(Jiffy.now().add(days: -7).dateTime);
       if (notes.isNotEmpty) {
         result.add(ReviewCategoryDto(id: const Uuid().v4(), notes: notes, title: _locale!.review_7_days));
       }

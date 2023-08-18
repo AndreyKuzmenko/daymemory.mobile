@@ -4,6 +4,7 @@ import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/position_dto.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
+import 'package:daymemory/widget/common/components/delta_to_markdown/delta_markdown.dart';
 import 'package:daymemory/widget/common/components/video/video_preview.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:daymemory/widget/note/toolbar.dart';
@@ -13,12 +14,10 @@ import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get_it/get_it.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tuple/tuple.dart';
 // ignore: implementation_imports, library_prefixes
 import 'package:flutter/src/widgets/text.dart' as Text;
 import 'package:markdown/markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
-import 'package:delta_markdown/delta_markdown.dart';
 // ignore: implementation_imports
 import 'package:flutter_quill/src/models/documents/document.dart' as d;
 // import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
@@ -185,8 +184,8 @@ class _EditFormState extends State<EditNoteForm> {
       expands: false,
       scrollBottomInset: 150,
       customStyles: DefaultStyles(
-          lists: DefaultListBlockStyle(baseStyle.copyWith(), const Tuple2(0, 5), const Tuple2(10, 0), null, null),
-          paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const Tuple2(0, 10), const Tuple2(0, 0), null),
+          lists: DefaultListBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 5), const VerticalSpacing(10, 0), null, null),
+          paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 10), const VerticalSpacing(0, 0), null),
           h2: DefaultTextBlockStyle(
               defaultTextStyle.style.copyWith(
                 fontSize: 22,
@@ -194,8 +193,8 @@ class _EditFormState extends State<EditNoteForm> {
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
-              const Tuple2(5, 10),
-              const Tuple2(0, 0),
+              const VerticalSpacing(5, 10),
+              const VerticalSpacing(0, 0),
               null),
           h3: DefaultTextBlockStyle(
               defaultTextStyle.style.copyWith(
@@ -204,8 +203,8 @@ class _EditFormState extends State<EditNoteForm> {
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
-              const Tuple2(0, 10),
-              const Tuple2(0, 0),
+              const VerticalSpacing(0, 10),
+              const VerticalSpacing(0, 0),
               null)),
     );
   }

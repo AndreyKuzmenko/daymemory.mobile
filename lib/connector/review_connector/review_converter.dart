@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
