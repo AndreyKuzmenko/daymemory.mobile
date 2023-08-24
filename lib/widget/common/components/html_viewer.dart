@@ -46,11 +46,11 @@ class HtmlViewer extends StatelessWidget {
           padding: HtmlPaddings.all(0),
         ),
         "p": Style(lineHeight: const LineHeight(1.3), fontSize: FontSize(16 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 0, bottom: 5, unit: Unit.px)),
-        "h2": Style(lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(22 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 5, bottom: 5, unit: Unit.px)),
-        "h3": Style(lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(18 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 5, bottom: 5, unit: Unit.px)),
+        "h2": Style(lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(22 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px)),
+        "h3": Style(lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(18 * scaleFactor), margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px)),
         "li": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: HtmlPaddings.only(left: 5, top: 0, bottom: 5, right: 0),
+          padding: HtmlPaddings.only(left: 10, top: 0, bottom: 5, right: 0),
           margin: Margins.only(left: 0, right: 0, top: 0, bottom: 0, unit: Unit.px),
         ),
         "a": Style(
@@ -59,13 +59,13 @@ class HtmlViewer extends StatelessWidget {
         ),
         "ol": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: HtmlPaddings.all(0),
-          margin: Margins.zero,
+          padding: HtmlPaddings.only(left: 20),
+          margin: Margins.only(left: 10, bottom: 0),
         ),
         "ul": Style(
           fontSize: FontSize(16 * scaleFactor),
-          padding: HtmlPaddings.all(0),
-          margin: Margins.zero,
+          padding: HtmlPaddings.only(left: 20),
+          margin: Margins.only(left: 10, bottom: 0),
         ),
         "ul p": Style(
           fontSize: FontSize(16 * scaleFactor),
