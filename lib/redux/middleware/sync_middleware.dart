@@ -1,5 +1,6 @@
 import 'package:daymemory/common/exceptions/decryption_key_absent_exception.dart';
 import 'package:daymemory/common/exceptions/decryption_key_invalid_exception.dart';
+import 'package:daymemory/common/exceptions/sync_stoppped_exception.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/data/sync/sync_note_item_dto.dart';
@@ -29,12 +30,14 @@ import 'package:daymemory/services/storage/interfaces/interface_note_service.dar
 import 'package:daymemory/services/storage/interfaces/interface_notebook_service.dart';
 import 'package:daymemory/services/storage/interfaces/interface_tag_service.dart';
 import 'package:daymemory/services/store/store_service.dart';
+import 'package:daymemory/widget/common/components/delta_to_markdown/delta_markdown.dart';
 // ignore: depend_on_referenced_packages
 import 'package:redux/redux.dart' show MiddlewareClass, NextDispatcher, Store;
 // ignore: depend_on_referenced_packages
 import 'package:async/async.dart';
 import '../../services/settings_service/settings_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:html2md/html2md.dart' as html2md;
 
 class SyncMiddleware implements MiddlewareClass<AppState> {
   final ISettingsService settingsService;
@@ -118,6 +121,8 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
       _handleTokenRefresh(e, store, lastSyncDate);
     } on InvalidDecryptionKeyException catch (e) {
       _handleInValidDecryptionKey(e, store, lastSyncDate);
+    } on SyncStoppedException {
+      store.dispatch(SyncFinishedAction(syncFinishedDate: lastSyncDate, hasSucceeded: false));
     } catch (e) {
       _handleGenericError(e, store, lastSyncDate, isManualSync);
     } finally {
@@ -195,7 +200,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     store.dispatch(SyncProgressStatusAction(message: _locale!.sync_uploading_data));
     await _uploadNotebooksToServer(store);
     await _uploadNotesToServer(store);
-    await _uploadTagsToServer();
+    await _uploadTagsToServer(store);
 
     var settings = await settingsService.getSettings();
     settings.lastSyncDate = syncStartedDate;
@@ -215,6 +220,9 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     //upload data
     var newNotes = await noteService.fetchNewNotes();
     for (var item in newNotes) {
+      if (!store.state.settingsState.isSyncEnabled) {
+        throw SyncStoppedException(message: "Sync stopped");
+      }
       if (item.mediaFiles.isNotEmpty) {
         for (var file in item.mediaFiles) {
           var filePath = await fileService.getFilePath(file.id, file.name, true);
@@ -248,6 +256,9 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     }
     var modifiedNotes = await noteService.fetchModifiedNotes();
     for (var item in modifiedNotes) {
+      if (!store.state.settingsState.isSyncEnabled) {
+        throw SyncStoppedException(message: "Sync stopped");
+      }
       if (item.mediaFiles.isNotEmpty) {
         for (var file in item.mediaFiles) {
           var fileExist = await fileNetworkService.checkIfFileExists(file.id);
@@ -276,9 +287,12 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     }
   }
 
-  Future _uploadTagsToServer() async {
+  Future _uploadTagsToServer(Store<AppState> store) async {
     var newTags = await tagService.fetchNewTags();
     for (var item in newTags) {
+      if (!store.state.settingsState.isSyncEnabled) {
+        throw SyncStoppedException(message: "Sync stopped");
+      }
       try {
         var tag = await tagNetworkService.create(item.id, item.text, item.orderRank);
         await tagService.resetIsChangedFlag(item.id, tag.modifiedDate);
@@ -303,6 +317,9 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     var newItems = await notebookService.fetchNewNotebooks();
     var isEncryptionEnabled = store.state.settingsState.encryptionKey != null && store.state.settingsState.encryptionKey!.isNotEmpty;
     for (var item in newItems) {
+      if (!store.state.settingsState.isSyncEnabled) {
+        throw SyncStoppedException(message: "Sync stopped");
+      }
       try {
         var notebook = await notebookNetworkService.create(
           item.id,
@@ -344,6 +361,12 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     }
   }
 
+  String htmlToQuillDelta(String html) {
+    var markdownString = html2md.convert(html);
+    var delta = markdownToDelta(markdownString);
+    return delta;
+  }
+
   Future _loadNotesfromServer(Store<AppState> store, DateTime? lastSyncDate) async {
     var paging = 20;
     var items = <SyncNoteItemDto>[];
@@ -353,17 +376,30 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
       var result = await httpSyncService.fetchNotes(lastModifiedDate, paging);
       store.dispatch(SyncProgressStatusAction(message: _locale!.sync_loading_notes(result.count)));
       items = result.items;
+
+      if (!store.state.settingsState.isSyncEnabled) {
+        throw SyncStoppedException(message: "Sync stopped");
+      }
+
       var i = 0;
       for (var syncItem in items) {
+        if (!store.state.settingsState.isSyncEnabled) {
+          throw SyncStoppedException(message: "Sync stopped");
+        }
+
         store.dispatch(SyncProgressStatusAction(message: _locale!.sync_loading_notes(result.count - i++)));
         if (syncItem.status == 1) {
           var dbItem = await noteService.fetchNote(syncItem.id);
 
           if (dbItem == null) {
+            var text = await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted!);
+
+            //text = htmlToQuillDelta(text);
+
             var createdItem = await noteService.createNote(
               syncItem.id,
               syncItem.item!.notebookId,
-              await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted!),
+              text,
               syncItem.item!.date,
               syncItem.item!.modifiedDate,
               syncItem.item!.mediaFiles,
@@ -388,10 +424,14 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             //update notebooks' counters
             store.dispatch(LoadNotebooksAction());
           } else if (syncItem.item!.modifiedDate.difference(dbItem.modifiedDate).inSeconds > 0) {
+            var text = await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted!);
+
+            //text = htmlToQuillDelta(text);
+
             var updatedNote = await noteService.updateNote(
               syncItem.id,
               syncItem.item!.notebookId,
-              await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted!),
+              text,
               syncItem.item!.date,
               syncItem.item!.modifiedDate,
               syncItem.item!.mediaFiles,

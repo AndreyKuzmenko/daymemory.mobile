@@ -16,11 +16,9 @@ import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ignore: implementation_imports, library_prefixes
 import 'package:flutter/src/widgets/text.dart' as Text;
-import 'package:markdown/markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
 // ignore: implementation_imports
 import 'package:flutter_quill/src/models/documents/document.dart' as d;
-// import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
 class EditNoteForm extends StatefulWidget {
   const EditNoteForm({Key? key, required this.viewModel}) : super(key: key);
@@ -118,37 +116,21 @@ class _EditFormState extends State<EditNoteForm> {
 
   void _loadHtml(String html) {
     try {
-      var delta = htmlToQuillDelta(html);
-      if (delta != "[]") {
-        final doc = d.Document.fromJson(jsonDecode(delta));
-        setState(() {
-          _quillController = QuillController(document: doc, selection: const TextSelection.collapsed(offset: 0));
-        });
-        _quillController.addListener(() {
-          updateText();
-        });
-      }
+      var json = jsonDecode(html);
+      final doc = d.Document.fromJson(json);
+      setState(() {
+        _quillController = QuillController(document: doc, selection: const TextSelection.collapsed(offset: 0));
+      });
+      _quillController.addListener(() {
+        updateText();
+      });
     } catch (error) {
       _loggingService.logError(error);
     }
   }
 
   String quillDeltaToHtml(Delta delta) {
-    // var converter = QuillDeltaToHtmlConverter(
-    //   List.castFrom(delta.toJson()),
-    // );
-
-    // final convertedValue = jsonEncode(delta.toJson());
-    // //return convertedValue;
-
-    // var html = converter.convert();
-    // return html;
-
-    final convertedValue = jsonEncode(delta.toJson());
-    final markdown = deltaToMarkdown(convertedValue);
-    final markdown1 = markdown.replaceAll("\n", "\n\n");
-    final html = markdownToHtml(markdown1, inlineOnly: false);
-
+    var html = jsonEncode(delta.toJson());
     return html;
   }
 

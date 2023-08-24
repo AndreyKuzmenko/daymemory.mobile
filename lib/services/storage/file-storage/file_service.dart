@@ -93,8 +93,8 @@ class FileService implements IFileService {
     int errorCount = 0;
     do {
       try {
-        await compute((message) {
-          _savePhotoFileLocally(filePath, fileStoragePath, fileThumbnailPath);
+        await compute((message) async {
+          await _savePhotoFileLocally(filePath, fileStoragePath, fileThumbnailPath);
         }, "save files");
 
         break;
@@ -140,7 +140,10 @@ class FileService implements IFileService {
     int errorCount = 0;
     do {
       try {
-        destinationFileName = await _saveVideoFileLocally(filePath, fileDirectoryPath, destinationFileName);
+        await compute((message) async {
+          destinationFileName = await _saveVideoFileLocally(filePath, fileDirectoryPath, destinationFileName);
+        }, "save files");
+
         break;
       } catch (e) {
         loggingService.logError(e);

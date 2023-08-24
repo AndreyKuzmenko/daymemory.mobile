@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
 class HtmlViewer extends StatelessWidget {
   const HtmlViewer(this.text, {Key? key, this.onHashTagPressed, required this.scaleFactor}) : super(key: key);
@@ -23,9 +26,16 @@ class HtmlViewer extends StatelessWidget {
     // }
 
     //innerText = text;
+    var json = jsonDecode(text!);
+    final converter = QuillDeltaToHtmlConverter(
+      List.castFrom(json),
+      ConverterOptions.forEmail(),
+    );
+
+    final html = converter.convert();
 
     return Html(
-      data: text == null ? "" : text!.replaceAll("\n", ""), //innerText,
+      data: html, //innerText,
       onLinkTap: (url, attributes, element) {
         // if (url == null) {
         //   return;
@@ -56,6 +66,9 @@ class HtmlViewer extends StatelessWidget {
         "a": Style(
           fontSize: FontSize(16 * scaleFactor),
           textDecoration: TextDecoration.none,
+        ),
+        "br": Style(
+          fontSize: FontSize(24 * scaleFactor),
         ),
         "ol": Style(
           fontSize: FontSize(16 * scaleFactor),
