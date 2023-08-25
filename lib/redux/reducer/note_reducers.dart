@@ -28,7 +28,7 @@ NoteState _changeTextAction(NoteState state, NoteChangeTextAction action) {
   return state.rebuild(
     (b) => b
       ..text = action.text
-      ..hasTextChanged = true,
+      ..hasChanged = true,
   );
 }
 
@@ -44,31 +44,59 @@ NoteState _reorderFilesAction(NoteState state, ReorderImagesAction action) {
 }
 
 NoteState _changeNotebookAction(NoteState state, NoteChangeNotebookAction action) {
-  return state.rebuild((b) => b..notebookId = action.notebookId);
+  return state.rebuild(
+    (b) => b
+      ..notebookId = action.notebookId
+      ..hasChanged = true,
+  );
 }
 
 NoteState _changeDateAction(NoteState state, NoteChangeDateAction action) {
-  return state.rebuild((b) => b..date = action.date);
+  return state.rebuild(
+    (b) => b
+      ..date = action.date
+      ..hasChanged = true,
+  );
 }
 
 NoteState _locationLoadedAction(NoteState state, NoteLocationLoadedAction action) {
-  return state.rebuild((b) => b..location = action.location);
+  return state.rebuild(
+    (b) => b
+      ..location = action.location
+      ..hasChanged = true,
+  );
 }
 
 NoteState _imageSelectedAction(NoteState state, NoteImageSelectedAction action) {
-  return state.rebuild((b) => b..mediaFiles.add(action.image));
+  return state.rebuild(
+    (b) => b
+      ..mediaFiles.add(action.image)
+      ..hasChanged = true,
+  );
 }
 
 NoteState _videoSelectedAction(NoteState state, NoteVideoSelectedAction action) {
-  return state.rebuild((b) => b..mediaFiles.add(action.file));
+  return state.rebuild(
+    (b) => b
+      ..mediaFiles.add(action.file)
+      ..hasChanged = true,
+  );
 }
 
 NoteState _fileDeleteAction(NoteState state, NoteDeleteFileAction action) {
-  return state.rebuild((b) => b..mediaFiles.removeWhere((x) => x.id == action.fileId));
+  return state.rebuild(
+    (b) => b
+      ..mediaFiles.removeWhere((x) => x.id == action.fileId)
+      ..hasChanged = true,
+  );
 }
 
 NoteState _imageDateActivatedAction(NoteState state, NoteImageDateActivatedAction action) {
-  return state.rebuild((b) => b..isImageDateUsed = true);
+  return state.rebuild(
+    (b) => b
+      ..isImageDateUsed = true
+      ..hasChanged = true,
+  );
 }
 
 NoteState _initNoteAction(NoteState state, InitNoteAction action) {
@@ -77,7 +105,7 @@ NoteState _initNoteAction(NoteState state, InitNoteAction action) {
     ..notebookId = action.notebookId
     ..text = action.text
     ..date = action.date
-    ..hasTextChanged = false
+    ..hasChanged = false
     ..isImageDateUsed = false
     ..mediaFiles = action.mediaFiles.toBuiltList().toBuilder()
     ..location = action.location);

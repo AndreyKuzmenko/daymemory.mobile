@@ -37,7 +37,7 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
 
   final bool isVideoSupported;
 
-  final bool hasTextChanged;
+  final bool hasChanged;
 
   EditNoteConverter({
     required this.dispatch,
@@ -53,7 +53,7 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
     required this.showToolbarOnTop,
     required this.isVideoSupported,
     required this.tags,
-    required this.hasTextChanged,
+    required this.hasChanged,
   });
 
   @override
@@ -99,7 +99,7 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
         },
       )
       ..saveCommand = FunctionHolder(() {
-        if (!hasTextChanged) {
+        if (!hasChanged) {
           dispatch(PopBackStackAction(key: RouteDirection.editNote));
           return;
         }
@@ -111,7 +111,7 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
         }
       })
       ..closeCommand = FunctionHolder(() {
-        if (hasTextChanged) {
+        if (hasChanged) {
           dispatch(DiscardNoteChangesAction(PopBackStackAction(key: RouteDirection.editNote)));
         } else {
           dispatch(PopBackStackAction(key: RouteDirection.editNote));

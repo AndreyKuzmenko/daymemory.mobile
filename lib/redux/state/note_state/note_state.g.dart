@@ -20,7 +20,7 @@ class _$NoteState extends NoteState {
   @override
   final bool isImageDateUsed;
   @override
-  final bool hasTextChanged;
+  final bool hasChanged;
   @override
   final bool isSaving;
   @override
@@ -36,7 +36,7 @@ class _$NoteState extends NoteState {
       this.location,
       required this.mediaFiles,
       required this.isImageDateUsed,
-      required this.hasTextChanged,
+      required this.hasChanged,
       required this.isSaving,
       required this.date})
       : super._() {
@@ -45,7 +45,7 @@ class _$NoteState extends NoteState {
     BuiltValueNullFieldError.checkNotNull(
         isImageDateUsed, r'NoteState', 'isImageDateUsed');
     BuiltValueNullFieldError.checkNotNull(
-        hasTextChanged, r'NoteState', 'hasTextChanged');
+        hasChanged, r'NoteState', 'hasChanged');
     BuiltValueNullFieldError.checkNotNull(isSaving, r'NoteState', 'isSaving');
     BuiltValueNullFieldError.checkNotNull(date, r'NoteState', 'date');
   }
@@ -67,7 +67,7 @@ class _$NoteState extends NoteState {
         location == other.location &&
         mediaFiles == other.mediaFiles &&
         isImageDateUsed == other.isImageDateUsed &&
-        hasTextChanged == other.hasTextChanged &&
+        hasChanged == other.hasChanged &&
         isSaving == other.isSaving &&
         date == other.date;
   }
@@ -81,7 +81,7 @@ class _$NoteState extends NoteState {
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, mediaFiles.hashCode);
     _$hash = $jc(_$hash, isImageDateUsed.hashCode);
-    _$hash = $jc(_$hash, hasTextChanged.hashCode);
+    _$hash = $jc(_$hash, hasChanged.hashCode);
     _$hash = $jc(_$hash, isSaving.hashCode);
     _$hash = $jc(_$hash, date.hashCode);
     _$hash = $jf(_$hash);
@@ -97,7 +97,7 @@ class _$NoteState extends NoteState {
           ..add('location', location)
           ..add('mediaFiles', mediaFiles)
           ..add('isImageDateUsed', isImageDateUsed)
-          ..add('hasTextChanged', hasTextChanged)
+          ..add('hasChanged', hasChanged)
           ..add('isSaving', isSaving)
           ..add('date', date))
         .toString();
@@ -134,10 +134,9 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
   set isImageDateUsed(bool? isImageDateUsed) =>
       _$this._isImageDateUsed = isImageDateUsed;
 
-  bool? _hasTextChanged;
-  bool? get hasTextChanged => _$this._hasTextChanged;
-  set hasTextChanged(bool? hasTextChanged) =>
-      _$this._hasTextChanged = hasTextChanged;
+  bool? _hasChanged;
+  bool? get hasChanged => _$this._hasChanged;
+  set hasChanged(bool? hasChanged) => _$this._hasChanged = hasChanged;
 
   bool? _isSaving;
   bool? get isSaving => _$this._isSaving;
@@ -158,7 +157,7 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
       _location = $v.location;
       _mediaFiles = $v.mediaFiles.toBuilder();
       _isImageDateUsed = $v.isImageDateUsed;
-      _hasTextChanged = $v.hasTextChanged;
+      _hasChanged = $v.hasChanged;
       _isSaving = $v.isSaving;
       _date = $v.date;
       _$v = null;
@@ -192,8 +191,8 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
               mediaFiles: mediaFiles.build(),
               isImageDateUsed: BuiltValueNullFieldError.checkNotNull(
                   isImageDateUsed, r'NoteState', 'isImageDateUsed'),
-              hasTextChanged: BuiltValueNullFieldError.checkNotNull(
-                  hasTextChanged, r'NoteState', 'hasTextChanged'),
+              hasChanged: BuiltValueNullFieldError.checkNotNull(
+                  hasChanged, r'NoteState', 'hasChanged'),
               isSaving: BuiltValueNullFieldError.checkNotNull(
                   isSaving, r'NoteState', 'isSaving'),
               date: BuiltValueNullFieldError.checkNotNull(
