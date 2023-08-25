@@ -4,7 +4,6 @@ import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/position_dto.dart';
 import 'package:daymemory/services/logging/logging_service.dart';
-import 'package:daymemory/widget/common/components/delta_to_markdown/delta_markdown.dart';
 import 'package:daymemory/widget/common/components/video/video_preview.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:daymemory/widget/note/toolbar.dart';
@@ -16,7 +15,6 @@ import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ignore: implementation_imports, library_prefixes
 import 'package:flutter/src/widgets/text.dart' as Text;
-import 'package:html2md/html2md.dart' as html2md;
 // ignore: implementation_imports
 import 'package:flutter_quill/src/models/documents/document.dart' as d;
 
@@ -132,13 +130,6 @@ class _EditFormState extends State<EditNoteForm> {
   String quillDeltaToHtml(Delta delta) {
     var html = jsonEncode(delta.toJson());
     return html;
-  }
-
-  String htmlToQuillDelta(String html) {
-    var markdownString = html2md.convert(html);
-    var delta = markdownToDelta(markdownString);
-
-    return delta;
   }
 
   void updateText() {

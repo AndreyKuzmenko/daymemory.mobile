@@ -30,14 +30,12 @@ import 'package:daymemory/services/storage/interfaces/interface_note_service.dar
 import 'package:daymemory/services/storage/interfaces/interface_notebook_service.dart';
 import 'package:daymemory/services/storage/interfaces/interface_tag_service.dart';
 import 'package:daymemory/services/store/store_service.dart';
-import 'package:daymemory/widget/common/components/delta_to_markdown/delta_markdown.dart';
 // ignore: depend_on_referenced_packages
 import 'package:redux/redux.dart' show MiddlewareClass, NextDispatcher, Store;
 // ignore: depend_on_referenced_packages
 import 'package:async/async.dart';
 import '../../services/settings_service/settings_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:html2md/html2md.dart' as html2md;
 
 class SyncMiddleware implements MiddlewareClass<AppState> {
   final ISettingsService settingsService;
@@ -359,12 +357,6 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
       await notebookNetworkService.delete(item.id);
       await notebookService.delete(item.id);
     }
-  }
-
-  String htmlToQuillDelta(String html) {
-    var markdownString = html2md.convert(html);
-    var delta = markdownToDelta(markdownString);
-    return delta;
   }
 
   Future _loadNotesfromServer(Store<AppState> store, DateTime? lastSyncDate) async {
