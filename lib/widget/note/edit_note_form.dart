@@ -345,11 +345,13 @@ class _EditFormState extends State<EditNoteForm> {
             ? null
             : () async {
                 widget.viewModel.selectImagesCommand!.command();
+                _nodeText.unfocus();
               },
         onVideoSelectorClicked: widget.viewModel.selectImagesCommand == null
             ? null
             : () async {
                 widget.viewModel.selectVideoCommand!.command();
+                _nodeText.unfocus();
               },
         onTagClicked: (String tagText) async {
           var tag = "#$tagText ";
