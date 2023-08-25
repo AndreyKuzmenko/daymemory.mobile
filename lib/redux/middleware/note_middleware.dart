@@ -53,6 +53,8 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
       await _createNote(action, store.state, store.dispatch);
     } else if (action is DeleteNoteAction) {
       await _deleteNote(action, store.dispatch);
+    } else if (action is DiscardNoteChangesAction) {
+      await _confirmNoteDiscardChanges(action, store.dispatch);
     } else if (action is NoteSelectImagesAction) {
       await _selectImages(action, store.state.noteState, store);
     } else if (action is NoteSelectVideoAction) {
@@ -128,6 +130,19 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
         },
         title: _locale!.note_delete_title,
         message: _locale!.note_delete_message,
+      ),
+    );
+  }
+
+  Future<void> _confirmNoteDiscardChanges(DiscardNoteChangesAction action, Function(dynamic action) dispatch) async {
+    dispatch(
+      dialogService.confirmDialogAction(
+        dispatch,
+        confirmCommand: () {
+          dispatch(action.nextAction);
+        },
+        title: _locale!.note_discard_changes_title,
+        message: _locale!.note_discard_changes_message,
       ),
     );
   }

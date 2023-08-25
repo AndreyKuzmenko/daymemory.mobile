@@ -18,6 +18,8 @@ abstract class NoteState implements Built<NoteState, NoteStateBuilder> {
 
   bool get isImageDateUsed;
 
+  bool get hasTextChanged;
+
   bool get isSaving;
 
   DateTime get date;
@@ -30,6 +32,7 @@ abstract class NoteState implements Built<NoteState, NoteStateBuilder> {
     ..noteId = null
     ..notebookId = null
     ..text = ""
+    ..hasTextChanged = false
     ..date = DateTime.now().toUtc()
     ..isSaving = false
     ..isImageDateUsed = false

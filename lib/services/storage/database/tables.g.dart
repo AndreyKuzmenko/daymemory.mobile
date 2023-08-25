@@ -40,50 +40,38 @@ class $DmNotebooksTable extends DmNotebooks
   static const VerificationMeta _showInReviewMeta =
       const VerificationMeta('showInReview');
   @override
-  late final GeneratedColumn<bool> showInReview =
-      GeneratedColumn<bool>('show_in_review', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("show_in_review" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> showInReview = GeneratedColumn<bool>(
+      'show_in_review', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("show_in_review" IN (0, 1))'));
   static const VerificationMeta _isDeletedMeta =
       const VerificationMeta('isDeleted');
   @override
-  late final GeneratedColumn<bool> isDeleted =
-      GeneratedColumn<bool>('is_deleted', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_deleted" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isDeleted = GeneratedColumn<bool>(
+      'is_deleted', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_deleted" IN (0, 1))'));
   static const VerificationMeta _isNewMeta = const VerificationMeta('isNew');
   @override
-  late final GeneratedColumn<bool> isNew =
-      GeneratedColumn<bool>('is_new', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_new" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isNew = GeneratedColumn<bool>(
+      'is_new', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_new" IN (0, 1))'));
   static const VerificationMeta _isChangedMeta =
       const VerificationMeta('isChanged');
   @override
-  late final GeneratedColumn<bool> isChanged =
-      GeneratedColumn<bool>('is_changed', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_changed" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isChanged = GeneratedColumn<bool>(
+      'is_changed', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_changed" IN (0, 1))'));
   static const VerificationMeta _sortingTypeMeta =
       const VerificationMeta('sortingType');
   @override
@@ -373,6 +361,7 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
   final Value<bool> isNew;
   final Value<bool> isChanged;
   final Value<int> sortingType;
+  final Value<int> rowid;
   const DmNotebooksCompanion({
     this.id = const Value.absent(),
     this.title = const Value.absent(),
@@ -384,6 +373,7 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
     this.isNew = const Value.absent(),
     this.isChanged = const Value.absent(),
     this.sortingType = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmNotebooksCompanion.insert({
     required String id,
@@ -396,6 +386,7 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
     required bool isNew,
     required bool isChanged,
     required int sortingType,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         title = Value(title),
         createdDate = Value(createdDate),
@@ -417,6 +408,7 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
     Expression<bool>? isNew,
     Expression<bool>? isChanged,
     Expression<int>? sortingType,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -429,6 +421,7 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
       if (isNew != null) 'is_new': isNew,
       if (isChanged != null) 'is_changed': isChanged,
       if (sortingType != null) 'sorting_type': sortingType,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -442,7 +435,8 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
       Value<bool>? isDeleted,
       Value<bool>? isNew,
       Value<bool>? isChanged,
-      Value<int>? sortingType}) {
+      Value<int>? sortingType,
+      Value<int>? rowid}) {
     return DmNotebooksCompanion(
       id: id ?? this.id,
       title: title ?? this.title,
@@ -454,6 +448,7 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
       isNew: isNew ?? this.isNew,
       isChanged: isChanged ?? this.isChanged,
       sortingType: sortingType ?? this.sortingType,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -490,6 +485,9 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
     if (sortingType.present) {
       map['sorting_type'] = Variable<int>(sortingType.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -505,7 +503,8 @@ class DmNotebooksCompanion extends UpdateCompanion<DmNotebook> {
           ..write('isDeleted: $isDeleted, ')
           ..write('isNew: $isNew, ')
           ..write('isChanged: $isChanged, ')
-          ..write('sortingType: $sortingType')
+          ..write('sortingType: $sortingType, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -718,12 +717,14 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
   final Value<double> latitude;
   final Value<double> longitude;
   final Value<DateTime> createdDate;
+  final Value<int> rowid;
   const DmLocationsCompanion({
     this.id = const Value.absent(),
     this.address = const Value.absent(),
     this.latitude = const Value.absent(),
     this.longitude = const Value.absent(),
     this.createdDate = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmLocationsCompanion.insert({
     required String id,
@@ -731,6 +732,7 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
     required double latitude,
     required double longitude,
     required DateTime createdDate,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         address = Value(address),
         latitude = Value(latitude),
@@ -742,6 +744,7 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
     Expression<double>? latitude,
     Expression<double>? longitude,
     Expression<DateTime>? createdDate,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -749,6 +752,7 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
       if (latitude != null) 'latitude': latitude,
       if (longitude != null) 'longitude': longitude,
       if (createdDate != null) 'created_date': createdDate,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -757,13 +761,15 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
       Value<String>? address,
       Value<double>? latitude,
       Value<double>? longitude,
-      Value<DateTime>? createdDate}) {
+      Value<DateTime>? createdDate,
+      Value<int>? rowid}) {
     return DmLocationsCompanion(
       id: id ?? this.id,
       address: address ?? this.address,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       createdDate: createdDate ?? this.createdDate,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -785,6 +791,9 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
     if (createdDate.present) {
       map['created_date'] = Variable<DateTime>(createdDate.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -795,7 +804,8 @@ class DmLocationsCompanion extends UpdateCompanion<DmLocation> {
           ..write('address: $address, ')
           ..write('latitude: $latitude, ')
           ..write('longitude: $longitude, ')
-          ..write('createdDate: $createdDate')
+          ..write('createdDate: $createdDate, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -854,39 +864,30 @@ class $DmNotesTable extends DmNotes with TableInfo<$DmNotesTable, DmNote> {
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _isNewMeta = const VerificationMeta('isNew');
   @override
-  late final GeneratedColumn<bool> isNew =
-      GeneratedColumn<bool>('is_new', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_new" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isNew = GeneratedColumn<bool>(
+      'is_new', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_new" IN (0, 1))'));
   static const VerificationMeta _isChangedMeta =
       const VerificationMeta('isChanged');
   @override
-  late final GeneratedColumn<bool> isChanged =
-      GeneratedColumn<bool>('is_changed', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_changed" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isChanged = GeneratedColumn<bool>(
+      'is_changed', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_changed" IN (0, 1))'));
   static const VerificationMeta _isDeletedMeta =
       const VerificationMeta('isDeleted');
   @override
-  late final GeneratedColumn<bool> isDeleted =
-      GeneratedColumn<bool>('is_deleted', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_deleted" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isDeleted = GeneratedColumn<bool>(
+      'is_deleted', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_deleted" IN (0, 1))'));
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -1172,6 +1173,7 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
   final Value<bool> isNew;
   final Value<bool> isChanged;
   final Value<bool> isDeleted;
+  final Value<int> rowid;
   const DmNotesCompanion({
     this.id = const Value.absent(),
     this.notebookId = const Value.absent(),
@@ -1183,6 +1185,7 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
     this.isNew = const Value.absent(),
     this.isChanged = const Value.absent(),
     this.isDeleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmNotesCompanion.insert({
     required String id,
@@ -1195,6 +1198,7 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
     required bool isNew,
     required bool isChanged,
     required bool isDeleted,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         notebookId = Value(notebookId),
         content = Value(content),
@@ -1215,6 +1219,7 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
     Expression<bool>? isNew,
     Expression<bool>? isChanged,
     Expression<bool>? isDeleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1227,6 +1232,7 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
       if (isNew != null) 'is_new': isNew,
       if (isChanged != null) 'is_changed': isChanged,
       if (isDeleted != null) 'is_deleted': isDeleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -1240,7 +1246,8 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
       Value<DateTime>? modifiedDate,
       Value<bool>? isNew,
       Value<bool>? isChanged,
-      Value<bool>? isDeleted}) {
+      Value<bool>? isDeleted,
+      Value<int>? rowid}) {
     return DmNotesCompanion(
       id: id ?? this.id,
       notebookId: notebookId ?? this.notebookId,
@@ -1252,6 +1259,7 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
       isNew: isNew ?? this.isNew,
       isChanged: isChanged ?? this.isChanged,
       isDeleted: isDeleted ?? this.isDeleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -1288,6 +1296,9 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
     if (isDeleted.present) {
       map['is_deleted'] = Variable<bool>(isDeleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -1303,7 +1314,8 @@ class DmNotesCompanion extends UpdateCompanion<DmNote> {
           ..write('modifiedDate: $modifiedDate, ')
           ..write('isNew: $isNew, ')
           ..write('isChanged: $isChanged, ')
-          ..write('isDeleted: $isDeleted')
+          ..write('isDeleted: $isDeleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -1345,39 +1357,30 @@ class $DmTagsTable extends DmTags with TableInfo<$DmTagsTable, DmTag> {
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _isNewMeta = const VerificationMeta('isNew');
   @override
-  late final GeneratedColumn<bool> isNew =
-      GeneratedColumn<bool>('is_new', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_new" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isNew = GeneratedColumn<bool>(
+      'is_new', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_new" IN (0, 1))'));
   static const VerificationMeta _isChangedMeta =
       const VerificationMeta('isChanged');
   @override
-  late final GeneratedColumn<bool> isChanged =
-      GeneratedColumn<bool>('is_changed', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_changed" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isChanged = GeneratedColumn<bool>(
+      'is_changed', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_changed" IN (0, 1))'));
   static const VerificationMeta _isDeletedMeta =
       const VerificationMeta('isDeleted');
   @override
-  late final GeneratedColumn<bool> isDeleted =
-      GeneratedColumn<bool>('is_deleted', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_deleted" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isDeleted = GeneratedColumn<bool>(
+      'is_deleted', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_deleted" IN (0, 1))'));
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -1617,6 +1620,7 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
   final Value<bool> isNew;
   final Value<bool> isChanged;
   final Value<bool> isDeleted;
+  final Value<int> rowid;
   const DmTagsCompanion({
     this.id = const Value.absent(),
     this.content = const Value.absent(),
@@ -1626,6 +1630,7 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
     this.isNew = const Value.absent(),
     this.isChanged = const Value.absent(),
     this.isDeleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmTagsCompanion.insert({
     required String id,
@@ -1636,6 +1641,7 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
     required bool isNew,
     required bool isChanged,
     required bool isDeleted,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         content = Value(content),
         orderRank = Value(orderRank),
@@ -1653,6 +1659,7 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
     Expression<bool>? isNew,
     Expression<bool>? isChanged,
     Expression<bool>? isDeleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1663,6 +1670,7 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
       if (isNew != null) 'is_new': isNew,
       if (isChanged != null) 'is_changed': isChanged,
       if (isDeleted != null) 'is_deleted': isDeleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -1674,7 +1682,8 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
       Value<DateTime>? modifiedDate,
       Value<bool>? isNew,
       Value<bool>? isChanged,
-      Value<bool>? isDeleted}) {
+      Value<bool>? isDeleted,
+      Value<int>? rowid}) {
     return DmTagsCompanion(
       id: id ?? this.id,
       content: content ?? this.content,
@@ -1684,6 +1693,7 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
       isNew: isNew ?? this.isNew,
       isChanged: isChanged ?? this.isChanged,
       isDeleted: isDeleted ?? this.isDeleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -1714,6 +1724,9 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
     if (isDeleted.present) {
       map['is_deleted'] = Variable<bool>(isDeleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -1727,7 +1740,8 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
           ..write('modifiedDate: $modifiedDate, ')
           ..write('isNew: $isNew, ')
           ..write('isChanged: $isChanged, ')
-          ..write('isDeleted: $isDeleted')
+          ..write('isDeleted: $isDeleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -1771,27 +1785,21 @@ class $DmQuestionListsTable extends DmQuestionLists
   static const VerificationMeta _isChangedMeta =
       const VerificationMeta('isChanged');
   @override
-  late final GeneratedColumn<bool> isChanged =
-      GeneratedColumn<bool>('is_changed', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_changed" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isChanged = GeneratedColumn<bool>(
+      'is_changed', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_changed" IN (0, 1))'));
   static const VerificationMeta _isDeletedMeta =
       const VerificationMeta('isDeleted');
   @override
-  late final GeneratedColumn<bool> isDeleted =
-      GeneratedColumn<bool>('is_deleted', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("is_deleted" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
+  late final GeneratedColumn<bool> isDeleted = GeneratedColumn<bool>(
+      'is_deleted', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_deleted" IN (0, 1))'));
   @override
   List<GeneratedColumn> get $columns =>
       [id, content, orderRank, createdDate, modifiedDate, isChanged, isDeleted];
@@ -2004,6 +2012,7 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
   final Value<DateTime> modifiedDate;
   final Value<bool> isChanged;
   final Value<bool> isDeleted;
+  final Value<int> rowid;
   const DmQuestionListsCompanion({
     this.id = const Value.absent(),
     this.content = const Value.absent(),
@@ -2012,6 +2021,7 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
     this.modifiedDate = const Value.absent(),
     this.isChanged = const Value.absent(),
     this.isDeleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmQuestionListsCompanion.insert({
     required String id,
@@ -2021,6 +2031,7 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
     required DateTime modifiedDate,
     required bool isChanged,
     required bool isDeleted,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         content = Value(content),
         orderRank = Value(orderRank),
@@ -2036,6 +2047,7 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
     Expression<DateTime>? modifiedDate,
     Expression<bool>? isChanged,
     Expression<bool>? isDeleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -2045,6 +2057,7 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
       if (modifiedDate != null) 'modified_date': modifiedDate,
       if (isChanged != null) 'is_changed': isChanged,
       if (isDeleted != null) 'is_deleted': isDeleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -2055,7 +2068,8 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
       Value<DateTime>? createdDate,
       Value<DateTime>? modifiedDate,
       Value<bool>? isChanged,
-      Value<bool>? isDeleted}) {
+      Value<bool>? isDeleted,
+      Value<int>? rowid}) {
     return DmQuestionListsCompanion(
       id: id ?? this.id,
       content: content ?? this.content,
@@ -2064,6 +2078,7 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
       modifiedDate: modifiedDate ?? this.modifiedDate,
       isChanged: isChanged ?? this.isChanged,
       isDeleted: isDeleted ?? this.isDeleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -2091,6 +2106,9 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
     if (isDeleted.present) {
       map['is_deleted'] = Variable<bool>(isDeleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -2103,7 +2121,8 @@ class DmQuestionListsCompanion extends UpdateCompanion<DmQuestionList> {
           ..write('createdDate: $createdDate, ')
           ..write('modifiedDate: $modifiedDate, ')
           ..write('isChanged: $isChanged, ')
-          ..write('isDeleted: $isDeleted')
+          ..write('isDeleted: $isDeleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -2321,12 +2340,14 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
   final Value<int> orderRank;
   final Value<DateTime> createdDate;
   final Value<String> questionList;
+  final Value<int> rowid;
   const DmQuestionsCompanion({
     this.id = const Value.absent(),
     this.content = const Value.absent(),
     this.orderRank = const Value.absent(),
     this.createdDate = const Value.absent(),
     this.questionList = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmQuestionsCompanion.insert({
     required String id,
@@ -2334,6 +2355,7 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
     required int orderRank,
     required DateTime createdDate,
     required String questionList,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         content = Value(content),
         orderRank = Value(orderRank),
@@ -2345,6 +2367,7 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
     Expression<int>? orderRank,
     Expression<DateTime>? createdDate,
     Expression<String>? questionList,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -2352,6 +2375,7 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
       if (orderRank != null) 'order_rank': orderRank,
       if (createdDate != null) 'created_date': createdDate,
       if (questionList != null) 'question_list': questionList,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -2360,13 +2384,15 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
       Value<String>? content,
       Value<int>? orderRank,
       Value<DateTime>? createdDate,
-      Value<String>? questionList}) {
+      Value<String>? questionList,
+      Value<int>? rowid}) {
     return DmQuestionsCompanion(
       id: id ?? this.id,
       content: content ?? this.content,
       orderRank: orderRank ?? this.orderRank,
       createdDate: createdDate ?? this.createdDate,
       questionList: questionList ?? this.questionList,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -2388,6 +2414,9 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
     if (questionList.present) {
       map['question_list'] = Variable<String>(questionList.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -2398,7 +2427,8 @@ class DmQuestionsCompanion extends UpdateCompanion<DmQuestion> {
           ..write('content: $content, ')
           ..write('orderRank: $orderRank, ')
           ..write('createdDate: $createdDate, ')
-          ..write('questionList: $questionList')
+          ..write('questionList: $questionList, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -2720,6 +2750,7 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
   final Value<String?> noteId;
   final Value<int> orderRank;
   final Value<DateTime> createdDate;
+  final Value<int> rowid;
   const DmFilesCompanion({
     this.id = const Value.absent(),
     this.fileName = const Value.absent(),
@@ -2730,6 +2761,7 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
     this.noteId = const Value.absent(),
     this.orderRank = const Value.absent(),
     this.createdDate = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DmFilesCompanion.insert({
     required String id,
@@ -2741,6 +2773,7 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
     this.noteId = const Value.absent(),
     required int orderRank,
     required DateTime createdDate,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         fileName = Value(fileName),
         fileSize = Value(fileSize),
@@ -2759,6 +2792,7 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
     Expression<String>? noteId,
     Expression<int>? orderRank,
     Expression<DateTime>? createdDate,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -2770,6 +2804,7 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
       if (noteId != null) 'note_id': noteId,
       if (orderRank != null) 'order_rank': orderRank,
       if (createdDate != null) 'created_date': createdDate,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -2782,7 +2817,8 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
       Value<int>? height,
       Value<String?>? noteId,
       Value<int>? orderRank,
-      Value<DateTime>? createdDate}) {
+      Value<DateTime>? createdDate,
+      Value<int>? rowid}) {
     return DmFilesCompanion(
       id: id ?? this.id,
       fileName: fileName ?? this.fileName,
@@ -2793,6 +2829,7 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
       noteId: noteId ?? this.noteId,
       orderRank: orderRank ?? this.orderRank,
       createdDate: createdDate ?? this.createdDate,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -2826,6 +2863,9 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
     if (createdDate.present) {
       map['created_date'] = Variable<DateTime>(createdDate.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -2840,7 +2880,8 @@ class DmFilesCompanion extends UpdateCompanion<DmFile> {
           ..write('height: $height, ')
           ..write('noteId: $noteId, ')
           ..write('orderRank: $orderRank, ')
-          ..write('createdDate: $createdDate')
+          ..write('createdDate: $createdDate, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }

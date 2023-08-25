@@ -40,6 +40,7 @@ class EditNoteConnector extends PageConnector<EditNoteViewModel, EditNoteConvert
         date: state.noteState.date,
         mediaFiles: state.noteState.mediaFiles.toList(),
         isSaving: state.noteState.isSaving,
+        hasTextChanged: state.noteState.hasTextChanged,
         location: state.noteState.location);
     return converter;
   }

@@ -128,6 +128,8 @@
     "no_notebook_notes": "У вас немає блокнотів. Розпочніть зі створення першого.",
     "note_delete_title": "Видалення нотатки",
     "note_delete_message": "Ви впевнені, що хочете видалити нотатку?",
+    "note_discard_changes_title": "Незбережені зміни",
+    "note_discard_changes_message": "Ви впевнені, що бажаєте скасувати зміни?",
     "note_use_photo_datetime": "Використовувати дату і час із фото?",
     "notebook_delete_title": "Видалення блокноту",
     "notebook_delete_message": "Ви впевнені, що хочете видалити блокнот?",    

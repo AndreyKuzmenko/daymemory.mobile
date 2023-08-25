@@ -28,7 +28,7 @@ class EditNoteForm extends StatefulWidget {
 }
 
 class _EditFormState extends State<EditNoteForm> {
-  late String _text;
+  late String _initialText;
 
   late bool _isNew;
 
@@ -49,7 +49,7 @@ class _EditFormState extends State<EditNoteForm> {
     super.initState();
     _isNew = widget.viewModel.text == null || widget.viewModel.text!.isEmpty;
     _currentLocation = widget.viewModel.location;
-    _text = widget.viewModel.text ?? "";
+    _initialText = widget.viewModel.text ?? "";
     _nodeText = FocusNode();
     _quillController = QuillController.basic();
     _scrollController = ScrollController();
@@ -63,16 +63,16 @@ class _EditFormState extends State<EditNoteForm> {
       }
     });
 
-    _quillController.addListener(updateText);
+    _quillController.addListener(_updateText);
 
-    if (_text.isNotEmpty) {
-      _loadHtml(_text);
+    if (_initialText.isNotEmpty) {
+      _loadHtml(_initialText);
     }
   }
 
   @override
   void dispose() {
-    _quillController.removeListener(updateText);
+    _quillController.removeListener(_updateText);
     super.dispose();
   }
 
@@ -120,21 +120,23 @@ class _EditFormState extends State<EditNoteForm> {
         _quillController = QuillController(document: doc, selection: const TextSelection.collapsed(offset: 0));
       });
       _quillController.addListener(() {
-        updateText();
+        _updateText();
       });
     } catch (error) {
       _loggingService.logError(error);
     }
   }
 
-  String quillDeltaToHtml(Delta delta) {
+  String _quillDeltaToHtml(Delta delta) {
     var html = jsonEncode(delta.toJson());
     return html;
   }
 
-  void updateText() {
-    _text = quillDeltaToHtml(_quillController.document.toDelta());
-    widget.viewModel.textChangedCommand.command(_text);
+  void _updateText() {
+    final text = _quillDeltaToHtml(_quillController.document.toDelta());
+    if (_initialText != text) {
+      widget.viewModel.textChangedCommand.command(text);
+    }
   }
 
   QuillEditor _createQuillEditor() {

@@ -131,6 +131,8 @@
     "no_notebook_notes": "You don't have notebooks. Please start with creating one.",
     "note_delete_title": "Delete note",
     "note_delete_message": "Are you sure you want to delete the item?",
+    "note_discard_changes_title": "Unsaved changes",
+    "note_discard_changes_message": "Are you sure you want to discard changes?",
     "note_use_photo_datetime": "Use photo date and time?",
     "notebook_delete_title": "Delete notebook",
     "notebook_delete_message": "Are you sure you want to delete the item?",

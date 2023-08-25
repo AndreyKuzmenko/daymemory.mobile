@@ -25,7 +25,11 @@ Reducer<NoteState> get noteReducer {
 }
 
 NoteState _changeTextAction(NoteState state, NoteChangeTextAction action) {
-  return state.rebuild((b) => b..text = action.text);
+  return state.rebuild(
+    (b) => b
+      ..text = action.text
+      ..hasTextChanged = true,
+  );
 }
 
 NoteState _reorderFilesAction(NoteState state, ReorderImagesAction action) {
@@ -73,6 +77,7 @@ NoteState _initNoteAction(NoteState state, InitNoteAction action) {
     ..notebookId = action.notebookId
     ..text = action.text
     ..date = action.date
+    ..hasTextChanged = false
     ..isImageDateUsed = false
     ..mediaFiles = action.mediaFiles.toBuiltList().toBuilder()
     ..location = action.location);

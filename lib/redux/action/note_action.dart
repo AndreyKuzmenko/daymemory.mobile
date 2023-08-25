@@ -135,6 +135,17 @@ class CreateNoteAction implements ILoggingAction {
   }
 }
 
+class DiscardNoteChangesAction implements ILoggingAction {
+  final dynamic nextAction;
+
+  DiscardNoteChangesAction(this.nextAction);
+
+  @override
+  String toLogString() {
+    return 'Discard Note Changes Action';
+  }
+}
+
 class NoteSavingAction implements ILoggingAction {
   final bool isSaving;
 
