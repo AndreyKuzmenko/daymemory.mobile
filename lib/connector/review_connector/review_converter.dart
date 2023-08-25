@@ -82,6 +82,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
             ..menuCancel = loc.menu_cancel
             ..menuDelete = loc.menu_delete
             ..menuEdit = loc.menu_edit
+            ..showMoreText = loc.show_more
             ..mediaFiles = _convertMediaFiles(item.mediaFiles)
             ..location = item.location
             ..showContextMenu = showContextMenu
