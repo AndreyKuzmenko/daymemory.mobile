@@ -99,6 +99,11 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
         },
       )
       ..saveCommand = FunctionHolder(() {
+        if (!hasTextChanged) {
+          dispatch(PopBackStackAction(key: RouteDirection.editNote));
+          return;
+        }
+
         if (noteId == null) {
           dispatch(CreateNoteAction());
         } else {
