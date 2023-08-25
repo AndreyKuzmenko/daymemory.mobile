@@ -111,12 +111,16 @@ class ReviewsMiddleware implements MiddlewareClass<AppState> {
     var notes = await noteRepository.fetchNotesByDayAndMonth(day, month);
     var result = <ReviewCategoryDto>[];
     var now = DateTime.now();
-    for (var item in notes.where((element) => element.date.year != now.year)) {
+
+    final uniqueYears = notes.where((element) => element.date.year != now.year).map((e) => e.date.year).toSet();
+
+    for (var year in uniqueYears) {
       //var reviewItems = _createReviewItems([item], _getLocalizationYears(now.year - item.date.year));
+      var items = notes.where((element) => element.date.year == year).toList();
       var reviewCategory = ReviewCategoryDto(
         id: const Uuid().v4(),
-        title: _getLocalizationYears(now.year - item.date.year),
-        notes: [item],
+        title: _getLocalizationYears(now.year - year),
+        notes: items,
       );
       result.add(reviewCategory);
     }
