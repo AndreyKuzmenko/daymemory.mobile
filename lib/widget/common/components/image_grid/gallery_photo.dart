@@ -6,6 +6,7 @@ import 'package:daymemory/widget/common/components/video/mobile_video_player.dar
 import 'package:daymemory/widget/common/components/video/video_is_not_supported.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
@@ -40,16 +41,19 @@ class GalleryPhoto extends StatefulWidget {
 class _GalleryPhotoState extends State<GalleryPhoto> {
   late int currentIndex = widget.initialIndex;
   late PageController pageController;
+  final _currentPageNotifier = ValueNotifier<int>(0);
 
   @override
   void initState() {
     pageController = PageController(initialPage: widget.initialIndex);
+    _currentPageNotifier.value = widget.initialIndex;
     super.initState();
   }
 
   void onPageChanged(int index) {
     setState(() {
       currentIndex = index;
+      _currentPageNotifier.value = index;
     });
   }
 
@@ -76,11 +80,33 @@ class _GalleryPhotoState extends State<GalleryPhoto> {
                 scrollDirection: widget.scrollDirection,
               ),
               if (widget.galleryItems.length > 1 && widget.showNavigation)
-                PageNavigation(
-                  pageController: pageController,
-                  pageIndex: currentIndex,
-                  pageCount: widget.galleryItems.length,
-                )
+                Container(
+                  margin: const EdgeInsets.only(bottom: 30),
+                  child: PageNavigation(
+                    pageController: pageController,
+                    pageIndex: currentIndex,
+                    pageCount: widget.galleryItems.length,
+                  ),
+                ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 20),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      color: Colors.black.withAlpha(50),
+                    ),
+                    child: CirclePageIndicator(
+                      itemCount: widget.galleryItems.length,
+                      currentPageNotifier: _currentPageNotifier,
+                      dotColor: Colors.white, //Theme.of(context).colorScheme.primary,
+                      selectedDotColor: Theme.of(context).primaryColor, //Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
