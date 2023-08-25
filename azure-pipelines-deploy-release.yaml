@@ -7,7 +7,7 @@ pr: none
 
 jobs:
 - job: Deployment
-  timeoutInMinutes: 45
+  timeoutInMinutes: 60
   pool:
     vmImage: 'macos-latest'
 
