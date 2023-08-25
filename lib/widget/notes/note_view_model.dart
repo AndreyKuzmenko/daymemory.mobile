@@ -26,6 +26,8 @@ abstract class NoteViewModel implements Built<NoteViewModel, NoteViewModelBuilde
 
   bool get showContextMenu;
 
+  String get showMoreText;
+
   FunctionHolder get openNoteCommand;
 
   TypedFunctionHolder<int> get openGalleryCommand;

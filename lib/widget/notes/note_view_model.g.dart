@@ -28,6 +28,8 @@ class _$NoteViewModel extends NoteViewModel {
   @override
   final bool showContextMenu;
   @override
+  final String showMoreText;
+  @override
   final FunctionHolder openNoteCommand;
   @override
   final TypedFunctionHolder<int> openGalleryCommand;
@@ -50,6 +52,7 @@ class _$NoteViewModel extends NoteViewModel {
       required this.menuDelete,
       required this.menuCancel,
       required this.showContextMenu,
+      required this.showMoreText,
       required this.openNoteCommand,
       required this.openGalleryCommand,
       required this.openTagCommand,
@@ -71,6 +74,8 @@ class _$NoteViewModel extends NoteViewModel {
         menuCancel, r'NoteViewModel', 'menuCancel');
     BuiltValueNullFieldError.checkNotNull(
         showContextMenu, r'NoteViewModel', 'showContextMenu');
+    BuiltValueNullFieldError.checkNotNull(
+        showMoreText, r'NoteViewModel', 'showMoreText');
     BuiltValueNullFieldError.checkNotNull(
         openNoteCommand, r'NoteViewModel', 'openNoteCommand');
     BuiltValueNullFieldError.checkNotNull(
@@ -102,6 +107,7 @@ class _$NoteViewModel extends NoteViewModel {
         menuDelete == other.menuDelete &&
         menuCancel == other.menuCancel &&
         showContextMenu == other.showContextMenu &&
+        showMoreText == other.showMoreText &&
         openNoteCommand == other.openNoteCommand &&
         openGalleryCommand == other.openGalleryCommand &&
         openTagCommand == other.openTagCommand &&
@@ -121,6 +127,7 @@ class _$NoteViewModel extends NoteViewModel {
     _$hash = $jc(_$hash, menuDelete.hashCode);
     _$hash = $jc(_$hash, menuCancel.hashCode);
     _$hash = $jc(_$hash, showContextMenu.hashCode);
+    _$hash = $jc(_$hash, showMoreText.hashCode);
     _$hash = $jc(_$hash, openNoteCommand.hashCode);
     _$hash = $jc(_$hash, openGalleryCommand.hashCode);
     _$hash = $jc(_$hash, openTagCommand.hashCode);
@@ -142,6 +149,7 @@ class _$NoteViewModel extends NoteViewModel {
           ..add('menuDelete', menuDelete)
           ..add('menuCancel', menuCancel)
           ..add('showContextMenu', showContextMenu)
+          ..add('showMoreText', showMoreText)
           ..add('openNoteCommand', openNoteCommand)
           ..add('openGalleryCommand', openGalleryCommand)
           ..add('openTagCommand', openTagCommand)
@@ -196,6 +204,10 @@ class NoteViewModelBuilder
   set showContextMenu(bool? showContextMenu) =>
       _$this._showContextMenu = showContextMenu;
 
+  String? _showMoreText;
+  String? get showMoreText => _$this._showMoreText;
+  set showMoreText(String? showMoreText) => _$this._showMoreText = showMoreText;
+
   FunctionHolder? _openNoteCommand;
   FunctionHolder? get openNoteCommand => _$this._openNoteCommand;
   set openNoteCommand(FunctionHolder? openNoteCommand) =>
@@ -232,6 +244,7 @@ class NoteViewModelBuilder
       _menuDelete = $v.menuDelete;
       _menuCancel = $v.menuCancel;
       _showContextMenu = $v.showContextMenu;
+      _showMoreText = $v.showMoreText;
       _openNoteCommand = $v.openNoteCommand;
       _openGalleryCommand = $v.openGalleryCommand;
       _openTagCommand = $v.openTagCommand;
@@ -277,6 +290,7 @@ class NoteViewModelBuilder
                 menuCancel, r'NoteViewModel', 'menuCancel'),
             showContextMenu: BuiltValueNullFieldError.checkNotNull(
                 showContextMenu, r'NoteViewModel', 'showContextMenu'),
+            showMoreText: BuiltValueNullFieldError.checkNotNull(showMoreText, r'NoteViewModel', 'showMoreText'),
             openNoteCommand: BuiltValueNullFieldError.checkNotNull(openNoteCommand, r'NoteViewModel', 'openNoteCommand'),
             openGalleryCommand: BuiltValueNullFieldError.checkNotNull(openGalleryCommand, r'NoteViewModel', 'openGalleryCommand'),
             openTagCommand: BuiltValueNullFieldError.checkNotNull(openTagCommand, r'NoteViewModel', 'openTagCommand'),

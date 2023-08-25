@@ -69,6 +69,7 @@ class NotesListItem extends StatelessWidget {
                             child: HtmlViewer(
                               viewModel.text,
                               scaleFactor: 1,
+                              showMoreText: viewModel.showMoreText,
                               onHashTagPressed: (text) {
                                 viewModel.openTagCommand.command(text.replaceAll("#", ""));
                               },

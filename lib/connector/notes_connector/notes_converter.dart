@@ -129,6 +129,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
             ..noteId = item.id
             ..text = item.text
             ..isFullscreen = isFullscreen
+            ..showMoreText = loc.showMore
             ..menuCancel = loc.menu_cancel
             ..menuDelete = loc.menu_delete
             ..menuEdit = loc.menu_edit

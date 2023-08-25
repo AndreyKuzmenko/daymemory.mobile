@@ -136,6 +136,7 @@
     "note_use_photo_datetime": "Use photo date and time?",
     "notebook_delete_title": "Delete notebook",
     "notebook_delete_message": "Are you sure you want to delete the item?",
+    "showMore": "Показати більше...",
 
     "edit_notebook_delete": "Delete notebook",
     "edit_notebook_new_title": "New notebook",
