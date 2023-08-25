@@ -12,6 +12,7 @@ Reducer<ReviewsState> get reviewsReducer {
     TypedReducer(_reviewsLoadedAction),
     TypedReducer(_reviewsIsLoadingAction),
     TypedReducer(_noteUpdatedAction),
+    TypedReducer(_noteDeletedAction),
   ]);
 }
 
@@ -23,6 +24,19 @@ ReviewsState _reviewsLoadedAction(ReviewsState state, ReviewsLoadedAction action
 
 ReviewsState _reviewsIsLoadingAction(ReviewsState state, ReviewsIsLoadingAction action) {
   return state.rebuild((b) => b..isLoading = action.isLoading);
+}
+
+ReviewsState _noteDeletedAction(ReviewsState state, NoteDeletedAction action) {
+  var categories = state.items.toList();
+
+  for (var category in categories) {
+    category.notes.removeWhere((element) => element.id == action.noteId);
+  }
+
+  categories.removeWhere((element) => element.notes.isEmpty);
+  return state.rebuild(
+    (b) => b..items = categories,
+  );
 }
 
 ReviewsState _noteUpdatedAction(ReviewsState state, NoteUpdatedAction action) {
