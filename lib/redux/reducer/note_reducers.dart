@@ -24,7 +24,7 @@ Reducer<NoteState> get noteReducer {
   ]);
 }
 
-NoteState _changeTextAction(NoteState state, NoteChangeTextAction action) {
+NoteState _changeTextAction(NoteState state, NoteTextChangedAction action) {
   return state.rebuild(
     (b) => b
       ..text = action.text
@@ -32,18 +32,20 @@ NoteState _changeTextAction(NoteState state, NoteChangeTextAction action) {
   );
 }
 
-NoteState _reorderFilesAction(NoteState state, ReorderImagesAction action) {
+NoteState _reorderFilesAction(NoteState state, NoteImagesReorderedAction action) {
   var items = state.mediaFiles.toList();
   var item = items[action.start];
   items.removeAt(action.start);
   items.insert(action.current > action.start ? action.current - 1 : action.current, item);
 
   return state.rebuild(
-    (b) => b..mediaFiles = items.toBuiltList().toBuilder(),
+    (b) => b
+      ..mediaFiles = items.toBuiltList().toBuilder()
+      ..hasChanged = true,
   );
 }
 
-NoteState _changeNotebookAction(NoteState state, NoteChangeNotebookAction action) {
+NoteState _changeNotebookAction(NoteState state, NoteNotebookChangedAction action) {
   return state.rebuild(
     (b) => b
       ..notebookId = action.notebookId
@@ -51,7 +53,7 @@ NoteState _changeNotebookAction(NoteState state, NoteChangeNotebookAction action
   );
 }
 
-NoteState _changeDateAction(NoteState state, NoteChangeDateAction action) {
+NoteState _changeDateAction(NoteState state, NoteDateChangedAction action) {
   return state.rebuild(
     (b) => b
       ..date = action.date
@@ -61,9 +63,7 @@ NoteState _changeDateAction(NoteState state, NoteChangeDateAction action) {
 
 NoteState _locationLoadedAction(NoteState state, NoteLocationLoadedAction action) {
   return state.rebuild(
-    (b) => b
-      ..location = action.location
-      ..hasChanged = true,
+    (b) => b..location = action.location,
   );
 }
 
@@ -83,7 +83,7 @@ NoteState _videoSelectedAction(NoteState state, NoteVideoSelectedAction action) 
   );
 }
 
-NoteState _fileDeleteAction(NoteState state, NoteDeleteFileAction action) {
+NoteState _fileDeleteAction(NoteState state, NoteFileDeletedAction action) {
   return state.rebuild(
     (b) => b
       ..mediaFiles.removeWhere((x) => x.id == action.fileId)
@@ -115,6 +115,7 @@ NoteState _navigateToAnswerQuestionListAction(NoteState state, NavigateToAnswerQ
   return NoteState.initial().rebuild((b) => b
     ..noteId = null
     ..text = ""
+    ..hasChanged = false
     ..mediaFiles = <FileDto>[].toBuiltList().toBuilder()
     ..location = null);
 }

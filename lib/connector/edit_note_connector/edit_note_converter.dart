@@ -73,10 +73,10 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
       ..mediaFiles.addAll(_convertMediaFiles(mediaFiles))
       ..isVideoSupported = isVideoSupported
       ..deleteImageCommand = TypedFunctionHolder<String>((id) {
-        dispatch(NoteDeleteFileAction(fileId: id));
+        dispatch(NoteFileDeletedAction(fileId: id));
       })
       ..textChangedCommand = TypedFunctionHolder<String>((data) {
-        dispatch(NoteChangeTextAction(text: data));
+        dispatch(NoteTextChangedAction(text: data));
       })
       ..optionsCommand = FunctionHolder(() {
         dispatch(NavigateToNoteOptionsAction());
@@ -91,11 +91,11 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
         dispatch(NavigateToSelectNotebookAction());
       })
       ..dateChangedCommand = TypedFunctionHolder<DateTime>((date) {
-        dispatch(NoteChangeDateAction(date: date));
+        dispatch(NoteDateChangedAction(date: date));
       })
       ..reorderCommand = TypedFunctionHolder<ItemPositionDto>(
         (data) {
-          dispatch(ReorderImagesAction(data.current, data.start));
+          dispatch(NoteImagesReorderedAction(data.current, data.start));
         },
       )
       ..saveCommand = FunctionHolder(() {

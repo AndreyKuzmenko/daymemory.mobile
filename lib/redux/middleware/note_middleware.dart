@@ -191,7 +191,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
     //     dialogService.confirmDialogAction(
     //       dispatch,
     //       confirmCommand: () async {werwer234
-    //         dispatch(NoteChangeDateAction(date: images[0].createdDate!));
+    //         dispatch(NoteDateChangedAction(date: images[0].createdDate!));
     //       },
     //       title: _locale!.note_use_photo_datetime,
     //       message: DateFormat('dd.MM.yyyy').format(images[0].createdDate!.toLocal()),

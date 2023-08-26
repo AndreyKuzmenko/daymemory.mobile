@@ -22,7 +22,7 @@ class AnswerQuestionMiddleware implements MiddlewareClass<AppState> {
       }
       result += "<p>#Questions</p>";
 
-      store.dispatch(NoteChangeTextAction(text: result));
+      store.dispatch(NoteTextChangedAction(text: result));
       store.dispatch(CreateNoteAction());
     }
   }

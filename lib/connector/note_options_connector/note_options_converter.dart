@@ -59,7 +59,7 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
         dispatch(NavigateToSelectNotebookAction());
       })
       ..dateChangedCommand = TypedFunctionHolder<DateTime>((date) {
-        dispatch(NoteChangeDateAction(date: date));
+        dispatch(NoteDateChangedAction(date: date));
       })
       ..closeCommand = FunctionHolder(() {
         dispatch(PopBackStackAction());

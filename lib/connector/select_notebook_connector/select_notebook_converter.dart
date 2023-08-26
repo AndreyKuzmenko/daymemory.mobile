@@ -28,7 +28,7 @@ class SelectNotebookConverter extends ViewModelConverter<SelectNotebookViewModel
       ..notebooks = notebooks.toBuiltList().toBuilder()
       ..title = locale.note_select_notebook_title
       ..selectNotebookCommand = TypedFunctionHolder<String>((notebookId) {
-        dispatch(NoteChangeNotebookAction(notebookId: notebookId));
+        dispatch(NoteNotebookChangedAction(notebookId: notebookId));
       })
       ..newNotebookCommand = FunctionHolder(() {
         dispatch(NavigateToNewNotebookAction());

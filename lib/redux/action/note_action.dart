@@ -28,10 +28,10 @@ class NoteLocationLoadedAction implements ILoggingAction {
   }
 }
 
-class NoteChangeTextAction implements ILoggingAction {
+class NoteTextChangedAction implements ILoggingAction {
   final String text;
 
-  NoteChangeTextAction({required this.text});
+  NoteTextChangedAction({required this.text});
 
   @override
   String toLogString() {
@@ -39,14 +39,14 @@ class NoteChangeTextAction implements ILoggingAction {
   }
 }
 
-class NoteChangeDateAction implements ILoggingAction {
+class NoteDateChangedAction implements ILoggingAction {
   final DateTime date;
 
-  NoteChangeDateAction({required this.date});
+  NoteDateChangedAction({required this.date});
 
   @override
   String toLogString() {
-    return 'Note Change Date Action';
+    return 'Note Date Changed Action';
   }
 }
 
@@ -57,14 +57,14 @@ class NoteImageDateActivatedAction implements ILoggingAction {
   }
 }
 
-class NoteChangeNotebookAction implements ILoggingAction {
+class NoteNotebookChangedAction implements ILoggingAction {
   final String notebookId;
 
-  NoteChangeNotebookAction({required this.notebookId});
+  NoteNotebookChangedAction({required this.notebookId});
 
   @override
   String toLogString() {
-    return 'Note Change Notebook Action';
+    return 'Note Notebook Changed Action';
   }
 }
 
@@ -82,16 +82,16 @@ class NoteSelectVideoAction implements ILoggingAction {
   }
 }
 
-class ReorderImagesAction implements ILoggingAction {
+class NoteImagesReorderedAction implements ILoggingAction {
   int start;
 
   int current;
 
-  ReorderImagesAction(this.start, this.current);
+  NoteImagesReorderedAction(this.start, this.current);
 
   @override
   String toLogString() {
-    return 'Reorder Images Action';
+    return 'Note Images Reordered Action';
   }
 }
 
@@ -102,7 +102,7 @@ class NoteImageSelectedAction implements ILoggingAction {
 
   @override
   String toLogString() {
-    return 'Note Image Uploaded Action';
+    return 'Note Image Selected Action';
   }
 }
 
@@ -113,18 +113,18 @@ class NoteVideoSelectedAction implements ILoggingAction {
 
   @override
   String toLogString() {
-    return 'Note Video Uploaded Action';
+    return 'Note Video Selected Action';
   }
 }
 
-class NoteDeleteFileAction implements ILoggingAction {
+class NoteFileDeletedAction implements ILoggingAction {
   final String fileId;
 
-  NoteDeleteFileAction({required this.fileId});
+  NoteFileDeletedAction({required this.fileId});
 
   @override
   String toLogString() {
-    return 'Note Delete Image Action';
+    return 'Note File Deleted Action';
   }
 }
 
