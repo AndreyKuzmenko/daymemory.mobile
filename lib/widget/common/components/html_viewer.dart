@@ -21,50 +21,39 @@ class HtmlViewer extends StatefulWidget {
 }
 
 class _HtmlViewerState extends State<HtmlViewer> {
-  final double defaultFontSize = 18;
-  String _html = "";
+  //final double _defaultFontSize = 18;
+  final _maxElements = 10;
+  bool _isExpanded = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _initHtml(false);
-  }
-
-  void _initHtml(bool expandText) {
-    var maxElements = 10;
-    var json = jsonDecode(widget.text!);
+  String _getHtml(String text) {
+    var json = jsonDecode(text);
     var jsonElements = List.castFrom(json);
     final converter = QuillDeltaToHtmlConverter(
-      List.castFrom(expandText ? jsonElements : jsonElements.take(maxElements).toList()),
+      List.castFrom(_isExpanded ? jsonElements : jsonElements.take(_maxElements).toList()),
       ConverterOptions.forEmail(),
     );
 
-    _html = converter.convert();
-    if (!expandText && jsonElements.length > maxElements) {
-      _html += "<div><a href='more'>${widget.showMoreText}</a><div>";
+    var html = converter.convert();
+    if (!_isExpanded && jsonElements.length > _maxElements) {
+      html += "<div><a href='more'>${widget.showMoreText}</a><div>";
     }
+
+    return html;
   }
 
   @override
   Widget build(BuildContext context) {
-    // var document = parse(text == null ? "" : _parseText(text!.replaceAll("\n", "")));
-    // var innerText = "";
-    // var max = document.body!.children.length > 10 ? 10 : document.body!.children.length;
-    // for (var i = 0; i < max; i++) {
-    //   innerText += document.body!.children[i].outerHtml;
-    // }
-
-    //innerText = text;
+    final html = _getHtml(widget.text ?? "");
 
     return Html(
-      data: _html, //innerText,
+      data: html, //innerText,
       onLinkTap: (url, attributes, element) {
         // if (url == null) {
         //   return;
         // }
         if (url == "more") {
           setState(() {
-            _initHtml(true);
+            _isExpanded = true;
           });
           return;
         }
