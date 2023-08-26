@@ -66,7 +66,7 @@ class _EditFormState extends State<EditNoteForm> {
     _quillController.addListener(_updateText);
 
     if (_initialText.isNotEmpty) {
-      _loadHtml(_initialText);
+      _loadContent(_initialText);
     }
   }
 
@@ -112,9 +112,9 @@ class _EditFormState extends State<EditNoteForm> {
     );
   }
 
-  void _loadHtml(String html) {
+  void _loadContent(String content) {
     try {
-      var json = jsonDecode(html);
+      var json = jsonDecode(content);
       final doc = d.Document.fromJson(json);
       setState(() {
         _quillController = QuillController(document: doc, selection: const TextSelection.collapsed(offset: 0));
@@ -160,7 +160,7 @@ class _EditFormState extends State<EditNoteForm> {
       scrollBottomInset: 150,
       customStyles: DefaultStyles(
           lists: DefaultListBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 5), const VerticalSpacing(10, 0), null, null),
-          paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 10), const VerticalSpacing(0, 0), null),
+          paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 20), const VerticalSpacing(0, 0), null),
           h2: DefaultTextBlockStyle(
               defaultTextStyle.style.copyWith(
                 fontSize: 22,
