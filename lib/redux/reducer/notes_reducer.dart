@@ -81,18 +81,6 @@ NotesState _noteUpdatedAction(NotesState state, NoteUpdatedAction action) {
       note.modifiedDate = DateTime.now().toUtc();
       note.location = action.currentLocation;
     }
-  } else {
-    notes.insert(
-        0,
-        NoteDto(
-          id: action.noteId,
-          notebookId: action.notebookId,
-          text: action.text,
-          date: action.date,
-          modifiedDate: action.date,
-          location: action.currentLocation,
-          mediaFiles: action.mediaFiles,
-        ));
   }
   _sortNotes(state, notes);
   return state.rebuild(
