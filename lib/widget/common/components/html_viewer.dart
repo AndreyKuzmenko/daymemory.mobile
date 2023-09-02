@@ -46,7 +46,7 @@ class _HtmlViewerState extends State<HtmlViewer> {
     final html = _getHtml(widget.text ?? "");
 
     return Html(
-      data: html, //innerText,
+      data: html.replaceAll("<p><br/></p>", ""), //innerText,
       onLinkTap: (url, attributes, element) {
         // if (url == null) {
         //   return;
