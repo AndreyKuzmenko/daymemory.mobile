@@ -66,57 +66,67 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
 
   Future _saveNote(SaveNoteAction action, AppState state, Function(dynamic action) dispatch) async {
     dispatch(NoteSavingAction(isSaving: true));
-    var result = await noteService.updateNote(
-      state.noteState.noteId!,
-      state.noteState.notebookId!,
-      state.noteState.text!,
-      state.noteState.date,
-      DateTime.now().toUtc(),
-      state.noteState.mediaFiles.toList(),
-      state.noteState.location,
-      true,
-    );
-    dispatch(NoteUpdatedAction(
-      noteId: result.id,
-      notebookId: result.notebookId,
-      text: result.text,
-      mediaFiles: result.mediaFiles,
-      currentLocation: result.location,
-      date: result.date,
-      modifiedDate: result.modifiedDate,
-    ));
-    dispatch(LoadNotebooksAction());
-    dispatch(NoteSavingAction(isSaving: false));
-    dispatch(PopBackStackAction(key: RouteDirection.editNote));
+    try {
+      var result = await noteService.updateNote(
+        state.noteState.noteId!,
+        state.noteState.notebookId!,
+        state.noteState.text!,
+        state.noteState.date,
+        DateTime.now().toUtc(),
+        state.noteState.mediaFiles.toList(),
+        state.noteState.location,
+        true,
+      );
+      dispatch(NoteUpdatedAction(
+        noteId: result.id,
+        notebookId: result.notebookId,
+        text: result.text,
+        mediaFiles: result.mediaFiles,
+        currentLocation: result.location,
+        date: result.date,
+        modifiedDate: result.modifiedDate,
+      ));
+      dispatch(LoadNotebooksAction());
+      dispatch(PopBackStackAction(key: RouteDirection.editNote));
+    } catch (e) {
+      dispatch(dialogService.prepareSomethingWentWrongDialogAction(dispatch, errorMessage: "Could not save note"));
+    } finally {
+      dispatch(NoteSavingAction(isSaving: false));
+    }
   }
 
   Future _createNote(CreateNoteAction action, AppState state, Function(dynamic action) dispatch) async {
     dispatch(NoteSavingAction(isSaving: true));
-    var result = await noteService.createNote(
-      const Uuid().v4(),
-      state.noteState.notebookId!,
-      state.noteState.text!,
-      state.noteState.date,
-      DateTime.now().toUtc(),
-      state.noteState.mediaFiles.toList(),
-      state.noteState.location,
-      true,
-    );
-    dispatch(NoteSavingAction(isSaving: false));
 
-    dispatch(NoteCreatedAction(
-      noteId: result.id,
-      notebookId: result.notebookId,
-      text: result.text,
-      mediaFiles: result.mediaFiles,
-      currentLocation: result.location,
-      date: result.date,
-      modifiedDate: result.modifiedDate,
-    ));
+    try {
+      var result = await noteService.createNote(
+        const Uuid().v4(),
+        state.noteState.notebookId!,
+        state.noteState.text!,
+        state.noteState.date,
+        DateTime.now().toUtc(),
+        state.noteState.mediaFiles.toList(),
+        state.noteState.location,
+        true,
+      );
+      dispatch(NoteCreatedAction(
+        noteId: result.id,
+        notebookId: result.notebookId,
+        text: result.text,
+        mediaFiles: result.mediaFiles,
+        currentLocation: result.location,
+        date: result.date,
+        modifiedDate: result.modifiedDate,
+      ));
 
-    dispatch(LoadNotebooksAction());
-    //dispatch(LoadNotesAction(tag: null, notebookId: state.selectedNotebookState.notebookId));
-    dispatch(PopBackStackAction(key: RouteDirection.editNote));
+      dispatch(LoadNotebooksAction());
+      //dispatch(LoadNotesAction(tag: null, notebookId: state.selectedNotebookState.notebookId));
+      dispatch(PopBackStackAction(key: RouteDirection.editNote));
+    } catch (e) {
+      dispatch(dialogService.prepareSomethingWentWrongDialogAction(dispatch, errorMessage: "Could not save note"));
+    } finally {
+      dispatch(NoteSavingAction(isSaving: false));
+    }
   }
 
   Future<void> _deleteNote(DeleteNoteAction action, Function(dynamic action) dispatch) async {
