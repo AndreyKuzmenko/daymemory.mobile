@@ -216,6 +216,8 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
       filePath = await fileSelectorService.selectVideo();
     } on PhotoAccessDeniedException {
       store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch, errorMessage: _locale!.photo_library_no_access));
+    } catch (e) {
+      store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch, errorMessage: "Could not select video: ${e.toString()}"));
     }
 
     store.dispatch(DelayedAction(nextAction: AppStateAction(isAppActive: false), delay: 1000));
