@@ -63,7 +63,7 @@ class _NoteListViewState extends State<NoteListView> {
                         text: widget.viewModel.noNotes,
                       )
                     : ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 80),
                         //shrinkWrap: true,
                         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                         separatorBuilder: (context, index) {

@@ -12,6 +12,7 @@
     "finish_error_message": "Оой. Ми не змогли виконати дію.",
 
     "settings_page_title": "Налаштування",
+    "settings_app_version": "Версія: ",
     "settings_passcode_page_title": "Пін-код",
     "settings_passcode_require_after_page_title": "Блокування екрану",
     "settings_passcode_require_after_explanation": "Через який час після покидання додатку ви б хотіли заблокувати екран?",

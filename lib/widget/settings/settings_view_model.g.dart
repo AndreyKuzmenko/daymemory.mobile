@@ -10,6 +10,8 @@ class _$SettingsViewModel extends SettingsViewModel {
   @override
   final String title;
   @override
+  final String appVersion;
+  @override
   final String selectedLanguage;
   @override
   final String selectLanguageOptionTitle;
@@ -86,6 +88,7 @@ class _$SettingsViewModel extends SettingsViewModel {
 
   _$SettingsViewModel._(
       {required this.title,
+      required this.appVersion,
       required this.selectedLanguage,
       required this.selectLanguageOptionTitle,
       required this.showInReviewOptionTitle,
@@ -123,6 +126,8 @@ class _$SettingsViewModel extends SettingsViewModel {
       required this.backCommand})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(title, r'SettingsViewModel', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        appVersion, r'SettingsViewModel', 'appVersion');
     BuiltValueNullFieldError.checkNotNull(
         selectedLanguage, r'SettingsViewModel', 'selectedLanguage');
     BuiltValueNullFieldError.checkNotNull(selectLanguageOptionTitle,
@@ -206,6 +211,7 @@ class _$SettingsViewModel extends SettingsViewModel {
     if (identical(other, this)) return true;
     return other is SettingsViewModel &&
         title == other.title &&
+        appVersion == other.appVersion &&
         selectedLanguage == other.selectedLanguage &&
         selectLanguageOptionTitle == other.selectLanguageOptionTitle &&
         showInReviewOptionTitle == other.showInReviewOptionTitle &&
@@ -247,6 +253,7 @@ class _$SettingsViewModel extends SettingsViewModel {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, appVersion.hashCode);
     _$hash = $jc(_$hash, selectedLanguage.hashCode);
     _$hash = $jc(_$hash, selectLanguageOptionTitle.hashCode);
     _$hash = $jc(_$hash, showInReviewOptionTitle.hashCode);
@@ -290,6 +297,7 @@ class _$SettingsViewModel extends SettingsViewModel {
   String toString() {
     return (newBuiltValueToStringHelper(r'SettingsViewModel')
           ..add('title', title)
+          ..add('appVersion', appVersion)
           ..add('selectedLanguage', selectedLanguage)
           ..add('selectLanguageOptionTitle', selectLanguageOptionTitle)
           ..add('showInReviewOptionTitle', showInReviewOptionTitle)
@@ -336,6 +344,10 @@ class SettingsViewModelBuilder
   String? _title;
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
+
+  String? _appVersion;
+  String? get appVersion => _$this._appVersion;
+  set appVersion(String? appVersion) => _$this._appVersion = appVersion;
 
   String? _selectedLanguage;
   String? get selectedLanguage => _$this._selectedLanguage;
@@ -519,6 +531,7 @@ class SettingsViewModelBuilder
     final $v = _$v;
     if ($v != null) {
       _title = $v.title;
+      _appVersion = $v.appVersion;
       _selectedLanguage = $v.selectedLanguage;
       _selectLanguageOptionTitle = $v.selectLanguageOptionTitle;
       _showInReviewOptionTitle = $v.showInReviewOptionTitle;
@@ -578,6 +591,8 @@ class SettingsViewModelBuilder
         new _$SettingsViewModel._(
             title: BuiltValueNullFieldError.checkNotNull(
                 title, r'SettingsViewModel', 'title'),
+            appVersion: BuiltValueNullFieldError.checkNotNull(
+                appVersion, r'SettingsViewModel', 'appVersion'),
             selectedLanguage: BuiltValueNullFieldError.checkNotNull(
                 selectedLanguage, r'SettingsViewModel', 'selectedLanguage'),
             selectLanguageOptionTitle: BuiltValueNullFieldError.checkNotNull(
@@ -588,8 +603,7 @@ class SettingsViewModelBuilder
                 reviewPeriodOptionTitle, r'SettingsViewModel', 'reviewPeriodOptionTitle'),
             reviewPeriodCommand: BuiltValueNullFieldError.checkNotNull(
                 reviewPeriodCommand, r'SettingsViewModel', 'reviewPeriodCommand'),
-            languageSelectorCommand: BuiltValueNullFieldError.checkNotNull(
-                languageSelectorCommand, r'SettingsViewModel', 'languageSelectorCommand'),
+            languageSelectorCommand: BuiltValueNullFieldError.checkNotNull(languageSelectorCommand, r'SettingsViewModel', 'languageSelectorCommand'),
             showInReviewCommand: BuiltValueNullFieldError.checkNotNull(showInReviewCommand, r'SettingsViewModel', 'showInReviewCommand'),
             tagsOptionTitle: BuiltValueNullFieldError.checkNotNull(tagsOptionTitle, r'SettingsViewModel', 'tagsOptionTitle'),
             tagsCommand: BuiltValueNullFieldError.checkNotNull(tagsCommand, r'SettingsViewModel', 'tagsCommand'),

@@ -6,6 +6,8 @@ part 'settings_view_model.g.dart';
 abstract class SettingsViewModel implements Built<SettingsViewModel, SettingsViewModelBuilder> {
   String get title;
 
+  String get appVersion;
+
   String get selectedLanguage;
 
   String get selectLanguageOptionTitle;

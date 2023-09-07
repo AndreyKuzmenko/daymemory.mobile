@@ -26,9 +26,12 @@ class SettingsConnector extends PageConnector<SettingsViewModel, SettingsConvert
     final settingsState = state.settingsState;
     final config = AppThemeWidget.getConfigurationSettings(context);
     Locale languageLocale = Localizations.localeOf(context);
+    var deviceInfo = AppThemeWidget.getDeviceInfo(context);
+
     final converter = SettingsConverter(
         locale: AppLocalizations.of(context)!,
         dispatch: dispatch,
+        appVersion: deviceInfo.appVersionName,
         languageLocale: languageLocale,
         selectedLanguage: state.settingsState.availableLanguages.firstWhere((element) => element.code == state.settingsState.language).name,
         privacyPolicyUrl: config.privacyPolicyUrl,

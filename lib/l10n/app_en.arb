@@ -12,6 +12,7 @@
     "finish_error_message": "Oops. Can't finish the action.",
     
     "settings_page_title": "Settings",
+    "settings_app_version": "Version: ",
     "settings_passcode_page_title": "Passcode",
     "settings_passcode_require_after_page_title": "Require Passcode",
     "settings_passcode_require_after_explanation": "After leaving the app, how long until a passcode is required for re-opening?",

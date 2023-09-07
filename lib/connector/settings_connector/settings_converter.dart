@@ -26,6 +26,7 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
   final Locale languageLocale;
   final bool isAuthenticated;
   final String? userName;
+  final String appVersion;
 
   SettingsConverter(
       {required this.locale,
@@ -45,12 +46,14 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       required this.userName,
       required this.isLocationVisible,
       required this.isAuthenticated,
+      required this.appVersion,
       required this.isScreenBlockingEnabled});
 
   @override
   SettingsViewModel build() {
     return SettingsViewModel((b) => b
       ..title = locale.settings_page_title
+      ..appVersion = "${locale.settings_app_version}$appVersion"
       ..backCommand = FunctionHolder(() => dispatch((PopBackStackAction())))
       ..isAuthenticated = isAuthenticated
       ..userName = userName
