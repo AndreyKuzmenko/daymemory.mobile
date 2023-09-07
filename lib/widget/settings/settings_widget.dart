@@ -1,4 +1,5 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
+import 'package:daymemory/widget/settings/common/version_settings_tile.dart';
 import 'package:daymemory/widget/settings/settings_view_model.dart';
 import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
@@ -210,6 +211,12 @@ class SettingsWidget extends StatelessWidget {
                     viewModel.introCommand.command();
                   },
                 ),
+              ],
+            ),
+            SettingsSection(
+              margin: const EdgeInsetsDirectional.only(top: 0, start: 20),
+              tiles: <AbstractSettingsTile>[
+                VersionSettingsTile(appVersion: viewModel.appVersion),
               ],
             ),
           ],
