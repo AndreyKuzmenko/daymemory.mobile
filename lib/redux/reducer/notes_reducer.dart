@@ -99,7 +99,7 @@ void _sortNotes(NotesState state, List<NoteDto> notes) {
 NotesState _noteCreatedAction(NotesState state, NoteCreatedAction action) {
   var notes = state.notes.toList();
 
-  if (state.notebookId == action.notebookId) {
+  if (state.notebookId == action.notebookId || state.notebookId == null) {
     notes.insert(
         0,
         NoteDto(
