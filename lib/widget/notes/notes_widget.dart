@@ -49,14 +49,17 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
           statusBarBrightness: Brightness.light, // For iOS (dark icons)
         ),
         actions: [
-          if (widget.viewModel.editNotebookCommand != null)
-            NavButtonWidget(
-              icon: Icons.more_horiz,
-              onPressed: widget.viewModel.editNotebookCommand,
-            ),
+          widget.viewModel.editNotebookCommand != null
+              ? NavButtonWidget(
+                  icon: Icons.more_horiz,
+                  onPressed: widget.viewModel.editNotebookCommand,
+                )
+              : const SizedBox(
+                  width: 40,
+                ),
         ],
         leading: !widget.viewModel.showDrawerMenu
-            ? const SizedBox.shrink()
+            ? const SizedBox()
             : NavButtonWidget(
                 onPressed: FunctionHolder(() {
                   scaffoldKey.currentState?.openDrawer();
