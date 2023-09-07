@@ -219,7 +219,9 @@ class NavigateToNewNotebookAction implements ILoggingAction {
 }
 
 class NavigateToEditNotebookAction implements ILoggingAction {
-  NavigateToEditNotebookAction();
+  final String notebookId;
+
+  NavigateToEditNotebookAction({required this.notebookId});
 
   @override
   String toLogString() {

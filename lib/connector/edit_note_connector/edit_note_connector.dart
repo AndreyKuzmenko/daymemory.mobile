@@ -24,7 +24,7 @@ class EditNoteConnector extends PageConnector<EditNoteViewModel, EditNoteConvert
 
   @override
   EditNoteConverter prepareConverter(BuildContext context, AppState state, Function(dynamic) dispatch) {
-    var notebookId = state.noteState.notebookId ?? state.selectedNotebookState.notebookId!;
+    var notebookId = state.noteState.notebookId ?? state.selectedMenuItemState.itemId!;
     var notebookTitle = state.notebooksState.items.firstWhere((element) => element.id == notebookId).title;
 
     final converter = EditNoteConverter(

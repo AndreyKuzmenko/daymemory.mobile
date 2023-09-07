@@ -23,6 +23,9 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
   @override
   void initState() {
     _titleController = TextEditingController(text: widget.viewModel.notebookTitle);
+    _titleController.addListener(() {
+      widget.viewModel.titleChangedCommand.command(_titleController.text);
+    });
     super.initState();
   }
 
@@ -42,7 +45,7 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
                         if (!isValid) {
                           return;
                         }
-                        widget.viewModel.saveCommand.command(_titleController.text);
+                        widget.viewModel.saveCommand.command();
                       },
                 child: Container(
                   height: 30,

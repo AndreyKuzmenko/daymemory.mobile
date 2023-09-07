@@ -15,7 +15,7 @@ class NotesConnector extends PageConnector<NotesViewModel, NotesConverter> {
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {
     super.onInit(context, state, dispatch);
-    dispatch(LoadNotesAction(notebookId: state.selectedNotebookState.notebookId));
+    dispatch(LoadNotesAction(notebookId: state.selectedMenuItemState.itemId));
   }
 
   @override
@@ -39,12 +39,8 @@ class NotesConnector extends PageConnector<NotesViewModel, NotesConverter> {
         showDrawerMenu: state.deviceState.deviceWidthType == DeviceWidthType.narrow,
         showContextMenu: state.deviceState.deviceWidthType == DeviceWidthType.wide,
         isFullscreen: state.deviceState.deviceWidthType == DeviceWidthType.wide && state.deviceState.size.width >= settings.fullscreenMinWidth + settings.sideMenuWidth + 20,
-        notebookId: state.selectedNotebookState.notebookId,
-        notebookOrderRank: state.selectedNotebookState.orderRank,
-        notebookShowInReview: state.selectedNotebookState.showInReview,
-        title: state.selectedNotebookState.notebookTitle ?? settings.appName,
-        notebookTitle: state.selectedNotebookState.notebookTitle,
-        notebookSortingType: state.selectedNotebookState.sortingType,
+        notebookId: state.selectedMenuItemState.itemId,
+        title: state.selectedMenuItemState.title ?? settings.appName,
         isScrollToTopEnabled: tabsState.isActiveTabClicked && tabsState.selectTabIndex == 0,
         isLoadingMore: notesState.isLoadingMore,
         hasLoadedAll: notesState.hasLoadedAll);

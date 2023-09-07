@@ -8,6 +8,7 @@ Reducer<EditNotebookState> get notebookReducer {
     TypedReducer(_initNotebookAction),
     TypedReducer(_notebookSavingAction),
     TypedReducer(_changeNotebookSortingAction),
+    TypedReducer(_changeNotebookTitleAction),
   ]);
 }
 
@@ -26,4 +27,8 @@ EditNotebookState _notebookSavingAction(EditNotebookState state, NotebookSavingA
 
 EditNotebookState _changeNotebookSortingAction(EditNotebookState state, ChangeNotebookSortingAction action) {
   return state.rebuild((b) => b..sortingType = action.sortingType);
+}
+
+EditNotebookState _changeNotebookTitleAction(EditNotebookState state, ChangeNotebookTitleAction action) {
+  return state.rebuild((b) => b..title = action.title);
 }

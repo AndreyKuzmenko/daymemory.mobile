@@ -51,11 +51,14 @@ class EditNotebookConverter extends ViewModelConverter<EditNotebookViewModel> {
       ..selectSortingTypeCommand = FunctionHolder(() {
         dispatch(NavigateToNotebookSortingOrderAction());
       })
-      ..saveCommand = TypedFunctionHolder<String>((title) {
+      ..titleChangedCommand = TypedFunctionHolder<String>((title) {
+        dispatch(ChangeNotebookTitleAction(title: title));
+      })
+      ..saveCommand = FunctionHolder(() {
         if (notebookId == null) {
-          dispatch(CreateNotebookAction(title: title, orderRank: orderRank, sortingType: sortingType));
+          dispatch(CreateNotebookAction());
         } else {
-          dispatch(SaveNotebookAction(title: title, sortingType: sortingType));
+          dispatch(SaveNotebookAction());
         }
       })
       ..closeCommand = FunctionHolder(() {

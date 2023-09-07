@@ -33,7 +33,8 @@ class NotesMiddleware implements MiddlewareClass<AppState> {
         lastItemDateTime: null,
         notebokId: action.notebookId,
         isFirstLoad: action is! NotesRefreshAction,
-        sortingType: store.state.selectedNotebookState.sortingType,
+        sortingType: SortingType.byCreatedDate,
+        //sortingType: store.state.selectedNotebookState.sortingType,
       );
     } else if (action is LoadMoreNotesAction) {
       await _loadMoreNotes(
@@ -41,7 +42,8 @@ class NotesMiddleware implements MiddlewareClass<AppState> {
         store.dispatch,
         lastItemDateTime: store.state.notesState.lastItemDateTime,
         notebokId: action.notebookId,
-        sortingType: store.state.selectedNotebookState.sortingType,
+        //sortingType: store.state.selectedNotebookState.sortingType,
+        sortingType: SortingType.byCreatedDate,
       );
     }
   }

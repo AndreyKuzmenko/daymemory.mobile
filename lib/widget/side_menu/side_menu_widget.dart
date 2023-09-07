@@ -61,18 +61,18 @@ class SideMenuWidget extends StatelessWidget {
                 )
               ],
             ),
-            tiles: viewModel.notebooks
+            tiles: viewModel.items
                 .map((x) => SettingsTile(
                       title: Text(
                         x.title,
-                        style: viewModel.selectedNotebookId == x.id ? appTheme.settingsActiveLabel : appTheme.settingsLabel,
+                        style: x.isSelected ? appTheme.settingsActiveLabel : appTheme.settingsLabel,
                       ),
                       value: Text(
                         x.notesCount.toString(),
-                        style: viewModel.selectedNotebookId == x.id ? appTheme.settingsValueActiveLabel : appTheme.settingsValueLabel,
+                        style: x.isSelected ? appTheme.settingsValueActiveLabel : appTheme.settingsValueLabel,
                       ),
                       onPressed: (context) {
-                        viewModel.selectNotebookCommand.command(x);
+                        x.selectItemCommand.command();
                       },
                     ))
                 .toList()

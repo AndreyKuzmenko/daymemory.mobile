@@ -83,7 +83,7 @@ class NavigationMiddleware implements MiddlewareClass<AppState> {
     } else if (action is NavigateToNewNotebookAction) {
       await navigationService.pushNamedNewNotebook();
     } else if (action is NavigateToEditNotebookAction) {
-      await navigationService.pushNamedEditNotebook();
+      await navigationService.pushNamedEditNotebook(action.notebookId);
     } else if (action is NavigateToNoteOptionsAction) {
       await navigationService.pushNamedNoteOptions();
     } else if (action is NavigateToSelectNotebookAction) {

@@ -59,10 +59,10 @@ class GenericRouteDefinitionService extends IRouteDefinitionService {
         return getInstantPageTrasition(const TouchIdConnector(), settings);
 
       case RouteDirection.editNotebook:
-        return showDialogPopup(const EditNotebookConnector(), settings, Colors.black.withAlpha(100));
+        return showDialogPopup(EditNotebookConnector(notebookId: settings.arguments as String), settings, Colors.black.withAlpha(100));
 
       case RouteDirection.newNotebook:
-        return showDialogPopup(const EditNotebookConnector(), settings, Colors.black.withAlpha(100));
+        return showDialogPopup(const EditNotebookConnector(notebookId: null), settings, Colors.black.withAlpha(100));
 
       case RouteDirection.selectNotebook:
         return showDialogPopup(const SelectNotebookConnector(), settings, Colors.black.withAlpha(100));

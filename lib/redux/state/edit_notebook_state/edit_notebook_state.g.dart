@@ -10,7 +10,7 @@ class _$EditNotebookState extends EditNotebookState {
   @override
   final String? notebookId;
   @override
-  final String? title;
+  final String title;
   @override
   final bool showInReview;
   @override
@@ -26,12 +26,13 @@ class _$EditNotebookState extends EditNotebookState {
 
   _$EditNotebookState._(
       {this.notebookId,
-      this.title,
+      required this.title,
       required this.showInReview,
       required this.orderRank,
       required this.sortingType,
       required this.isSaving})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(title, r'EditNotebookState', 'title');
     BuiltValueNullFieldError.checkNotNull(
         showInReview, r'EditNotebookState', 'showInReview');
     BuiltValueNullFieldError.checkNotNull(
@@ -151,7 +152,8 @@ class EditNotebookStateBuilder
     final _$result = _$v ??
         new _$EditNotebookState._(
             notebookId: notebookId,
-            title: title,
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'EditNotebookState', 'title'),
             showInReview: BuiltValueNullFieldError.checkNotNull(
                 showInReview, r'EditNotebookState', 'showInReview'),
             orderRank: BuiltValueNullFieldError.checkNotNull(

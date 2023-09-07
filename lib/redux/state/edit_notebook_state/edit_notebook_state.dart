@@ -6,7 +6,7 @@ part 'edit_notebook_state.g.dart';
 abstract class EditNotebookState implements Built<EditNotebookState, EditNotebookStateBuilder> {
   String? get notebookId;
 
-  String? get title;
+  String get title;
 
   bool get showInReview;
 

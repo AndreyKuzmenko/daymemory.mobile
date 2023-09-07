@@ -22,7 +22,7 @@ class SideMenuConnector extends PageConnector<SideMenuViewModel, SideMenuConvert
       isDesktop: state.deviceState.deviceType == DeviceType.desktop,
       hasError: state.syncState.hasLastSyncSucceeded != null && !state.syncState.hasLastSyncSucceeded!,
       locale: AppLocalizations.of(context)!,
-      selectedNotebookId: state.selectedNotebookState.notebookId,
+      selectedMenuItemId: state.selectedMenuItemState.itemId,
     );
     return converter;
   }

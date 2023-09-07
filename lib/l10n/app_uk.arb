@@ -145,6 +145,7 @@
     "edit_notebook_sortby_created_date": "Дата створення",
     "edit_notebook_sortby_modified_date": "Дата редагування",
 
+    "all_notes": "Всі записи",
     "note_options_title": "Опції",
     "note_select_notebook_title": "Вибрати блокнот",
     "note_options_date_label": "Дата",

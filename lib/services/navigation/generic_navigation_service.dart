@@ -106,7 +106,7 @@ class GenericNavigationService extends INavigationService {
   Future<dynamic>? pushNamedNewNotebook() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.newNotebook);
 
   @override
-  Future<dynamic>? pushNamedEditNotebook() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.editNotebook);
+  Future<dynamic>? pushNamedEditNotebook(String notebookId) => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.editNotebook, arguments: notebookId);
 
   @override
   Future<dynamic>? pushNamedNoteOptions() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.noteOptions);

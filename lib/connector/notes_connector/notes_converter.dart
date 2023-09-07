@@ -4,10 +4,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
-import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/note_image_gallery_action.dart';
-import 'package:daymemory/redux/action/notebook_action.dart';
 import 'package:daymemory/redux/action/system_action.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
@@ -28,10 +26,10 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
   final bool isScrollToTopEnabled;
   final bool isFullscreen;
   final String? notebookId;
-  final String? notebookTitle;
-  final int notebookOrderRank;
-  final bool notebookShowInReview;
-  final SortingType notebookSortingType;
+  // final String? notebookTitle;
+  // final int notebookOrderRank;
+  // final bool notebookShowInReview;
+  // final SortingType notebookSortingType;
   final String title;
   final String? tag;
   final List<NoteDto> notes;
@@ -47,11 +45,12 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
     required this.hasLoadedAll,
     required this.notes,
     required this.title,
-    required this.notebookTitle,
     required this.notebookId,
-    required this.notebookOrderRank,
-    required this.notebookShowInReview,
-    required this.notebookSortingType,
+    // required this.notebookTitle,
+    // required this.notebookId,
+    // required this.notebookOrderRank,
+    // required this.notebookShowInReview,
+    // required this.notebookSortingType,
     required this.isFullscreen,
     required this.tag,
     required this.isScrollToTopEnabled,
@@ -71,26 +70,21 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
       ..editNotebookCommand = notebookId == null
           ? null
           : FunctionHolder(() {
-              dispatch(InitNotebookAction(
-                notebookId: notebookId,
-                orderRank: notebookOrderRank,
-                showInReview: notebookShowInReview,
-                title: notebookTitle,
-                sortingType: notebookSortingType,
-              ));
-              dispatch(NavigateToEditNotebookAction());
+              dispatch(NavigateToEditNotebookAction(notebookId: notebookId!));
             })
-      ..newNoteCommand = FunctionHolder(() {
-        dispatch(InitNoteAction(
-          noteId: null,
-          notebookId: notebookId,
-          text: "",
-          mediaFiles: [],
-          location: null,
-          date: DateTime.now().toUtc(),
-        ));
-        dispatch(NavigateToNewNoteAction());
-      })
+      ..newNoteCommand = notebookId == null
+          ? null
+          : FunctionHolder(() {
+              dispatch(InitNoteAction(
+                noteId: null,
+                notebookId: notebookId,
+                text: "",
+                mediaFiles: [],
+                location: null,
+                date: DateTime.now().toUtc(),
+              ));
+              dispatch(NavigateToNewNoteAction());
+            })
       ..loadMoreCommand = FunctionHolder(() => dispatch((LoadMoreNotesAction(notebookId))))
       ..refreshCommand = FunctionHolder(() {
         dispatch(NotesRefreshAction(notebookId));

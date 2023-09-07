@@ -1,3 +1,4 @@
+import 'package:daymemory/redux/action/menu_item_action.dart';
 import 'package:daymemory/redux/action/notebook_action.dart';
 import 'package:daymemory/redux/action/notebooks_action.dart';
 import 'package:daymemory/redux/state/states.dart';
@@ -30,7 +31,7 @@ class NotebooksMiddleware implements MiddlewareClass<AppState> {
       var items = await notebookService.fetchNotebooks();
       store.dispatch(NotebooksLoadedAction(items: items));
 
-      if (store.state.selectedNotebookState.notebookId == null) {
+      if (store.state.selectedMenuItemState.itemId == null) {
         var settings = await settingsService.getSettings();
         var defaultNotebookId = settings.defaultNotebookId;
         if (items.isNotEmpty) {
@@ -41,16 +42,16 @@ class NotebooksMiddleware implements MiddlewareClass<AppState> {
               defNotebook = notebook;
             }
           }
-          store.dispatch(SelectDefaultNotebookAction(notebook: defNotebook));
+          store.dispatch(SelectMenuItemAction(itemId: defNotebook.id, title: defNotebook.title));
         }
       }
       store.dispatch(action.nextAction);
-    } else if (action is SelectDefaultNotebookAction) {
+    } else if (action is SelectMenuItemAction) {
       var settings = await settingsService.getSettings();
-      settings.defaultNotebookId = action.notebook?.id;
+      settings.defaultNotebookId = action.itemId;
       await settingsService.setSettings(settings);
 
-      store.dispatch(DefaultNotebookSelectedAction(notebook: action.notebook));
+      store.dispatch(MenuItemSelectedAction(itemId: action.itemId, title: action.title));
       if (action.nextAction != null) {
         store.dispatch(action.nextAction);
       }

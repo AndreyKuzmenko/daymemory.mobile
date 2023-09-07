@@ -28,7 +28,9 @@ abstract class EditNotebookViewModel implements Built<EditNotebookViewModel, Edi
 
   bool get isSaving;
 
-  TypedFunctionHolder<String> get saveCommand;
+  TypedFunctionHolder<String> get titleChangedCommand;
+
+  FunctionHolder get saveCommand;
 
   FunctionHolder get closeCommand;
 

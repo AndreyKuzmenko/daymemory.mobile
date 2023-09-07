@@ -162,16 +162,16 @@ class MobileNavigationService extends INavigationService {
     final context = routeDefinitionService.key.currentState?.context;
     showCupertinoModalBottomSheet(
       context: context!,
-      builder: (context) => const EditNotebookConnector(),
+      builder: (context) => const EditNotebookConnector(notebookId: null),
     );
   }
 
   @override
-  Future<dynamic>? pushNamedEditNotebook() async {
+  Future<dynamic>? pushNamedEditNotebook(String notebookId) async {
     final context = routeDefinitionService.key.currentState?.context;
     showCupertinoModalBottomSheet(
       context: context!,
-      builder: (context) => const EditNotebookConnector(),
+      builder: (context) => EditNotebookConnector(notebookId: notebookId),
     );
   }
 

@@ -14,7 +14,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
   @override
   final String? selectedNotebookId;
   @override
-  final List<NotebookDto> notebooks;
+  final List<SideMenuItemViewModel> items;
   @override
   final bool isDesktop;
   @override
@@ -42,7 +42,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
       {required this.selectNotebookCommand,
       required this.newNotebookCommand,
       this.selectedNotebookId,
-      required this.notebooks,
+      required this.items,
       required this.isDesktop,
       required this.hasError,
       required this.settingsMenuOption,
@@ -57,8 +57,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
         selectNotebookCommand, r'SideMenuViewModel', 'selectNotebookCommand');
     BuiltValueNullFieldError.checkNotNull(
         newNotebookCommand, r'SideMenuViewModel', 'newNotebookCommand');
-    BuiltValueNullFieldError.checkNotNull(
-        notebooks, r'SideMenuViewModel', 'notebooks');
+    BuiltValueNullFieldError.checkNotNull(items, r'SideMenuViewModel', 'items');
     BuiltValueNullFieldError.checkNotNull(
         isDesktop, r'SideMenuViewModel', 'isDesktop');
     BuiltValueNullFieldError.checkNotNull(
@@ -94,7 +93,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
         selectNotebookCommand == other.selectNotebookCommand &&
         newNotebookCommand == other.newNotebookCommand &&
         selectedNotebookId == other.selectedNotebookId &&
-        notebooks == other.notebooks &&
+        items == other.items &&
         isDesktop == other.isDesktop &&
         hasError == other.hasError &&
         settingsMenuOption == other.settingsMenuOption &&
@@ -112,7 +111,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
     _$hash = $jc(_$hash, selectNotebookCommand.hashCode);
     _$hash = $jc(_$hash, newNotebookCommand.hashCode);
     _$hash = $jc(_$hash, selectedNotebookId.hashCode);
-    _$hash = $jc(_$hash, notebooks.hashCode);
+    _$hash = $jc(_$hash, items.hashCode);
     _$hash = $jc(_$hash, isDesktop.hashCode);
     _$hash = $jc(_$hash, hasError.hashCode);
     _$hash = $jc(_$hash, settingsMenuOption.hashCode);
@@ -132,7 +131,7 @@ class _$SideMenuViewModel extends SideMenuViewModel {
           ..add('selectNotebookCommand', selectNotebookCommand)
           ..add('newNotebookCommand', newNotebookCommand)
           ..add('selectedNotebookId', selectedNotebookId)
-          ..add('notebooks', notebooks)
+          ..add('items', items)
           ..add('isDesktop', isDesktop)
           ..add('hasError', hasError)
           ..add('settingsMenuOption', settingsMenuOption)
@@ -167,9 +166,9 @@ class SideMenuViewModelBuilder
   set selectedNotebookId(String? selectedNotebookId) =>
       _$this._selectedNotebookId = selectedNotebookId;
 
-  List<NotebookDto>? _notebooks;
-  List<NotebookDto>? get notebooks => _$this._notebooks;
-  set notebooks(List<NotebookDto>? notebooks) => _$this._notebooks = notebooks;
+  List<SideMenuItemViewModel>? _items;
+  List<SideMenuItemViewModel>? get items => _$this._items;
+  set items(List<SideMenuItemViewModel>? items) => _$this._items = items;
 
   bool? _isDesktop;
   bool? get isDesktop => _$this._isDesktop;
@@ -222,7 +221,7 @@ class SideMenuViewModelBuilder
       _selectNotebookCommand = $v.selectNotebookCommand;
       _newNotebookCommand = $v.newNotebookCommand;
       _selectedNotebookId = $v.selectedNotebookId;
-      _notebooks = $v.notebooks;
+      _items = $v.items;
       _isDesktop = $v.isDesktop;
       _hasError = $v.hasError;
       _settingsMenuOption = $v.settingsMenuOption;
@@ -259,8 +258,8 @@ class SideMenuViewModelBuilder
             newNotebookCommand: BuiltValueNullFieldError.checkNotNull(
                 newNotebookCommand, r'SideMenuViewModel', 'newNotebookCommand'),
             selectedNotebookId: selectedNotebookId,
-            notebooks: BuiltValueNullFieldError.checkNotNull(
-                notebooks, r'SideMenuViewModel', 'notebooks'),
+            items: BuiltValueNullFieldError.checkNotNull(
+                items, r'SideMenuViewModel', 'items'),
             isDesktop: BuiltValueNullFieldError.checkNotNull(
                 isDesktop, r'SideMenuViewModel', 'isDesktop'),
             hasError: BuiltValueNullFieldError.checkNotNull(

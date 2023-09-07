@@ -1,6 +1,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
+import 'package:daymemory/widget/side_menu/side_menu_view_model/side_menu_item_view_model.dart';
 part 'side_menu_view_model.g.dart';
 
 abstract class SideMenuViewModel implements Built<SideMenuViewModel, SideMenuViewModelBuilder> {
@@ -10,7 +11,7 @@ abstract class SideMenuViewModel implements Built<SideMenuViewModel, SideMenuVie
 
   String? get selectedNotebookId;
 
-  List<NotebookDto> get notebooks;
+  List<SideMenuItemViewModel> get items;
 
   bool get isDesktop;
 

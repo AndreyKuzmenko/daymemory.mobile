@@ -49,7 +49,7 @@ abstract class INavigationService {
 
   Future<dynamic>? pushNamedNewNotebook();
 
-  Future<dynamic>? pushNamedEditNotebook();
+  Future<dynamic>? pushNamedEditNotebook(String notebookId);
 
   Future<dynamic>? pushNamedNoteOptions();
 

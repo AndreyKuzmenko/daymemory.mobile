@@ -2,7 +2,7 @@ import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/redux/action/account_action.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/device_action.dart';
-import 'package:daymemory/redux/action/notebook_action.dart';
+import 'package:daymemory/redux/action/menu_item_action.dart';
 import 'package:daymemory/redux/action/notebooks_action.dart';
 import 'package:daymemory/redux/action/sync_action.dart';
 import 'package:daymemory/redux/state/app_state.dart';
@@ -91,7 +91,7 @@ class InitializationMiddleware implements MiddlewareClass<AppState> {
     await settingsService.setSettings(settings);
 
     store.dispatch(LoadNotebooksAction());
-    store.dispatch(SelectDefaultNotebookAction(notebook: notebook, nextAction: LoadNotesAction(notebookId: notebookId)));
+    store.dispatch(SelectMenuItemAction(itemId: notebookId, title: notebook.title, nextAction: LoadNotesAction(notebookId: notebookId)));
   }
 
   // Future _setupDefaultTags(Store<AppState> store) async {

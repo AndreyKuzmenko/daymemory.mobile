@@ -1,7 +1,7 @@
 import 'package:daymemory/redux/action/account_action.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/face_id_action.dart';
-import 'package:daymemory/redux/action/notebook_action.dart';
+import 'package:daymemory/redux/action/menu_item_action.dart';
 import 'package:daymemory/redux/action/notebooks_action.dart';
 import 'package:daymemory/redux/action/settings_action.dart';
 import 'package:daymemory/redux/action/sync_action.dart';
@@ -245,7 +245,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
           ));
           //await settingsService.setLastSyncDate(null);
           //await settingsService.setDefaultNotebookId(null);
-          dispatch(SelectDefaultNotebookAction(notebook: null));
+          dispatch(SelectMenuItemAction(itemId: null, title: null));
           dispatch(DeviceDataClearedAction());
           dispatch(const LoadNotesAction(notebookId: null));
           dispatch(LoadNotebooksAction());

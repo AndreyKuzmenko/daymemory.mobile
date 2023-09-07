@@ -1,4 +1,5 @@
 import 'package:daymemory/redux/action/actions.dart';
+import 'package:daymemory/redux/action/menu_item_action.dart';
 import 'package:daymemory/redux/action/notebook_action.dart';
 import 'package:daymemory/redux/action/notebooks_action.dart';
 import 'package:daymemory/redux/state/edit_notebook_state/edit_notebook_state.dart';
@@ -51,12 +52,12 @@ class NotebookMiddleware implements MiddlewareClass<AppState> {
     dispatch(NotebookSavingAction(isSaving: true));
     var result = await notebookService.update(
       state.notebookId!,
-      action.title,
+      state.title,
       DateTime.now().toUtc(),
       state.orderRank,
       state.showInReview,
       true,
-      action.sortingType,
+      state.sortingType,
     );
     dispatch(NotebookUpdatedAction(notebookId: result.id, title: result.title, sortingType: state.sortingType));
     dispatch(NotebookSavingAction(isSaving: false));
@@ -70,12 +71,12 @@ class NotebookMiddleware implements MiddlewareClass<AppState> {
     dispatch(NotebookSavingAction(isSaving: true));
     var result = await notebookService.create(
       const Uuid().v4(),
-      action.title,
+      state.title,
       DateTime.now().toUtc(),
-      action.orderRank,
+      state.orderRank,
       state.showInReview,
       true,
-      action.sortingType,
+      state.sortingType,
     );
     dispatch(NotebookSavingAction(isSaving: false));
     dispatch(NotebookCreatedAction(
@@ -83,7 +84,7 @@ class NotebookMiddleware implements MiddlewareClass<AppState> {
       title: result.title,
     ));
 
-    dispatch(SelectDefaultNotebookAction(notebook: result, nextAction: LoadNotesAction(notebookId: result.id)));
+    dispatch(SelectMenuItemAction(itemId: result.id, title: result.title, nextAction: LoadNotesAction(notebookId: result.id)));
     dispatch(LoadNotebooksAction());
     dispatch(PopBackStackAction());
   }
@@ -102,11 +103,7 @@ class NotebookMiddleware implements MiddlewareClass<AppState> {
           settings.defaultNotebookId = notebook?.id;
           await settingsService.setSettings(settings);
 
-          if (notebook != null) {
-            dispatch(SelectDefaultNotebookAction(notebook: notebook, nextAction: LoadNotesAction(notebookId: notebook.id)));
-          } else {
-            dispatch(SelectDefaultNotebookAction(notebook: null, nextAction: const LoadNotesAction(notebookId: null)));
-          }
+          dispatch(SelectMenuItemAction(itemId: notebook?.id, title: notebook?.title, nextAction: LoadNotesAction(notebookId: notebook?.id)));
           dispatch(PopBackStackAction());
         },
         title: _locale!.notebook_delete_title,

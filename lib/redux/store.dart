@@ -24,7 +24,7 @@ import 'package:daymemory/redux/reducer/note_image_gallery_reducer.dart';
 import 'package:daymemory/redux/reducer/notebook_reducer.dart';
 import 'package:daymemory/redux/reducer/notebooks_reducer.dart';
 import 'package:daymemory/redux/reducer/reviews_reducer.dart';
-import 'package:daymemory/redux/reducer/selected_notebook_reducer.dart';
+import 'package:daymemory/redux/reducer/selected_menu_item_reducer.dart';
 import 'package:daymemory/redux/reducer/sync_reducer.dart';
 import 'package:daymemory/redux/reducer/tags_reducer.dart';
 import 'package:daymemory/redux/reducer/note_reducers.dart';
@@ -90,8 +90,8 @@ IStoreService initStore() {
             state.editNotebookState,
             action,
           ).toBuilder()
-          ..selectedNotebookState = selectedNotebookReducer(
-            state.selectedNotebookState,
+          ..selectedMenuItemState = selectedMenuItemReducer(
+            state.selectedMenuItemState,
             action,
           ).toBuilder()
           ..editTagsState = editTagsReducer(

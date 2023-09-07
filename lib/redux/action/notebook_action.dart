@@ -2,30 +2,6 @@ import 'package:daymemory/data/dtos/notebook_dto.dart';
 
 import 'common_action.dart';
 
-class SelectDefaultNotebookAction implements ILoggingAction {
-  final NotebookDto? notebook;
-
-  final dynamic nextAction;
-
-  SelectDefaultNotebookAction({required this.notebook, this.nextAction});
-
-  @override
-  String toLogString() {
-    return 'Select Default Notebook Action';
-  }
-}
-
-class DefaultNotebookSelectedAction implements ILoggingAction {
-  final NotebookDto? notebook;
-
-  DefaultNotebookSelectedAction({required this.notebook});
-
-  @override
-  String toLogString() {
-    return 'Default Notebook Selected Action';
-  }
-}
-
 class InitNotebookAction implements ILoggingAction {
   final String? notebookId;
   final String? title;
@@ -48,30 +24,13 @@ class InitNotebookAction implements ILoggingAction {
 }
 
 class CreateNotebookAction implements ILoggingAction {
-  final String title;
-  final int orderRank;
-  final SortingType sortingType;
-
-  CreateNotebookAction({
-    required this.title,
-    required this.orderRank,
-    required this.sortingType,
-  });
-
   @override
   String toLogString() {
-    return 'Save Notebook Action';
+    return 'Create Notebook Action';
   }
 }
 
 class SaveNotebookAction implements ILoggingAction {
-  final String title;
-  final SortingType sortingType;
-  SaveNotebookAction({
-    required this.title,
-    required this.sortingType,
-  });
-
   @override
   String toLogString() {
     return 'Save Notebook Action';
@@ -177,5 +136,16 @@ class ChangeNotebookSortingAction implements ILoggingAction {
   @override
   String toLogString() {
     return 'Change Notebook Sorting Action';
+  }
+}
+
+class ChangeNotebookTitleAction implements ILoggingAction {
+  final String title;
+
+  ChangeNotebookTitleAction({required this.title});
+
+  @override
+  String toLogString() {
+    return 'Change Notebook Title Action';
   }
 }

@@ -148,6 +148,7 @@
     "edit_notebook_sortby_created_date": "Entry Date",
     "edit_notebook_sortby_modified_date": "Edit Date",
 
+    "all_notes": "All notes",
     "note_options_title": "Options",
     "note_select_notebook_title": "Select a notebook",
     "note_options_date_label": "Date",

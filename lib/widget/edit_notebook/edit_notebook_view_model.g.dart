@@ -32,7 +32,9 @@ class _$EditNotebookViewModel extends EditNotebookViewModel {
   @override
   final bool isSaving;
   @override
-  final TypedFunctionHolder<String> saveCommand;
+  final TypedFunctionHolder<String> titleChangedCommand;
+  @override
+  final FunctionHolder saveCommand;
   @override
   final FunctionHolder closeCommand;
   @override
@@ -55,6 +57,7 @@ class _$EditNotebookViewModel extends EditNotebookViewModel {
       required this.saveButtonTitle,
       required this.requiredFieldValidator,
       required this.isSaving,
+      required this.titleChangedCommand,
       required this.saveCommand,
       required this.closeCommand,
       required this.deleteCommand})
@@ -79,6 +82,8 @@ class _$EditNotebookViewModel extends EditNotebookViewModel {
         r'EditNotebookViewModel', 'requiredFieldValidator');
     BuiltValueNullFieldError.checkNotNull(
         isSaving, r'EditNotebookViewModel', 'isSaving');
+    BuiltValueNullFieldError.checkNotNull(
+        titleChangedCommand, r'EditNotebookViewModel', 'titleChangedCommand');
     BuiltValueNullFieldError.checkNotNull(
         saveCommand, r'EditNotebookViewModel', 'saveCommand');
     BuiltValueNullFieldError.checkNotNull(
@@ -112,6 +117,7 @@ class _$EditNotebookViewModel extends EditNotebookViewModel {
         saveButtonTitle == other.saveButtonTitle &&
         requiredFieldValidator == other.requiredFieldValidator &&
         isSaving == other.isSaving &&
+        titleChangedCommand == other.titleChangedCommand &&
         saveCommand == other.saveCommand &&
         closeCommand == other.closeCommand &&
         deleteCommand == other.deleteCommand;
@@ -132,6 +138,7 @@ class _$EditNotebookViewModel extends EditNotebookViewModel {
     _$hash = $jc(_$hash, saveButtonTitle.hashCode);
     _$hash = $jc(_$hash, requiredFieldValidator.hashCode);
     _$hash = $jc(_$hash, isSaving.hashCode);
+    _$hash = $jc(_$hash, titleChangedCommand.hashCode);
     _$hash = $jc(_$hash, saveCommand.hashCode);
     _$hash = $jc(_$hash, closeCommand.hashCode);
     _$hash = $jc(_$hash, deleteCommand.hashCode);
@@ -154,6 +161,7 @@ class _$EditNotebookViewModel extends EditNotebookViewModel {
           ..add('saveButtonTitle', saveButtonTitle)
           ..add('requiredFieldValidator', requiredFieldValidator)
           ..add('isSaving', isSaving)
+          ..add('titleChangedCommand', titleChangedCommand)
           ..add('saveCommand', saveCommand)
           ..add('closeCommand', closeCommand)
           ..add('deleteCommand', deleteCommand))
@@ -222,9 +230,15 @@ class EditNotebookViewModelBuilder
   bool? get isSaving => _$this._isSaving;
   set isSaving(bool? isSaving) => _$this._isSaving = isSaving;
 
-  TypedFunctionHolder<String>? _saveCommand;
-  TypedFunctionHolder<String>? get saveCommand => _$this._saveCommand;
-  set saveCommand(TypedFunctionHolder<String>? saveCommand) =>
+  TypedFunctionHolder<String>? _titleChangedCommand;
+  TypedFunctionHolder<String>? get titleChangedCommand =>
+      _$this._titleChangedCommand;
+  set titleChangedCommand(TypedFunctionHolder<String>? titleChangedCommand) =>
+      _$this._titleChangedCommand = titleChangedCommand;
+
+  FunctionHolder? _saveCommand;
+  FunctionHolder? get saveCommand => _$this._saveCommand;
+  set saveCommand(FunctionHolder? saveCommand) =>
       _$this._saveCommand = saveCommand;
 
   FunctionHolder? _closeCommand;
@@ -254,6 +268,7 @@ class EditNotebookViewModelBuilder
       _saveButtonTitle = $v.saveButtonTitle;
       _requiredFieldValidator = $v.requiredFieldValidator;
       _isSaving = $v.isSaving;
+      _titleChangedCommand = $v.titleChangedCommand;
       _saveCommand = $v.saveCommand;
       _closeCommand = $v.closeCommand;
       _deleteCommand = $v.deleteCommand;
@@ -298,6 +313,7 @@ class EditNotebookViewModelBuilder
             saveButtonTitle: BuiltValueNullFieldError.checkNotNull(saveButtonTitle, r'EditNotebookViewModel', 'saveButtonTitle'),
             requiredFieldValidator: BuiltValueNullFieldError.checkNotNull(requiredFieldValidator, r'EditNotebookViewModel', 'requiredFieldValidator'),
             isSaving: BuiltValueNullFieldError.checkNotNull(isSaving, r'EditNotebookViewModel', 'isSaving'),
+            titleChangedCommand: BuiltValueNullFieldError.checkNotNull(titleChangedCommand, r'EditNotebookViewModel', 'titleChangedCommand'),
             saveCommand: BuiltValueNullFieldError.checkNotNull(saveCommand, r'EditNotebookViewModel', 'saveCommand'),
             closeCommand: BuiltValueNullFieldError.checkNotNull(closeCommand, r'EditNotebookViewModel', 'closeCommand'),
             deleteCommand: BuiltValueNullFieldError.checkNotNull(deleteCommand, r'EditNotebookViewModel', 'deleteCommand'));

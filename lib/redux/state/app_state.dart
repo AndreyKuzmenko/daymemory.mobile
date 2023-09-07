@@ -8,7 +8,7 @@ import 'package:daymemory/redux/state/login_state/login_state.dart';
 import 'package:daymemory/redux/state/note_image_gallery_state/note_image_gallery_state.dart';
 import 'package:daymemory/redux/state/notebooks_state/notebooks_state.dart';
 import 'package:daymemory/redux/state/reviews_state/reviews_state.dart';
-import 'package:daymemory/redux/state/selected_notebook_state/selected_notebook_state.dart';
+import 'package:daymemory/redux/state/selected_menu_item_state/selected_menu_item_state.dart';
 import 'package:daymemory/redux/state/tags_state/tags_state.dart';
 import 'package:daymemory/redux/state/face_id_state/face_id_state.dart';
 import 'package:daymemory/redux/state/note_state/note_state.dart';
@@ -35,7 +35,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   EditNotebookState get editNotebookState;
 
-  SelectedNotebookState get selectedNotebookState;
+  SelectedMenuItemState get selectedMenuItemState;
 
   ReviewsState get reviewsState;
 
@@ -90,7 +90,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..notesState = NotesState.initial().toBuilder()
     ..noteImageGalleryState = NoteImageGalleryState.initial().toBuilder()
     ..notebooksState = NotebooksState.initial().toBuilder()
-    ..selectedNotebookState = SelectedNotebookState.initial().toBuilder()
+    ..selectedMenuItemState = SelectedMenuItemState.initial().toBuilder()
     ..editNotebookState = EditNotebookState.initial().toBuilder()
     ..reviewsState = ReviewsState.initial().toBuilder()
     ..noteState = NoteState.initial().toBuilder()
