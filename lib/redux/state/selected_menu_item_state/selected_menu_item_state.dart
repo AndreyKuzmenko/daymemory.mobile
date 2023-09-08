@@ -13,5 +13,5 @@ abstract class SelectedMenuItemState implements Built<SelectedMenuItemState, Sel
 
   factory SelectedMenuItemState.initial() => SelectedMenuItemState((b) => b
     ..itemId = null
-    ..title = "");
+    ..title = null);
 }

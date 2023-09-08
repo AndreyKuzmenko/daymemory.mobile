@@ -192,13 +192,13 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
 
     store.dispatch(SyncProgressStatusAction(message: _locale!.sync_loading_data));
     await _loadNotebooksfromServer(store, lastSyncDate);
-    await _loadNotesfromServer(store, lastSyncDate);
     await _loadTagsfromServer(store, lastSyncDate);
+    await _loadNotesfromServer(store, lastSyncDate);
 
     store.dispatch(SyncProgressStatusAction(message: _locale!.sync_uploading_data));
     await _uploadNotebooksToServer(store);
-    await _uploadNotesToServer(store);
     await _uploadTagsToServer(store);
+    await _uploadNotesToServer(store);
 
     var settings = await settingsService.getSettings();
     settings.lastSyncDate = syncStartedDate;
@@ -299,8 +299,8 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
         await tagService.resetIsChangedFlag(item.id, tag.modifiedDate);
       }
     }
-    var modifieTags = await tagService.fetchModifiedTags();
-    for (var item in modifieTags) {
+    var modifiedTags = await tagService.fetchModifiedTags();
+    for (var item in modifiedTags) {
       var tag = await tagNetworkService.update(item.id, item.text, item.orderRank);
       await tagService.resetIsChangedFlag(item.id, tag.modifiedDate);
     }
@@ -475,6 +475,10 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             syncItem.item!.modifiedDate,
             false,
           );
+          //if tag is encrypted and encryption is enabled, mark it as changed
+          if (syncItem.item!.isEncrypted != null && !syncItem.item!.isEncrypted! && store.state.accountState.isEncryptionEnabled) {
+            await tagService.markTagAsChanged(syncItem.id);
+          }
         } else if (syncItem.item!.modifiedDate.difference(dbItem.modifiedDate).inSeconds > 0) {
           await tagService.updateTag(
             syncItem.id,
@@ -483,6 +487,10 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             syncItem.item!.modifiedDate,
             false,
           );
+          //if tag is encrypted and encryption is enabled, mark it as changed
+          if (syncItem.item!.isEncrypted != null && !syncItem.item!.isEncrypted! && store.state.accountState.isEncryptionEnabled) {
+            await tagService.markTagAsChanged(syncItem.id);
+          }
         }
       } else if (syncItem.status == 2) {
         await tagService.deleteTag(syncItem.id);

@@ -1,4 +1,5 @@
 import 'package:daymemory/data/dtos/file_dto.dart';
+import 'package:daymemory/data/dtos/tag_dto.dart';
 
 class LocationDto {
   double latitude = 0;
@@ -30,6 +31,7 @@ class NoteDto {
   //TODO:should not be nullable
   bool? isEncrypted;
   List<FileDto> mediaFiles;
+  List<TagDto> tags;
 
   NoteDto({
     required this.id,
@@ -37,6 +39,7 @@ class NoteDto {
     required this.text,
     this.location,
     required this.mediaFiles,
+    required this.tags,
     required this.modifiedDate,
     required this.notebookId,
     this.isEncrypted,
@@ -51,6 +54,7 @@ class NoteDto {
         notebookId: json['notebookId'],
         isEncrypted: json['isEncrypted'],
         mediaFiles: json['mediaFiles'] == null ? [] : json['mediaFiles'].cast<Map<String, dynamic>>().map<FileDto>((json) => FileDto.fromJson(json)).toList(),
+        tags: json['tags'] == null ? [] : json['tags'].cast<Map<String, dynamic>>().map<TagDto>((json) => TagDto.fromJson(json)).toList(),
         location: json["location"] == null ? null : LocationDto.fromJson(json["location"]));
   }
 }

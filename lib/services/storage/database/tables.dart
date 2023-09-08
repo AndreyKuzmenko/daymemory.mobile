@@ -412,7 +412,10 @@ class DayMemoryDb extends _$DayMemoryDb {
         orderRank: Value(orderRank),
         modifiedDate: Value(modifiedDate.toUtc()),
       ));
-
+  Future markTagAsChanged(String itemId) => (update(dmTags)..where((x) => x.id.equals(itemId))).write(DmTagsCompanion(
+        isChanged: const Value(true),
+        modifiedDate: Value(DateTime.now().toUtc()),
+      ));
   Future markTagAsDeleted(String itemId) => (update(dmTags)..where((x) => x.id.equals(itemId))).write(DmTagsCompanion(
         isDeleted: const Value(true),
         modifiedDate: Value(DateTime.now().toUtc()),

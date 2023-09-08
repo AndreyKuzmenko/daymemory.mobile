@@ -110,6 +110,7 @@ NotesState _noteCreatedAction(NotesState state, NoteCreatedAction action) {
           modifiedDate: action.date,
           location: action.currentLocation,
           mediaFiles: action.mediaFiles,
+          tags: [],
         ));
     _sortNotes(state, notes);
   }

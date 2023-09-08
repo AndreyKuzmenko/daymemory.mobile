@@ -30,6 +30,8 @@ abstract class ITagService {
 
   Future markTagAsDeleted(String tagId);
 
+  Future markTagAsChanged(String tagId);
+
   Future resetIsChangedFlag(String tagId, DateTime modifiedDate);
 
   Future<String> deleteTag(String tagId);

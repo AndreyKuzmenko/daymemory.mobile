@@ -30,6 +30,7 @@ class DbNoteService implements INoteService {
       text: note.content,
       mediaFiles: await _getFilesForNote(note.id),
       location: note.locationId == null ? null : await _getLocation(note.locationId!),
+      tags: [],
     );
     return result;
   }

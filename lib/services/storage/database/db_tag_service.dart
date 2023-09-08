@@ -85,6 +85,14 @@ class DbTagService implements ITagService {
   }
 
   @override
+  Future markTagAsChanged(String tagId) async {
+    var item = await dbCreator.database.getTagById(tagId);
+    if (item != null) {
+      await dbCreator.database.markTagAsChanged(tagId);
+    }
+  }
+
+  @override
   Future markTagAsDeleted(String tagId) async {
     var tag = await dbCreator.database.getTagById(tagId);
     if (tag != null) {
