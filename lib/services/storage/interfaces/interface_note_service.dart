@@ -25,6 +25,7 @@ abstract class INoteService {
     DateTime date,
     DateTime modifiedDate,
     List<FileDto> files,
+    List<String> tags,
     LocationDto? location,
     bool isModified,
   );
@@ -36,6 +37,7 @@ abstract class INoteService {
     DateTime date,
     DateTime createdDate,
     List<FileDto> files,
+    List<String> tags,
     LocationDto? location,
     bool isNew,
   );

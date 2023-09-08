@@ -108,6 +108,7 @@ NoteState _initNoteAction(NoteState state, InitNoteAction action) {
     ..hasChanged = false
     ..isImageDateUsed = false
     ..mediaFiles = action.mediaFiles.toBuiltList().toBuilder()
+    ..tags = action.tags.toBuiltList().toBuilder()
     ..location = action.location);
 }
 

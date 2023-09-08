@@ -165,6 +165,7 @@ class InitNoteAction implements ILoggingAction {
   final LocationDto? location;
 
   final List<FileDto> mediaFiles;
+  final List<String> tags;
 
   const InitNoteAction({
     required this.noteId,
@@ -172,6 +173,7 @@ class InitNoteAction implements ILoggingAction {
     required this.text,
     required this.location,
     required this.mediaFiles,
+    required this.tags,
     required this.date,
   });
 
@@ -188,6 +190,7 @@ class NoteUpdatedAction implements ILoggingAction {
   final DateTime date;
   final DateTime modifiedDate;
   final List<FileDto> mediaFiles;
+  final List<String> tags;
   final LocationDto? currentLocation;
 
   NoteUpdatedAction({
@@ -195,6 +198,7 @@ class NoteUpdatedAction implements ILoggingAction {
     required this.notebookId,
     required this.text,
     required this.mediaFiles,
+    required this.tags,
     required this.currentLocation,
     required this.date,
     required this.modifiedDate,
@@ -211,6 +215,7 @@ class NoteCreatedAction implements ILoggingAction {
   final String notebookId;
   final String text;
   final List<FileDto> mediaFiles;
+  final List<String> tags;
   final LocationDto? currentLocation;
   final DateTime date;
   final DateTime modifiedDate;
@@ -220,6 +225,7 @@ class NoteCreatedAction implements ILoggingAction {
     required this.notebookId,
     required this.text,
     required this.mediaFiles,
+    required this.tags,
     required this.currentLocation,
     required this.date,
     required this.modifiedDate,

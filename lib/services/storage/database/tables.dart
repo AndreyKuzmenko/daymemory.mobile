@@ -64,6 +64,18 @@ class DmTags extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+class DmNoteTags extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get noteId => text().references(DmNotes, #id, onDelete: KeyAction.noAction)();
+  TextColumn get tagId => text().references(DmTags, #id, onDelete: KeyAction.noAction)();
+
+  DateTimeColumn get createdDate => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
 class DmNotebooks extends Table {
   TextColumn get id => text()();
   TextColumn get title => text()();
@@ -136,28 +148,28 @@ LazyDatabase _openConnection() {
   });
 }
 
-@DriftDatabase(tables: [DmNotes, DmNotebooks, DmTags, DmLocations, DmQuestionLists, DmQuestions, DmFiles])
+@DriftDatabase(tables: [DmNotes, DmNotebooks, DmTags, DmNoteTags, DmLocations, DmQuestionLists, DmQuestions, DmFiles])
 class DayMemoryDb extends _$DayMemoryDb {
   DayMemoryDb() : super(_openConnection());
 
   // you should bump this number whenever you change or add a table definition.
   // Migrations are covered later in the documentation.
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
-  // @override
-  // MigrationStrategy get migration {
-  //   return MigrationStrategy(
-  //     onCreate: (Migrator m) async {
-  //       await m.createAll();
-  //     },
-  //     onUpgrade: (Migrator m, int from, int to) async {
-  //       if (from < 2) {
-  //         await m.addColumn(dmNotebooks, dmNotebooks.useInReview);
-  //       }
-  //     },
-  //   );
-  // }
+  @override
+  MigrationStrategy get migration {
+    return MigrationStrategy(
+      onCreate: (Migrator m) async {
+        await m.createAll();
+      },
+      onUpgrade: (Migrator m, int from, int to) async {
+        if (from < 2) {
+          await m.createTable(dmNoteTags);
+        }
+      },
+    );
+  }
 
   //-----------------------
   //NOTES
@@ -442,7 +454,7 @@ class DayMemoryDb extends _$DayMemoryDb {
         ..where((t) => t.noteId.equalsNullable(noteId))
         ..orderBy([(x) => OrderingTerm(expression: x.orderRank, mode: OrderingMode.asc)]))
       .get();
-  Future<DmFile?> getFileById(String id) => (select(dmFiles)..where((t) => t.id.equals(id))).getSingleOrNull();
+
   Future insertFile(DmFile item) => into(dmFiles).insert(item);
   Future updateFilesOrderRank(String imageId, int orderRank) => (update(dmFiles)..where((x) => x.id.equals(imageId))).write(DmFilesCompanion(
         orderRank: Value(orderRank),
@@ -450,6 +462,19 @@ class DayMemoryDb extends _$DayMemoryDb {
 
   Future deleteFile(String id) => (delete(dmFiles)..where((x) => x.id.equals(id))).go();
   Future deleteAllFiles() => delete(dmFiles).go();
+
+  //-----------------------
+  //NoteTags
+  //-----------------------
+  Future<List<DmNoteTag>> getTagsForNote(String noteId) => (select(dmNoteTags)
+        ..where((t) => t.noteId.equalsNullable(noteId))
+        ..orderBy([(x) => OrderingTerm(expression: x.createdDate, mode: OrderingMode.asc)]))
+      .get();
+
+  Future insertNoteTag(DmNoteTag item) => into(dmNoteTags).insert(item);
+
+  Future deleteNoteTag(String id) => (delete(dmNoteTags)..where((x) => x.id.equals(id))).go();
+  Future deleteAllNoteFiles() => delete(dmNoteTags).go();
 
   Future clearAllData() {
     return transaction(() async {

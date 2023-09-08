@@ -1747,6 +1747,270 @@ class DmTagsCompanion extends UpdateCompanion<DmTag> {
   }
 }
 
+class $DmNoteTagsTable extends DmNoteTags
+    with TableInfo<$DmNoteTagsTable, DmNoteTag> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DmNoteTagsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _noteIdMeta = const VerificationMeta('noteId');
+  @override
+  late final GeneratedColumn<String> noteId = GeneratedColumn<String>(
+      'note_id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES dm_notes (id) ON DELETE NO ACTION'));
+  static const VerificationMeta _tagIdMeta = const VerificationMeta('tagId');
+  @override
+  late final GeneratedColumn<String> tagId = GeneratedColumn<String>(
+      'tag_id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES dm_tags (id) ON DELETE NO ACTION'));
+  static const VerificationMeta _createdDateMeta =
+      const VerificationMeta('createdDate');
+  @override
+  late final GeneratedColumn<DateTime> createdDate = GeneratedColumn<DateTime>(
+      'created_date', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, noteId, tagId, createdDate];
+  @override
+  String get aliasedName => _alias ?? 'dm_note_tags';
+  @override
+  String get actualTableName => 'dm_note_tags';
+  @override
+  VerificationContext validateIntegrity(Insertable<DmNoteTag> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('note_id')) {
+      context.handle(_noteIdMeta,
+          noteId.isAcceptableOrUnknown(data['note_id']!, _noteIdMeta));
+    } else if (isInserting) {
+      context.missing(_noteIdMeta);
+    }
+    if (data.containsKey('tag_id')) {
+      context.handle(
+          _tagIdMeta, tagId.isAcceptableOrUnknown(data['tag_id']!, _tagIdMeta));
+    } else if (isInserting) {
+      context.missing(_tagIdMeta);
+    }
+    if (data.containsKey('created_date')) {
+      context.handle(
+          _createdDateMeta,
+          createdDate.isAcceptableOrUnknown(
+              data['created_date']!, _createdDateMeta));
+    } else if (isInserting) {
+      context.missing(_createdDateMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DmNoteTag map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DmNoteTag(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      noteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}note_id'])!,
+      tagId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}tag_id'])!,
+      createdDate: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_date'])!,
+    );
+  }
+
+  @override
+  $DmNoteTagsTable createAlias(String alias) {
+    return $DmNoteTagsTable(attachedDatabase, alias);
+  }
+}
+
+class DmNoteTag extends DataClass implements Insertable<DmNoteTag> {
+  final String id;
+  final String noteId;
+  final String tagId;
+  final DateTime createdDate;
+  const DmNoteTag(
+      {required this.id,
+      required this.noteId,
+      required this.tagId,
+      required this.createdDate});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['note_id'] = Variable<String>(noteId);
+    map['tag_id'] = Variable<String>(tagId);
+    map['created_date'] = Variable<DateTime>(createdDate);
+    return map;
+  }
+
+  DmNoteTagsCompanion toCompanion(bool nullToAbsent) {
+    return DmNoteTagsCompanion(
+      id: Value(id),
+      noteId: Value(noteId),
+      tagId: Value(tagId),
+      createdDate: Value(createdDate),
+    );
+  }
+
+  factory DmNoteTag.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DmNoteTag(
+      id: serializer.fromJson<String>(json['id']),
+      noteId: serializer.fromJson<String>(json['noteId']),
+      tagId: serializer.fromJson<String>(json['tagId']),
+      createdDate: serializer.fromJson<DateTime>(json['createdDate']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'noteId': serializer.toJson<String>(noteId),
+      'tagId': serializer.toJson<String>(tagId),
+      'createdDate': serializer.toJson<DateTime>(createdDate),
+    };
+  }
+
+  DmNoteTag copyWith(
+          {String? id, String? noteId, String? tagId, DateTime? createdDate}) =>
+      DmNoteTag(
+        id: id ?? this.id,
+        noteId: noteId ?? this.noteId,
+        tagId: tagId ?? this.tagId,
+        createdDate: createdDate ?? this.createdDate,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('DmNoteTag(')
+          ..write('id: $id, ')
+          ..write('noteId: $noteId, ')
+          ..write('tagId: $tagId, ')
+          ..write('createdDate: $createdDate')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, noteId, tagId, createdDate);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DmNoteTag &&
+          other.id == this.id &&
+          other.noteId == this.noteId &&
+          other.tagId == this.tagId &&
+          other.createdDate == this.createdDate);
+}
+
+class DmNoteTagsCompanion extends UpdateCompanion<DmNoteTag> {
+  final Value<String> id;
+  final Value<String> noteId;
+  final Value<String> tagId;
+  final Value<DateTime> createdDate;
+  final Value<int> rowid;
+  const DmNoteTagsCompanion({
+    this.id = const Value.absent(),
+    this.noteId = const Value.absent(),
+    this.tagId = const Value.absent(),
+    this.createdDate = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  DmNoteTagsCompanion.insert({
+    required String id,
+    required String noteId,
+    required String tagId,
+    required DateTime createdDate,
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        noteId = Value(noteId),
+        tagId = Value(tagId),
+        createdDate = Value(createdDate);
+  static Insertable<DmNoteTag> custom({
+    Expression<String>? id,
+    Expression<String>? noteId,
+    Expression<String>? tagId,
+    Expression<DateTime>? createdDate,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (noteId != null) 'note_id': noteId,
+      if (tagId != null) 'tag_id': tagId,
+      if (createdDate != null) 'created_date': createdDate,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  DmNoteTagsCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? noteId,
+      Value<String>? tagId,
+      Value<DateTime>? createdDate,
+      Value<int>? rowid}) {
+    return DmNoteTagsCompanion(
+      id: id ?? this.id,
+      noteId: noteId ?? this.noteId,
+      tagId: tagId ?? this.tagId,
+      createdDate: createdDate ?? this.createdDate,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (noteId.present) {
+      map['note_id'] = Variable<String>(noteId.value);
+    }
+    if (tagId.present) {
+      map['tag_id'] = Variable<String>(tagId.value);
+    }
+    if (createdDate.present) {
+      map['created_date'] = Variable<DateTime>(createdDate.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DmNoteTagsCompanion(')
+          ..write('id: $id, ')
+          ..write('noteId: $noteId, ')
+          ..write('tagId: $tagId, ')
+          ..write('createdDate: $createdDate, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $DmQuestionListsTable extends DmQuestionLists
     with TableInfo<$DmQuestionListsTable, DmQuestionList> {
   @override
@@ -2893,6 +3157,7 @@ abstract class _$DayMemoryDb extends GeneratedDatabase {
   late final $DmLocationsTable dmLocations = $DmLocationsTable(this);
   late final $DmNotesTable dmNotes = $DmNotesTable(this);
   late final $DmTagsTable dmTags = $DmTagsTable(this);
+  late final $DmNoteTagsTable dmNoteTags = $DmNoteTagsTable(this);
   late final $DmQuestionListsTable dmQuestionLists =
       $DmQuestionListsTable(this);
   late final $DmQuestionsTable dmQuestions = $DmQuestionsTable(this);
@@ -2906,6 +3171,7 @@ abstract class _$DayMemoryDb extends GeneratedDatabase {
         dmLocations,
         dmNotes,
         dmTags,
+        dmNoteTags,
         dmQuestionLists,
         dmQuestions,
         dmFiles

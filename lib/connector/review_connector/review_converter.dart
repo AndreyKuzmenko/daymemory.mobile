@@ -105,6 +105,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
                 notebookId: item.notebookId,
                 text: item.text,
                 mediaFiles: item.mediaFiles,
+                tags: item.tags,
                 location: item.location,
                 date: item.date,
               ));

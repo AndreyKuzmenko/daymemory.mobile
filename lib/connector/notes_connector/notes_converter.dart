@@ -80,6 +80,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
                 notebookId: notebookId,
                 text: "",
                 mediaFiles: [],
+                tags: [],
                 location: null,
                 date: DateTime.now().toUtc(),
               ));
@@ -149,6 +150,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
                 notebookId: item.notebookId,
                 text: item.text,
                 mediaFiles: item.mediaFiles,
+                tags: item.tags,
                 location: item.location,
                 date: item.date,
               ));

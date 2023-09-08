@@ -16,6 +16,8 @@ abstract class NoteState implements Built<NoteState, NoteStateBuilder> {
 
   BuiltList<FileDto> get mediaFiles;
 
+  BuiltList<String> get tags;
+
   bool get isImageDateUsed;
 
   bool get hasChanged;
@@ -36,6 +38,7 @@ abstract class NoteState implements Built<NoteState, NoteStateBuilder> {
     ..date = DateTime.now().toUtc()
     ..isSaving = false
     ..isImageDateUsed = false
+    ..tags = ListBuilder()
     ..mediaFiles = ListBuilder()
     ..location = null);
 }

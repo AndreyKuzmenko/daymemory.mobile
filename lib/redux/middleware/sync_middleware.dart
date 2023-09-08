@@ -395,6 +395,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
               syncItem.item!.date,
               syncItem.item!.modifiedDate,
               syncItem.item!.mediaFiles,
+              syncItem.item!.tags,
               syncItem.item!.location,
               false,
             );
@@ -409,6 +410,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
               notebookId: createdItem.notebookId,
               text: createdItem.text,
               mediaFiles: createdItem.mediaFiles,
+              tags: createdItem.tags,
               currentLocation: createdItem.location,
               date: createdItem.date,
               modifiedDate: createdItem.modifiedDate,
@@ -427,6 +429,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
               syncItem.item!.date,
               syncItem.item!.modifiedDate,
               syncItem.item!.mediaFiles,
+              syncItem.item!.tags,
               syncItem.item!.location,
               false,
             );
@@ -442,6 +445,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
               text: updatedNote.text,
               date: updatedNote.date,
               mediaFiles: updatedNote.mediaFiles,
+              tags: updatedNote.tags,
               currentLocation: updatedNote.location,
               modifiedDate: updatedNote.modifiedDate,
             ));

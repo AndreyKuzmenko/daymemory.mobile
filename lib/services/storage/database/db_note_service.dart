@@ -30,7 +30,7 @@ class DbNoteService implements INoteService {
       text: note.content,
       mediaFiles: await _getFilesForNote(note.id),
       location: note.locationId == null ? null : await _getLocation(note.locationId!),
-      tags: [],
+      tags: await _getTagsForNote(note.id),
     );
     return result;
   }
@@ -75,6 +75,11 @@ class DbNoteService implements INoteService {
     return result;
   }
 
+  Future<List<String>> _getTagsForNote(String noteId) async {
+    var tags = await dbCreator.database.getTagsForNote(noteId);
+    return tags.map((e) => e.tagId).toList();
+  }
+
   Future<String> _saveFileToStorage(String fileId, FileType fileType, String filePath, String name) async {
     if (fileType == FileType.image) {
       return await fileService.savePhotoFile(filePath, name, fileId);
@@ -98,6 +103,16 @@ class DbNoteService implements INoteService {
       createdDate: createdDate,
     );
     await dbCreator.database.insertFile(newFile);
+  }
+
+  Future _createNoteTag(String id, String noteId, String tagId, DateTime createdDate) async {
+    var noteTag = DmNoteTag(
+      id: id,
+      noteId: noteId,
+      tagId: tagId,
+      createdDate: createdDate,
+    );
+    await dbCreator.database.insertNoteTag(noteTag);
   }
 
   Future<DmNote?> _getNoteById(String noteId) async {
@@ -186,7 +201,17 @@ class DbNoteService implements INoteService {
   }
 
   @override
-  Future<NoteDto> createNote(String noteId, String notebookId, String text, DateTime date, DateTime createdDate, List<FileDto> files, LocationDto? location, bool isNew) async {
+  Future<NoteDto> createNote(
+    String noteId,
+    String notebookId,
+    String text,
+    DateTime date,
+    DateTime createdDate,
+    List<FileDto> files,
+    List<String> tags,
+    LocationDto? location,
+    bool isNew,
+  ) async {
     DmLocation? loc;
 
     //Save files first to that they are saved if there is an error
@@ -223,12 +248,26 @@ class DbNoteService implements INoteService {
       await _createFile(note.id, file, i, createdDate);
     }
 
+    for (var tag in tags) {
+      await _createNoteTag(const Uuid().v4(), noteId, tag, DateTime.now().toUtc());
+    }
+
     var result = await _convertFromNote(note);
     return result;
   }
 
   @override
-  Future<NoteDto> updateNote(String noteId, String notebookId, String text, DateTime date, DateTime modifiedDate, List<FileDto> files, LocationDto? location, bool isModified) async {
+  Future<NoteDto> updateNote(
+    String noteId,
+    String notebookId,
+    String text,
+    DateTime date,
+    DateTime modifiedDate,
+    List<FileDto> files,
+    List<String> tags,
+    LocationDto? location,
+    bool isModified,
+  ) async {
     var note = await _getNoteById(noteId);
     if (note == null) {
       throw Exception("Note is not found");
@@ -269,6 +308,22 @@ class DbNoteService implements INoteService {
       }
       i++;
     }
+
+    //UPDATE TAGS
+    var prevTags = await dbCreator.database.getTagsForNote(note.id);
+    var deletedTags = prevTags.where((element) => !tags.any((p) => p == element.tagId));
+
+    for (var deleteTag in deletedTags) {
+      await dbCreator.database.deleteNoteTag(deleteTag.id);
+    }
+
+    for (var tag in tags) {
+      var item = prevTags.firstWhereOrNull((element) => element.tagId == tag);
+      if (item == null) {
+        await _createNoteTag(const Uuid().v4(), noteId, tag, DateTime.now().toUtc());
+      }
+    }
+
     note = await _getNoteById(noteId);
     return await _convertFromNote(note!);
   }
@@ -312,6 +367,11 @@ class DbNoteService implements INoteService {
       for (var file in files) {
         await fileService.deleteFile(file.id);
         await dbCreator.database.deleteFile(file.id);
+      }
+
+      var tags = await dbCreator.database.getTagsForNote(note.id);
+      for (var tag in tags) {
+        await dbCreator.database.deleteTag(tag.id);
       }
 
       await dbCreator.database.deleteNote(noteId);

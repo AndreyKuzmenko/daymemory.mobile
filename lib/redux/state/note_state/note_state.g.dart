@@ -18,6 +18,8 @@ class _$NoteState extends NoteState {
   @override
   final BuiltList<FileDto> mediaFiles;
   @override
+  final BuiltList<String> tags;
+  @override
   final bool isImageDateUsed;
   @override
   final bool hasChanged;
@@ -35,6 +37,7 @@ class _$NoteState extends NoteState {
       this.text,
       this.location,
       required this.mediaFiles,
+      required this.tags,
       required this.isImageDateUsed,
       required this.hasChanged,
       required this.isSaving,
@@ -42,6 +45,7 @@ class _$NoteState extends NoteState {
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         mediaFiles, r'NoteState', 'mediaFiles');
+    BuiltValueNullFieldError.checkNotNull(tags, r'NoteState', 'tags');
     BuiltValueNullFieldError.checkNotNull(
         isImageDateUsed, r'NoteState', 'isImageDateUsed');
     BuiltValueNullFieldError.checkNotNull(
@@ -66,6 +70,7 @@ class _$NoteState extends NoteState {
         text == other.text &&
         location == other.location &&
         mediaFiles == other.mediaFiles &&
+        tags == other.tags &&
         isImageDateUsed == other.isImageDateUsed &&
         hasChanged == other.hasChanged &&
         isSaving == other.isSaving &&
@@ -80,6 +85,7 @@ class _$NoteState extends NoteState {
     _$hash = $jc(_$hash, text.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, mediaFiles.hashCode);
+    _$hash = $jc(_$hash, tags.hashCode);
     _$hash = $jc(_$hash, isImageDateUsed.hashCode);
     _$hash = $jc(_$hash, hasChanged.hashCode);
     _$hash = $jc(_$hash, isSaving.hashCode);
@@ -96,6 +102,7 @@ class _$NoteState extends NoteState {
           ..add('text', text)
           ..add('location', location)
           ..add('mediaFiles', mediaFiles)
+          ..add('tags', tags)
           ..add('isImageDateUsed', isImageDateUsed)
           ..add('hasChanged', hasChanged)
           ..add('isSaving', isSaving)
@@ -129,6 +136,10 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
   set mediaFiles(ListBuilder<FileDto>? mediaFiles) =>
       _$this._mediaFiles = mediaFiles;
 
+  ListBuilder<String>? _tags;
+  ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
+  set tags(ListBuilder<String>? tags) => _$this._tags = tags;
+
   bool? _isImageDateUsed;
   bool? get isImageDateUsed => _$this._isImageDateUsed;
   set isImageDateUsed(bool? isImageDateUsed) =>
@@ -156,6 +167,7 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
       _text = $v.text;
       _location = $v.location;
       _mediaFiles = $v.mediaFiles.toBuilder();
+      _tags = $v.tags.toBuilder();
       _isImageDateUsed = $v.isImageDateUsed;
       _hasChanged = $v.hasChanged;
       _isSaving = $v.isSaving;
@@ -189,6 +201,7 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
               text: text,
               location: location,
               mediaFiles: mediaFiles.build(),
+              tags: tags.build(),
               isImageDateUsed: BuiltValueNullFieldError.checkNotNull(
                   isImageDateUsed, r'NoteState', 'isImageDateUsed'),
               hasChanged: BuiltValueNullFieldError.checkNotNull(
@@ -202,6 +215,8 @@ class NoteStateBuilder implements Builder<NoteState, NoteStateBuilder> {
       try {
         _$failedField = 'mediaFiles';
         mediaFiles.build();
+        _$failedField = 'tags';
+        tags.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'NoteState', _$failedField, e.toString());

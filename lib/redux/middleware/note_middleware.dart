@@ -74,6 +74,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
         state.noteState.date,
         DateTime.now().toUtc(),
         state.noteState.mediaFiles.toList(),
+        state.noteState.tags.toList(),
         state.noteState.location,
         true,
       );
@@ -82,6 +83,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
         notebookId: result.notebookId,
         text: result.text,
         mediaFiles: result.mediaFiles,
+        tags: result.tags,
         currentLocation: result.location,
         date: result.date,
         modifiedDate: result.modifiedDate,
@@ -106,6 +108,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
         state.noteState.date,
         DateTime.now().toUtc(),
         state.noteState.mediaFiles.toList(),
+        state.noteState.tags.toList(),
         state.noteState.location,
         true,
       );
@@ -114,6 +117,7 @@ class NoteMiddleware implements MiddlewareClass<AppState> {
         notebookId: result.notebookId,
         text: result.text,
         mediaFiles: result.mediaFiles,
+        tags: result.tags,
         currentLocation: result.location,
         date: result.date,
         modifiedDate: result.modifiedDate,
