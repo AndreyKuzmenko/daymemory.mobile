@@ -23,7 +23,9 @@ class TagsMiddleware implements MiddlewareClass<AppState> {
     if (action is LoadTagsAction) {
       var tags = await tagService.fetchTags();
       store.dispatch(TagsLoadedAction(tags: tags));
-      store.dispatch(action.nextAction);
+      if (action.nextAction != null) {
+        store.dispatch(action.nextAction);
+      }
     }
   }
 }

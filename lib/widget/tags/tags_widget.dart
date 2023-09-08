@@ -59,7 +59,7 @@ class _TagsWidgetState extends State<TagsWidget> {
               onTap: () {
                 widget.viewModel.closeCommand.command();
               },
-              child: const Icon(Icons.arrow_back_ios, size: 28.0, color: Colors.black)),
+              child: const Icon(Icons.arrow_back_ios, color: Colors.black)),
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
@@ -80,9 +80,10 @@ class _TagsWidgetState extends State<TagsWidget> {
         ReorderableListView.builder(
           shrinkWrap: true,
           primary: false,
+          buildDefaultDragHandles: false,
           itemCount: widget.viewModel.items.length,
           itemBuilder: (BuildContext context, int index) {
-            return _createItem(widget.viewModel.items[index]);
+            return _createItem(widget.viewModel.items[index], index);
           },
           onReorderStart: (index) {
             FocusScope.of(context).unfocus();
@@ -105,10 +106,14 @@ class _TagsWidgetState extends State<TagsWidget> {
     );
   }
 
-  Widget _createItem(TagFieldViewModel model) {
+  Widget _createItem(TagFieldViewModel model, int index) {
     return ListTile(
       key: Key(model.fieldId),
-      leading: const Icon(Icons.drag_handle),
+      leading: ReorderableDragStartListener(
+        //key: ValueKey<int>(_items[index]),
+        index: index,
+        child: const Icon(Icons.drag_handle),
+      ),
       title: EditTextField(
         text: model.text,
         placeholder: model.placeholder,

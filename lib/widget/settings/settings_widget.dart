@@ -68,17 +68,20 @@ class SettingsWidget extends StatelessWidget {
                     viewModel.languageSelectorCommand.command();
                   },
                 ),
-                // SettingsTile(
-                //   title: Text(
-                //     viewModel.tagsOptionTitle,
-                //     style: appTheme.settingsLabel,
-                //   ),
-                //   leading: const Icon(Icons.tag),
-                //   trailing: const Icon(Icons.arrow_forward_ios),
-                //   onPressed: (context) {
-                //     viewModel.tagsCommand.command();
-                //   },
-                // ),
+                SettingsTile(
+                  title: Text(
+                    viewModel.tagsOptionTitle,
+                    style: appTheme.settingsLabel,
+                  ),
+                  leading: const Icon(Icons.tag),
+                  value: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                  ),
+                  onPressed: (context) {
+                    viewModel.tagsCommand.command();
+                  },
+                ),
                 if (viewModel.isLocationVisible)
                   SettingsTile.switchTile(
                     title: Text(

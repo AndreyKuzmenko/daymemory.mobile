@@ -5,6 +5,7 @@ import 'package:daymemory/connector/account/signup_connector.dart';
 import 'package:daymemory/connector/account_settings_connector/account_settings_connector.dart';
 import 'package:daymemory/connector/edit_notebook_connector/edit_notebook_connector.dart';
 import 'package:daymemory/connector/edit_notebook_sorting_connector/edit_notebook_sorting_connector.dart';
+import 'package:daymemory/connector/edit_tags_connector/edit_tags_connector.dart';
 import 'package:daymemory/connector/encrytion_key_settings_connector/encrytion_key_settings_connector.dart';
 import 'package:daymemory/connector/note_image_gallery_connector/note_image_gallery_connector.dart';
 import 'package:daymemory/connector/note_options_connector/note_options_connector.dart';
@@ -103,8 +104,8 @@ class GenericRouteDefinitionService extends IRouteDefinitionService {
       // case RouteDirection.tag:
       //   return MaterialPageRoute(builder: (context) => TagConnector(tag: settings.arguments! as String), settings: settings);
 
-      // case RouteDirection.tags:
-      //   return MaterialPageRoute(builder: (context) => const EditTagsConnector(), settings: settings);
+      case RouteDirection.tags:
+        return showDialogPopup(const EditTagsConnector(), settings, Colors.transparent);
 
       // case RouteDirection.notes:
       //   return getInstantPageTrasition(const NotesConnector() /*TabsConnector()*/, settings);

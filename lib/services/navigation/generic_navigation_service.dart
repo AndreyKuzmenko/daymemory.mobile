@@ -76,7 +76,7 @@ class GenericNavigationService extends INavigationService {
   Future<dynamic>? pushNamedLanguageSelector() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.languageSelector);
 
   @override
-  Future<dynamic>? pushNamedTags() => frameRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.tags);
+  Future<dynamic>? pushNamedTags() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.tags);
 
   @override
   Future<dynamic>? pushNamedNoteEdit() => frameRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.editNote);
