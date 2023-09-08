@@ -33,6 +33,7 @@ class NoteOptionsConnector extends PageConnector<NoteOptionsViewModel, NoteOptio
       locale: AppLocalizations.of(context)!,
       tags: state.tagsState.tags,
       date: state.noteState.date,
+      noteTags: state.noteState.tags.toList(),
       notebookdId: state.noteState.notebookId,
       notebookTitle: notebook?.title,
       notebooks: state.notebooksState.items,

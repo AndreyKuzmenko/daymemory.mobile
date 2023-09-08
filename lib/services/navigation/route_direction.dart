@@ -38,4 +38,5 @@ abstract class RouteDirection {
   static const String syncSettings = 'sync-settings';
   static const String accountSettings = 'account-settings';
   static const String encryptionKeySettings = 'encryption-key-settings';
+  static const String selectTags = 'select-tags';
 }

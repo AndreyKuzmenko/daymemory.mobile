@@ -3,6 +3,7 @@ import 'package:daymemory/connector/account/login_connector.dart';
 import 'package:daymemory/connector/account/restore_password_connector.dart';
 import 'package:daymemory/connector/account/signup_connector.dart';
 import 'package:daymemory/connector/account_settings_connector/account_settings_connector.dart';
+import 'package:daymemory/connector/edit_tags_connector/edit_tags_connector.dart';
 import 'package:daymemory/connector/note_image_gallery_connector/note_image_gallery_connector.dart';
 import 'package:daymemory/connector/notes_connector/notes_connector.dart';
 import 'package:daymemory/connector/passcode_require_after_connector/passcode_require_after_connector.dart';
@@ -72,8 +73,8 @@ class MobileRouteDefinitionService extends IRouteDefinitionService {
       // case RouteDirection.tag:
       //   return MaterialPageRoute(builder: (context) => TagConnector(tag: settings.arguments! as String), settings: settings);
 
-      // case RouteDirection.tags:
-      //   return MaterialPageRoute(builder: (context) => const EditTagsConnector(), settings: settings);
+      case RouteDirection.tags:
+        return MaterialPageRoute(builder: (context) => const EditTagsConnector(), settings: settings);
 
       case RouteDirection.notes:
         return getInstantPageTrasition(const NotesConnector() /*TabsConnector()*/, settings);

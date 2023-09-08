@@ -14,6 +14,10 @@ abstract class NoteOptionsViewModel implements Built<NoteOptionsViewModel, NoteO
 
   String get notebookLabel;
 
+  String get tagsLabel;
+
+  String get tagsValue;
+
   String get dateLabel;
 
   String get locationLabel;
@@ -34,9 +38,11 @@ abstract class NoteOptionsViewModel implements Built<NoteOptionsViewModel, NoteO
 
   FunctionHolder get closeCommand;
 
-  TypedFunctionHolder<DateTime> get dateChangedCommand;
+  TypedFunctionHolder<DateTime> get changeDateCommand;
 
-  FunctionHolder get notebookSelectorCommand;
+  FunctionHolder get selectNotebookCommand;
+
+  FunctionHolder get selectTagsCommand;
 
   NoteOptionsViewModel._();
 

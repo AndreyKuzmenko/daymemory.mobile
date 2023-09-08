@@ -23,6 +23,10 @@ class NoteOptionsForm extends StatelessWidget {
                 Icons.bookmark_border,
                 color: Colors.black,
               ),
+              value: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+              ),
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,13 +45,47 @@ class NoteOptionsForm extends StatelessWidget {
                 ],
               ),
               onPressed: (context) {
-                viewModel.notebookSelectorCommand.command();
+                viewModel.selectNotebookCommand.command();
+              },
+            ),
+            SettingsTile(
+              leading: const Icon(
+                Icons.tag_outlined,
+                color: Colors.black,
+              ),
+              value: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+              ),
+              title: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 7),
+                    child: Text(
+                      viewModel.tagsLabel,
+                      style: appTheme.regular12,
+                    ),
+                  ),
+                  Text(
+                    viewModel.tagsValue,
+                    style: appTheme.settingsLabel,
+                  ),
+                ],
+              ),
+              onPressed: (context) {
+                viewModel.selectTagsCommand.command();
               },
             ),
             SettingsTile(
               leading: const Icon(
                 Icons.calendar_month_outlined,
                 color: Colors.black,
+              ),
+              value: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
               ),
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -75,7 +113,7 @@ class NoteOptionsForm extends StatelessWidget {
                 );
                 if (date != null) {
                   var midDay = date.add(const Duration(hours: 12));
-                  viewModel.dateChangedCommand.command(midDay);
+                  viewModel.changeDateCommand.command(midDay);
                 }
               },
             ),

@@ -74,4 +74,6 @@ abstract class INavigationService {
   Future<dynamic>? pushNamedAccountSettings();
 
   Future<dynamic>? pushNamedEncryptionKeySettings();
+
+  Future<dynamic>? pushNamedSelectTags();
 }

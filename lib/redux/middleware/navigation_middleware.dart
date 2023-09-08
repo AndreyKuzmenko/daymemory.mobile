@@ -108,6 +108,8 @@ class NavigationMiddleware implements MiddlewareClass<AppState> {
       await navigationService.pushNamedAccountSettings();
     } else if (action is NavigateToEncryptionAction) {
       await navigationService.pushNamedEncryptionKeySettings();
+    } else if (action is NavigateToSelectTagsAction) {
+      await navigationService.pushNamedSelectTags();
     }
   }
 }

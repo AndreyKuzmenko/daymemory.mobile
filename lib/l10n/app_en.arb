@@ -128,6 +128,9 @@
     "remove_note_message": "Confirm deletion",
     "remove_question_list_message": "Confirm deletion",
 
+    "select_tags_title": "Select tags",
+    "new_tag": "New tag",
+
     "no_notes": "No memories yet",
     "no_notebook_notes": "You don't have notebooks. Please start with creating one.",
     "note_delete_title": "Delete note",
@@ -153,6 +156,8 @@
     "note_options_title": "Options",
     "note_select_notebook_title": "Select a notebook",
     "note_options_date_label": "Date",
+    "note_options_tags_label": "Tags",
+    "note_options_no_tags_label": "No tags",
     "note_options_notebook_label": "Notebook",
     "note_options_location_label": "Location",
     "note_options_no_location_text" : "No location",

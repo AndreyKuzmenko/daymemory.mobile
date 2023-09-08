@@ -125,6 +125,9 @@
     "remove_note_message": "Ви дійсно хочете видали запис?",
     "remove_question_list_message": "Ви дійсно хочете видали список питань?",
 
+    "select_tags_title": "Вибрати теги",
+    "new_tag": "Новий тег",
+
     "no_notes": "Нотатки відсутні",
     "no_notebook_notes": "У вас немає блокнотів. Розпочніть зі створення першого.",
     "note_delete_title": "Видалення нотатки",
@@ -150,6 +153,8 @@
     "note_options_title": "Опції",
     "note_select_notebook_title": "Вибрати блокнот",
     "note_options_date_label": "Дата",
+    "note_options_tags_label": "Теги",
+    "note_options_no_tags_label": "Теги відсутні",
     "note_options_notebook_label": "Блокнот",
     "note_options_location_label": "Місце",
     "note_options_no_location_text" : "Немає збереженого місця",

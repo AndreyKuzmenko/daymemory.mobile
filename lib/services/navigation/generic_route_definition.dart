@@ -13,6 +13,7 @@ import 'package:daymemory/connector/passcode_require_after_connector/passcode_re
 import 'package:daymemory/connector/passcode_settings_connector/passcode_settings_connector.dart';
 import 'package:daymemory/connector/select_notebook_connector/select_notebook_connector.dart';
 import 'package:daymemory/connector/select_review_period_connector/select_review_period_connector.dart';
+import 'package:daymemory/connector/select_tags_connector/select_tags_connector.dart';
 import 'package:daymemory/connector/show_notebooks_in_review_connector/show_notebooks_in_review_connector.dart';
 import 'package:daymemory/connector/connectors.dart';
 import 'package:daymemory/connector/language_connector/language_connector.dart';
@@ -106,6 +107,9 @@ class GenericRouteDefinitionService extends IRouteDefinitionService {
 
       case RouteDirection.tags:
         return showDialogPopup(const EditTagsConnector(), settings, Colors.transparent);
+
+      case RouteDirection.selectTags:
+        return showDialogPopup(const SelectTagsConnector(), settings, Colors.transparent);
 
       // case RouteDirection.notes:
       //   return getInstantPageTrasition(const NotesConnector() /*TabsConnector()*/, settings);

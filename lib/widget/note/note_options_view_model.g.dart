@@ -14,6 +14,10 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
   @override
   final String notebookLabel;
   @override
+  final String tagsLabel;
+  @override
+  final String tagsValue;
+  @override
   final String dateLabel;
   @override
   final String locationLabel;
@@ -34,9 +38,11 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
   @override
   final FunctionHolder closeCommand;
   @override
-  final TypedFunctionHolder<DateTime> dateChangedCommand;
+  final TypedFunctionHolder<DateTime> changeDateCommand;
   @override
-  final FunctionHolder notebookSelectorCommand;
+  final FunctionHolder selectNotebookCommand;
+  @override
+  final FunctionHolder selectTagsCommand;
 
   factory _$NoteOptionsViewModel(
           [void Function(NoteOptionsViewModelBuilder)? updates]) =>
@@ -46,6 +52,8 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
       {this.notebookTitle,
       this.notebookId,
       required this.notebookLabel,
+      required this.tagsLabel,
+      required this.tagsValue,
       required this.dateLabel,
       required this.locationLabel,
       required this.nolocationText,
@@ -56,11 +64,16 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
       required this.date,
       required this.formatedDate,
       required this.closeCommand,
-      required this.dateChangedCommand,
-      required this.notebookSelectorCommand})
+      required this.changeDateCommand,
+      required this.selectNotebookCommand,
+      required this.selectTagsCommand})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         notebookLabel, r'NoteOptionsViewModel', 'notebookLabel');
+    BuiltValueNullFieldError.checkNotNull(
+        tagsLabel, r'NoteOptionsViewModel', 'tagsLabel');
+    BuiltValueNullFieldError.checkNotNull(
+        tagsValue, r'NoteOptionsViewModel', 'tagsValue');
     BuiltValueNullFieldError.checkNotNull(
         dateLabel, r'NoteOptionsViewModel', 'dateLabel');
     BuiltValueNullFieldError.checkNotNull(
@@ -80,9 +93,11 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
     BuiltValueNullFieldError.checkNotNull(
         closeCommand, r'NoteOptionsViewModel', 'closeCommand');
     BuiltValueNullFieldError.checkNotNull(
-        dateChangedCommand, r'NoteOptionsViewModel', 'dateChangedCommand');
-    BuiltValueNullFieldError.checkNotNull(notebookSelectorCommand,
-        r'NoteOptionsViewModel', 'notebookSelectorCommand');
+        changeDateCommand, r'NoteOptionsViewModel', 'changeDateCommand');
+    BuiltValueNullFieldError.checkNotNull(selectNotebookCommand,
+        r'NoteOptionsViewModel', 'selectNotebookCommand');
+    BuiltValueNullFieldError.checkNotNull(
+        selectTagsCommand, r'NoteOptionsViewModel', 'selectTagsCommand');
   }
 
   @override
@@ -101,6 +116,8 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
         notebookTitle == other.notebookTitle &&
         notebookId == other.notebookId &&
         notebookLabel == other.notebookLabel &&
+        tagsLabel == other.tagsLabel &&
+        tagsValue == other.tagsValue &&
         dateLabel == other.dateLabel &&
         locationLabel == other.locationLabel &&
         nolocationText == other.nolocationText &&
@@ -111,8 +128,9 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
         date == other.date &&
         formatedDate == other.formatedDate &&
         closeCommand == other.closeCommand &&
-        dateChangedCommand == other.dateChangedCommand &&
-        notebookSelectorCommand == other.notebookSelectorCommand;
+        changeDateCommand == other.changeDateCommand &&
+        selectNotebookCommand == other.selectNotebookCommand &&
+        selectTagsCommand == other.selectTagsCommand;
   }
 
   @override
@@ -121,6 +139,8 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
     _$hash = $jc(_$hash, notebookTitle.hashCode);
     _$hash = $jc(_$hash, notebookId.hashCode);
     _$hash = $jc(_$hash, notebookLabel.hashCode);
+    _$hash = $jc(_$hash, tagsLabel.hashCode);
+    _$hash = $jc(_$hash, tagsValue.hashCode);
     _$hash = $jc(_$hash, dateLabel.hashCode);
     _$hash = $jc(_$hash, locationLabel.hashCode);
     _$hash = $jc(_$hash, nolocationText.hashCode);
@@ -131,8 +151,9 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
     _$hash = $jc(_$hash, date.hashCode);
     _$hash = $jc(_$hash, formatedDate.hashCode);
     _$hash = $jc(_$hash, closeCommand.hashCode);
-    _$hash = $jc(_$hash, dateChangedCommand.hashCode);
-    _$hash = $jc(_$hash, notebookSelectorCommand.hashCode);
+    _$hash = $jc(_$hash, changeDateCommand.hashCode);
+    _$hash = $jc(_$hash, selectNotebookCommand.hashCode);
+    _$hash = $jc(_$hash, selectTagsCommand.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -143,6 +164,8 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
           ..add('notebookTitle', notebookTitle)
           ..add('notebookId', notebookId)
           ..add('notebookLabel', notebookLabel)
+          ..add('tagsLabel', tagsLabel)
+          ..add('tagsValue', tagsValue)
           ..add('dateLabel', dateLabel)
           ..add('locationLabel', locationLabel)
           ..add('nolocationText', nolocationText)
@@ -153,8 +176,9 @@ class _$NoteOptionsViewModel extends NoteOptionsViewModel {
           ..add('date', date)
           ..add('formatedDate', formatedDate)
           ..add('closeCommand', closeCommand)
-          ..add('dateChangedCommand', dateChangedCommand)
-          ..add('notebookSelectorCommand', notebookSelectorCommand))
+          ..add('changeDateCommand', changeDateCommand)
+          ..add('selectNotebookCommand', selectNotebookCommand)
+          ..add('selectTagsCommand', selectTagsCommand))
         .toString();
   }
 }
@@ -176,6 +200,14 @@ class NoteOptionsViewModelBuilder
   String? get notebookLabel => _$this._notebookLabel;
   set notebookLabel(String? notebookLabel) =>
       _$this._notebookLabel = notebookLabel;
+
+  String? _tagsLabel;
+  String? get tagsLabel => _$this._tagsLabel;
+  set tagsLabel(String? tagsLabel) => _$this._tagsLabel = tagsLabel;
+
+  String? _tagsValue;
+  String? get tagsValue => _$this._tagsValue;
+  set tagsValue(String? tagsValue) => _$this._tagsValue = tagsValue;
 
   String? _dateLabel;
   String? get dateLabel => _$this._dateLabel;
@@ -222,17 +254,21 @@ class NoteOptionsViewModelBuilder
   set closeCommand(FunctionHolder? closeCommand) =>
       _$this._closeCommand = closeCommand;
 
-  TypedFunctionHolder<DateTime>? _dateChangedCommand;
-  TypedFunctionHolder<DateTime>? get dateChangedCommand =>
-      _$this._dateChangedCommand;
-  set dateChangedCommand(TypedFunctionHolder<DateTime>? dateChangedCommand) =>
-      _$this._dateChangedCommand = dateChangedCommand;
+  TypedFunctionHolder<DateTime>? _changeDateCommand;
+  TypedFunctionHolder<DateTime>? get changeDateCommand =>
+      _$this._changeDateCommand;
+  set changeDateCommand(TypedFunctionHolder<DateTime>? changeDateCommand) =>
+      _$this._changeDateCommand = changeDateCommand;
 
-  FunctionHolder? _notebookSelectorCommand;
-  FunctionHolder? get notebookSelectorCommand =>
-      _$this._notebookSelectorCommand;
-  set notebookSelectorCommand(FunctionHolder? notebookSelectorCommand) =>
-      _$this._notebookSelectorCommand = notebookSelectorCommand;
+  FunctionHolder? _selectNotebookCommand;
+  FunctionHolder? get selectNotebookCommand => _$this._selectNotebookCommand;
+  set selectNotebookCommand(FunctionHolder? selectNotebookCommand) =>
+      _$this._selectNotebookCommand = selectNotebookCommand;
+
+  FunctionHolder? _selectTagsCommand;
+  FunctionHolder? get selectTagsCommand => _$this._selectTagsCommand;
+  set selectTagsCommand(FunctionHolder? selectTagsCommand) =>
+      _$this._selectTagsCommand = selectTagsCommand;
 
   NoteOptionsViewModelBuilder();
 
@@ -242,6 +278,8 @@ class NoteOptionsViewModelBuilder
       _notebookTitle = $v.notebookTitle;
       _notebookId = $v.notebookId;
       _notebookLabel = $v.notebookLabel;
+      _tagsLabel = $v.tagsLabel;
+      _tagsValue = $v.tagsValue;
       _dateLabel = $v.dateLabel;
       _locationLabel = $v.locationLabel;
       _nolocationText = $v.nolocationText;
@@ -252,8 +290,9 @@ class NoteOptionsViewModelBuilder
       _date = $v.date;
       _formatedDate = $v.formatedDate;
       _closeCommand = $v.closeCommand;
-      _dateChangedCommand = $v.dateChangedCommand;
-      _notebookSelectorCommand = $v.notebookSelectorCommand;
+      _changeDateCommand = $v.changeDateCommand;
+      _selectNotebookCommand = $v.selectNotebookCommand;
+      _selectTagsCommand = $v.selectTagsCommand;
       _$v = null;
     }
     return this;
@@ -282,6 +321,10 @@ class NoteOptionsViewModelBuilder
               notebookId: notebookId,
               notebookLabel: BuiltValueNullFieldError.checkNotNull(
                   notebookLabel, r'NoteOptionsViewModel', 'notebookLabel'),
+              tagsLabel: BuiltValueNullFieldError.checkNotNull(
+                  tagsLabel, r'NoteOptionsViewModel', 'tagsLabel'),
+              tagsValue: BuiltValueNullFieldError.checkNotNull(
+                  tagsValue, r'NoteOptionsViewModel', 'tagsValue'),
               dateLabel: BuiltValueNullFieldError.checkNotNull(
                   dateLabel, r'NoteOptionsViewModel', 'dateLabel'),
               locationLabel: BuiltValueNullFieldError.checkNotNull(
@@ -294,13 +337,12 @@ class NoteOptionsViewModelBuilder
               notebooks: notebooks.build(),
               tags: BuiltValueNullFieldError.checkNotNull(
                   tags, r'NoteOptionsViewModel', 'tags'),
-              date: BuiltValueNullFieldError.checkNotNull(
-                  date, r'NoteOptionsViewModel', 'date'),
-              formatedDate:
-                  BuiltValueNullFieldError.checkNotNull(formatedDate, r'NoteOptionsViewModel', 'formatedDate'),
+              date: BuiltValueNullFieldError.checkNotNull(date, r'NoteOptionsViewModel', 'date'),
+              formatedDate: BuiltValueNullFieldError.checkNotNull(formatedDate, r'NoteOptionsViewModel', 'formatedDate'),
               closeCommand: BuiltValueNullFieldError.checkNotNull(closeCommand, r'NoteOptionsViewModel', 'closeCommand'),
-              dateChangedCommand: BuiltValueNullFieldError.checkNotNull(dateChangedCommand, r'NoteOptionsViewModel', 'dateChangedCommand'),
-              notebookSelectorCommand: BuiltValueNullFieldError.checkNotNull(notebookSelectorCommand, r'NoteOptionsViewModel', 'notebookSelectorCommand'));
+              changeDateCommand: BuiltValueNullFieldError.checkNotNull(changeDateCommand, r'NoteOptionsViewModel', 'changeDateCommand'),
+              selectNotebookCommand: BuiltValueNullFieldError.checkNotNull(selectNotebookCommand, r'NoteOptionsViewModel', 'selectNotebookCommand'),
+              selectTagsCommand: BuiltValueNullFieldError.checkNotNull(selectTagsCommand, r'NoteOptionsViewModel', 'selectTagsCommand'));
     } catch (_) {
       late String _$failedField;
       try {

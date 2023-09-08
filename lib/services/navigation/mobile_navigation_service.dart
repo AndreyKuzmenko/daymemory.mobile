@@ -3,6 +3,7 @@ import 'package:daymemory/connector/encrytion_key_settings_connector/encrytion_k
 import 'package:daymemory/connector/note_image_gallery_connector/note_image_gallery_connector.dart';
 import 'package:daymemory/connector/note_options_connector/note_options_connector.dart';
 import 'package:daymemory/connector/select_notebook_connector/select_notebook_connector.dart';
+import 'package:daymemory/connector/select_tags_connector/select_tags_connector.dart';
 import 'package:daymemory/connector/sort_notebooks_connector/sort_notebooks_connector.dart';
 import 'package:daymemory/services/navigation/interface_navigation_service.dart';
 import 'package:daymemory/services/navigation/interface_route_definition_service.dart';
@@ -119,6 +120,15 @@ class MobileNavigationService extends INavigationService {
 
   @override
   Future<dynamic>? pushNamedAccountSettings() => routeDefinitionService.key.currentState?.pushNamed(RouteDirection.accountSettings);
+
+  @override
+  Future<dynamic>? pushNamedSelectTags() async {
+    final context = routeDefinitionService.key.currentState?.context;
+    showCupertinoModalBottomSheet(
+      context: context!,
+      builder: (context) => const SelectTagsConnector(),
+    );
+  }
 
   @override
   Future<dynamic>? pushNamedEncryptionKeySettings() async {

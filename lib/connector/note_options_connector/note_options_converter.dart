@@ -24,6 +24,8 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
 
   final List<TagDto> tags;
 
+  final List<String> noteTags;
+
   final String? notebookTitle;
 
   final String? notebookdId;
@@ -36,6 +38,7 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
     required this.notebooks,
     required this.language,
     required this.tags,
+    required this.noteTags,
     required this.notebookTitle,
     required this.notebookdId,
   });
@@ -48,6 +51,8 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
       ..notebookId = notebookdId
       ..notebookTitle = notebookTitle
       ..title = locale.note_options_title
+      ..tagsLabel = locale.note_options_tags_label
+      ..tagsValue = noteTags.isEmpty ? locale.note_options_no_tags_label : noteTags.map((e) => e).join(', ')
       ..tags = tags
       ..date = date
       ..dateLabel = locale.note_options_date_label
@@ -55,10 +60,13 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
       ..nolocationText = locale.note_options_no_location_text
       ..notebookLabel = locale.note_options_notebook_label
       ..formatedDate = DateFormat('dd.MM.yyyy', language).format(date.toLocal())
-      ..notebookSelectorCommand = FunctionHolder(() {
+      ..selectNotebookCommand = FunctionHolder(() {
         dispatch(NavigateToSelectNotebookAction());
       })
-      ..dateChangedCommand = TypedFunctionHolder<DateTime>((date) {
+      ..selectTagsCommand = FunctionHolder(() {
+        dispatch(NavigateToSelectTagsAction());
+      })
+      ..changeDateCommand = TypedFunctionHolder<DateTime>((date) {
         dispatch(NoteDateChangedAction(date: date));
       })
       ..closeCommand = FunctionHolder(() {

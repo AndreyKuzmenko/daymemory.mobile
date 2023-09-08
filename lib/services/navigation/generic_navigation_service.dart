@@ -143,4 +143,7 @@ class GenericNavigationService extends INavigationService {
 
   @override
   Future<dynamic>? pushNamedEncryptionKeySettings() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.encryptionKeySettings);
+
+  @override
+  Future<dynamic>? pushNamedSelectTags() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.selectTags);
 }

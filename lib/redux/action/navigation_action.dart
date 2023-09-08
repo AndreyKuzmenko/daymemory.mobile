@@ -316,3 +316,10 @@ class NavigateToEncryptionAction implements ILoggingAction {
     return 'Navigate To Encryption Action';
   }
 }
+
+class NavigateToSelectTagsAction implements ILoggingAction {
+  @override
+  String toLogString() {
+    return 'Navigate To Select Tags Action';
+  }
+}
