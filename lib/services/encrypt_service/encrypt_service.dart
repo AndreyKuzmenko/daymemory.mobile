@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:encrypt/encrypt.dart';
 
 abstract class IEncryptService {
@@ -10,7 +12,7 @@ class EncryptService implements IEncryptService {
   @override
   String encrypt(String key, String text) {
     final encryptedKey = Key.fromUtf8(key);
-    final iv = IV.fromLength(16);
+    final iv = IV(Uint8List(16));
     final encrypter = Encrypter(AES(encryptedKey));
     final encrypted = encrypter.encrypt(text, iv: iv);
     return encrypted.base64;
@@ -19,7 +21,8 @@ class EncryptService implements IEncryptService {
   @override
   String decrypt(String key, String text) {
     final encryptedKey = Key.fromUtf8(key);
-    final iv = IV.fromLength(16);
+
+    final iv = IV(Uint8List(16));
     final encrypter = Encrypter(AES(encryptedKey));
     final decrypted = encrypter.decrypt(Encrypted.fromBase64(text), iv: iv);
     return decrypted;
