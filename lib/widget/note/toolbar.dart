@@ -7,7 +7,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 class Toolbar extends StatefulWidget {
   const Toolbar({
-    Key? key,
+    super.key,
     required this.quillController,
     required this.focusNode,
     this.isImageEnabled = false,
@@ -18,7 +18,7 @@ class Toolbar extends StatefulWidget {
     this.onVideoSelectorClicked,
     this.onOptionsClicked,
     required this.tags,
-  }) : super(key: key);
+  });
 
   final QuillController quillController;
 
@@ -52,74 +52,67 @@ class _ToolbarState extends State<Toolbar> {
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       //color: Colors.red,
-      child: QuillToolbar(
-        toolbarSize: 50,
-        children: [
-          Visibility(
-            visible: true,
-            child: ToggleStyleButton(
-              fillColor: HexColor.fromHex("#D9D9D9"),
-              attribute: Attribute.h3,
-              icon: Icons.title,
-              controller: widget.quillController,
-              afterButtonPressed: () {
-                widget.focusNode.requestFocus();
-              },
-            ),
+      child: QuillToolbarProvider(
+        toolbarConfigurations: const QuillToolbarConfigurations(),
+        child: QuillBaseToolbar(
+          //toolbarSize: 50,
+
+          configurations: QuillBaseToolbarConfigurations(
+            childrenBuilder: (context) {
+              return [
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.h3,
+                  controller: widget.quillController,
+                  options: QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.title,
+                    fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
+                ),
+                const SizedBox(width: 0.6),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.bold,
+                  controller: widget.quillController,
+                  options: QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_bold,
+                    fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
+                ),
+                const SizedBox(width: 0.6),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.italic,
+                  controller: widget.quillController,
+                  options: QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_italic,
+                    fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
+                ),
+                const SizedBox(width: 0.6),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.ul,
+                  controller: widget.quillController,
+                  options: QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_list_bulleted_outlined,
+                    fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
+                ),
+                const SizedBox(width: 0.6),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.ol,
+                  controller: widget.quillController,
+                  options: QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_list_numbered,
+                    fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
+                ),
+              ];
+            },
           ),
-          const SizedBox(width: 0.6),
-          Visibility(
-            visible: true,
-            child: ToggleStyleButton(
-              fillColor: HexColor.fromHex("#D9D9D9"),
-              attribute: Attribute.bold,
-              icon: Icons.format_bold,
-              controller: widget.quillController,
-              afterButtonPressed: () {
-                widget.focusNode.requestFocus();
-              },
-            ),
-          ),
-          const SizedBox(width: 0.6),
-          Visibility(
-            visible: true,
-            child: ToggleStyleButton(
-              fillColor: HexColor.fromHex("#D9D9D9"),
-              attribute: Attribute.italic,
-              icon: Icons.format_italic,
-              controller: widget.quillController,
-              afterButtonPressed: () {
-                widget.focusNode.requestFocus();
-              },
-            ),
-          ),
-          const SizedBox(width: 0.6),
-          Visibility(
-            visible: true,
-            child: ToggleStyleButton(
-              fillColor: HexColor.fromHex("#D9D9D9"),
-              attribute: Attribute.ul,
-              icon: Icons.format_list_bulleted_outlined,
-              controller: widget.quillController,
-              afterButtonPressed: () {
-                widget.focusNode.requestFocus();
-              },
-            ),
-          ),
-          const SizedBox(width: 0.6),
-          Visibility(
-            visible: true,
-            child: ToggleStyleButton(
-              fillColor: HexColor.fromHex("#D9D9D9"),
-              attribute: Attribute.ol,
-              icon: Icons.format_list_numbered,
-              controller: widget.quillController,
-              afterButtonPressed: () {
-                widget.focusNode.requestFocus();
-              },
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

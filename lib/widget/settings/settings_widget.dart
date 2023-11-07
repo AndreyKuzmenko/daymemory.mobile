@@ -10,9 +10,9 @@ class SettingsWidget extends StatelessWidget {
   final SettingsViewModel viewModel;
 
   const SettingsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

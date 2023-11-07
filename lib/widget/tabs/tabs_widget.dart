@@ -7,9 +7,9 @@ class TabsWidget extends StatelessWidget {
   final TabsViewModel viewModel;
 
   const TabsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   firebase_core
   flutter_acrylic
   flutter_secure_storage_windows
+  gal
   geolocator_windows
   local_auth_windows
   pasteboard

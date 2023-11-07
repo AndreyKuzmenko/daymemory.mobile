@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginConnector extends PageConnector<LoginViewModel, LoginConverter> {
-  const LoginConnector({Key? key}) : super(key: key);
+  const LoginConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, LoginViewModel viewModel) => LoginWidget(viewModel: viewModel);

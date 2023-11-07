@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgotPasswordConnector extends PageConnector<ForgotPasswordViewModel, ForgotPasswordConverter> {
-  const ForgotPasswordConnector({Key? key}) : super(key: key);
+  const ForgotPasswordConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, ForgotPasswordViewModel viewModel) => ForgotPasswordWidget(viewModel: viewModel);

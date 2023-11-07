@@ -79,35 +79,51 @@ class _EditFormState extends State<EditNoteForm> {
   @override
   Widget build(BuildContext context) {
     if (widget.viewModel.showToolbarOnTop) {
-      return Column(
-        children: [
-          //if (_hasFocus)
-          Container(
-            height: 50,
-            margin: const EdgeInsets.only(left: 20, right: 20),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              color: Colors.grey.withAlpha(50),
-            ),
-            child: _createToolbar(),
+      return QuillProvider(
+        configurations: QuillConfigurations(
+          controller: _quillController,
+          sharedConfigurations: QuillSharedConfigurations(
+            animationConfigurations: QuillAnimationConfigurations.enableAll(),
           ),
-          Expanded(child: _createEditForm()),
-        ],
+        ),
+        child: Column(
+          children: [
+            //if (_hasFocus)
+            Container(
+              height: 50,
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                color: Colors.grey.withAlpha(50),
+              ),
+              child: _createToolbar(),
+            ),
+            Expanded(child: _createEditForm()),
+          ],
+        ),
       );
     }
-    return KeyboardActions(
-      disableScroll: true,
-      bottomAvoiderScrollPhysics: const BouncingScrollPhysics(),
-      autoScroll: true,
-      config: _buildConfig(context),
-      keepFocusOnTappingNode: true,
-      child: GestureDetector(
-        onTap: () {
-          if (!_nodeText.hasFocus) {
-            _nodeText.requestFocus();
-          }
-        },
-        child: _createEditForm(),
+    return QuillProvider(
+      configurations: QuillConfigurations(
+        controller: _quillController,
+        sharedConfigurations: QuillSharedConfigurations(
+          animationConfigurations: QuillAnimationConfigurations.enableAll(),
+        ),
+      ),
+      child: KeyboardActions(
+        disableScroll: true,
+        bottomAvoiderScrollPhysics: const BouncingScrollPhysics(),
+        autoScroll: true,
+        config: _buildConfig(context),
+        keepFocusOnTappingNode: true,
+        child: GestureDetector(
+          onTap: () {
+            if (!_nodeText.hasFocus) {
+              _nodeText.requestFocus();
+            }
+          },
+          child: _createEditForm(),
+        ),
       ),
     );
   }
@@ -147,44 +163,45 @@ class _EditFormState extends State<EditNoteForm> {
       height: 1.3,
     );
     return QuillEditor(
-      controller: _quillController,
-      padding: const EdgeInsets.all(0),
-      readOnly: false,
-      scrollController: _scrollController,
-      scrollable: false,
       focusNode: _nodeText,
-      autoFocus: _isNew,
-      placeholder: widget.viewModel.textPlaceholder,
-      enableInteractiveSelection: true,
-      expands: false,
-      scrollBottomInset: 150,
-      customStyles: DefaultStyles(
-          lists: DefaultListBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 5), const VerticalSpacing(10, 0), null, null),
-          paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 20), const VerticalSpacing(0, 0), null),
-          h2: DefaultTextBlockStyle(
-              defaultTextStyle.style.copyWith(
-                fontSize: 22,
-                color: Colors.black,
-                height: 1.5,
-                fontWeight: FontWeight.w700,
-              ),
-              const VerticalSpacing(5, 10),
-              const VerticalSpacing(0, 0),
-              null),
-          h3: DefaultTextBlockStyle(
-              defaultTextStyle.style.copyWith(
-                fontSize: 18,
-                color: Colors.black,
-                height: 1.5,
-                fontWeight: FontWeight.w700,
-              ),
-              const VerticalSpacing(0, 10),
-              const VerticalSpacing(0, 0),
-              null)),
+      scrollController: _scrollController,
+      configurations: QuillEditorConfigurations(
+        padding: const EdgeInsets.all(0),
+        readOnly: false,
+        scrollable: false,
+        autoFocus: _isNew,
+        placeholder: widget.viewModel.textPlaceholder,
+        enableInteractiveSelection: true,
+        expands: false,
+        scrollBottomInset: 150,
+        customStyles: DefaultStyles(
+            lists: DefaultListBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 5), const VerticalSpacing(10, 0), null, null),
+            paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 20), const VerticalSpacing(0, 0), null),
+            h2: DefaultTextBlockStyle(
+                defaultTextStyle.style.copyWith(
+                  fontSize: 22,
+                  color: Colors.black,
+                  height: 1.5,
+                  fontWeight: FontWeight.w700,
+                ),
+                const VerticalSpacing(5, 10),
+                const VerticalSpacing(0, 0),
+                null),
+            h3: DefaultTextBlockStyle(
+                defaultTextStyle.style.copyWith(
+                  fontSize: 18,
+                  color: Colors.black,
+                  height: 1.5,
+                  fontWeight: FontWeight.w700,
+                ),
+                const VerticalSpacing(0, 10),
+                const VerticalSpacing(0, 0),
+                null)),
+      ),
     );
   }
 
-  SingleChildScrollView _createEditForm() {
+  Widget _createEditForm() {
     var quill = _createQuillEditor();
     return SingleChildScrollView(
       controller: _scrollController,

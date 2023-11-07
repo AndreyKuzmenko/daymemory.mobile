@@ -5,7 +5,7 @@ import 'package:daymemory/widget/question_list_edit/question_list_edit_view_mode
 import 'package:flutter/material.dart';
 
 class QuestionListView extends StatelessWidget {
-  const QuestionListView(this.viewModel, {Key? key}) : super(key: key);
+  const QuestionListView(this.viewModel, {super.key});
 
   final QuestionListEditViewModel viewModel;
 

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PasscodeRequireAfterConnector extends PageConnector<SelectOptionViewModel, PasscodeRequireAfterConverter> {
-  const PasscodeRequireAfterConnector({Key? key}) : super(key: key);
+  const PasscodeRequireAfterConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SelectOptionViewModel viewModel) => SelectOptionWidget(viewModel: viewModel);

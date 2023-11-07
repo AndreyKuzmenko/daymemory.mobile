@@ -8,9 +8,9 @@ class PasscodeSettingsWidget extends StatelessWidget {
   final PasscodeSettingsViewModel viewModel;
 
   const PasscodeSettingsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
