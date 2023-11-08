@@ -3,11 +3,15 @@ import 'dart:ui';
 import 'package:daymemory/redux/state/states.dart';
 import 'package:daymemory/services/device_info_service/device_info_service.dart';
 
+abstract class ITrackAction {
+  String toLogString();
+}
+
 abstract class ILoggingAction {
   String toLogString();
 }
 
-class ResetStoreToDefaultAction implements ILoggingAction {
+class ResetStoreToDefaultAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'Reset Store to default';
@@ -138,7 +142,7 @@ class AppInitializationAction implements ILoggingAction {
   }
 }
 
-class FirstScreenAction implements ILoggingAction {
+class FirstScreenAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'First Screen Action';

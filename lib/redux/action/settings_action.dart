@@ -142,7 +142,6 @@ class SendEmailToDevelopersAction implements ILoggingAction {
   }
 }
 
-
 class DeviceDataClearedAction implements ILoggingAction {
   @override
   String toLogString() {
@@ -185,7 +184,7 @@ class SettingsSyncStateChangedAction implements ILoggingAction {
   }
 }
 
-class EncryptionKeyGeneratedAction implements ILoggingAction {
+class EncryptionKeyGeneratedAction implements ILoggingAction, ITrackAction {
   final String key;
 
   EncryptionKeyGeneratedAction({required this.key});
@@ -211,7 +210,7 @@ class SetEncryptionKeyAction implements ILoggingAction {
   }
 }
 
-class EncryptionKeySetAction implements ILoggingAction {
+class EncryptionKeySetAction implements ILoggingAction, ITrackAction {
   final String key;
 
   EncryptionKeySetAction({required this.key});

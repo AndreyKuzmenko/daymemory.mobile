@@ -62,7 +62,7 @@ class SyncProgressStatusAction implements ILoggingAction, ISyncAction {
   }
 }
 
-class EncryptAllDataAction implements ILoggingAction, ISyncAction {
+class EncryptAllDataAction implements ILoggingAction, ISyncAction, ITrackAction {
   @override
   String toLogString() {
     return 'Encrypt All Data Action';

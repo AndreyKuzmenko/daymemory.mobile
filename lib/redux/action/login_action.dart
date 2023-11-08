@@ -11,28 +11,28 @@ class LoginIsLoadingAction implements ILoggingAction {
   }
 }
 
-class LoginWithFacebookIdAction implements ILoggingAction {
+class LoginWithFacebookIdAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'Login With Facebook Id Action';
   }
 }
 
-class LoginWithGoogleIdAction implements ILoggingAction {
+class LoginWithGoogleIdAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'Login With Google Id Action';
   }
 }
 
-class LoginWithAppleIdAction implements ILoggingAction {
+class LoginWithAppleIdAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'Login With Apple Id Action';
   }
 }
 
-class LoginWithEmailAction implements ILoggingAction {
+class LoginWithEmailAction implements ILoggingAction, ITrackAction {
   final String email;
 
   final String password;
@@ -45,7 +45,7 @@ class LoginWithEmailAction implements ILoggingAction {
   }
 }
 
-class ForgotPasswordAction implements ILoggingAction {
+class ForgotPasswordAction implements ILoggingAction, ITrackAction {
   final String email;
 
   ForgotPasswordAction({required this.email});
@@ -56,7 +56,7 @@ class ForgotPasswordAction implements ILoggingAction {
   }
 }
 
-class RestorePasswordAction implements ILoggingAction {
+class RestorePasswordAction implements ILoggingAction, ITrackAction {
   final String email;
 
   final String password;
@@ -71,7 +71,7 @@ class RestorePasswordAction implements ILoggingAction {
   }
 }
 
-class SignupWithEmailAction implements ILoggingAction {
+class SignupWithEmailAction implements ILoggingAction, ITrackAction {
   final String email;
 
   final String password;
@@ -88,14 +88,14 @@ class SignupWithEmailAction implements ILoggingAction {
   }
 }
 
-class LoginAction implements ILoggingAction {
+class LoginAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'Login Action';
   }
 }
 
-class SignupThirdPartyAction implements ILoggingAction {
+class SignupThirdPartyAction implements ILoggingAction, ITrackAction {
   final AuthResult authResult;
 
   SignupThirdPartyAction(this.authResult);
@@ -106,7 +106,7 @@ class SignupThirdPartyAction implements ILoggingAction {
   }
 }
 
-class LogoutAction implements ILoggingAction {
+class LogoutAction implements ILoggingAction, ITrackAction {
   LogoutAction();
 
   @override

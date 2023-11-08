@@ -46,7 +46,7 @@ class EnableAccountEncryptionAction implements ILoggingAction {
   }
 }
 
-class EncryptionEnabledAction implements ILoggingAction {
+class EncryptionEnabledAction implements ILoggingAction, ITrackAction {
   @override
   String toLogString() {
     return 'Encryption Enabled Action';

@@ -41,7 +41,7 @@ class LoggingService implements ILoggingService, IAsyncServiceInitializer<ILoggi
       if (action != null) {
         print(action.toLogString());
       }
-    } else if (action is ILoggingAction) {
+    } else if (action is ITrackAction) {
       _logMixpanel("Action", {"Name": action.runtimeType.toString(), "Message": action.toLogString()});
       _crashlytics.log(action.toLogString());
     }
