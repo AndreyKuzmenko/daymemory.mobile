@@ -19,7 +19,7 @@ import 'package:flutter/src/widgets/text.dart' as Text;
 import 'package:flutter_quill/src/models/documents/document.dart' as d;
 
 class EditNoteForm extends StatefulWidget {
-  const EditNoteForm({Key? key, required this.viewModel}) : super(key: key);
+  const EditNoteForm({super.key, required this.viewModel});
 
   final EditNoteViewModel viewModel;
 

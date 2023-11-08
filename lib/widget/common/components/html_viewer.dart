@@ -6,7 +6,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
 class HtmlViewer extends StatefulWidget {
-  const HtmlViewer(this.text, {Key? key, this.onHashTagPressed, required this.showMoreText, required this.scaleFactor}) : super(key: key);
+  const HtmlViewer(this.text, {super.key, this.onHashTagPressed, required this.showMoreText, required this.scaleFactor});
 
   final String? text;
 
@@ -30,7 +30,7 @@ class _HtmlViewerState extends State<HtmlViewer> {
     var jsonElements = List.castFrom(json);
     final converter = QuillDeltaToHtmlConverter(
       List.castFrom(_isExpanded ? jsonElements : jsonElements.take(_maxElements).toList()),
-      ConverterOptions.forEmail(),
+      ConverterOptions(multiLineParagraph: false),
     );
 
     var html = converter.convert();
@@ -72,7 +72,7 @@ class _HtmlViewerState extends State<HtmlViewer> {
           margin: Margins.zero,
           padding: HtmlPaddings.all(0),
         ),
-        "p": Style(lineHeight: const LineHeight(1.3), fontSize: FontSize(16 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 0, bottom: 5, unit: Unit.px)),
+        "p": Style(lineHeight: const LineHeight(1.3), fontSize: FontSize(16 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 0, bottom: 15, unit: Unit.px)),
         "h2": Style(
             lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(22 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px)),
         "h3": Style(

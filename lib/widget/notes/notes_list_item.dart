@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NotesListItem extends StatelessWidget {
-  const NotesListItem({Key? key, required this.viewModel}) : super(key: key);
+  const NotesListItem({super.key, required this.viewModel});
 
   final NoteViewModel viewModel;
 
