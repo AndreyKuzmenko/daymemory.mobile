@@ -27,6 +27,7 @@ class SelectOptionWidget extends StatelessWidget {
       body: SafeArea(
         child: SettingsList(
           applicationType: ApplicationType.cupertino,
+          physics: const ClampingScrollPhysics(),
           platform: DevicePlatform.iOS,
           sections: [_getOptions(theme)],
         ),
