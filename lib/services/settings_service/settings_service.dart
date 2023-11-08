@@ -7,6 +7,8 @@ import 'package:daymemory/services/settings_service/storage_user_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+enum BiometricsStoredConfigType { reset, fingerOrFace, skipped }
+
 class PasscodeRequireAfterOption {
   final String title;
   final int seconds;
@@ -15,8 +17,6 @@ class PasscodeRequireAfterOption {
 }
 
 class UserSettings {
-  String? biometricType;
-
   String? accessToken;
 
   String? refreshToken;
@@ -48,7 +48,6 @@ class UserSettings {
   bool isEncryptionEnabled = false;
 
   UserSettings({
-    this.biometricType,
     this.accessToken,
     this.refreshToken,
     this.isEncryptionKeyLocked = false,
@@ -68,7 +67,6 @@ class UserSettings {
 
   factory UserSettings.fromJson(Map<String, dynamic> json) {
     return UserSettings(
-      biometricType: json['biometricType'],
       accessToken: json['accessToken'],
       refreshToken: json['refreshToken'],
       isEncryptionKeyLocked: json['isEncryptionKeyLocked'],
@@ -89,7 +87,6 @@ class UserSettings {
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json["biometricType"] = biometricType;
     json["accessToken"] = accessToken;
     json["refreshToken"] = refreshToken;
     json["isEncryptionKeyLocked"] = isEncryptionKeyLocked;
@@ -127,6 +124,10 @@ abstract class ISettingsService {
 
   List<LanguageDto> getAvailableLanguages();
 
+  Future setBiometricType(BiometricsStoredConfigType flag);
+
+  Future<BiometricsStoredConfigType> getBiometricType();
+
   //Secure
   Future<String?> getEncryptionKey();
 
@@ -138,6 +139,7 @@ class SettingsService implements ISettingsService, IAsyncServiceInitializer<ISet
   final userInfoKey = 'USER_INFO_KEY';
   final reviewSettingsKey = 'REVIEW_MEMORIES_SETTINGS_KEY';
   final settingsKey = 'USER_SETTINGS_KEY';
+  final isBiometricEnabledKey = 'BIOMETRIC_KEY';
 
   late SharedPreferences _prefs;
   late FlutterSecureStorage _storage;
@@ -150,6 +152,22 @@ class SettingsService implements ISettingsService, IAsyncServiceInitializer<ISet
     _storage = const FlutterSecureStorage();
     return this;
   }
+
+  @override
+  Future<BiometricsStoredConfigType> getBiometricType() async {
+    final val = await _storage.read(key: isBiometricEnabledKey);
+
+    if (val == null || val.isEmpty) {
+      return BiometricsStoredConfigType.reset;
+    }
+
+    final type = BiometricsStoredConfigType.values.cast<BiometricsStoredConfigType?>().firstWhere((x) => x?.name == val, orElse: () => null);
+
+    return type ?? BiometricsStoredConfigType.reset;
+  }
+
+  @override
+  Future setBiometricType(BiometricsStoredConfigType? flag) => _storage.write(key: isBiometricEnabledKey, value: flag?.name);
 
   @override
   Future<String?> getEncryptionKey() => _storage.read(key: encryptionKey);

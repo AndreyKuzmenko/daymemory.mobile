@@ -19,9 +19,7 @@ abstract class INavigationService {
 
   Future<dynamic>? pushNamedEnterPin();
 
-  Future<dynamic>? pushRemoveUntilFaceId();
-
-  Future<dynamic>? pushRemoveUntilTouchId();
+  Future<dynamic>? pushRemoveUntilBiometricAuth();
 
   Future<dynamic>? pushNamedNoteEdit();
 

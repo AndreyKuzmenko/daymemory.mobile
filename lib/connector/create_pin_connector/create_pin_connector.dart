@@ -25,7 +25,7 @@ class CreatePinConnector extends PageConnector<CreatePinViewModel, CreatePinConv
       enteredPin: createPinState.enteredPin,
       confirmedPin: createPinState.confirmedPin,
       isRetryPin: createPinState.isRetryPin,
-      availableBiometrics: state.faceIdState.availableBiometrics,
+      availableBiometrics: state.biometricsState.availableBiometrics,
     );
     return converter;
   }

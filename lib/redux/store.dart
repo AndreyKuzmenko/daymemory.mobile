@@ -134,8 +134,8 @@ IStoreService initStore() {
             state.enterPinState,
             action,
           ).toBuilder()
-          ..faceIdState = faceIdReducer(
-            state.faceIdState,
+          ..biometricsState = faceIdReducer(
+            state.biometricsState,
             action,
           ).toBuilder()
           ..jailbreakType = jailBreakReducer(
@@ -245,6 +245,7 @@ IStoreService initStore() {
           encryptService: ServiceLocator.getIt.get(),
           configService: ServiceLocator.getIt.get(),
           emailSenderService: ServiceLocator.getIt.get(),
+          localAuthService: ServiceLocator.getIt.get(),
         ),
         SyncMiddleware(
           settingsService: ServiceLocator.getIt.get(),

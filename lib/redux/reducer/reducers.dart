@@ -1,7 +1,7 @@
 export 'create_pin_reducer.dart';
 export 'dialog_reducer.dart';
 export 'enter_pin_reducer.dart';
-export 'face_id_reducer.dart';
+export 'biometric_auth_reducer.dart';
 export 'jailbreak_reducer.dart';
 export 'login_reducer.dart';
 export 'onboarding_reducer.dart';

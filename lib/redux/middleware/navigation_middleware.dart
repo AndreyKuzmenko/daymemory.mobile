@@ -72,10 +72,8 @@ class NavigationMiddleware implements MiddlewareClass<AppState> {
       await navigationService.pushNamedNewQuestionList();
     } else if (action is NavigateToAnswerQuestionListAction) {
       await navigationService.pushNamedAnswerQuestionList();
-    } else if (action is NavigateToFaceIdAction) {
-      await navigationService.pushRemoveUntilFaceId();
-    } else if (action is NavigateToTouchIdAction) {
-      await navigationService.pushRemoveUntilTouchId();
+    } else if (action is NavigateToBiometricAuthAction) {
+      await navigationService.pushRemoveUntilBiometricAuth();
     } else if (action is NavigateToOnboardingAction) {
       await navigationService.pushNamedOnboarding();
     } else if (action is NavigateToReviewAction) {

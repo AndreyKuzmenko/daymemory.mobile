@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsConnector extends PageConnector<SettingsViewModel, SettingsConverter> {
-  const SettingsConnector({Key? key}) : super(key: key);
+  const SettingsConnector({super.key});
 
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {

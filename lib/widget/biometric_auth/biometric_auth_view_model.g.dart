@@ -1,61 +1,62 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'touch_id_view_model.dart';
+part of 'biometric_auth_view_model.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$TouchIdViewModel extends TouchIdViewModel {
+class _$BiometricAuthViewModel extends BiometricAuthViewModel {
   @override
   final FunctionHolder allowCommand;
   @override
   final FunctionHolder skipCommand;
   @override
-  final String allowTouchIdTitle;
+  final String allowBiometricAuthTitle;
   @override
   final String skipTitle;
   @override
   final String subTitle;
 
-  factory _$TouchIdViewModel(
-          [void Function(TouchIdViewModelBuilder)? updates]) =>
-      (new TouchIdViewModelBuilder()..update(updates))._build();
+  factory _$BiometricAuthViewModel(
+          [void Function(BiometricAuthViewModelBuilder)? updates]) =>
+      (new BiometricAuthViewModelBuilder()..update(updates))._build();
 
-  _$TouchIdViewModel._(
+  _$BiometricAuthViewModel._(
       {required this.allowCommand,
       required this.skipCommand,
-      required this.allowTouchIdTitle,
+      required this.allowBiometricAuthTitle,
       required this.skipTitle,
       required this.subTitle})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        allowCommand, r'TouchIdViewModel', 'allowCommand');
+        allowCommand, r'BiometricAuthViewModel', 'allowCommand');
     BuiltValueNullFieldError.checkNotNull(
-        skipCommand, r'TouchIdViewModel', 'skipCommand');
+        skipCommand, r'BiometricAuthViewModel', 'skipCommand');
+    BuiltValueNullFieldError.checkNotNull(allowBiometricAuthTitle,
+        r'BiometricAuthViewModel', 'allowBiometricAuthTitle');
     BuiltValueNullFieldError.checkNotNull(
-        allowTouchIdTitle, r'TouchIdViewModel', 'allowTouchIdTitle');
+        skipTitle, r'BiometricAuthViewModel', 'skipTitle');
     BuiltValueNullFieldError.checkNotNull(
-        skipTitle, r'TouchIdViewModel', 'skipTitle');
-    BuiltValueNullFieldError.checkNotNull(
-        subTitle, r'TouchIdViewModel', 'subTitle');
+        subTitle, r'BiometricAuthViewModel', 'subTitle');
   }
 
   @override
-  TouchIdViewModel rebuild(void Function(TouchIdViewModelBuilder) updates) =>
+  BiometricAuthViewModel rebuild(
+          void Function(BiometricAuthViewModelBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TouchIdViewModelBuilder toBuilder() =>
-      new TouchIdViewModelBuilder()..replace(this);
+  BiometricAuthViewModelBuilder toBuilder() =>
+      new BiometricAuthViewModelBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is TouchIdViewModel &&
+    return other is BiometricAuthViewModel &&
         allowCommand == other.allowCommand &&
         skipCommand == other.skipCommand &&
-        allowTouchIdTitle == other.allowTouchIdTitle &&
+        allowBiometricAuthTitle == other.allowBiometricAuthTitle &&
         skipTitle == other.skipTitle &&
         subTitle == other.subTitle;
   }
@@ -65,7 +66,7 @@ class _$TouchIdViewModel extends TouchIdViewModel {
     var _$hash = 0;
     _$hash = $jc(_$hash, allowCommand.hashCode);
     _$hash = $jc(_$hash, skipCommand.hashCode);
-    _$hash = $jc(_$hash, allowTouchIdTitle.hashCode);
+    _$hash = $jc(_$hash, allowBiometricAuthTitle.hashCode);
     _$hash = $jc(_$hash, skipTitle.hashCode);
     _$hash = $jc(_$hash, subTitle.hashCode);
     _$hash = $jf(_$hash);
@@ -74,19 +75,19 @@ class _$TouchIdViewModel extends TouchIdViewModel {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'TouchIdViewModel')
+    return (newBuiltValueToStringHelper(r'BiometricAuthViewModel')
           ..add('allowCommand', allowCommand)
           ..add('skipCommand', skipCommand)
-          ..add('allowTouchIdTitle', allowTouchIdTitle)
+          ..add('allowBiometricAuthTitle', allowBiometricAuthTitle)
           ..add('skipTitle', skipTitle)
           ..add('subTitle', subTitle))
         .toString();
   }
 }
 
-class TouchIdViewModelBuilder
-    implements Builder<TouchIdViewModel, TouchIdViewModelBuilder> {
-  _$TouchIdViewModel? _$v;
+class BiometricAuthViewModelBuilder
+    implements Builder<BiometricAuthViewModel, BiometricAuthViewModelBuilder> {
+  _$BiometricAuthViewModel? _$v;
 
   FunctionHolder? _allowCommand;
   FunctionHolder? get allowCommand => _$this._allowCommand;
@@ -98,10 +99,10 @@ class TouchIdViewModelBuilder
   set skipCommand(FunctionHolder? skipCommand) =>
       _$this._skipCommand = skipCommand;
 
-  String? _allowTouchIdTitle;
-  String? get allowTouchIdTitle => _$this._allowTouchIdTitle;
-  set allowTouchIdTitle(String? allowTouchIdTitle) =>
-      _$this._allowTouchIdTitle = allowTouchIdTitle;
+  String? _allowBiometricAuthTitle;
+  String? get allowBiometricAuthTitle => _$this._allowBiometricAuthTitle;
+  set allowBiometricAuthTitle(String? allowBiometricAuthTitle) =>
+      _$this._allowBiometricAuthTitle = allowBiometricAuthTitle;
 
   String? _skipTitle;
   String? get skipTitle => _$this._skipTitle;
@@ -111,14 +112,14 @@ class TouchIdViewModelBuilder
   String? get subTitle => _$this._subTitle;
   set subTitle(String? subTitle) => _$this._subTitle = subTitle;
 
-  TouchIdViewModelBuilder();
+  BiometricAuthViewModelBuilder();
 
-  TouchIdViewModelBuilder get _$this {
+  BiometricAuthViewModelBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _allowCommand = $v.allowCommand;
       _skipCommand = $v.skipCommand;
-      _allowTouchIdTitle = $v.allowTouchIdTitle;
+      _allowBiometricAuthTitle = $v.allowBiometricAuthTitle;
       _skipTitle = $v.skipTitle;
       _subTitle = $v.subTitle;
       _$v = null;
@@ -127,32 +128,34 @@ class TouchIdViewModelBuilder
   }
 
   @override
-  void replace(TouchIdViewModel other) {
+  void replace(BiometricAuthViewModel other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$TouchIdViewModel;
+    _$v = other as _$BiometricAuthViewModel;
   }
 
   @override
-  void update(void Function(TouchIdViewModelBuilder)? updates) {
+  void update(void Function(BiometricAuthViewModelBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  TouchIdViewModel build() => _build();
+  BiometricAuthViewModel build() => _build();
 
-  _$TouchIdViewModel _build() {
+  _$BiometricAuthViewModel _build() {
     final _$result = _$v ??
-        new _$TouchIdViewModel._(
+        new _$BiometricAuthViewModel._(
             allowCommand: BuiltValueNullFieldError.checkNotNull(
-                allowCommand, r'TouchIdViewModel', 'allowCommand'),
+                allowCommand, r'BiometricAuthViewModel', 'allowCommand'),
             skipCommand: BuiltValueNullFieldError.checkNotNull(
-                skipCommand, r'TouchIdViewModel', 'skipCommand'),
-            allowTouchIdTitle: BuiltValueNullFieldError.checkNotNull(
-                allowTouchIdTitle, r'TouchIdViewModel', 'allowTouchIdTitle'),
+                skipCommand, r'BiometricAuthViewModel', 'skipCommand'),
+            allowBiometricAuthTitle: BuiltValueNullFieldError.checkNotNull(
+                allowBiometricAuthTitle,
+                r'BiometricAuthViewModel',
+                'allowBiometricAuthTitle'),
             skipTitle: BuiltValueNullFieldError.checkNotNull(
-                skipTitle, r'TouchIdViewModel', 'skipTitle'),
+                skipTitle, r'BiometricAuthViewModel', 'skipTitle'),
             subTitle: BuiltValueNullFieldError.checkNotNull(
-                subTitle, r'TouchIdViewModel', 'subTitle'));
+                subTitle, r'BiometricAuthViewModel', 'subTitle'));
     replace(_$result);
     return _$result;
   }

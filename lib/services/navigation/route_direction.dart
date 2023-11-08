@@ -6,8 +6,7 @@ abstract class RouteDirection {
   static const String restorePassword = 'restore-password';
   static const String onBoarding = 'onBoarding';
   static const String createPin = 'createPin';
-  static const String allowFaceId = 'allowFaceId';
-  static const String allowTouchId = 'allowTouchId';
+  static const String allowBiometricAuth = 'allowBiometricAuth';
   static const String enterPin = 'enterPin';
   static const String notifications = 'notifications';
 

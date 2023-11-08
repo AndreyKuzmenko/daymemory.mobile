@@ -20,7 +20,7 @@ abstract class EnterPinViewModel implements Built<EnterPinViewModel, EnterPinVie
 
   bool get isRetry;
 
-  bool? get isFaceId;
+  bool get isBiometricsEnabled;
 
   EnterPinViewModel._();
 

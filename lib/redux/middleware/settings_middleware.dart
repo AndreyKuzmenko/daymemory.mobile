@@ -6,12 +6,12 @@ import 'package:daymemory/redux/action/notebooks_action.dart';
 import 'package:daymemory/redux/action/settings_action.dart';
 import 'package:daymemory/redux/action/sync_action.dart';
 import 'package:daymemory/redux/state/app_state.dart';
-import 'package:daymemory/redux/state/face_id_state/available_biometrics.dart';
 import 'package:daymemory/services/device_info_service/device_info_service.dart';
 import 'package:daymemory/services/dialog/dialog_service.dart';
 import 'package:daymemory/services/email_sender_service/email_sender_service.dart';
 import 'package:daymemory/services/encrypt_service/encrypt_service.dart';
 import 'package:daymemory/services/geolocator_service/geolocator_service.dart';
+import 'package:daymemory/services/local_auth_service/local_auth_service.dart';
 import 'package:daymemory/services/logging/config_service.dart';
 import 'package:daymemory/services/navigation/context_service.dart';
 import 'package:daymemory/services/settings_service/settings_service.dart';
@@ -32,6 +32,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
   final IEncryptService encryptService;
   final IConfigService configService;
   final IEmailSenderService emailSenderService;
+  final ILocalAuthService localAuthService;
 
   AppLocalizations? get _locale => contextService.locale;
 
@@ -45,6 +46,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
     required this.encryptService,
     required this.configService,
     required this.emailSenderService,
+    required this.localAuthService,
   });
 
   @override
@@ -69,12 +71,14 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
       var encryptionKey = await settingsService.getEncryptionKey();
       var isEncryptionKeyLocked = settings.isEncryptionKeyLocked;
 
+      var isBiometricAvailable = await localAuthService.canAuthenticateWithBiometrics;
+
       store.dispatch(SettingsLoadedAction(
           isLocationSavingEnabled: isLocationSavingEnabled,
           isBiometricActive: isPasscodeEnabled,
           availableLanguages: languages,
           isSyncEnabled: settings.isSyncEnabled,
-          isBiometricAvailable: deviceInfoService.isBiometricAvailable,
+          isBiometricAvailable: isBiometricAvailable,
           isBiometricEnabled: settings.isBiometricEnabled && isPasscodeEnabled,
           isPasscodeEnabled: isPasscodeEnabled,
           reviewSettings: reviewSettings,
@@ -156,8 +160,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
       await settingsService.setSettings(settings);
       if (action.isEnabled) {
         store.dispatch(AllowBiometricAction(
-          reason: _locale!.allow_face_id,
-          isFaceIdAllowed: _isFaceIdAvailable(store.state.faceIdState.availableBiometrics),
+          reason: _locale!.allow_biometric_auth,
           isEnabledFromSettings: true,
         ));
       }
@@ -208,19 +211,6 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
     await settingsService.setSettings(settings);
 
     store.dispatch(SettingsSyncStateChangedAction(isEnabled: isEnabled));
-  }
-
-  bool _isFaceIdAvailable(AvailableBiometrics availableBiometrics) {
-    switch (availableBiometrics) {
-      case AvailableBiometrics.face:
-        return true;
-      case AvailableBiometrics.faceAndFinger:
-        return true;
-      case AvailableBiometrics.finger:
-        return false;
-      default:
-        return false;
-    }
   }
 
   Future<void> _sendEmailToDevelopers(Function(dynamic action) dispatch) async {

@@ -97,17 +97,10 @@ class NavigateToEnterPinAction implements ILoggingAction {
   }
 }
 
-class NavigateToFaceIdAction implements ILoggingAction {
+class NavigateToBiometricAuthAction implements ILoggingAction {
   @override
   String toLogString() {
-    return 'Navigate to FaceID Action';
-  }
-}
-
-class NavigateToTouchIdAction implements ILoggingAction {
-  @override
-  String toLogString() {
-    return 'Navigate to TouchID Action';
+    return 'Navigate to Biometric Auth Action';
   }
 }
 

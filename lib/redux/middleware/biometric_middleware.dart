@@ -6,7 +6,6 @@ import 'package:daymemory/services/dialog/dialog_service.dart';
 import 'package:daymemory/services/local_auth_service/local_auth_service.dart';
 import 'package:daymemory/services/navigation/context_service.dart';
 import 'package:daymemory/services/settings_service/settings_service.dart';
-import 'package:local_auth/local_auth.dart';
 import 'package:permission_handler/permission_handler.dart';
 // ignore: depend_on_referenced_packages
 import 'package:redux/redux.dart';
@@ -43,7 +42,7 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
           store.dispatch,
           action.isEnabledFromSettings,
           store.state.screenBlockingState.isTimerBlocking,
-          action.isFaceIdAllowed ? 'face' : 'finger',
+          BiometricsStoredConfigType.fingerOrFace,
         );
       } else if (action.isEnabledFromSettings) {
         store.dispatch(const SettingsBiometricUnlockAction(isEnabled: false));
@@ -51,7 +50,7 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
     } else if (action is CheckBiometricTypeAction) {
       await _checkBiometricsType(store.dispatch, action.nextAction);
     } else if (action is SkipBiometricAction) {
-      await _saveBiometricResponse(store.dispatch, false, store.state.screenBlockingState.isTimerBlocking, false.toString());
+      await _saveBiometricResponse(store.dispatch, false, store.state.screenBlockingState.isTimerBlocking, BiometricsStoredConfigType.skipped);
     } else if (action is BiometricNavigateAction) {
       await _navigateToScreen(action.availableBiometrics, store.state.screenBlockingState.isTimerBlocking, store.dispatch);
     }
@@ -82,13 +81,10 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
     Function(dynamic) dispatch,
     bool hideWithoutRedirect,
     bool isTimerBlocking,
-    String result,
+    BiometricsStoredConfigType result,
   ) async {
     try {
-      var settings = await settingsService.getSettings();
-      settings.biometricType = result;
-      await settingsService.setSettings(settings);
-
+      settingsService.setBiometricType(result);
       if (hideWithoutRedirect) {
         return;
       }
@@ -107,25 +103,13 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
     dynamic action,
   ) async {
     try {
-      var settings = await settingsService.getSettings();
-      final type = settings.biometricType;
-      if (type == 'face') {
-        dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.face));
-      } else if (type == 'finger') {
-        dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.finger));
-      } else if (type == 'reset' || type == null) {
-        final canCheckBiometrics = await localAuthService.canCheckBiometrics;
-        final isDeviceSupported = await localAuthService.isDeviceSupported;
+      var biometricType = await settingsService.getBiometricType();
 
-        final availableBiometrics = await localAuthService.biometrics;
-        if (canCheckBiometrics && isDeviceSupported) {
-          if (availableBiometrics.contains(BiometricType.face) && availableBiometrics.contains(BiometricType.fingerprint)) {
-            dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.faceAndFinger));
-          } else if (availableBiometrics.contains(BiometricType.face)) {
-            dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.face));
-          } else if (availableBiometrics.contains(BiometricType.fingerprint)) {
-            dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.finger));
-          }
+      if (biometricType == BiometricsStoredConfigType.fingerOrFace) {
+        dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.faceOrFinger));
+      } else if (biometricType == BiometricsStoredConfigType.reset) {
+        if (await localAuthService.canAuthenticateWithBiometrics) {
+          dispatch(BiometricUsageAction(availableBiometrics: AvailableBiometrics.faceOrFinger));
         }
       }
     } catch (e) {
@@ -145,10 +129,8 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
       } else {
         dispatch(NavigateToRootAction());
       }
-    } else if (availableBiometrics == AvailableBiometrics.face || availableBiometrics == AvailableBiometrics.faceAndFinger) {
-      dispatch(NavigateToFaceIdAction());
-    } else {
-      dispatch(NavigateToTouchIdAction());
+    } else if (availableBiometrics == AvailableBiometrics.faceOrFinger) {
+      dispatch(NavigateToBiometricAuthAction());
     }
   }
 }

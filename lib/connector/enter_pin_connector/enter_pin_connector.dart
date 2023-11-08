@@ -31,7 +31,7 @@ class EnterPinConnector extends PageConnector<EnterPinViewModel, EnterPinConvert
   @override
   EnterPinConverter prepareConverter(BuildContext context, AppState state, Function(dynamic) dispatch) {
     final enterPinState = state.enterPinState;
-    final faceIdState = state.faceIdState;
+    final biometricsState = state.biometricsState;
     final settingsState = state.settingsState;
 
     final converter = EnterPinConverter(
@@ -41,7 +41,7 @@ class EnterPinConnector extends PageConnector<EnterPinViewModel, EnterPinConvert
       enteredPin: enterPinState.enteredPin,
       isRetry: enterPinState.isRetry,
       isBiometricEnabled: settingsState.isBiometricEnabled,
-      availableBiometrics: faceIdState.availableBiometrics,
+      availableBiometrics: biometricsState.availableBiometrics,
     );
     return converter;
   }

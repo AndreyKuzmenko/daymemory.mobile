@@ -260,13 +260,11 @@
     "delete": "Видалити",
     "enter_pin_title": "Введіть ПІН-код",
     "create_pin_title": "Придумайте ПІН-код",
-    "confirm_pin_title": "Підтвердіть ПІН-код",
-    "face_id_subtitle": "Увійти додатку без введення ПІН-коду",
-    "allow_face_id": "Дозволити Face ID",
-    "allow_touch_id": "Дозволити Touch ID",
-    "face_id_reason": "Розблокувати за допомогою Face ID",
-    "touch_id_reason": "Розблокувати за допомогою Touch ID",
-    
+    "confirm_pin_title": "Підтвердіть ПІН-код",   
+    "biometric_auth_subtitle": "Увійти додатку без введення ПІН-коду",
+    "allow_biometric_auth": "Дозволити використання біометріки",
+    "biometrics_auth_reason": "Розблокувати за допомогою біометрики",
+
     "no_internet": "Немає інтернет з'єднання",
     "retry": "Повторити",
     "next": "Далі",

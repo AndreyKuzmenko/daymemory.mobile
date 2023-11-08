@@ -3,7 +3,6 @@ import 'package:daymemory/services/async_service_initializer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:local_auth/local_auth.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 enum DeviceType { unknown, phone, tablet, desktop }
@@ -27,8 +26,6 @@ abstract class IDeviceInfoService {
 
   String get localeName;
 
-  bool get isBiometricAvailable;
-
   DeviceType get deviceType;
 }
 
@@ -38,20 +35,12 @@ class DeviceInfoService implements IDeviceInfoService, IAsyncServiceInitializer<
   late String _deviceOsVersion;
   late String _deviceUniqueIdentifier;
   late String _screenResolution;
-  late bool _isBiometricAvailable = false;
 
   DeviceInfoService();
 
   @override
   Future<IDeviceInfoService> init() async {
     _packageInfo = await PackageInfo.fromPlatform();
-
-    try {
-      _isBiometricAvailable = await LocalAuthentication().isDeviceSupported();
-    } catch (e) {
-      _isBiometricAvailable = false;
-    }
-
     return this;
   }
 
@@ -71,9 +60,6 @@ class DeviceInfoService implements IDeviceInfoService, IAsyncServiceInitializer<
     }
     return languageCode;
   }
-
-  @override
-  bool get isBiometricAvailable => _isBiometricAvailable;
 
   @override
   String get appVersionName => _packageInfo.version;

@@ -1,8 +1,8 @@
 export 'create_pin_connector/create_pin_connector.dart';
 export 'create_pin_connector/create_pin_converter.dart';
 export 'enter_pin_connector/enter_pin_connector.dart';
-export 'face_id_connector/face_id_connector.dart';
-export 'face_id_connector/face_id_converter.dart';
+export 'biometric_auth_connector/biometric_auth_connector.dart';
+export 'biometric_auth_connector/biometric_auth_converter.dart';
 export 'onboarding_connector/onboarding_connector.dart';
 export 'onboarding_connector/onboarding_converter.dart';
 export 'root/root_connector.dart';

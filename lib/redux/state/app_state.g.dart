@@ -42,7 +42,7 @@ class _$AppState extends AppState {
   @override
   final EnterPinState enterPinState;
   @override
-  final FaceIdState faceIdState;
+  final BiometricAuthState biometricsState;
   @override
   final SettingsState settingsState;
   @override
@@ -81,7 +81,7 @@ class _$AppState extends AppState {
       required this.tagsState,
       required this.createPinState,
       required this.enterPinState,
-      required this.faceIdState,
+      required this.biometricsState,
       required this.settingsState,
       required this.syncState,
       required this.loginState,
@@ -124,7 +124,7 @@ class _$AppState extends AppState {
     BuiltValueNullFieldError.checkNotNull(
         enterPinState, r'AppState', 'enterPinState');
     BuiltValueNullFieldError.checkNotNull(
-        faceIdState, r'AppState', 'faceIdState');
+        biometricsState, r'AppState', 'biometricsState');
     BuiltValueNullFieldError.checkNotNull(
         settingsState, r'AppState', 'settingsState');
     BuiltValueNullFieldError.checkNotNull(syncState, r'AppState', 'syncState');
@@ -167,7 +167,7 @@ class _$AppState extends AppState {
         tagsState == other.tagsState &&
         createPinState == other.createPinState &&
         enterPinState == other.enterPinState &&
-        faceIdState == other.faceIdState &&
+        biometricsState == other.biometricsState &&
         settingsState == other.settingsState &&
         syncState == other.syncState &&
         loginState == other.loginState &&
@@ -198,7 +198,7 @@ class _$AppState extends AppState {
     _$hash = $jc(_$hash, tagsState.hashCode);
     _$hash = $jc(_$hash, createPinState.hashCode);
     _$hash = $jc(_$hash, enterPinState.hashCode);
-    _$hash = $jc(_$hash, faceIdState.hashCode);
+    _$hash = $jc(_$hash, biometricsState.hashCode);
     _$hash = $jc(_$hash, settingsState.hashCode);
     _$hash = $jc(_$hash, syncState.hashCode);
     _$hash = $jc(_$hash, loginState.hashCode);
@@ -231,7 +231,7 @@ class _$AppState extends AppState {
           ..add('tagsState', tagsState)
           ..add('createPinState', createPinState)
           ..add('enterPinState', enterPinState)
-          ..add('faceIdState', faceIdState)
+          ..add('biometricsState', biometricsState)
           ..add('settingsState', settingsState)
           ..add('syncState', syncState)
           ..add('loginState', loginState)
@@ -349,11 +349,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set enterPinState(EnterPinStateBuilder? enterPinState) =>
       _$this._enterPinState = enterPinState;
 
-  FaceIdStateBuilder? _faceIdState;
-  FaceIdStateBuilder get faceIdState =>
-      _$this._faceIdState ??= new FaceIdStateBuilder();
-  set faceIdState(FaceIdStateBuilder? faceIdState) =>
-      _$this._faceIdState = faceIdState;
+  BiometricAuthStateBuilder? _biometricsState;
+  BiometricAuthStateBuilder get biometricsState =>
+      _$this._biometricsState ??= new BiometricAuthStateBuilder();
+  set biometricsState(BiometricAuthStateBuilder? biometricsState) =>
+      _$this._biometricsState = biometricsState;
 
   SettingsStateBuilder? _settingsState;
   SettingsStateBuilder get settingsState =>
@@ -422,7 +422,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _tagsState = $v.tagsState.toBuilder();
       _createPinState = $v.createPinState.toBuilder();
       _enterPinState = $v.enterPinState.toBuilder();
-      _faceIdState = $v.faceIdState.toBuilder();
+      _biometricsState = $v.biometricsState.toBuilder();
       _settingsState = $v.settingsState.toBuilder();
       _syncState = $v.syncState.toBuilder();
       _loginState = $v.loginState.toBuilder();
@@ -472,7 +472,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               tagsState: tagsState.build(),
               createPinState: createPinState.build(),
               enterPinState: enterPinState.build(),
-              faceIdState: faceIdState.build(),
+              biometricsState: biometricsState.build(),
               settingsState: settingsState.build(),
               syncState: syncState.build(),
               loginState: loginState.build(),
@@ -519,8 +519,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         createPinState.build();
         _$failedField = 'enterPinState';
         enterPinState.build();
-        _$failedField = 'faceIdState';
-        faceIdState.build();
+        _$failedField = 'biometricsState';
+        biometricsState.build();
         _$failedField = 'settingsState';
         settingsState.build();
         _$failedField = 'syncState';

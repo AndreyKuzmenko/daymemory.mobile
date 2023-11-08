@@ -20,7 +20,6 @@ import 'package:daymemory/connector/language_connector/language_connector.dart';
 import 'package:daymemory/connector/settings_connector/settings_connector.dart';
 import 'package:daymemory/connector/sort_notebooks_connector/sort_notebooks_connector.dart';
 import 'package:daymemory/connector/sync_settings_connector/sync_settings_connector.dart';
-import 'package:daymemory/connector/touch_id_connector/touch_id_connector.dart';
 import 'package:daymemory/services/navigation/interface_route_definition_service.dart';
 import 'package:daymemory/services/navigation/route_direction.dart';
 import 'package:daymemory/widget/common/splash/splash_widget.dart';
@@ -54,11 +53,8 @@ class GenericRouteDefinitionService extends IRouteDefinitionService {
       case RouteDirection.enterPin:
         return getInstantPageTrasition(const EnterPinConnector(), settings);
 
-      case RouteDirection.allowFaceId:
-        return getInstantPageTrasition(const FaceIdConnector(), settings);
-
-      case RouteDirection.allowTouchId:
-        return getInstantPageTrasition(const TouchIdConnector(), settings);
+      case RouteDirection.allowBiometricAuth:
+        return getInstantPageTrasition(const BiometricAuthConnector(), settings);
 
       case RouteDirection.editNotebook:
         return showDialogPopup(EditNotebookConnector(notebookId: settings.arguments as String), settings, Colors.black.withAlpha(100));

@@ -8,9 +8,9 @@ class EnterPinWidget extends StatefulWidget {
   final EnterPinViewModel viewModel;
 
   const EnterPinWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<EnterPinWidget> createState() => _EnterPinWidgetState();
@@ -22,7 +22,7 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.viewModel.isFaceId != null) {
+      if (widget.viewModel.isBiometricsEnabled) {
         widget.viewModel.biometricCommand.command.call();
       }
     });
@@ -135,7 +135,7 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
                           ),
                           KeyboardLastRowWidget(
                             mainColor: appTheme.white,
-                            isFaceId: widget.viewModel.isFaceId,
+                            isBiometricsEnabled: widget.viewModel.isBiometricsEnabled,
                             onBiometricTap: widget.viewModel.biometricCommand.command,
                             onTap: widget.viewModel.typingCommand.command,
                             onClear: widget.viewModel.clearCommand.command,

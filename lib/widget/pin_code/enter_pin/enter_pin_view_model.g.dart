@@ -24,7 +24,7 @@ class _$EnterPinViewModel extends EnterPinViewModel {
   @override
   final bool isRetry;
   @override
-  final bool? isFaceId;
+  final bool isBiometricsEnabled;
 
   factory _$EnterPinViewModel(
           [void Function(EnterPinViewModelBuilder)? updates]) =>
@@ -39,7 +39,7 @@ class _$EnterPinViewModel extends EnterPinViewModel {
       required this.forgotPinCommand,
       required this.biometricCommand,
       required this.isRetry,
-      this.isFaceId})
+      required this.isBiometricsEnabled})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(selectedEnteredIndicators,
         r'EnterPinViewModel', 'selectedEnteredIndicators');
@@ -57,6 +57,8 @@ class _$EnterPinViewModel extends EnterPinViewModel {
         biometricCommand, r'EnterPinViewModel', 'biometricCommand');
     BuiltValueNullFieldError.checkNotNull(
         isRetry, r'EnterPinViewModel', 'isRetry');
+    BuiltValueNullFieldError.checkNotNull(
+        isBiometricsEnabled, r'EnterPinViewModel', 'isBiometricsEnabled');
   }
 
   @override
@@ -79,7 +81,7 @@ class _$EnterPinViewModel extends EnterPinViewModel {
         forgotPinCommand == other.forgotPinCommand &&
         biometricCommand == other.biometricCommand &&
         isRetry == other.isRetry &&
-        isFaceId == other.isFaceId;
+        isBiometricsEnabled == other.isBiometricsEnabled;
   }
 
   @override
@@ -93,7 +95,7 @@ class _$EnterPinViewModel extends EnterPinViewModel {
     _$hash = $jc(_$hash, forgotPinCommand.hashCode);
     _$hash = $jc(_$hash, biometricCommand.hashCode);
     _$hash = $jc(_$hash, isRetry.hashCode);
-    _$hash = $jc(_$hash, isFaceId.hashCode);
+    _$hash = $jc(_$hash, isBiometricsEnabled.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -109,7 +111,7 @@ class _$EnterPinViewModel extends EnterPinViewModel {
           ..add('forgotPinCommand', forgotPinCommand)
           ..add('biometricCommand', biometricCommand)
           ..add('isRetry', isRetry)
-          ..add('isFaceId', isFaceId))
+          ..add('isBiometricsEnabled', isBiometricsEnabled))
         .toString();
   }
 }
@@ -156,9 +158,10 @@ class EnterPinViewModelBuilder
   bool? get isRetry => _$this._isRetry;
   set isRetry(bool? isRetry) => _$this._isRetry = isRetry;
 
-  bool? _isFaceId;
-  bool? get isFaceId => _$this._isFaceId;
-  set isFaceId(bool? isFaceId) => _$this._isFaceId = isFaceId;
+  bool? _isBiometricsEnabled;
+  bool? get isBiometricsEnabled => _$this._isBiometricsEnabled;
+  set isBiometricsEnabled(bool? isBiometricsEnabled) =>
+      _$this._isBiometricsEnabled = isBiometricsEnabled;
 
   EnterPinViewModelBuilder();
 
@@ -173,7 +176,7 @@ class EnterPinViewModelBuilder
       _forgotPinCommand = $v.forgotPinCommand;
       _biometricCommand = $v.biometricCommand;
       _isRetry = $v.isRetry;
-      _isFaceId = $v.isFaceId;
+      _isBiometricsEnabled = $v.isBiometricsEnabled;
       _$v = null;
     }
     return this;
@@ -213,7 +216,7 @@ class EnterPinViewModelBuilder
             biometricCommand: BuiltValueNullFieldError.checkNotNull(
                 biometricCommand, r'EnterPinViewModel', 'biometricCommand'),
             isRetry: BuiltValueNullFieldError.checkNotNull(isRetry, r'EnterPinViewModel', 'isRetry'),
-            isFaceId: isFaceId);
+            isBiometricsEnabled: BuiltValueNullFieldError.checkNotNull(isBiometricsEnabled, r'EnterPinViewModel', 'isBiometricsEnabled'));
     replace(_$result);
     return _$result;
   }

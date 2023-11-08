@@ -92,9 +92,10 @@ class $DmNotebooksTable extends DmNotebooks
         sortingType
       ];
   @override
-  String get aliasedName => _alias ?? 'dm_notebooks';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_notebooks';
+  String get actualTableName => $name;
+  static const String $name = 'dm_notebooks';
   @override
   VerificationContext validateIntegrity(Insertable<DmNotebook> instance,
       {bool isInserting = false}) {
@@ -549,9 +550,10 @@ class $DmLocationsTable extends DmLocations
   List<GeneratedColumn> get $columns =>
       [id, address, latitude, longitude, createdDate];
   @override
-  String get aliasedName => _alias ?? 'dm_locations';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_locations';
+  String get actualTableName => $name;
+  static const String $name = 'dm_locations';
   @override
   VerificationContext validateIntegrity(Insertable<DmLocation> instance,
       {bool isInserting = false}) {
@@ -902,9 +904,10 @@ class $DmNotesTable extends DmNotes with TableInfo<$DmNotesTable, DmNote> {
         isDeleted
       ];
   @override
-  String get aliasedName => _alias ?? 'dm_notes';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_notes';
+  String get actualTableName => $name;
+  static const String $name = 'dm_notes';
   @override
   VerificationContext validateIntegrity(Insertable<DmNote> instance,
       {bool isInserting = false}) {
@@ -1393,9 +1396,10 @@ class $DmTagsTable extends DmTags with TableInfo<$DmTagsTable, DmTag> {
         isDeleted
       ];
   @override
-  String get aliasedName => _alias ?? 'dm_tags';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_tags';
+  String get actualTableName => $name;
+  static const String $name = 'dm_tags';
   @override
   VerificationContext validateIntegrity(Insertable<DmTag> instance,
       {bool isInserting = false}) {
@@ -1783,9 +1787,10 @@ class $DmNoteTagsTable extends DmNoteTags
   @override
   List<GeneratedColumn> get $columns => [id, noteId, tagId, createdDate];
   @override
-  String get aliasedName => _alias ?? 'dm_note_tags';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_note_tags';
+  String get actualTableName => $name;
+  static const String $name = 'dm_note_tags';
   @override
   VerificationContext validateIntegrity(Insertable<DmNoteTag> instance,
       {bool isInserting = false}) {
@@ -2068,9 +2073,10 @@ class $DmQuestionListsTable extends DmQuestionLists
   List<GeneratedColumn> get $columns =>
       [id, content, orderRank, createdDate, modifiedDate, isChanged, isDeleted];
   @override
-  String get aliasedName => _alias ?? 'dm_question_lists';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_question_lists';
+  String get actualTableName => $name;
+  static const String $name = 'dm_question_lists';
   @override
   VerificationContext validateIntegrity(Insertable<DmQuestionList> instance,
       {bool isInserting = false}) {
@@ -2434,9 +2440,10 @@ class $DmQuestionsTable extends DmQuestions
   List<GeneratedColumn> get $columns =>
       [id, content, orderRank, createdDate, questionList];
   @override
-  String get aliasedName => _alias ?? 'dm_questions';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_questions';
+  String get actualTableName => $name;
+  static const String $name = 'dm_questions';
   @override
   VerificationContext validateIntegrity(Insertable<DmQuestion> instance,
       {bool isInserting = false}) {
@@ -2769,9 +2776,10 @@ class $DmFilesTable extends DmFiles with TableInfo<$DmFilesTable, DmFile> {
         createdDate
       ];
   @override
-  String get aliasedName => _alias ?? 'dm_files';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'dm_files';
+  String get actualTableName => $name;
+  static const String $name = 'dm_files';
   @override
   VerificationContext validateIntegrity(Insertable<DmFile> instance,
       {bool isInserting = false}) {

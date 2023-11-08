@@ -1,18 +1,18 @@
+import 'package:daymemory/extensions/color_filter_extension.dart';
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
-import 'package:daymemory/widget/touch_id/touch_id_view_model.dart';
+import 'package:daymemory/widget/biometric_auth/biometric_auth_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:flutter_svg/svg.dart';
 import '../../gen/assets.gen.dart';
 import '../theme/app_theme_widget.dart';
 
-class TouchIdWidget extends StatelessWidget {
-  final TouchIdViewModel viewModel;
+class BiometricAuthWidget extends StatelessWidget {
+  final BiometricAuthViewModel viewModel;
 
-  const TouchIdWidget({
-    Key? key,
+  const BiometricAuthWidget({
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,14 @@ class TouchIdWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
-                Assets.svg.fingerprint,
-                color: appTheme.black,
+                Assets.svg.biometric,
+                colorFilter: appTheme.black.toColorFilter(),
               ),
               const SizedBox(
                 height: 40,
               ),
               Text(
-                '${viewModel.allowTouchIdTitle}?',
+                '${viewModel.allowBiometricAuthTitle}?',
                 style: appTheme.semiBold24,
               ),
               Padding(
@@ -57,7 +57,7 @@ class TouchIdWidget extends StatelessWidget {
                     click: viewModel.allowCommand,
                     textColor: appTheme.white,
                     backgroundColor: appTheme.colorAccent,
-                    text: viewModel.allowTouchIdTitle,
+                    text: viewModel.allowBiometricAuthTitle,
                   ),
                   const SizedBox(
                     height: 12,

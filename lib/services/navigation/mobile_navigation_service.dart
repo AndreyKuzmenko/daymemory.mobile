@@ -62,10 +62,7 @@ class MobileNavigationService extends INavigationService {
   Future<dynamic>? pushNamedEnterPin() => routeDefinitionService.key.currentState?.pushNamed(RouteDirection.enterPin);
 
   @override
-  Future<dynamic>? pushRemoveUntilFaceId() => routeDefinitionService.key.currentState?.pushNamedAndRemoveUntil(RouteDirection.allowFaceId, (_) => false);
-
-  @override
-  Future<dynamic>? pushRemoveUntilTouchId() => routeDefinitionService.key.currentState?.pushNamedAndRemoveUntil(RouteDirection.allowTouchId, (_) => false);
+  Future<dynamic>? pushRemoveUntilBiometricAuth() => routeDefinitionService.key.currentState?.pushNamedAndRemoveUntil(RouteDirection.allowBiometricAuth, (_) => false);
 
   @override
   Future<dynamic>? pushNamedTag(String tag) => routeDefinitionService.key.currentState?.pushNamed(RouteDirection.tag, arguments: tag);

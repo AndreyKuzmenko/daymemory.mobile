@@ -18,26 +18,46 @@ class _$SideMenuItemViewModel extends SideMenuItemViewModel {
   @override
   final bool isSelected;
 
-  factory _$SideMenuItemViewModel([void Function(SideMenuItemViewModelBuilder)? updates]) => (new SideMenuItemViewModelBuilder()..update(updates))._build();
+  factory _$SideMenuItemViewModel(
+          [void Function(SideMenuItemViewModelBuilder)? updates]) =>
+      (new SideMenuItemViewModelBuilder()..update(updates))._build();
 
-  _$SideMenuItemViewModel._({required this.selectItemCommand, required this.id, required this.title, required this.notesCount, required this.isSelected}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(selectItemCommand, r'SideMenuItemViewModel', 'selectItemCommand');
+  _$SideMenuItemViewModel._(
+      {required this.selectItemCommand,
+      required this.id,
+      required this.title,
+      required this.notesCount,
+      required this.isSelected})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        selectItemCommand, r'SideMenuItemViewModel', 'selectItemCommand');
     BuiltValueNullFieldError.checkNotNull(id, r'SideMenuItemViewModel', 'id');
-    BuiltValueNullFieldError.checkNotNull(title, r'SideMenuItemViewModel', 'title');
-    BuiltValueNullFieldError.checkNotNull(notesCount, r'SideMenuItemViewModel', 'notesCount');
-    BuiltValueNullFieldError.checkNotNull(isSelected, r'SideMenuItemViewModel', 'isSelected');
+    BuiltValueNullFieldError.checkNotNull(
+        title, r'SideMenuItemViewModel', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        notesCount, r'SideMenuItemViewModel', 'notesCount');
+    BuiltValueNullFieldError.checkNotNull(
+        isSelected, r'SideMenuItemViewModel', 'isSelected');
   }
 
   @override
-  SideMenuItemViewModel rebuild(void Function(SideMenuItemViewModelBuilder) updates) => (toBuilder()..update(updates)).build();
+  SideMenuItemViewModel rebuild(
+          void Function(SideMenuItemViewModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
-  SideMenuItemViewModelBuilder toBuilder() => new SideMenuItemViewModelBuilder()..replace(this);
+  SideMenuItemViewModelBuilder toBuilder() =>
+      new SideMenuItemViewModelBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is SideMenuItemViewModel && selectItemCommand == other.selectItemCommand && id == other.id && title == other.title && notesCount == other.notesCount && isSelected == other.isSelected;
+    return other is SideMenuItemViewModel &&
+        selectItemCommand == other.selectItemCommand &&
+        id == other.id &&
+        title == other.title &&
+        notesCount == other.notesCount &&
+        isSelected == other.isSelected;
   }
 
   @override
@@ -64,12 +84,14 @@ class _$SideMenuItemViewModel extends SideMenuItemViewModel {
   }
 }
 
-class SideMenuItemViewModelBuilder implements Builder<SideMenuItemViewModel, SideMenuItemViewModelBuilder> {
+class SideMenuItemViewModelBuilder
+    implements Builder<SideMenuItemViewModel, SideMenuItemViewModelBuilder> {
   _$SideMenuItemViewModel? _$v;
 
   FunctionHolder? _selectItemCommand;
   FunctionHolder? get selectItemCommand => _$this._selectItemCommand;
-  set selectItemCommand(FunctionHolder? selectItemCommand) => _$this._selectItemCommand = selectItemCommand;
+  set selectItemCommand(FunctionHolder? selectItemCommand) =>
+      _$this._selectItemCommand = selectItemCommand;
 
   String? _id;
   String? get id => _$this._id;
@@ -119,11 +141,18 @@ class SideMenuItemViewModelBuilder implements Builder<SideMenuItemViewModel, Sid
   _$SideMenuItemViewModel _build() {
     final _$result = _$v ??
         new _$SideMenuItemViewModel._(
-            selectItemCommand: BuiltValueNullFieldError.checkNotNull(selectItemCommand, r'SideMenuItemViewModel', 'selectItemCommand'),
-            id: BuiltValueNullFieldError.checkNotNull(id, r'SideMenuItemViewModel', 'id'),
-            title: BuiltValueNullFieldError.checkNotNull(title, r'SideMenuItemViewModel', 'title'),
-            notesCount: BuiltValueNullFieldError.checkNotNull(notesCount, r'SideMenuItemViewModel', 'notesCount'),
-            isSelected: BuiltValueNullFieldError.checkNotNull(isSelected, r'SideMenuItemViewModel', 'isSelected'));
+            selectItemCommand: BuiltValueNullFieldError.checkNotNull(
+                selectItemCommand,
+                r'SideMenuItemViewModel',
+                'selectItemCommand'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'SideMenuItemViewModel', 'id'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'SideMenuItemViewModel', 'title'),
+            notesCount: BuiltValueNullFieldError.checkNotNull(
+                notesCount, r'SideMenuItemViewModel', 'notesCount'),
+            isSelected: BuiltValueNullFieldError.checkNotNull(
+                isSelected, r'SideMenuItemViewModel', 'isSelected'));
     replace(_$result);
     return _$result;
   }

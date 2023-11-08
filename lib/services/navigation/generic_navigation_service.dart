@@ -61,10 +61,7 @@ class GenericNavigationService extends INavigationService {
   Future<dynamic>? pushNamedEnterPin() => genericRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.enterPin);
 
   @override
-  Future<dynamic>? pushRemoveUntilFaceId() => frameRouteDefinitionService.key.currentState?.pushNamedAndRemoveUntil(RouteDirection.allowFaceId, (_) => false);
-
-  @override
-  Future<dynamic>? pushRemoveUntilTouchId() => frameRouteDefinitionService.key.currentState?.pushNamedAndRemoveUntil(RouteDirection.allowTouchId, (_) => false);
+  Future<dynamic>? pushRemoveUntilBiometricAuth() => frameRouteDefinitionService.key.currentState?.pushNamedAndRemoveUntil(RouteDirection.allowBiometricAuth, (_) => false);
 
   @override
   Future<dynamic>? pushNamedTag(String tag) => frameRouteDefinitionService.key.currentState?.pushNamed(RouteDirection.tag, arguments: tag);

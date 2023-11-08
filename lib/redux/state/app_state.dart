@@ -4,13 +4,13 @@ import 'package:daymemory/redux/state/account_state/account_state.dart';
 import 'package:daymemory/redux/state/answer_question_state/answer_question_state.dart';
 import 'package:daymemory/redux/state/device_state/device_state.dart';
 import 'package:daymemory/redux/state/edit_notebook_state/edit_notebook_state.dart';
+import 'package:daymemory/redux/state/face_id_state/biometric_auth_state.dart';
 import 'package:daymemory/redux/state/login_state/login_state.dart';
 import 'package:daymemory/redux/state/note_image_gallery_state/note_image_gallery_state.dart';
 import 'package:daymemory/redux/state/notebooks_state/notebooks_state.dart';
 import 'package:daymemory/redux/state/reviews_state/reviews_state.dart';
 import 'package:daymemory/redux/state/selected_menu_item_state/selected_menu_item_state.dart';
 import 'package:daymemory/redux/state/tags_state/tags_state.dart';
-import 'package:daymemory/redux/state/face_id_state/face_id_state.dart';
 import 'package:daymemory/redux/state/note_state/note_state.dart';
 import 'package:daymemory/redux/state/notes_state/notes_state.dart';
 import 'package:daymemory/redux/state/settings_state/settings_state.dart';
@@ -53,7 +53,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   EnterPinState get enterPinState;
 
-  FaceIdState get faceIdState;
+  BiometricAuthState get biometricsState;
 
   SettingsState get settingsState;
 
@@ -96,7 +96,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..noteState = NoteState.initial().toBuilder()
     ..createPinState = CreatePinState.initial().toBuilder()
     ..enterPinState = EnterPinState.initial().toBuilder()
-    ..faceIdState = FaceIdState.initial().toBuilder()
+    ..biometricsState = BiometricAuthState.initial().toBuilder()
     ..loginState = LoginState.initial().toBuilder()
     ..accountState = AccountState.initial().toBuilder()
     ..jailbreakType = JailbreakType.unknown

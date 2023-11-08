@@ -34,7 +34,7 @@ class EnterPinConverter extends ViewModelConverter<EnterPinViewModel> {
         ..enteredPinTitle = locale.enter_pin_title
         ..selectedEnteredIndicators = selectedEnteredIndicators
         ..isRetry = isRetry
-        ..isFaceId = _isFaceIdAvailable()
+        ..isBiometricsEnabled = _isBiometricsAllowed()
         ..typingCommand = TypedFunctionHolder<String>((char) {
           dispatch(CharEnteredPinAction(char: char));
           if (enteredPin.length == 3) {
@@ -43,11 +43,10 @@ class EnterPinConverter extends ViewModelConverter<EnterPinViewModel> {
         })
         ..clearCommand = FunctionHolder(() => dispatch((ClearEnteredPinAction())))
         ..biometricCommand = FunctionHolder(() {
-          if (_isFaceIdAvailable() != null) {
+          if (_isBiometricsAllowed()) {
             dispatch(
               AllowBiometricAction(
-                reason: _isFaceIdAvailable()! ? locale.face_id_reason : locale.touch_id_reason,
-                isFaceIdAllowed: _isFaceIdAvailable()!,
+                reason: locale.biometrics_auth_reason,
                 isEnabledFromSettings: false,
               ),
             );
@@ -57,20 +56,5 @@ class EnterPinConverter extends ViewModelConverter<EnterPinViewModel> {
     );
   }
 
-  bool? _isFaceIdAvailable() {
-    if (!isBiometricEnabled) {
-      return null;
-    }
-
-    switch (availableBiometrics) {
-      case AvailableBiometrics.face:
-        return true;
-      case AvailableBiometrics.faceAndFinger:
-        return true;
-      case AvailableBiometrics.finger:
-        return false;
-      default:
-        return null;
-    }
-  }
+  bool _isBiometricsAllowed() => availableBiometrics == AvailableBiometrics.faceOrFinger;
 }

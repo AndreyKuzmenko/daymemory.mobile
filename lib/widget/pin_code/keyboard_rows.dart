@@ -1,3 +1,4 @@
+import 'package:daymemory/extensions/color_filter_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -10,11 +11,11 @@ class KeyboardRowWidget extends StatelessWidget {
   final Color mainColor;
 
   const KeyboardRowWidget({
-    Key? key,
+    super.key,
     required this.values,
     required this.onTap,
     this.mainColor = Colors.black,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +37,17 @@ class KeyboardLastRowWidget extends StatelessWidget {
   final Color mainColor;
   final Function(String) onTap;
   final Function() onClear;
-  final bool? isFaceId;
+  final bool isBiometricsEnabled;
   final VoidCallback? onBiometricTap;
 
   const KeyboardLastRowWidget({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.onClear,
     this.mainColor = Colors.black,
-    this.isFaceId,
+    this.isBiometricsEnabled = false,
     this.onBiometricTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,21 +58,14 @@ class KeyboardLastRowWidget extends StatelessWidget {
           onTap: onBiometricTap,
           child: SizedBox(
             width: 72,
-            child: isFaceId == null
-                ? null
-                : isFaceId!
-                    ? SvgPicture.asset(
-                        Assets.svg.faceId,
-                        color: mainColor,
-                        height: 35,
-                        width: 35,
-                      )
-                    : SvgPicture.asset(
-                        Assets.svg.fingerprint,
-                        color: mainColor,
-                        height: 35,
-                        width: 35,
-                      ),
+            child: isBiometricsEnabled
+                ? SvgPicture.asset(
+                    Assets.svg.biometric,
+                    colorFilter: mainColor.toColorFilter(),
+                    height: 40,
+                    width: 40,
+                  )
+                : null,
           ),
         ),
         KeyboardButtonWidget(

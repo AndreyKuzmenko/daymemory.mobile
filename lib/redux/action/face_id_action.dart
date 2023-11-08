@@ -4,10 +4,9 @@ import 'common_action.dart';
 
 class AllowBiometricAction implements ILoggingAction {
   final String reason;
-  final bool isFaceIdAllowed;
   final bool isEnabledFromSettings;
 
-  AllowBiometricAction({required this.reason, required this.isFaceIdAllowed, required this.isEnabledFromSettings});
+  AllowBiometricAction({required this.reason, required this.isEnabledFromSettings});
 
   @override
   String toLogString() {
