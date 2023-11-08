@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TabsConnector extends PageConnector<TabsViewModel, TabsConverter> {
-  const TabsConnector({Key? key}) : super(key: key);
+  const TabsConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, TabsViewModel viewModel) => TabsWidget(viewModel: viewModel);

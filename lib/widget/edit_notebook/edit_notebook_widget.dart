@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class EditNotebookWidget extends StatefulWidget {
-  const EditNotebookWidget({Key? key, required this.viewModel}) : super(key: key);
+  const EditNotebookWidget({super.key, required this.viewModel});
 
   final EditNotebookViewModel viewModel;
 
@@ -76,6 +76,7 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
             child: Form(
               key: _form,
               child: SettingsList(
+                physics: const ClampingScrollPhysics(),
                 contentPadding: const EdgeInsets.only(top: 20),
                 applicationType: ApplicationType.cupertino,
                 platform: DevicePlatform.iOS,

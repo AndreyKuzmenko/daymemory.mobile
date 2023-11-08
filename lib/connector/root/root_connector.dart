@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 class RootConnector extends PageConnector<RootViewModel, RootConverter> {
   final DeviceType deviceType;
 
-  const RootConnector({Key? key, required this.deviceType}) : super(key: key);
+  const RootConnector({super.key, required this.deviceType});
 
   @override
   Widget buildWidget(BuildContext context, RootViewModel viewModel) => RootWidget(viewModel: viewModel);

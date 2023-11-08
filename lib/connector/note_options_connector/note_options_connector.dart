@@ -10,7 +10,7 @@ import '../../redux/state/states.dart';
 import 'package:collection/collection.dart';
 
 class NoteOptionsConnector extends PageConnector<NoteOptionsViewModel, NoteOptionsConverter> {
-  const NoteOptionsConnector({Key? key}) : super(key: key);
+  const NoteOptionsConnector({super.key});
 
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {

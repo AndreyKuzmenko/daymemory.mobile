@@ -10,9 +10,9 @@ class SelectReviewPeriodWidget extends StatelessWidget {
   final SelectReviewPeriodViewModel viewModel;
 
   const SelectReviewPeriodWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

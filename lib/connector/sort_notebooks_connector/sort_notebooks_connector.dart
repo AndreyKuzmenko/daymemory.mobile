@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class SortNotebooksConnector extends PageConnector<SortNotebooksViewModel, SortNotebooksConverter> {
-  const SortNotebooksConnector({Key? key}) : super(key: key);
+  const SortNotebooksConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SortNotebooksViewModel viewModel) => SortNotebooksWidget(viewModel: viewModel);

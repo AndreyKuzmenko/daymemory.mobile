@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RootedDeviceConnector extends PageConnector<AccessDeniedViewModel, RootedDeviceConverter> {
-  const RootedDeviceConnector({Key? key}) : super(key: key);
+  const RootedDeviceConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, AccessDeniedViewModel viewModel) => AccessDeniedWidget(viewModel: viewModel);

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class EncryptionKeySettingsWidget extends StatefulWidget {
-  const EncryptionKeySettingsWidget({Key? key, required this.viewModel}) : super(key: key);
+  const EncryptionKeySettingsWidget({super.key, required this.viewModel});
 
   final EncryptionKeySettingsViewModel viewModel;
 

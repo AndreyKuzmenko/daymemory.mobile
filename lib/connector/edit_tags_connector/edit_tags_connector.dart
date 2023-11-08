@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditTagsConnector extends PageConnector<TagsViewModel, EditTagsConverter> {
-  const EditTagsConnector({Key? key}) : super(key: key);
+  const EditTagsConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, TagsViewModel viewModel) => TagsWidget(viewModel: viewModel);

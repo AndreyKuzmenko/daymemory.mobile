@@ -8,7 +8,7 @@ class ConfigurationType extends EnumClass {
   static const ConfigurationType daymemoryProd = _$daymemoryProd;
   static const ConfigurationType daymemoryDesktop = _$daymemoryDesktop;
 
-  const ConfigurationType._(String name) : super(name);
+  const ConfigurationType._(super.name);
 
   static BuiltSet<ConfigurationType> get values => _$configurationTypeValues;
 

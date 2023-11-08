@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SideMenuConnector extends PageConnector<SideMenuViewModel, SideMenuConverter> {
-  const SideMenuConnector({Key? key}) : super(key: key);
+  const SideMenuConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SideMenuViewModel viewModel) => SideMenuWidget(viewModel: viewModel);

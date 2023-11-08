@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class EditNotebookSortingConnector extends PageConnector<SelectOptionViewModel, EditNotebookSortingConverter> {
-  const EditNotebookSortingConnector({Key? key}) : super(key: key);
+  const EditNotebookSortingConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SelectOptionViewModel viewModel) => SelectOptionWidget(viewModel: viewModel);

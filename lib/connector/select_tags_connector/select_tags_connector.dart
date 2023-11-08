@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class SelectTagsConnector extends PageConnector<SelectTagsViewModel, SelectTagsConverter> {
-  const SelectTagsConnector({Key? key}) : super(key: key);
+  const SelectTagsConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SelectTagsViewModel viewModel) => SelectTagsWidget(viewModel: viewModel);

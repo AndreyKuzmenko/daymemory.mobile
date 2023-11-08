@@ -5,7 +5,7 @@ import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 
 class SelectNotebookWidget extends StatelessWidget {
-  const SelectNotebookWidget({Key? key, required this.viewModel}) : super(key: key);
+  const SelectNotebookWidget({super.key, required this.viewModel});
 
   final SelectNotebookViewModel viewModel;
 

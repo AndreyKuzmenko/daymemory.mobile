@@ -5,7 +5,7 @@ import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 
 class NoteOptionsWidget extends StatelessWidget {
-  const NoteOptionsWidget({Key? key, required this.viewModel}) : super(key: key);
+  const NoteOptionsWidget({super.key, required this.viewModel});
 
   final NoteOptionsViewModel viewModel;
 

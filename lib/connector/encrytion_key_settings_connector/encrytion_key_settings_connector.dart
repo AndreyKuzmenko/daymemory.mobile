@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class EncryptionKeySettingsConnector extends PageConnector<EncryptionKeySettingsViewModel, EncryptionKeySettingsConverter> {
-  const EncryptionKeySettingsConnector({Key? key}) : super(key: key);
+  const EncryptionKeySettingsConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, EncryptionKeySettingsViewModel viewModel) => EncryptionKeySettingsWidget(viewModel: viewModel);

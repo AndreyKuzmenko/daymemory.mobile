@@ -2,7 +2,7 @@ import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:flutter/material.dart';
 
 class SortNotebookListItem extends StatelessWidget {
-  const SortNotebookListItem({Key? key, required this.notebook, required this.showDragIcon}) : super(key: key);
+  const SortNotebookListItem({super.key, required this.notebook, required this.showDragIcon});
 
   final NotebookDto notebook;
 

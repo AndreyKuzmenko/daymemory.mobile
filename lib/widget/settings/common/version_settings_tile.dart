@@ -4,7 +4,7 @@ import 'package:settings_ui/settings_ui.dart';
 class VersionSettingsTile extends AbstractSettingsTile {
   final String appVersion;
 
-  const VersionSettingsTile({Key? key, required this.appVersion}) : super(key: key);
+  const VersionSettingsTile({super.key, required this.appVersion});
 
   @override
   Widget build(BuildContext context) {

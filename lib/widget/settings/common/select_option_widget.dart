@@ -9,9 +9,9 @@ class SelectOptionWidget extends StatelessWidget {
   final SelectOptionViewModel viewModel;
 
   const SelectOptionWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

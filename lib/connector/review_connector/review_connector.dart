@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ReviewConnector extends PageConnector<ReviewViewModel, ReviewConverter> {
-  const ReviewConnector({Key? key}) : super(key: key);
+  const ReviewConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, ReviewViewModel viewModel) => ReviewWidget(viewModel: viewModel);

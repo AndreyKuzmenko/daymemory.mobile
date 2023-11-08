@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class SelectNotebookForm extends StatelessWidget {
-  const SelectNotebookForm({Key? key, required this.viewModel}) : super(key: key);
+  const SelectNotebookForm({super.key, required this.viewModel});
 
   final SelectNotebookViewModel viewModel;
 
@@ -15,6 +15,7 @@ class SelectNotebookForm extends StatelessWidget {
     return SettingsList(
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
+      physics: const ClampingScrollPhysics(),
       sections: [
         SettingsSection(
           tiles: viewModel.notebooks

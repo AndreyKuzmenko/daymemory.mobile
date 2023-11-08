@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class AnswerQuestionListConnector extends PageConnector<AnswerQuestionViewModel, AnswerQuestionListConverter> {
-  const AnswerQuestionListConnector({Key? key}) : super(key: key);
+  const AnswerQuestionListConnector({super.key});
 
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {

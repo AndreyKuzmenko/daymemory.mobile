@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class ShowNotebooksInReviewConnector extends PageConnector<ShowNotebooksInReviewViewModel, ShowNotebooksInReviewConverter> {
-  const ShowNotebooksInReviewConnector({Key? key}) : super(key: key);
+  const ShowNotebooksInReviewConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, ShowNotebooksInReviewViewModel viewModel) => ShowNotebooksInReviewWidget(viewModel: viewModel);

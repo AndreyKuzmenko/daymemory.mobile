@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingConnector extends PageConnector<OnboardingViewModel, OnboardingConverter> {
-  const OnboardingConnector({Key? key}) : super(key: key);
+  const OnboardingConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, OnboardingViewModel viewModel) => OnboardingWidget(viewModel: viewModel);

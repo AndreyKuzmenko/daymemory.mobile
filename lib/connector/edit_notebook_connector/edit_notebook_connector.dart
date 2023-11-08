@@ -11,7 +11,7 @@ import '../../redux/state/states.dart';
 import 'package:collection/collection.dart';
 
 class EditNotebookConnector extends PageConnector<EditNotebookViewModel, EditNotebookConverter> {
-  const EditNotebookConnector({Key? key, required this.notebookId}) : super(key: key);
+  const EditNotebookConnector({super.key, required this.notebookId});
 
   final String? notebookId;
 

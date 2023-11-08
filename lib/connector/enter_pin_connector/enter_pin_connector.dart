@@ -10,7 +10,7 @@ import '../../widget/pin_code/enter_pin/enter_pin_widget.dart';
 import 'enter_pin_converter.dart';
 
 class EnterPinConnector extends PageConnector<EnterPinViewModel, EnterPinConverter> {
-  const EnterPinConnector({Key? key}) : super(key: key);
+  const EnterPinConnector({super.key});
 
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {

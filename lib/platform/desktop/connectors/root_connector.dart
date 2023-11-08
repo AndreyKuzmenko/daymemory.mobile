@@ -4,7 +4,7 @@ import 'package:daymemory/widget/root/root_view_model.dart';
 import 'package:flutter/material.dart';
 
 class DesktopRootConnector extends RootConnector {
-  const DesktopRootConnector({Key? key, required super.deviceType}) : super(key: key);
+  const DesktopRootConnector({super.key, required super.deviceType});
 
   @override
   Widget buildWidget(BuildContext context, RootViewModel viewModel) => DesktopRootWidget(viewModel: viewModel);

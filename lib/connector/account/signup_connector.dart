@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignupConnector extends PageConnector<SignupViewModel, SignupConverter> {
-  const SignupConnector({Key? key}) : super(key: key);
+  const SignupConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SignupViewModel viewModel) => SignupWidget(viewModel: viewModel);

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SyncSettingsConnector extends PageConnector<SyncSettingsViewModel, SyncSettingsConverter> {
-  const SyncSettingsConnector({Key? key}) : super(key: key);
+  const SyncSettingsConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, SyncSettingsViewModel viewModel) => SyncSettingsWidget(viewModel: viewModel);

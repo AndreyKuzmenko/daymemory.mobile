@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class SelectNotebookConnector extends PageConnector<SelectNotebookViewModel, SelectNotebookConverter> {
-  const SelectNotebookConnector({Key? key}) : super(key: key);
+  const SelectNotebookConnector({super.key});
 
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {

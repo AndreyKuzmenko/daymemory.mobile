@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class NoteOptionsForm extends StatelessWidget {
-  const NoteOptionsForm({Key? key, required this.viewModel}) : super(key: key);
+  const NoteOptionsForm({super.key, required this.viewModel});
 
   final NoteOptionsViewModel viewModel;
 
@@ -15,6 +15,7 @@ class NoteOptionsForm extends StatelessWidget {
     return SettingsList(
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
+      physics: const ClampingScrollPhysics(),
       sections: [
         SettingsSection(
           tiles: <SettingsTile>[

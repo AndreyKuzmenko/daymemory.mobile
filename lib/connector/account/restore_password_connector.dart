@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RestorePasswordConnector extends PageConnector<RestorePasswordViewModel, RestorePasswordConverter> {
-  const RestorePasswordConnector({Key? key}) : super(key: key);
+  const RestorePasswordConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, RestorePasswordViewModel viewModel) => RestorePasswordWidget(viewModel: viewModel);

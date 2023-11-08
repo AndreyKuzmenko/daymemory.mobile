@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class EditQuestionListConnector extends PageConnector<QuestionListEditViewModel, EditQuestionListConverter> {
-  const EditQuestionListConnector({Key? key}) : super(key: key);
+  const EditQuestionListConnector({super.key});
 
   @override
   void onDispose(BuildContext context, AppState state, Function dispatch) {

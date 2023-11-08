@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class EditNoteConnector extends PageConnector<EditNoteViewModel, EditNoteConverter> {
-  const EditNoteConnector({Key? key}) : super(key: key);
+  const EditNoteConnector({super.key});
 
   @override
   void onInit(BuildContext context, AppState state, Function dispatch) {

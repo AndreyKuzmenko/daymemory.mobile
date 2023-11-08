@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 abstract class PageConnector<V, B extends ViewModelConverter<V>> extends StatelessWidget {
-  const PageConnector({Key? key}) : super(key: key);
+  const PageConnector({super.key});
 
   @override
   Widget build(BuildContext context) {

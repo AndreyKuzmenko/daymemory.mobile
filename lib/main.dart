@@ -64,7 +64,7 @@ class DayMemoryApp extends StatelessWidget {
   final String language;
   final DeviceType deviceType;
 
-  const DayMemoryApp({Key? key, required this.settings, required this.language, required this.deviceType}) : super(key: key);
+  const DayMemoryApp({super.key, required this.settings, required this.language, required this.deviceType});
 
   @override
   Widget build(BuildContext context) {

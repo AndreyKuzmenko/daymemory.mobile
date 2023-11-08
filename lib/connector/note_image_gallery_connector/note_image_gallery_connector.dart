@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../redux/state/states.dart';
 
 class NoteImageGalleryConnector extends PageConnector<NoteImageGalleryViewModel, NoteImageGalleryConverter> {
-  const NoteImageGalleryConnector({Key? key}) : super(key: key);
+  const NoteImageGalleryConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, NoteImageGalleryViewModel viewModel) => NoteImageGalleryWidget(viewModel: viewModel);

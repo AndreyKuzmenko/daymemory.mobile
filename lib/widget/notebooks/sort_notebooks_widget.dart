@@ -11,9 +11,9 @@ class SortNotebooksWidget extends StatelessWidget {
   final SortNotebooksViewModel viewModel;
 
   const SortNotebooksWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +46,8 @@ class _StateBodyWidget extends StatefulWidget {
   final SortNotebooksViewModel viewModel;
 
   const _StateBodyWidget({
-    Key? key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<_StateBodyWidget> createState() => _StateBodyWidgetState();

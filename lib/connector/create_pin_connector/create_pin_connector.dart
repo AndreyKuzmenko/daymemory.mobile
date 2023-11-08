@@ -8,7 +8,7 @@ import '../../widget/pin_code/create_pin/create_pin_view_model.dart';
 import '../../widget/pin_code/create_pin/create_pin_widget.dart';
 
 class CreatePinConnector extends PageConnector<CreatePinViewModel, CreatePinConverter> {
-  const CreatePinConnector({Key? key}) : super(key: key);
+  const CreatePinConnector({super.key});
 
   @override
   Widget buildWidget(BuildContext context, CreatePinViewModel viewModel) => CreatePinWidget(viewModel: viewModel);

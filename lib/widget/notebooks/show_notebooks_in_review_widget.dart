@@ -10,9 +10,9 @@ class ShowNotebooksInReviewWidget extends StatelessWidget {
   final ShowNotebooksInReviewViewModel viewModel;
 
   const ShowNotebooksInReviewWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
 class DesktopRootWidget extends RootWidget {
-  const DesktopRootWidget({super.key, required viewModel}) : super(viewModel: viewModel);
+  const DesktopRootWidget({super.key, viewModel}) : super(viewModel: viewModel);
 
   @override
   State<StatefulWidget> createState() => _RootState();
