@@ -8,10 +8,10 @@ import 'package:get_it/get_it.dart';
 
 class VideoPreview extends StatefulWidget {
   const VideoPreview({
-    Key? key,
+    super.key,
     required this.file,
     required this.quality,
-  }) : super(key: key);
+  });
 
   final FileViewModel file;
   final int quality;
@@ -59,7 +59,7 @@ class _VideoPreviewState extends State<VideoPreview> {
 class _PhotoPreview extends StatelessWidget {
   final Uint8List bytes;
 
-  const _PhotoPreview({Key? key, required this.bytes}) : super(key: key);
+  const _PhotoPreview({required this.bytes});
 
   @override
   Widget build(BuildContext context) {

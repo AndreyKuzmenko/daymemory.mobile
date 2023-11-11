@@ -5,12 +5,12 @@ import 'package:redux/redux.dart';
 
 Reducer<EnterPinState> get enterPinReducer {
   return combineReducers<EnterPinState>([
-    TypedReducer(_typingEnterPinAction),
-    TypedReducer(_clearEnteredPinAction),
-    TypedReducer(_retryEnteredPinAction),
-    TypedReducer(_clearAllEnteredPinAction),
-    TypedReducer(_matchPinAction),
-    TypedReducer(_resetEnterPinAction)
+    TypedReducer(_typingEnterPinAction).call,
+    TypedReducer(_clearEnteredPinAction).call,
+    TypedReducer(_retryEnteredPinAction).call,
+    TypedReducer(_clearAllEnteredPinAction).call,
+    TypedReducer(_matchPinAction).call,
+    TypedReducer(_resetEnterPinAction).call
   ]);
 }
 

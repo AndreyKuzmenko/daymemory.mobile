@@ -9,9 +9,9 @@ class AnswerQuestionListWidget extends StatefulWidget {
   final AnswerQuestionViewModel viewModel;
 
   const AnswerQuestionListWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<AnswerQuestionListWidget> createState() => _AnswerQuestionListWidgetState();

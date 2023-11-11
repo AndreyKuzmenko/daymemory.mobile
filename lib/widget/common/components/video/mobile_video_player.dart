@@ -7,7 +7,7 @@ import 'package:video_player/video_player.dart';
 class MobileVideoFilePlayer extends StatefulWidget {
   final FileViewModel file;
 
-  const MobileVideoFilePlayer({Key? key, required this.file}) : super(key: key);
+  const MobileVideoFilePlayer({super.key, required this.file});
 
   @override
   MobileVideoFilePlayerState createState() => MobileVideoFilePlayerState();

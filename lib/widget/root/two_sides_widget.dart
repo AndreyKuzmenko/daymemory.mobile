@@ -10,7 +10,7 @@ import 'package:window_manager/window_manager.dart';
 class TwoSidesWidget extends StatefulWidget {
   final RootViewModel viewModel;
 
-  const TwoSidesWidget({Key? key, required this.viewModel}) : super(key: key);
+  const TwoSidesWidget({super.key, required this.viewModel});
 
   @override
   State<StatefulWidget> createState() => _TwoSidesState();

@@ -5,8 +5,8 @@ import 'package:redux/redux.dart';
 
 Reducer<TabsState> get tabsReducer {
   return combineReducers<TabsState>([
-    TypedReducer(_selectTabAction),
-    TypedReducer(_tabScrollAction),
+    TypedReducer(_selectTabAction).call,
+    TypedReducer(_tabScrollAction).call,
   ]);
 }
 

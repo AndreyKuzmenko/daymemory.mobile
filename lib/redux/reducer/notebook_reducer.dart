@@ -5,10 +5,10 @@ import 'package:redux/redux.dart';
 
 Reducer<EditNotebookState> get notebookReducer {
   return combineReducers<EditNotebookState>([
-    TypedReducer(_initNotebookAction),
-    TypedReducer(_notebookSavingAction),
-    TypedReducer(_changeNotebookSortingAction),
-    TypedReducer(_changeNotebookTitleAction),
+    TypedReducer(_initNotebookAction).call,
+    TypedReducer(_notebookSavingAction).call,
+    TypedReducer(_changeNotebookSortingAction).call,
+    TypedReducer(_changeNotebookTitleAction).call,
   ]);
 }
 

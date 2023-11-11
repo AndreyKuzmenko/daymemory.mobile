@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class DesktopVideoFilePlayer extends StatefulWidget {
   final FileViewModel file;
 
-  const DesktopVideoFilePlayer({Key? key, required this.file}) : super(key: key);
+  const DesktopVideoFilePlayer({super.key, required this.file});
 
   @override
   DesktopVideoFilePlayerState createState() => DesktopVideoFilePlayerState();

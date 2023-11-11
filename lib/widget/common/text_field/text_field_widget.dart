@@ -9,14 +9,14 @@ class TextFieldWidget extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const TextFieldWidget({
-    Key? key,
+    super.key,
     required this.label,
     required this.placeholder,
     required this.controller,
     required this.validator,
     this.autofocus,
     this.obscureText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

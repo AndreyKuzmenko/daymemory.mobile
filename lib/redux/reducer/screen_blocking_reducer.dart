@@ -7,11 +7,11 @@ import '../action/screen_blocking_action.dart';
 
 Reducer<ScreenBlockingState> get screenBlockingReducer {
   return combineReducers<ScreenBlockingState>([
-    TypedReducer(_commonScreenBlockingEnableAction),
-    TypedReducer(_commonScreenBlockingDisableAction),
-    TypedReducer(_screenBlockingTimerAction),
-    TypedReducer(_screenBlockingDateAndTimeChangedAction),
-    TypedReducer(_appStateAction),
+    TypedReducer(_commonScreenBlockingEnableAction).call,
+    TypedReducer(_commonScreenBlockingDisableAction).call,
+    TypedReducer(_screenBlockingTimerAction).call,
+    TypedReducer(_screenBlockingDateAndTimeChangedAction).call,
+    TypedReducer(_appStateAction).call,
   ]);
 }
 

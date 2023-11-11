@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditQuestionWidget extends StatefulWidget {
-  const EditQuestionWidget({Key? key, required this.viewModel}) : super(key: key);
+  const EditQuestionWidget({super.key, required this.viewModel});
 
   final QuestionListEditViewModel viewModel;
 

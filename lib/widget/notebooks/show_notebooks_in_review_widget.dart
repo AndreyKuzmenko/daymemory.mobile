@@ -45,9 +45,8 @@ class _StateBodyWidget extends StatefulWidget {
   final ShowNotebooksInReviewViewModel viewModel;
 
   const _StateBodyWidget({
-    Key? key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<_StateBodyWidget> createState() => _StateBodyWidgetState();

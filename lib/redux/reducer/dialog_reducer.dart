@@ -6,8 +6,8 @@ import 'package:redux/redux.dart';
 
 Reducer<BuiltList<DialogState>?> get dialogReducer {
   return combineReducers<BuiltList<DialogState>?>([
-    TypedReducer(_showDialogAction),
-    TypedReducer(_dialogDismissedAction),
+    TypedReducer(_showDialogAction).call,
+    TypedReducer(_dialogDismissedAction).call,
   ]);
 }
 

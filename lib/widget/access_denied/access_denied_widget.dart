@@ -7,9 +7,9 @@ class AccessDeniedWidget extends StatelessWidget {
   final AccessDeniedViewModel viewModel;
 
   const AccessDeniedWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

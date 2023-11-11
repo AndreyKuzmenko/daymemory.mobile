@@ -5,7 +5,7 @@ import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 
 class SelectTagsWidget extends StatelessWidget {
-  const SelectTagsWidget({Key? key, required this.viewModel}) : super(key: key);
+  const SelectTagsWidget({super.key, required this.viewModel});
 
   final SelectTagsViewModel viewModel;
 

@@ -6,11 +6,11 @@ import 'package:redux/redux.dart';
 
 Reducer<SyncState> get syncReducer {
   return combineReducers<SyncState>([
-    TypedReducer(_syncStartedAction),
-    TypedReducer(_syncFinishedAction),
-    TypedReducer(_syncStatusLoadedAction),
-    TypedReducer(_deviceDataClearedAction),
-    TypedReducer(_syncProgressStatusAction),
+    TypedReducer(_syncStartedAction).call,
+    TypedReducer(_syncFinishedAction).call,
+    TypedReducer(_syncStatusLoadedAction).call,
+    TypedReducer(_deviceDataClearedAction).call,
+    TypedReducer(_syncProgressStatusAction).call,
   ]);
 }
 

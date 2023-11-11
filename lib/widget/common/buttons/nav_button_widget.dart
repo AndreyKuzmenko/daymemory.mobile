@@ -7,11 +7,11 @@ class NavButtonWidget extends StatelessWidget {
   final Color? color;
 
   const NavButtonWidget({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.icon,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

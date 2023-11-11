@@ -26,6 +26,7 @@ class DbNoteService implements INoteService {
       id: note.id,
       notebookId: note.notebookId,
       date: note.date.toUtc(),
+      isEncrypted: false,
       modifiedDate: note.modifiedDate.toUtc(),
       text: note.content,
       mediaFiles: await _getFilesForNote(note.id),

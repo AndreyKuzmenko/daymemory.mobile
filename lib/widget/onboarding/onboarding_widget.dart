@@ -10,9 +10,9 @@ class OnboardingWidget extends StatefulWidget {
   final OnboardingViewModel viewModel;
 
   const OnboardingWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<OnboardingWidget> createState() => _OnboardingWidgetState();
@@ -134,10 +134,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
 
 class _PageViewItem extends StatefulWidget {
   const _PageViewItem({
-    Key? key,
     required this.viewModel,
     required this.index,
-  }) : super(key: key);
+  });
 
   final OnboardingViewModel viewModel;
   final int index;

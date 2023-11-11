@@ -8,7 +8,7 @@ class TagClips extends StatelessWidget {
 
   final void Function(TagDto? tag) onTagChanged;
 
-  const TagClips({Key? key, required this.tags, required this.onTagChanged}) : super(key: key);
+  const TagClips({super.key, required this.tags, required this.onTagChanged});
 
   @override
   Widget build(BuildContext context) {

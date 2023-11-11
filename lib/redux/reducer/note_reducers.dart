@@ -9,18 +9,18 @@ import '../action/navigation_action.dart';
 
 Reducer<NoteState> get noteReducer {
   return combineReducers<NoteState>([
-    TypedReducer(_initNoteAction),
-    TypedReducer(_saveNoteAction),
-    TypedReducer(_changeTextAction),
-    TypedReducer(_imageSelectedAction),
-    TypedReducer(_videoSelectedAction),
-    TypedReducer(_fileDeleteAction),
-    TypedReducer(_locationLoadedAction),
-    TypedReducer(_navigateToAnswerQuestionListAction),
-    TypedReducer(_changeDateAction),
-    TypedReducer(_changeNotebookAction),
-    TypedReducer(_reorderFilesAction),
-    TypedReducer(_imageDateActivatedAction),
+    TypedReducer(_initNoteAction).call,
+    TypedReducer(_saveNoteAction).call,
+    TypedReducer(_changeTextAction).call,
+    TypedReducer(_imageSelectedAction).call,
+    TypedReducer(_videoSelectedAction).call,
+    TypedReducer(_fileDeleteAction).call,
+    TypedReducer(_locationLoadedAction).call,
+    TypedReducer(_navigateToAnswerQuestionListAction).call,
+    TypedReducer(_changeDateAction).call,
+    TypedReducer(_changeNotebookAction).call,
+    TypedReducer(_reorderFilesAction).call,
+    TypedReducer(_imageDateActivatedAction).call,
   ]);
 }
 

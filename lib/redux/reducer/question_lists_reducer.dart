@@ -7,12 +7,12 @@ import '../action/actions.dart';
 
 Reducer<QuestionListsState> get questionListsReducer {
   return combineReducers<QuestionListsState>([
-    TypedReducer(_questionListsIsLoadingAction),
-    TypedReducer(_questionListsLoadedAction),
-    TypedReducer(_questionListUpdatedAction),
-    TypedReducer(_questionListCreatedAction),
-    TypedReducer(_questionListDeletedAction),
-    TypedReducer(_reorderQuestionListsAction),
+    TypedReducer(_questionListsIsLoadingAction).call,
+    TypedReducer(_questionListsLoadedAction).call,
+    TypedReducer(_questionListUpdatedAction).call,
+    TypedReducer(_questionListCreatedAction).call,
+    TypedReducer(_questionListDeletedAction).call,
+    TypedReducer(_reorderQuestionListsAction).call,
   ]);
 }
 

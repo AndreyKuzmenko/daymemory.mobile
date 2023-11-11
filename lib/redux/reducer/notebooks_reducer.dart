@@ -6,8 +6,8 @@ import 'package:redux/redux.dart';
 
 Reducer<NotebooksState> get notebooksReducer {
   return combineReducers<NotebooksState>([
-    TypedReducer(_notebooksLoadedAction),
-    TypedReducer(_notebookDeletedAction),
+    TypedReducer(_notebooksLoadedAction).call,
+    TypedReducer(_notebookDeletedAction).call,
   ]);
 }
 

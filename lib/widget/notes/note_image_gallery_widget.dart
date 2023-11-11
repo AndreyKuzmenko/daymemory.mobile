@@ -9,9 +9,9 @@ class NoteImageGalleryWidget extends StatefulWidget {
   final NoteImageGalleryViewModel viewModel;
 
   const NoteImageGalleryWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<NoteImageGalleryWidget> createState() => _NoteImageGalleryWidgetState();

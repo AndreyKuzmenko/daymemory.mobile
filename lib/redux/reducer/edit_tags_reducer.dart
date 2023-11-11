@@ -7,13 +7,13 @@ import 'package:uuid/uuid.dart';
 
 Reducer<EditTagsState> get editTagsReducer {
   return combineReducers<EditTagsState>([
-    TypedReducer(_editTagsIsLoadingAction),
-    TypedReducer(_tagsSavingAction),
-    TypedReducer(_tagsEditLoadedAction),
-    TypedReducer(_reorderTagsAction),
-    TypedReducer(_changeTagAction),
-    TypedReducer(_addTagAction),
-    TypedReducer(_removeTagAction),
+    TypedReducer(_editTagsIsLoadingAction).call,
+    TypedReducer(_tagsSavingAction).call,
+    TypedReducer(_tagsEditLoadedAction).call,
+    TypedReducer(_reorderTagsAction).call,
+    TypedReducer(_changeTagAction).call,
+    TypedReducer(_addTagAction).call,
+    TypedReducer(_removeTagAction).call,
   ]);
 }
 

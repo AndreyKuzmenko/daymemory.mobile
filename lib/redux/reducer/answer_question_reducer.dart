@@ -7,9 +7,9 @@ import '../action/navigation_action.dart';
 
 Reducer<AnswerQuestionState> get answerQuestionReducer {
   return combineReducers<AnswerQuestionState>([
-    TypedReducer(_answerQuestionAction),
-    TypedReducer(_navigateToAnswerQuestionListAction),
-    TypedReducer(_changeAnswerTextAction),
+    TypedReducer(_answerQuestionAction).call,
+    TypedReducer(_navigateToAnswerQuestionListAction).call,
+    TypedReducer(_changeAnswerTextAction).call,
   ]);
 }
 

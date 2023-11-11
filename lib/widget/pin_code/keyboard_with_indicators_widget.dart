@@ -10,10 +10,10 @@ class KeyboardWithIndicatorsWidget extends StatelessWidget {
   final GlobalKey<ShakeWidgetState>? shakeKey;
 
   const KeyboardWithIndicatorsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
     required this.shakeKey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +39,8 @@ class KeyboardWithIndicatorsWidget extends StatelessWidget {
                     width: 14,
                     decoration: BoxDecoration(
                       color: viewModel.createPinType == CreatePinType.create
-                          ? _indicatorsColor(
-                              index < viewModel.selectedEnteredIndicators)
-                          : _indicatorsColor(
-                              index < viewModel.selectedConfirmedIndicators),
+                          ? _indicatorsColor(index < viewModel.selectedEnteredIndicators)
+                          : _indicatorsColor(index < viewModel.selectedConfirmedIndicators),
                       border: Border.all(color: Colors.black, width: 1.0),
                       borderRadius: BorderRadius.circular(7),
                     ),

@@ -12,9 +12,9 @@ class CreatePinWidget extends StatefulWidget {
   final shakeKey = GlobalKey<ShakeWidgetState>();
 
   CreatePinWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<CreatePinWidget> createState() => _CreatePinWidgetState();

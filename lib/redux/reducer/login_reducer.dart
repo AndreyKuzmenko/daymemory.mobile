@@ -5,8 +5,8 @@ import 'package:redux/redux.dart';
 
 Reducer<LoginState> get loginReducer {
   return combineReducers<LoginState>([
-    TypedReducer(_loginIsLoadingAction),
-    TypedReducer(_forgotPasswordAction),
+    TypedReducer(_loginIsLoadingAction).call,
+    TypedReducer(_forgotPasswordAction).call,
   ]);
 }
 

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class PageNavigation extends StatelessWidget {
   const PageNavigation({
-    Key? key,
+    super.key,
     required this.pageController,
     required this.pageIndex,
     required this.pageCount,
     this.onPageChanged,
     this.pageTransitionDuration = 500,
-  }) : super(key: key);
+  });
 
   final PageController pageController;
   final int pageIndex;

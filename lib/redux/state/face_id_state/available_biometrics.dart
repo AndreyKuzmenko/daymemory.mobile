@@ -7,7 +7,7 @@ class AvailableBiometrics extends EnumClass {
   static const AvailableBiometrics faceOrFinger = _$faceAndFinger;
   static const AvailableBiometrics unknown = _$unknown;
 
-  const AvailableBiometrics._(String name) : super(name);
+  const AvailableBiometrics._(super.name);
 
   static BuiltSet<AvailableBiometrics> get values => _$availableBiometricsValues;
 

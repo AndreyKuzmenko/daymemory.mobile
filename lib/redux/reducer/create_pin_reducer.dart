@@ -5,10 +5,10 @@ import 'package:redux/redux.dart';
 
 Reducer<CreatePinState> get createPinReducer {
   return combineReducers<CreatePinState>([
-    TypedReducer(_typingPinAction),
-    TypedReducer(_clearPinAction),
-    TypedReducer(_clearConfirmedPinAction),
-    TypedReducer(_clearAllPinsAction),
+    TypedReducer(_typingPinAction).call,
+    TypedReducer(_clearPinAction).call,
+    TypedReducer(_clearConfirmedPinAction).call,
+    TypedReducer(_clearAllPinsAction).call,
   ]);
 }
 

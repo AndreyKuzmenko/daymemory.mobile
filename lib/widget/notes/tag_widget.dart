@@ -8,9 +8,9 @@ class TagWidget extends StatelessWidget {
   final NotesViewModel viewModel;
 
   const TagWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

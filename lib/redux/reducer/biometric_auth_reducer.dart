@@ -6,7 +6,7 @@ import '../action/face_id_action.dart';
 
 Reducer<BiometricAuthState> get faceIdReducer {
   return combineReducers<BiometricAuthState>([
-    TypedReducer(_biometricRequestAction),
+    TypedReducer(_biometricRequestAction).call,
   ]);
 }
 

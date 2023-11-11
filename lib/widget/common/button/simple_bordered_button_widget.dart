@@ -8,11 +8,11 @@ class SimpleBorderedButtonWidget extends StatelessWidget {
   final double height;
 
   const SimpleBorderedButtonWidget({
-    Key? key,
+    super.key,
     required this.click,
     required this.text,
     this.height = 50,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

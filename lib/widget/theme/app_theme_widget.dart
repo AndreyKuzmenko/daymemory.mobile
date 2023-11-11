@@ -13,9 +13,9 @@ class AppThemeWidget extends InheritedWidget {
     required this.appTheme,
     required this.deviceInfoService,
     required this.configurationSettings,
-    required Widget child,
-    Key? key,
-  }) : super(key: key, child: child);
+    required super.child,
+    super.key,
+  });
 
   @override
   bool updateShouldNotify(AppThemeWidget oldWidget) => appTheme == oldWidget.appTheme;

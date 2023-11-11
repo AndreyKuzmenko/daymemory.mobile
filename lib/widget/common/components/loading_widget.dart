@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class LoadingWidget extends StatelessWidget {
   final String text;
 
-  const LoadingWidget({Key? key, required this.text}) : super(key: key);
+  const LoadingWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

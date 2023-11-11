@@ -147,9 +147,8 @@ class NotesListItem extends StatelessWidget {
 
 class _LocationWidget extends StatelessWidget {
   const _LocationWidget({
-    Key? key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   final NoteViewModel viewModel;
 

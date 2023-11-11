@@ -11,9 +11,9 @@ class NoteListView extends StatefulWidget {
   final NotesViewModel viewModel;
 
   const NoteListView({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<NoteListView> createState() => _NoteListViewState();

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QuestionsListItem extends StatelessWidget {
-  const QuestionsListItem({Key? key, required this.viewModel}) : super(key: key);
+  const QuestionsListItem({super.key, required this.viewModel});
 
   final QuestionListViewModel viewModel;
 

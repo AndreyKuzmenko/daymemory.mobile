@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 
 Reducer<NoteImageGalleryState> get noteImageGalleryReducer {
   return combineReducers<NoteImageGalleryState>([
-    TypedReducer(_openNoteImageGalleryAction),
+    TypedReducer(_openNoteImageGalleryAction).call,
   ]);
 }
 

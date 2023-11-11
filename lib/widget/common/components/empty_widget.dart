@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class EmptyWidget extends StatelessWidget {
   final String text;
 
-  const EmptyWidget({Key? key, required this.text}) : super(key: key);
+  const EmptyWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -79,7 +79,7 @@ void runAppWithConfiguration(ConfigurationSettings settings) async {
 }
 
 class DesktopApp extends StatelessWidget {
-  const DesktopApp({Key? key, required this.settings, required this.language, required this.deviceType}) : super(key: key);
+  const DesktopApp({super.key, required this.settings, required this.language, required this.deviceType});
 
   final ConfigurationSettings settings;
   final String language;

@@ -6,16 +6,16 @@ import '../action/settings_action.dart';
 
 Reducer<SettingsState> get settingsReducer {
   return combineReducers<SettingsState>([
-    TypedReducer(_settingsSaveLocationEnabledAction),
-    TypedReducer(_settingsSaveLocationDisabledAction),
-    TypedReducer(_settingsScreenBlockingAction),
-    TypedReducer(_settingsBiometricUnlockAction),
-    TypedReducer(_settingsLoaded),
-    TypedReducer(_changeLanguageAction),
-    TypedReducer(_changePasscodeRequireAfterAction),
-    TypedReducer(_settingsSyncStateChangedAction),
-    TypedReducer(_encryptionKeyGeneratedAction),
-    TypedReducer(_encryptionKeySetAction),
+    TypedReducer(_settingsSaveLocationEnabledAction).call,
+    TypedReducer(_settingsSaveLocationDisabledAction).call,
+    TypedReducer(_settingsScreenBlockingAction).call,
+    TypedReducer(_settingsBiometricUnlockAction).call,
+    TypedReducer(_settingsLoaded).call,
+    TypedReducer(_changeLanguageAction).call,
+    TypedReducer(_changePasscodeRequireAfterAction).call,
+    TypedReducer(_settingsSyncStateChangedAction).call,
+    TypedReducer(_encryptionKeyGeneratedAction).call,
+    TypedReducer(_encryptionKeySetAction).call,
   ]);
 }
 

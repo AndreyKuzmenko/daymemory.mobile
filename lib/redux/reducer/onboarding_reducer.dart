@@ -5,9 +5,9 @@ import 'package:redux/redux.dart';
 
 Reducer<OnBoardingState> get onBoardingReducer {
   return combineReducers<OnBoardingState>([
-    TypedReducer(_onBoardingNextPageAction),
-    TypedReducer(_onBoardingGetStartedAction),
-    TypedReducer(_onBoardingSkipAction),
+    TypedReducer(_onBoardingNextPageAction).call,
+    TypedReducer(_onBoardingGetStartedAction).call,
+    TypedReducer(_onBoardingSkipAction).call,
   ]);
 }
 

@@ -10,9 +10,9 @@ class QuestionListsWidget extends StatelessWidget {
   final QuestionListsViewModel viewModel;
 
   const QuestionListsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +55,8 @@ class _StateBodyWidget extends StatefulWidget {
   final QuestionListsViewModel viewModel;
 
   const _StateBodyWidget({
-    Key? key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<_StateBodyWidget> createState() => _StateBodyWidgetState();

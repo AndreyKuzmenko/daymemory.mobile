@@ -10,7 +10,7 @@ class TextFieldClearWidget extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const TextFieldClearWidget({
-    Key? key,
+    super.key,
     required this.label,
     required this.placeholder,
     required this.controller,
@@ -18,7 +18,7 @@ class TextFieldClearWidget extends StatelessWidget {
     this.readOnly,
     this.autofocus,
     this.obscureText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

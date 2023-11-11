@@ -5,9 +5,9 @@ import '../theme/app_theme_widget.dart';
 
 class TutorialStyledText extends StatelessWidget {
   const TutorialStyledText({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   final String title;
 

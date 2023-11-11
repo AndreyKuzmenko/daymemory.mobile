@@ -91,7 +91,7 @@ class DeviceInfoService implements IDeviceInfoService, IAsyncServiceInitializer<
       return DeviceType.desktop;
     }
 
-    final data = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
+    final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
     return data.size.shortestSide > 550 ? DeviceType.tablet : DeviceType.phone;
   }
 }

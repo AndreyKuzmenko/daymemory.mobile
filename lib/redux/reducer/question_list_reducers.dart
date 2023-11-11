@@ -7,15 +7,15 @@ import '../state/states.dart';
 
 Reducer<QuestionListState> get questionListReducer {
   return combineReducers<QuestionListState>([
-    TypedReducer(_navigateToEditQuestionListAction),
-    TypedReducer(_navigateToNewQuestionListAction),
-    TypedReducer(_createQuestionAction),
-    TypedReducer(_updateQuestionAction),
-    TypedReducer(_deleteQuestionAction),
-    TypedReducer(_questionListChangeTextAction),
-    TypedReducer(_resetQuestionListStateAction),
-    TypedReducer(_questionListSavingAction),
-    TypedReducer(_reorderQuestionsAction),
+    TypedReducer(_navigateToEditQuestionListAction).call,
+    TypedReducer(_navigateToNewQuestionListAction).call,
+    TypedReducer(_createQuestionAction).call,
+    TypedReducer(_updateQuestionAction).call,
+    TypedReducer(_deleteQuestionAction).call,
+    TypedReducer(_questionListChangeTextAction).call,
+    TypedReducer(_resetQuestionListStateAction).call,
+    TypedReducer(_questionListSavingAction).call,
+    TypedReducer(_reorderQuestionsAction).call,
   ]);
 }
 

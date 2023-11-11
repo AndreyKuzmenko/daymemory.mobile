@@ -13,7 +13,7 @@ class SocialSignUpButtonWidget extends StatelessWidget {
   final Color? borderColor;
 
   const SocialSignUpButtonWidget({
-    Key? key,
+    super.key,
     required this.click,
     this.text,
     this.icon,
@@ -22,7 +22,7 @@ class SocialSignUpButtonWidget extends StatelessWidget {
     required this.textColor,
     this.backgroundColor,
     this.borderColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

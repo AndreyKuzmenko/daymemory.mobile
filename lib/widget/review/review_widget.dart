@@ -11,7 +11,7 @@ import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReviewWidget extends StatefulWidget {
-  const ReviewWidget({Key? key, required this.viewModel}) : super(key: key);
+  const ReviewWidget({super.key, required this.viewModel});
 
   final ReviewViewModel viewModel;
 
@@ -85,9 +85,8 @@ class _ReviewWidgetState extends State<ReviewWidget> {
 
 class _ReviewCategoryList extends StatelessWidget {
   const _ReviewCategoryList({
-    Key? key,
     required this.items,
-  }) : super(key: key);
+  });
 
   final List<ReviewCategoryViewModel> items;
 
@@ -133,9 +132,8 @@ class _ReviewCategoryList extends StatelessWidget {
 
 class _NotesList extends StatelessWidget {
   const _NotesList({
-    Key? key,
     required this.notes,
-  }) : super(key: key);
+  });
 
   final List<NoteViewModel> notes;
 

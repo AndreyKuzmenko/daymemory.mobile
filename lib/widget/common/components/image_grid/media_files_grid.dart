@@ -11,7 +11,7 @@ class MediaFilesGrid extends StatefulWidget {
 
   final TypedFunctionHolder<int>? imageClicked;
 
-  const MediaFilesGrid({Key? key, required this.mediaFiles, this.imageClicked}) : super(key: key);
+  const MediaFilesGrid({super.key, required this.mediaFiles, this.imageClicked});
 
   @override
   State<MediaFilesGrid> createState() => _MediaFilesGridState();

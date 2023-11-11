@@ -5,7 +5,7 @@ import 'package:daymemory/redux/state/side_menu_state/side_menu_state.dart';
 import 'package:redux/redux.dart';
 
 Reducer<SideMenuState> get sideMenuReducer {
-  return combineReducers<SideMenuState>([TypedReducer(_sideMenuItemChanged)]);
+  return combineReducers<SideMenuState>([TypedReducer(_sideMenuItemChanged).call]);
 }
 
 SideMenuState _sideMenuItemChanged(SideMenuState state, SideMenuChangeItemAction action) {

@@ -17,9 +17,9 @@ class LoginWidget extends StatefulWidget {
   final LoginViewModel viewModel;
 
   const LoginWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -200,10 +200,9 @@ class _LoginWidgetState extends State<LoginWidget> {
 
 class _SocialButtons extends StatelessWidget {
   const _SocialButtons({
-    Key? key,
     required this.viewModel,
     required this.theme,
-  }) : super(key: key);
+  });
 
   final LoginViewModel viewModel;
   final IAppTheme theme;

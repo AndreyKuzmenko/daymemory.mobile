@@ -10,13 +10,13 @@ class SimpleFilledButtonWidget extends StatelessWidget {
   final Color backgroundColor;
 
   const SimpleFilledButtonWidget({
-    Key? key,
+    super.key,
     required this.click,
     required this.text,
     this.height = 50,
     required this.textColor,
     required this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

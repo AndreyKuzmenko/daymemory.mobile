@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TagsWidget extends StatefulWidget {
-  const TagsWidget({Key? key, required this.viewModel}) : super(key: key);
+  const TagsWidget({super.key, required this.viewModel});
 
   final TagsViewModel viewModel;
 

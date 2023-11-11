@@ -6,8 +6,8 @@ import 'package:redux/redux.dart';
 
 Reducer<SelectedMenuItemState> get selectedMenuItemReducer {
   return combineReducers<SelectedMenuItemState>([
-    TypedReducer(_selectNotebookAction),
-    TypedReducer(_notebookUpdatedAction),
+    TypedReducer(_selectNotebookAction).call,
+    TypedReducer(_notebookUpdatedAction).call,
   ]);
 }
 

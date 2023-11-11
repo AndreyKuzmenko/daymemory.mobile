@@ -11,9 +11,9 @@ class RestorePasswordWidget extends StatefulWidget {
   final RestorePasswordViewModel viewModel;
 
   const RestorePasswordWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<RestorePasswordWidget> createState() => _RestorePasswordWidgetState();

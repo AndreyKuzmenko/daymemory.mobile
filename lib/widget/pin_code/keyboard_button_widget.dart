@@ -8,11 +8,11 @@ class KeyboardButtonWidget extends StatelessWidget {
   final Color mainColor;
 
   const KeyboardButtonWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.onTap,
     this.mainColor = Colors.black,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

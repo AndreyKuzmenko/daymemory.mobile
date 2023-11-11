@@ -7,7 +7,7 @@ class UrlText extends StatelessWidget {
   final TextStyle? urlStyle;
   final Function(String)? onHashTagPressed;
 
-  const UrlText({Key? key, required this.text, this.style, this.urlStyle, this.onHashTagPressed}) : super(key: key);
+  const UrlText({super.key, required this.text, this.style, this.urlStyle, this.onHashTagPressed});
 
   List<InlineSpan> getTextSpans() {
     List<InlineSpan> widgets = <InlineSpan>[];

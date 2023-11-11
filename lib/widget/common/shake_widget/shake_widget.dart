@@ -2,13 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-abstract class AnimationControllerState<T extends StatefulWidget>
-    extends State<T> with SingleTickerProviderStateMixin {
+abstract class AnimationControllerState<T extends StatefulWidget> extends State<T> with SingleTickerProviderStateMixin {
   AnimationControllerState(this.animationDuration);
 
   final Duration animationDuration;
-  late final animationController =
-      AnimationController(vsync: this, duration: animationDuration);
+  late final animationController = AnimationController(vsync: this, duration: animationDuration);
 
   @override
   void dispose() {
@@ -19,12 +17,12 @@ abstract class AnimationControllerState<T extends StatefulWidget>
 
 class ShakeWidget extends StatefulWidget {
   const ShakeWidget({
-    Key? key,
+    super.key,
     required this.child,
     required this.shakeOffset,
     this.shakeCount = 3,
     this.shakeDuration = const Duration(milliseconds: 500),
-  }) : super(key: key);
+  });
   final Widget child;
   final double shakeOffset;
   final int shakeCount;
@@ -36,7 +34,7 @@ class ShakeWidget extends StatefulWidget {
 }
 
 class ShakeWidgetState extends AnimationControllerState<ShakeWidget> {
-  ShakeWidgetState(Duration duration) : super(duration);
+  ShakeWidgetState(super.duration);
 
   @override
   void initState() {
@@ -66,8 +64,7 @@ class ShakeWidgetState extends AnimationControllerState<ShakeWidget> {
       animation: animationController,
       child: widget.child,
       builder: (context, child) {
-        final sineValue =
-            sin(widget.shakeCount * 2 * pi * animationController.value);
+        final sineValue = sin(widget.shakeCount * 2 * pi * animationController.value);
         return Transform.translate(
           offset: Offset(sineValue * widget.shakeOffset, 0),
           child: child,

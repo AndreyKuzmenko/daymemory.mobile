@@ -11,9 +11,9 @@ class ForgotPasswordWidget extends StatefulWidget {
   final ForgotPasswordViewModel viewModel;
 
   const ForgotPasswordWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<ForgotPasswordWidget> createState() => _ForgotPasswordWidgetState();

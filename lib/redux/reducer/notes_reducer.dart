@@ -11,14 +11,14 @@ import '../action/notes_action.dart';
 
 Reducer<NotesState> get notesReducer {
   return combineReducers<NotesState>([
-    TypedReducer(_notesIsLoadingAction),
-    TypedReducer(_notesLoadedAction),
-    TypedReducer(_noteIsLoadingMoreAction),
-    TypedReducer(_notesLoadedMoreAction),
-    TypedReducer(_noteUpdatedAction),
-    TypedReducer(_noteCreatedAction),
-    TypedReducer(_noteDeletedAction),
-    TypedReducer(_deviceDataClearedAction),
+    TypedReducer(_notesIsLoadingAction).call,
+    TypedReducer(_notesLoadedAction).call,
+    TypedReducer(_noteIsLoadingMoreAction).call,
+    TypedReducer(_notesLoadedMoreAction).call,
+    TypedReducer(_noteUpdatedAction).call,
+    TypedReducer(_noteCreatedAction).call,
+    TypedReducer(_noteDeletedAction).call,
+    TypedReducer(_deviceDataClearedAction).call,
   ]);
 }
 
@@ -107,6 +107,7 @@ NotesState _noteCreatedAction(NotesState state, NoteCreatedAction action) {
           notebookId: action.notebookId,
           text: action.text,
           date: action.date,
+          isEncrypted: false,
           modifiedDate: action.date,
           location: action.currentLocation,
           mediaFiles: action.mediaFiles,

@@ -12,9 +12,9 @@ class SignupWidget extends StatefulWidget {
   final SignupViewModel viewModel;
 
   const SignupWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<SignupWidget> createState() => _SignupWidgetState();

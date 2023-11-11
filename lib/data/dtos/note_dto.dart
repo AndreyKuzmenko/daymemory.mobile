@@ -27,8 +27,7 @@ class NoteDto {
   DateTime modifiedDate;
   LocationDto? location;
   String notebookId;
-  //TODO:should not be nullable
-  bool? isEncrypted;
+  bool isEncrypted;
   List<FileDto> mediaFiles;
   List<String> tags;
 
@@ -41,7 +40,7 @@ class NoteDto {
     required this.tags,
     required this.modifiedDate,
     required this.notebookId,
-    this.isEncrypted,
+    required this.isEncrypted,
   });
 
   factory NoteDto.fromJson(Map<String, dynamic> json) {
@@ -51,7 +50,7 @@ class NoteDto {
         modifiedDate: DateTime.fromMillisecondsSinceEpoch(json['modifiedDate']).toUtc(),
         text: json['text'],
         notebookId: json['notebookId'],
-        isEncrypted: json['isEncrypted'],
+        isEncrypted: json['isEncrypted'] ?? false,
         mediaFiles: json['mediaFiles'] == null ? [] : json['mediaFiles'].cast<Map<String, dynamic>>().map<FileDto>((json) => FileDto.fromJson(json)).toList(),
         tags: json['tags'] == null ? [] : (json['tags'] as List).map((e) => e.toString()).toList(),
         location: json["location"] == null ? null : LocationDto.fromJson(json["location"]));

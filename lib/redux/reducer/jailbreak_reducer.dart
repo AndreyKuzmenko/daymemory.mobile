@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 
 Reducer<JailbreakType> get jailBreakReducer {
   return combineReducers<JailbreakType>([
-    TypedReducer(_jailbreakCheckAction),
+    TypedReducer(_jailbreakCheckAction).call,
   ]);
 }
 

@@ -384,7 +384,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
           var dbItem = await noteService.fetchNote(syncItem.id);
 
           if (dbItem == null) {
-            var text = await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted!);
+            var text = await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted);
 
             //text = htmlToQuillDelta(text);
 
@@ -401,7 +401,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             );
 
             //if note is encrypted and encryption is enabled, mark it as changed
-            if (syncItem.item!.isEncrypted != null && !syncItem.item!.isEncrypted! && store.state.accountState.isEncryptionEnabled) {
+            if (!syncItem.item!.isEncrypted && store.state.accountState.isEncryptionEnabled) {
               await noteService.markNoteAsChanged(syncItem.id);
             }
 
@@ -418,7 +418,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             //update notebooks' counters
             store.dispatch(LoadNotebooksAction());
           } else if (syncItem.item!.modifiedDate.difference(dbItem.modifiedDate).inSeconds > 0) {
-            var text = await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted!);
+            var text = await _decrypt(store.state.settingsState.encryptionKey, syncItem.item!.text, syncItem.item!.isEncrypted);
 
             //text = htmlToQuillDelta(text);
 
@@ -435,7 +435,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             );
 
             //if note is encrypted and encryption is enabled, mark it as changed
-            if (syncItem.item!.isEncrypted != null && !syncItem.item!.isEncrypted! && store.state.accountState.isEncryptionEnabled) {
+            if (!syncItem.item!.isEncrypted && store.state.accountState.isEncryptionEnabled) {
               await noteService.markNoteAsChanged(syncItem.id);
             }
 

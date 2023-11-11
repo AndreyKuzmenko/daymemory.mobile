@@ -7,9 +7,9 @@ class SideMenuWidget extends StatelessWidget {
   final SideMenuViewModel viewModel;
 
   const SideMenuWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

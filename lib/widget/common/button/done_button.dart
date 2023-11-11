@@ -11,14 +11,14 @@ class DoneButton extends StatelessWidget {
   final EdgeInsets padding;
 
   const DoneButton({
-    Key? key,
+    super.key,
     required this.click,
     required this.text,
     this.height = 20,
     this.padding = EdgeInsets.zero,
     required this.textColor,
     required this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

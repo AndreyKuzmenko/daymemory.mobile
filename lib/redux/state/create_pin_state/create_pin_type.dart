@@ -22,7 +22,7 @@ class CreatePinType extends EnumClass {
   // Created and Confirmed PINs are different
   static const CreatePinType noMatch = _$noMatch;
 
-  const CreatePinType._(String name) : super(name);
+  const CreatePinType._(super.name);
 
   static BuiltSet<CreatePinType> get values => _$createPinTypeValues;
 

@@ -71,7 +71,6 @@ class NotesMiddleware implements MiddlewareClass<AppState> {
     Function(dynamic action) dispatch, {
     required int? lastItemDateTime,
     String? notebokId,
-    String? tag,
     required SortingType sortingType,
   }) async {
     dispatch(NotesIsLoadingMoreAction(isLoadingMore: true, notebookId: notebokId));

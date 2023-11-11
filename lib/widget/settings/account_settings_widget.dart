@@ -8,9 +8,9 @@ class AccountSettingsWidget extends StatelessWidget {
   final AccountSettingsViewModel viewModel;
 
   const AccountSettingsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

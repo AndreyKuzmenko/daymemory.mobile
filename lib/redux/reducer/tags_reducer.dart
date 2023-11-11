@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 
 Reducer<TagsState> get tagsReducer {
   return combineReducers<TagsState>([
-    TypedReducer(_tagsLoadedAction),
+    TypedReducer(_tagsLoadedAction).call,
   ]);
 }
 

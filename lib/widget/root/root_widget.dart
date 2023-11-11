@@ -15,7 +15,7 @@ import '../../redux/action/actions.dart';
 class RootWidget extends StatefulWidget {
   final RootViewModel viewModel;
 
-  const RootWidget({Key? key, required this.viewModel}) : super(key: key);
+  const RootWidget({super.key, required this.viewModel});
 
   @override
   State<StatefulWidget> createState() => RootState();
@@ -33,15 +33,18 @@ class RootState<T extends RootWidget> extends State<T> with WidgetsBindingObserv
     ServiceLocator.getIt.get<IConnectionService>().dispatch = dispatch;
 
     super.initState();
-    var screenWidth = (window.physicalSize.width / window.devicePixelRatio);
-    var screenHeight = (window.physicalSize.height / window.devicePixelRatio);
-    var size = Size(screenWidth, screenHeight);
-    widget.viewModel.sizeChanged.command(size);
 
     widget.viewModel.initialized.command();
 
     WidgetsBinding.instance.addObserver(this);
     dispatch(initialInstruction);
+
+    Future.delayed(Duration.zero, () {
+      var screenWidth = (View.of(context).physicalSize.width / View.of(context).devicePixelRatio);
+      var screenHeight = (View.of(context).physicalSize.height / View.of(context).devicePixelRatio);
+      var size = Size(screenWidth, screenHeight);
+      widget.viewModel.sizeChanged.command(size);
+    });
   }
 
   @override
@@ -53,8 +56,8 @@ class RootState<T extends RootWidget> extends State<T> with WidgetsBindingObserv
 
   @override
   void didChangeMetrics() {
-    var screenWidth = (window.physicalSize.width / window.devicePixelRatio);
-    var screenHeight = (window.physicalSize.height / window.devicePixelRatio);
+    var screenWidth = (View.of(context).physicalSize.width / View.of(context).devicePixelRatio);
+    var screenHeight = (View.of(context).physicalSize.height / View.of(context).devicePixelRatio);
     var size = Size(screenWidth, screenHeight);
     if (widget.viewModel.size != size) {
       widget.viewModel.sizeChanged.command(size);
@@ -180,12 +183,12 @@ class WillPopScopeWidget extends StatelessWidget {
   final RouteFactory? generateRoute;
 
   const WillPopScopeWidget({
-    Key? key,
+    super.key,
     required this.command,
     required this.routeKey,
     required this.initialRoute,
     required this.generateRoute,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

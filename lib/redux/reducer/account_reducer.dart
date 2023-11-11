@@ -6,9 +6,9 @@ import 'package:redux/redux.dart';
 
 Reducer<AccountState> get accountReducer {
   return combineReducers<AccountState>([
-    TypedReducer(_userInfoLoadedAction),
-    TypedReducer(_logoutAction),
-    TypedReducer(_encryptionEnabledAction),
+    TypedReducer(_userInfoLoadedAction).call,
+    TypedReducer(_logoutAction).call,
+    TypedReducer(_encryptionEnabledAction).call,
   ]);
 }
 

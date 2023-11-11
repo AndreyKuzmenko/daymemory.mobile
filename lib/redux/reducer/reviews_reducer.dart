@@ -9,10 +9,10 @@ import 'package:collection/collection.dart';
 
 Reducer<ReviewsState> get reviewsReducer {
   return combineReducers<ReviewsState>([
-    TypedReducer(_reviewsLoadedAction),
-    TypedReducer(_reviewsIsLoadingAction),
-    TypedReducer(_noteUpdatedAction),
-    TypedReducer(_noteDeletedAction),
+    TypedReducer(_reviewsLoadedAction).call,
+    TypedReducer(_reviewsIsLoadingAction).call,
+    TypedReducer(_noteUpdatedAction).call,
+    TypedReducer(_noteDeletedAction).call,
   ]);
 }
 

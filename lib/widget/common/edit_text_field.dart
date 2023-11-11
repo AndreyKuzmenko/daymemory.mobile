@@ -2,7 +2,7 @@ import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:flutter/material.dart';
 
 class EditTextField extends StatefulWidget {
-  const EditTextField({Key? key, required this.text, required this.placeholder, required this.textChangedCommand}) : super(key: key);
+  const EditTextField({super.key, required this.text, required this.placeholder, required this.textChangedCommand});
 
   final String text;
 

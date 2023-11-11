@@ -9,9 +9,9 @@ class StorageSettingsWidget extends StatelessWidget {
   final SyncSettingsViewModel viewModel;
 
   const StorageSettingsWidget({
-    Key? key,
+    super.key,
     required this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ class JailbreakType extends EnumClass {
   /// Check was not performed. Initial value.
   static const JailbreakType unknown = _$unknown;
 
-  const JailbreakType._(String name) : super(name);
+  const JailbreakType._(super.name);
 
   static BuiltSet<JailbreakType> get values => _$jailbreakTypeValues;
 
