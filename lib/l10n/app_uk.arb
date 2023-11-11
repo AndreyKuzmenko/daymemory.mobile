@@ -47,7 +47,7 @@
     "settings_encryption_set_key": "Ввести ключ шифрування",
     "settings_encryption_view_key": "Переглянути ключ",
     "settings_encryption_create_key": "Включити шифрування",
-    "settings_clear_data_title": "Видалити дані",
+    "settings_clear_data": "Видалити дані",
     "settings_tags_option": "Теги",
     "settings_syncing_in_progress": "Синхронізую...",
     "settings_last_sync_time": "Час останнього збереження:",
