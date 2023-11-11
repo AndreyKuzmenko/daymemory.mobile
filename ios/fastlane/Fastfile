@@ -57,12 +57,12 @@ platform :ios do
     )
   end
 
-  # desc "Upload symbols to Firebase"
-  # lane :upload_symbols_firebase do |options|
-  #   upload_symbols_to_crashlytics(
-  #     dsym_path: "./build/Runner.app.dSYM.zip",
-  #     gsp_path: "./Config/#{options[:flavor]}/GoogleService-Info.plist",
-  #     app_id: options[:appId]
-  #   )
-  # end
+  desc "Upload symbols to Firebase"
+  lane :upload_symbols_firebase do |options|
+    upload_symbols_to_crashlytics(
+      dsym_path: "./build/Runner.app.dSYM.zip",
+      gsp_path: "./Config/#{options[:flavor]}/GoogleService-Info.plist",
+      app_id: options[:appId]
+    )
+  end
 end
