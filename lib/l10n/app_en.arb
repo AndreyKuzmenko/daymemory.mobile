@@ -108,10 +108,8 @@
     },
 
     "review_memories_page_title": "Memories",
-    
 
     "settings_select_language_title": "Select a language",
-
 
     "edit_tags_title": "Tags",
     "tag_family": "Family",
@@ -206,7 +204,6 @@
     "last_name_field_label": "Last name",
     "last_name_field_placeholder": "Enter your last name",    
     
-
     "terms_of_use": "Terms of use",
     "privacy_policy": "Privacy Policy",
 
@@ -215,7 +212,6 @@
     "login_page_forgot_password_button": "Forgot your password?",
     "login_page_create_account_button": "Create an account",
     "login_page_and_separator": "and",
-
 
     "signup_page_title": "Sign up",
     "signup_page_signup_button": "Sign up",
@@ -228,8 +224,6 @@
     "restore_password_page_title": "Change password",
     "restore_password_page_instruction": "Enter the code that we have sent to your e-mail and a new password.",
     "restore_password_page_button": "Change password",
-
-
 
     "loading_message": "loading...",
 
@@ -248,11 +242,9 @@
 
     "photo_library_no_access": "Please open Settings and allow usage of Photo library",
 
-
     "jailbrakeTitle": "Rooted device",
     "jailbrakeMessage": "This application cannot be used on a rooted device.",
 
-    
     "skip": "Skip",
     "play_store": "Play Store",
     "apple_store": "Apple Store",
@@ -285,5 +277,4 @@
     "tutorial3_subtitle": "Remember everything that happened in your life.",
     "tutorial4_subtitle": "Download for free on iPhone, iPad, Android, Mac and Windows",
     "tutorial5_subtitle": "Configure a passcode and biometric protection to keep your data safe"
-    
 }

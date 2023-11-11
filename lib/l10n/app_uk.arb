@@ -38,15 +38,16 @@
     "settings_language_option" : "Мова",
     "settings_show_in_review_option": "Блокноти",
     "settings_review_period_option": "Періоди",
+    "settings_geo_location_disabled_error" : "Дозвольте використання місця знаходження в налаштуваннях.",
     "settings_sync_option": "Синхронізація",
     "settings_sync_status_option": "Статус",
-    "settings_clear_data": "Видалити всі дані",
     "settings_sync_status_failed": "Помилка",
     "settings_sync_status_on": "Вкл.",
     "settings_sync_status_off": "Викл.",
     "settings_encryption_set_key": "Ввести ключ шифрування",
     "settings_encryption_view_key": "Переглянути ключ",
     "settings_encryption_create_key": "Включити шифрування",
+    "settings_clear_data_title": "Видалити дані",
     "settings_tags_option": "Теги",
     "settings_syncing_in_progress": "Синхронізую...",
     "settings_last_sync_time": "Час останнього збереження:",
@@ -203,7 +204,6 @@
     "last_name_field_label": "Прізвище",
     "last_name_field_placeholder": "Введіть ваше прізвище",    
     
-
     "terms_of_use": "Terms of use",
     "privacy_policy": "Privacy Policy",
     
@@ -225,7 +225,6 @@
     "restore_password_page_instruction": "Введіть код, який ми надіслали на вашу пошту, та новий пароль",
     "restore_password_page_button": "Змінити пароль",
 
-
     "loading_message": "завантаження...",
 
     "required_field_validator": "Обов'язкове поле",
@@ -241,13 +240,11 @@
     "gotIt": "Зрозуміло!",
     "error": "Помилка",
 
+    "photo_library_no_access": "Відкрийте Налаштування і дозвольте використання Фото",
 
-
-    
     "jailbrakeTitle": "Пристрій з Root-доступом",
     "jailbrakeMessage": "Даний додаток неможливо використовувати на пристрої з root-доступом.",
 
-    
     "skip": "Пропустити",
     "play_store": "Play Store",
     "apple_store": "Apple Store",
