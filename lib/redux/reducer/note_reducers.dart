@@ -11,6 +11,8 @@ Reducer<NoteState> get noteReducer {
   return combineReducers<NoteState>([
     TypedReducer(_initNoteAction).call,
     TypedReducer(_saveNoteAction).call,
+    TypedReducer(_noteTagSelectedAction).call,
+    TypedReducer(_noteTagUnselectedAction).call,
     TypedReducer(_changeTextAction).call,
     TypedReducer(_imageSelectedAction).call,
     TypedReducer(_videoSelectedAction).call,
@@ -22,6 +24,26 @@ Reducer<NoteState> get noteReducer {
     TypedReducer(_reorderFilesAction).call,
     TypedReducer(_imageDateActivatedAction).call,
   ]);
+}
+
+NoteState _noteTagSelectedAction(NoteState state, NoteTagSelectedAction action) {
+  var tags = state.tags.toList();
+  tags.add(action.tagId);
+  return state.rebuild(
+    (b) => b
+      ..tags = tags.toBuiltList().toBuilder()
+      ..hasChanged = true,
+  );
+}
+
+NoteState _noteTagUnselectedAction(NoteState state, NoteTagUnselectedAction action) {
+  var tags = state.tags.toList();
+  tags.removeWhere((x) => x == action.tagId);
+  return state.rebuild(
+    (b) => b
+      ..tags = tags.toBuiltList().toBuilder()
+      ..hasChanged = true,
+  );
 }
 
 NoteState _changeTextAction(NoteState state, NoteTextChangedAction action) {
@@ -122,5 +144,7 @@ NoteState _navigateToAnswerQuestionListAction(NoteState state, NavigateToAnswerQ
 }
 
 NoteState _saveNoteAction(NoteState state, NoteSavingAction action) {
-  return state.rebuild((b) => b..isSaving = action.isSaving);
+  return state.rebuild(
+    (b) => b..isSaving = action.isSaving,
+  );
 }

@@ -24,6 +24,8 @@ class _$EditNoteViewModel extends EditNoteViewModel {
   @override
   final bool isSaving;
   @override
+  final bool hasChanged;
+  @override
   final LocationDto? location;
   @override
   final BuiltList<FileViewModel> mediaFiles;
@@ -69,6 +71,7 @@ class _$EditNoteViewModel extends EditNoteViewModel {
       required this.textPlaceholder,
       required this.doneButtonText,
       required this.isSaving,
+      required this.hasChanged,
       this.location,
       required this.mediaFiles,
       required this.tags,
@@ -96,6 +99,8 @@ class _$EditNoteViewModel extends EditNoteViewModel {
         doneButtonText, r'EditNoteViewModel', 'doneButtonText');
     BuiltValueNullFieldError.checkNotNull(
         isSaving, r'EditNoteViewModel', 'isSaving');
+    BuiltValueNullFieldError.checkNotNull(
+        hasChanged, r'EditNoteViewModel', 'hasChanged');
     BuiltValueNullFieldError.checkNotNull(
         mediaFiles, r'EditNoteViewModel', 'mediaFiles');
     BuiltValueNullFieldError.checkNotNull(tags, r'EditNoteViewModel', 'tags');
@@ -140,6 +145,7 @@ class _$EditNoteViewModel extends EditNoteViewModel {
         textPlaceholder == other.textPlaceholder &&
         doneButtonText == other.doneButtonText &&
         isSaving == other.isSaving &&
+        hasChanged == other.hasChanged &&
         location == other.location &&
         mediaFiles == other.mediaFiles &&
         tags == other.tags &&
@@ -169,6 +175,7 @@ class _$EditNoteViewModel extends EditNoteViewModel {
     _$hash = $jc(_$hash, textPlaceholder.hashCode);
     _$hash = $jc(_$hash, doneButtonText.hashCode);
     _$hash = $jc(_$hash, isSaving.hashCode);
+    _$hash = $jc(_$hash, hasChanged.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, mediaFiles.hashCode);
     _$hash = $jc(_$hash, tags.hashCode);
@@ -200,6 +207,7 @@ class _$EditNoteViewModel extends EditNoteViewModel {
           ..add('textPlaceholder', textPlaceholder)
           ..add('doneButtonText', doneButtonText)
           ..add('isSaving', isSaving)
+          ..add('hasChanged', hasChanged)
           ..add('location', location)
           ..add('mediaFiles', mediaFiles)
           ..add('tags', tags)
@@ -258,6 +266,10 @@ class EditNoteViewModelBuilder
   bool? _isSaving;
   bool? get isSaving => _$this._isSaving;
   set isSaving(bool? isSaving) => _$this._isSaving = isSaving;
+
+  bool? _hasChanged;
+  bool? get hasChanged => _$this._hasChanged;
+  set hasChanged(bool? hasChanged) => _$this._hasChanged = hasChanged;
 
   LocationDto? _location;
   LocationDto? get location => _$this._location;
@@ -354,6 +366,7 @@ class EditNoteViewModelBuilder
       _textPlaceholder = $v.textPlaceholder;
       _doneButtonText = $v.doneButtonText;
       _isSaving = $v.isSaving;
+      _hasChanged = $v.hasChanged;
       _location = $v.location;
       _mediaFiles = $v.mediaFiles.toBuilder();
       _tags = $v.tags;
@@ -407,14 +420,15 @@ class EditNoteViewModelBuilder
                   doneButtonText, r'EditNoteViewModel', 'doneButtonText'),
               isSaving: BuiltValueNullFieldError.checkNotNull(
                   isSaving, r'EditNoteViewModel', 'isSaving'),
+              hasChanged: BuiltValueNullFieldError.checkNotNull(
+                  hasChanged, r'EditNoteViewModel', 'hasChanged'),
               location: location,
               mediaFiles: mediaFiles.build(),
               tags: BuiltValueNullFieldError.checkNotNull(
                   tags, r'EditNoteViewModel', 'tags'),
-              date: BuiltValueNullFieldError.checkNotNull(
-                  date, r'EditNoteViewModel', 'date'),
-              showToolbarOnTop:
-                  BuiltValueNullFieldError.checkNotNull(showToolbarOnTop, r'EditNoteViewModel', 'showToolbarOnTop'),
+              date:
+                  BuiltValueNullFieldError.checkNotNull(date, r'EditNoteViewModel', 'date'),
+              showToolbarOnTop: BuiltValueNullFieldError.checkNotNull(showToolbarOnTop, r'EditNoteViewModel', 'showToolbarOnTop'),
               isVideoSupported: BuiltValueNullFieldError.checkNotNull(isVideoSupported, r'EditNoteViewModel', 'isVideoSupported'),
               saveCommand: BuiltValueNullFieldError.checkNotNull(saveCommand, r'EditNoteViewModel', 'saveCommand'),
               reorderCommand: BuiltValueNullFieldError.checkNotNull(reorderCommand, r'EditNoteViewModel', 'reorderCommand'),

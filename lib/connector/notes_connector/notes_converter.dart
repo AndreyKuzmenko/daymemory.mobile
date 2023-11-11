@@ -5,6 +5,7 @@ import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/notebook_dto.dart';
+import 'package:daymemory/data/dtos/tag_dto.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/note_image_gallery_action.dart';
 import 'package:daymemory/redux/action/system_action.dart';
@@ -33,6 +34,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
   // final SortingType notebookSortingType;
   final String title;
   final String? tag;
+  final List<TagDto> tags;
   final List<NoteDto> notes;
 
   NotesConverter({
@@ -48,6 +50,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
     required this.title,
     required this.notebookId,
     required this.notebooks,
+    required this.tags,
     // required this.notebookId,
     // required this.notebookOrderRank,
     // required this.notebookShowInReview,
@@ -124,6 +127,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
           (item) => NoteViewModel((b) => b
             ..noteId = item.id
             ..text = item.text
+            ..tags = item.tags.map((e) => _getTagTitle(e)).where((element) => element.isNotEmpty).toList()
             ..notebookName = notebookId != null ? null : notebooks.firstWhere((element) => element.id == item.notebookId).title
             ..isFullscreen = isFullscreen
             ..showMoreText = loc.show_more
@@ -161,5 +165,12 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
         )
         .toList()
         .toBuiltList();
+  }
+
+  String _getTagTitle(String tagId) {
+    if (tags.any((element) => element.id == tagId)) {
+      return tags.firstWhere((element) => element.id == tagId).text;
+    }
+    return "";
   }
 }

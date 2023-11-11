@@ -27,8 +27,12 @@ class SelectTagsConverter extends ViewModelConverter<SelectTagsViewModel> {
     return SelectTagsViewModel((b) => b
       ..tags = tags.toBuiltList().toBuilder()
       ..title = locale.select_tags_title
-      ..toogleTagCommand = FunctionHolder(() {
-        //dispatch(NoteNotebookChangedAction(notebookId: notebookId));
+      ..toogleTagCommand = TypedFunctionHolder<String>((tagId) {
+        if (selectedTags.any((element) => element == tagId)) {
+          dispatch(NoteTagUnselectedAction(tagId: tagId));
+        } else {
+          dispatch(NoteTagSelectedAction(tagId: tagId));
+        }
       })
       ..newTagCommand = FunctionHolder(() {
         //dispatch(NavigateToNewNotebookAction());

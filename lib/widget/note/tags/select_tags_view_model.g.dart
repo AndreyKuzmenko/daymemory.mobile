@@ -20,7 +20,7 @@ class _$SelectTagsViewModel extends SelectTagsViewModel {
   @override
   final FunctionHolder newTagCommand;
   @override
-  final FunctionHolder toogleTagCommand;
+  final TypedFunctionHolder<String> toogleTagCommand;
 
   factory _$SelectTagsViewModel(
           [void Function(SelectTagsViewModelBuilder)? updates]) =>
@@ -132,9 +132,9 @@ class SelectTagsViewModelBuilder
   set newTagCommand(FunctionHolder? newTagCommand) =>
       _$this._newTagCommand = newTagCommand;
 
-  FunctionHolder? _toogleTagCommand;
-  FunctionHolder? get toogleTagCommand => _$this._toogleTagCommand;
-  set toogleTagCommand(FunctionHolder? toogleTagCommand) =>
+  TypedFunctionHolder<String>? _toogleTagCommand;
+  TypedFunctionHolder<String>? get toogleTagCommand => _$this._toogleTagCommand;
+  set toogleTagCommand(TypedFunctionHolder<String>? toogleTagCommand) =>
       _$this._toogleTagCommand = toogleTagCommand;
 
   SelectTagsViewModelBuilder();

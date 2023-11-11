@@ -78,6 +78,7 @@ NotesState _noteUpdatedAction(NotesState state, NoteUpdatedAction action) {
       note.notebookId = action.notebookId;
       note.mediaFiles = action.mediaFiles;
       note.date = action.date;
+      note.tags = action.tags;
       note.modifiedDate = DateTime.now().toUtc();
       note.location = action.currentLocation;
     }
@@ -111,7 +112,7 @@ NotesState _noteCreatedAction(NotesState state, NoteCreatedAction action) {
           modifiedDate: action.date,
           location: action.currentLocation,
           mediaFiles: action.mediaFiles,
-          tags: [],
+          tags: action.tags,
         ));
     _sortNotes(state, notes);
   }

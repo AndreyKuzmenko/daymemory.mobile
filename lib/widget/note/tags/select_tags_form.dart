@@ -25,7 +25,7 @@ class SelectTagsForm extends StatelessWidget {
                       style: appTheme.settingsLabel,
                     ),
                     onPressed: (context) {
-                      viewModel.toogleTagCommand.command();
+                      viewModel.toogleTagCommand.command(x.id);
                     },
                     trailing: viewModel.selectedTags.any((element) => element == x.id)
                         ? const Icon(

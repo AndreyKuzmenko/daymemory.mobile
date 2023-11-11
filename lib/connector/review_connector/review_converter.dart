@@ -5,6 +5,7 @@ import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
 import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/data/dtos/review_category_dto.dart';
+import 'package:daymemory/data/dtos/tag_dto.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/note_image_gallery_action.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
@@ -27,6 +28,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
   final bool showContextMenu;
   final bool isFullscreen;
   final List<NotebookDto> notebooks;
+  final List<TagDto> tags;
 
   ReviewConverter({
     required this.locale,
@@ -39,6 +41,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
     required this.showContextMenu,
     required this.showDrawerMenu,
     required this.notebooks,
+    required this.tags,
   });
 
   @override
@@ -81,6 +84,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
           (item) => NoteViewModel((b) => b
             ..noteId = item.id
             ..text = item.text
+            ..tags = item.tags.map((e) => _getTagTitle(e)).where((element) => element.isNotEmpty).toList()
             ..notebookName = notebooks.firstWhere((element) => element.id == item.notebookId).title
             ..isFullscreen = isFullscreen
             ..menuCancel = loc.menu_cancel
@@ -117,5 +121,12 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
             })),
         )
         .toList();
+  }
+
+  String _getTagTitle(String tagId) {
+    if (tags.any((element) => element.id == tagId)) {
+      return tags.firstWhere((element) => element.id == tagId).text;
+    }
+    return "";
   }
 }

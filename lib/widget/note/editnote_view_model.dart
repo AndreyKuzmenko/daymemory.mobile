@@ -36,6 +36,8 @@ abstract class EditNoteViewModel implements Built<EditNoteViewModel, EditNoteVie
 
   bool get isSaving;
 
+  bool get hasChanged;
+
   LocationDto? get location;
 
   BuiltList<FileViewModel> get mediaFiles;

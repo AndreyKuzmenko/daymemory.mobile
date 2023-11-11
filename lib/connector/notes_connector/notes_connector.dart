@@ -36,6 +36,7 @@ class NotesConnector extends PageConnector<NotesViewModel, NotesConverter> {
         dispatch: dispatch,
         isLoading: notesState.isLoading,
         notes: notesState.notes,
+        tags: state.tagsState.tags,
         showDrawerMenu: state.deviceState.deviceWidthType == DeviceWidthType.narrow,
         showContextMenu: state.deviceState.deviceWidthType == DeviceWidthType.wide,
         isFullscreen: state.deviceState.deviceWidthType == DeviceWidthType.wide && state.deviceState.size.width >= settings.fullscreenMinWidth + settings.sideMenuWidth + 20,

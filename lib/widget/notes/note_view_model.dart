@@ -12,6 +12,8 @@ abstract class NoteViewModel implements Built<NoteViewModel, NoteViewModelBuilde
 
   String get displayDate;
 
+  List<String> get tags;
+
   String? get notebookName;
 
   LocationDto? get location;

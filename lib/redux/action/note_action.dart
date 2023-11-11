@@ -128,6 +128,28 @@ class NoteFileDeletedAction implements ILoggingAction {
   }
 }
 
+class NoteTagSelectedAction implements ILoggingAction {
+  final String tagId;
+
+  NoteTagSelectedAction({required this.tagId});
+
+  @override
+  String toLogString() {
+    return 'Note Tag Selected Action';
+  }
+}
+
+class NoteTagUnselectedAction implements ILoggingAction {
+  final String tagId;
+
+  NoteTagUnselectedAction({required this.tagId});
+
+  @override
+  String toLogString() {
+    return 'Note Tag Unselected Action';
+  }
+}
+
 class CreateNoteAction implements ILoggingAction {
   @override
   String toLogString() {

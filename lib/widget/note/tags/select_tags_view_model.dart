@@ -18,7 +18,7 @@ abstract class SelectTagsViewModel implements Built<SelectTagsViewModel, SelectT
 
   FunctionHolder get newTagCommand;
 
-  FunctionHolder get toogleTagCommand;
+  TypedFunctionHolder<String> get toogleTagCommand;
 
   SelectTagsViewModel._();
 

@@ -14,6 +14,8 @@ class _$NoteViewModel extends NoteViewModel {
   @override
   final String displayDate;
   @override
+  final List<String> tags;
+  @override
   final String? notebookName;
   @override
   final LocationDto? location;
@@ -47,6 +49,7 @@ class _$NoteViewModel extends NoteViewModel {
       {required this.noteId,
       required this.text,
       required this.displayDate,
+      required this.tags,
       this.notebookName,
       this.location,
       required this.mediaFiles,
@@ -65,6 +68,7 @@ class _$NoteViewModel extends NoteViewModel {
     BuiltValueNullFieldError.checkNotNull(text, r'NoteViewModel', 'text');
     BuiltValueNullFieldError.checkNotNull(
         displayDate, r'NoteViewModel', 'displayDate');
+    BuiltValueNullFieldError.checkNotNull(tags, r'NoteViewModel', 'tags');
     BuiltValueNullFieldError.checkNotNull(
         mediaFiles, r'NoteViewModel', 'mediaFiles');
     BuiltValueNullFieldError.checkNotNull(
@@ -103,6 +107,7 @@ class _$NoteViewModel extends NoteViewModel {
         noteId == other.noteId &&
         text == other.text &&
         displayDate == other.displayDate &&
+        tags == other.tags &&
         notebookName == other.notebookName &&
         location == other.location &&
         mediaFiles == other.mediaFiles &&
@@ -124,6 +129,7 @@ class _$NoteViewModel extends NoteViewModel {
     _$hash = $jc(_$hash, noteId.hashCode);
     _$hash = $jc(_$hash, text.hashCode);
     _$hash = $jc(_$hash, displayDate.hashCode);
+    _$hash = $jc(_$hash, tags.hashCode);
     _$hash = $jc(_$hash, notebookName.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, mediaFiles.hashCode);
@@ -147,6 +153,7 @@ class _$NoteViewModel extends NoteViewModel {
           ..add('noteId', noteId)
           ..add('text', text)
           ..add('displayDate', displayDate)
+          ..add('tags', tags)
           ..add('notebookName', notebookName)
           ..add('location', location)
           ..add('mediaFiles', mediaFiles)
@@ -179,6 +186,10 @@ class NoteViewModelBuilder
   String? _displayDate;
   String? get displayDate => _$this._displayDate;
   set displayDate(String? displayDate) => _$this._displayDate = displayDate;
+
+  List<String>? _tags;
+  List<String>? get tags => _$this._tags;
+  set tags(List<String>? tags) => _$this._tags = tags;
 
   String? _notebookName;
   String? get notebookName => _$this._notebookName;
@@ -247,6 +258,7 @@ class NoteViewModelBuilder
       _noteId = $v.noteId;
       _text = $v.text;
       _displayDate = $v.displayDate;
+      _tags = $v.tags;
       _notebookName = $v.notebookName;
       _location = $v.location;
       _mediaFiles = $v.mediaFiles;
@@ -288,6 +300,8 @@ class NoteViewModelBuilder
                 text, r'NoteViewModel', 'text'),
             displayDate: BuiltValueNullFieldError.checkNotNull(
                 displayDate, r'NoteViewModel', 'displayDate'),
+            tags: BuiltValueNullFieldError.checkNotNull(
+                tags, r'NoteViewModel', 'tags'),
             notebookName: notebookName,
             location: location,
             mediaFiles: BuiltValueNullFieldError.checkNotNull(
@@ -300,8 +314,7 @@ class NoteViewModelBuilder
                 menuDelete, r'NoteViewModel', 'menuDelete'),
             menuCancel: BuiltValueNullFieldError.checkNotNull(
                 menuCancel, r'NoteViewModel', 'menuCancel'),
-            showContextMenu: BuiltValueNullFieldError.checkNotNull(
-                showContextMenu, r'NoteViewModel', 'showContextMenu'),
+            showContextMenu: BuiltValueNullFieldError.checkNotNull(showContextMenu, r'NoteViewModel', 'showContextMenu'),
             showMoreText: BuiltValueNullFieldError.checkNotNull(showMoreText, r'NoteViewModel', 'showMoreText'),
             openNoteCommand: BuiltValueNullFieldError.checkNotNull(openNoteCommand, r'NoteViewModel', 'openNoteCommand'),
             openGalleryCommand: BuiltValueNullFieldError.checkNotNull(openGalleryCommand, r'NoteViewModel', 'openGalleryCommand'),

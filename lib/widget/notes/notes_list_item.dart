@@ -1,6 +1,7 @@
 import 'package:daymemory/widget/common/components/html_viewer.dart';
 import 'package:daymemory/widget/common/components/image_grid/media_files_grid.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
+import 'package:daymemory/widget/notes/note_tag_list.dart';
 import 'package:daymemory/widget/notes/note_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +92,14 @@ class NotesListItem extends StatelessWidget {
                                 viewModel.openTagCommand.command(text.replaceAll("#", ""));
                               },
                             )),
-                      //if (viewModel.location != null && viewModel.location!.address != null) _LocationWidget(viewModel: viewModel)
+                      if (viewModel.location != null && viewModel.location!.address != null)
+                        _LocationWidget(
+                          viewModel: viewModel,
+                        ),
+                      if (viewModel.tags.isNotEmpty)
+                        NoteTagList(
+                          tags: viewModel.tags,
+                        ),
                     ],
                   )),
             ),

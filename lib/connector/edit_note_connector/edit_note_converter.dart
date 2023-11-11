@@ -61,6 +61,7 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
     return EditNoteViewModel((b) => b
       ..noteId = noteId
       ..isSaving = isSaving
+      ..hasChanged = hasChanged
       ..text = text
       ..location = location
       ..tags = tags
@@ -103,7 +104,6 @@ class EditNoteConverter extends ViewModelConverter<EditNoteViewModel> {
           dispatch(PopBackStackAction(key: RouteDirection.editNote));
           return;
         }
-
         if (noteId == null) {
           dispatch(CreateNoteAction());
         } else {

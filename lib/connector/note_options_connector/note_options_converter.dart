@@ -52,7 +52,7 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
       ..notebookTitle = notebookTitle
       ..title = locale.note_options_title
       ..tagsLabel = locale.note_options_tags_label
-      ..tagsValue = noteTags.isEmpty ? locale.note_options_no_tags_label : noteTags.map((e) => e).join(', ')
+      ..tagsValue = noteTags.isEmpty ? locale.note_options_no_tags_label : noteTags.map((e) => _getTagTitle(e)).where((element) => element.isNotEmpty).join(', ')
       ..tags = tags
       ..date = date
       ..dateLabel = locale.note_options_date_label
@@ -72,5 +72,12 @@ class NoteOptionsConverter extends ViewModelConverter<NoteOptionsViewModel> {
       ..closeCommand = FunctionHolder(() {
         dispatch(PopBackStackAction());
       }));
+  }
+
+  String _getTagTitle(String tagId) {
+    if (tags.any((element) => element.id == tagId)) {
+      return tags.firstWhere((element) => element.id == tagId).text;
+    }
+    return "";
   }
 }
