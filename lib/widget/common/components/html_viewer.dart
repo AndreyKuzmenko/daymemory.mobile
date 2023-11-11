@@ -26,27 +26,32 @@ class _HtmlViewerState extends State<HtmlViewer> {
   bool _isExpanded = false;
 
   String _getHtml(String text) {
-    var json = jsonDecode(text);
-    var jsonElements = List.castFrom(json);
-    final converter = QuillDeltaToHtmlConverter(
-      List.castFrom(_isExpanded ? jsonElements : jsonElements.take(_maxElements).toList()),
-      ConverterOptions(multiLineParagraph: false),
-    );
+    var html = "";
+    try {
+      var json = jsonDecode(text);
+      var jsonElements = List.castFrom(json);
+      final converter = QuillDeltaToHtmlConverter(
+        List.castFrom(_isExpanded ? jsonElements : jsonElements.take(_maxElements).toList()),
+        ConverterOptions(multiLineParagraph: false),
+      );
 
-    var html = converter.convert();
-    if (!_isExpanded && jsonElements.length > _maxElements) {
-      html += "<div><a href='more'>${widget.showMoreText}</a><div>";
+      html = converter.convert();
+      if (!_isExpanded && jsonElements.length > _maxElements) {
+        html += "<div><a href='more'>${widget.showMoreText}</a><div>";
+      }
+    } catch (e) {
+      html = e.toString();
     }
-
     return html;
   }
 
   @override
   Widget build(BuildContext context) {
-    final html = _getHtml(widget.text ?? "");
+    final html = _getHtml(widget.text ?? "").replaceAll("<p><br/></p>", "<p>&#8203;</p>");
 
     return Html(
-      data: html.replaceAll("<p><br/></p>", ""), //innerText,
+      data: html, //innerText,
+
       onLinkTap: (url, attributes, element) {
         // if (url == null) {
         //   return;
@@ -72,9 +77,17 @@ class _HtmlViewerState extends State<HtmlViewer> {
           margin: Margins.zero,
           padding: HtmlPaddings.all(0),
         ),
-        "p": Style(lineHeight: const LineHeight(1.3), fontSize: FontSize(16 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 0, bottom: 15, unit: Unit.px)),
+        "p": Style(
+          lineHeight: const LineHeight(1.3),
+          fontSize: FontSize(16 * widget.scaleFactor),
+          margin: Margins.only(left: 0, right: 0, top: 0, bottom: 15, unit: Unit.px),
+        ),
         "h2": Style(
-            lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(22 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px)),
+          lineHeight: const LineHeight(1.3),
+          fontWeight: FontWeight.w700,
+          fontSize: FontSize(22 * widget.scaleFactor),
+          margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px),
+        ),
         "h3": Style(
             lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(18 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px)),
         "li": Style(
@@ -85,9 +98,6 @@ class _HtmlViewerState extends State<HtmlViewer> {
         "a": Style(
           fontSize: FontSize(16 * widget.scaleFactor),
           textDecoration: TextDecoration.none,
-        ),
-        "br": Style(
-          fontSize: FontSize(24 * widget.scaleFactor),
         ),
         "ol": Style(
           fontSize: FontSize(16 * widget.scaleFactor),
