@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
+import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/data/dtos/review_category_dto.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/note_image_gallery_action.dart';
@@ -25,6 +26,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
   final bool showDrawerMenu;
   final bool showContextMenu;
   final bool isFullscreen;
+  final List<NotebookDto> notebooks;
 
   ReviewConverter({
     required this.locale,
@@ -36,6 +38,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
     required this.isFullscreen,
     required this.showContextMenu,
     required this.showDrawerMenu,
+    required this.notebooks,
   });
 
   @override
@@ -78,6 +81,7 @@ class ReviewConverter extends ViewModelConverter<ReviewViewModel> {
           (item) => NoteViewModel((b) => b
             ..noteId = item.id
             ..text = item.text
+            ..notebookName = notebooks.firstWhere((element) => element.id == item.notebookId).title
             ..isFullscreen = isFullscreen
             ..menuCancel = loc.menu_cancel
             ..menuDelete = loc.menu_delete

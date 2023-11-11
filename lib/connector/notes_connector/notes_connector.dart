@@ -40,6 +40,7 @@ class NotesConnector extends PageConnector<NotesViewModel, NotesConverter> {
         showContextMenu: state.deviceState.deviceWidthType == DeviceWidthType.wide,
         isFullscreen: state.deviceState.deviceWidthType == DeviceWidthType.wide && state.deviceState.size.width >= settings.fullscreenMinWidth + settings.sideMenuWidth + 20,
         notebookId: state.selectedMenuItemState.itemId,
+        notebooks: state.notebooksState.items,
         title: state.selectedMenuItemState.title ?? loc.all_notes,
         isScrollToTopEnabled: tabsState.isActiveTabClicked && tabsState.selectTabIndex == 0,
         isLoadingMore: notesState.isLoadingMore,

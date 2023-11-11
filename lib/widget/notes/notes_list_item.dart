@@ -37,8 +37,25 @@ class NotesListItem extends StatelessWidget {
                           margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: Row(
                             children: [
-                              Text(viewModel.displayDate, style: const TextStyle(color: Colors.grey, fontSize: 14)),
-                              const Spacer(),
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Text(viewModel.displayDate, style: const TextStyle(color: Colors.grey, fontSize: 14)),
+                                    if (viewModel.notebookName != null)
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                    if (viewModel.notebookName != null)
+                                      Flexible(
+                                        child: Text(
+                                          overflow: TextOverflow.ellipsis,
+                                          viewModel.notebookName!,
+                                          style: const TextStyle(color: Colors.grey, fontSize: 14),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
                               if (viewModel.showContextMenu) _showPopupMenuButton(),
                               if (!viewModel.showContextMenu)
                                 IconButton(

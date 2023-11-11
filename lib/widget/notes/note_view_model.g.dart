@@ -14,6 +14,8 @@ class _$NoteViewModel extends NoteViewModel {
   @override
   final String displayDate;
   @override
+  final String? notebookName;
+  @override
   final LocationDto? location;
   @override
   final List<FileViewModel> mediaFiles;
@@ -45,6 +47,7 @@ class _$NoteViewModel extends NoteViewModel {
       {required this.noteId,
       required this.text,
       required this.displayDate,
+      this.notebookName,
       this.location,
       required this.mediaFiles,
       required this.isFullscreen,
@@ -100,6 +103,7 @@ class _$NoteViewModel extends NoteViewModel {
         noteId == other.noteId &&
         text == other.text &&
         displayDate == other.displayDate &&
+        notebookName == other.notebookName &&
         location == other.location &&
         mediaFiles == other.mediaFiles &&
         isFullscreen == other.isFullscreen &&
@@ -120,6 +124,7 @@ class _$NoteViewModel extends NoteViewModel {
     _$hash = $jc(_$hash, noteId.hashCode);
     _$hash = $jc(_$hash, text.hashCode);
     _$hash = $jc(_$hash, displayDate.hashCode);
+    _$hash = $jc(_$hash, notebookName.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, mediaFiles.hashCode);
     _$hash = $jc(_$hash, isFullscreen.hashCode);
@@ -142,6 +147,7 @@ class _$NoteViewModel extends NoteViewModel {
           ..add('noteId', noteId)
           ..add('text', text)
           ..add('displayDate', displayDate)
+          ..add('notebookName', notebookName)
           ..add('location', location)
           ..add('mediaFiles', mediaFiles)
           ..add('isFullscreen', isFullscreen)
@@ -173,6 +179,10 @@ class NoteViewModelBuilder
   String? _displayDate;
   String? get displayDate => _$this._displayDate;
   set displayDate(String? displayDate) => _$this._displayDate = displayDate;
+
+  String? _notebookName;
+  String? get notebookName => _$this._notebookName;
+  set notebookName(String? notebookName) => _$this._notebookName = notebookName;
 
   LocationDto? _location;
   LocationDto? get location => _$this._location;
@@ -237,6 +247,7 @@ class NoteViewModelBuilder
       _noteId = $v.noteId;
       _text = $v.text;
       _displayDate = $v.displayDate;
+      _notebookName = $v.notebookName;
       _location = $v.location;
       _mediaFiles = $v.mediaFiles;
       _isFullscreen = $v.isFullscreen;
@@ -277,6 +288,7 @@ class NoteViewModelBuilder
                 text, r'NoteViewModel', 'text'),
             displayDate: BuiltValueNullFieldError.checkNotNull(
                 displayDate, r'NoteViewModel', 'displayDate'),
+            notebookName: notebookName,
             location: location,
             mediaFiles: BuiltValueNullFieldError.checkNotNull(
                 mediaFiles, r'NoteViewModel', 'mediaFiles'),

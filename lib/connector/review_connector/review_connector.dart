@@ -33,6 +33,7 @@ class ReviewConnector extends PageConnector<ReviewViewModel, ReviewConverter> {
       dispatch: dispatch,
       isLoading: reviewsState.isLoading,
       items: reviewsState.items,
+      notebooks: state.notebooksState.items,
       showContextMenu: state.deviceState.deviceWidthType == DeviceWidthType.wide,
       isFullscreen: state.deviceState.deviceWidthType == DeviceWidthType.wide && state.deviceState.size.width >= settings.fullscreenMinWidth + settings.sideMenuWidth + 20,
       showDrawerMenu: state.deviceState.deviceWidthType == DeviceWidthType.narrow,

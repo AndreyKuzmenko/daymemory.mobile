@@ -4,6 +4,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/data/dtos/file_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
+import 'package:daymemory/data/dtos/notebook_dto.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/note_image_gallery_action.dart';
 import 'package:daymemory/redux/action/system_action.dart';
@@ -26,7 +27,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
   final bool isScrollToTopEnabled;
   final bool isFullscreen;
   final String? notebookId;
-  // final String? notebookTitle;
+  final List<NotebookDto> notebooks;
   // final int notebookOrderRank;
   // final bool notebookShowInReview;
   // final SortingType notebookSortingType;
@@ -46,7 +47,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
     required this.notes,
     required this.title,
     required this.notebookId,
-    // required this.notebookTitle,
+    required this.notebooks,
     // required this.notebookId,
     // required this.notebookOrderRank,
     // required this.notebookShowInReview,
@@ -123,6 +124,7 @@ class NotesConverter extends ViewModelConverter<NotesViewModel> {
           (item) => NoteViewModel((b) => b
             ..noteId = item.id
             ..text = item.text
+            ..notebookName = notebookId != null ? null : notebooks.firstWhere((element) => element.id == item.notebookId).title
             ..isFullscreen = isFullscreen
             ..showMoreText = loc.show_more
             ..menuCancel = loc.menu_cancel

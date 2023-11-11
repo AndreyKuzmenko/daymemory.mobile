@@ -12,6 +12,8 @@ abstract class NoteViewModel implements Built<NoteViewModel, NoteViewModelBuilde
 
   String get displayDate;
 
+  String? get notebookName;
+
   LocationDto? get location;
 
   List<FileViewModel> get mediaFiles;
