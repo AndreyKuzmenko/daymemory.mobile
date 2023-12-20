@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
-class DesktopRootWidget extends RootWidget {
+class DesktopRootWidget extends RootAppWidget {
   const DesktopRootWidget({super.key, required super.viewModel});
 
   @override

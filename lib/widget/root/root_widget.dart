@@ -12,16 +12,16 @@ import 'package:flutter/material.dart';
 
 import '../../redux/action/actions.dart';
 
-class RootWidget extends StatefulWidget {
+class RootAppWidget extends StatefulWidget {
   final RootViewModel viewModel;
 
-  const RootWidget({super.key, required this.viewModel});
+  const RootAppWidget({super.key, required this.viewModel});
 
   @override
   State<StatefulWidget> createState() => RootState();
 }
 
-class RootState<T extends RootWidget> extends State<T> with WidgetsBindingObserver {
+class RootState<T extends RootAppWidget> extends State<T> with WidgetsBindingObserver {
   late bool _dialogShown;
   bool shouldBlur = false;
 

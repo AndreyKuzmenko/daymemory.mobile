@@ -14,7 +14,7 @@ class RootConnector extends PageConnector<RootViewModel, RootConverter> {
   const RootConnector({super.key, required this.deviceType});
 
   @override
-  Widget buildWidget(BuildContext context, RootViewModel viewModel) => RootWidget(viewModel: viewModel);
+  Widget buildWidget(BuildContext context, RootViewModel viewModel) => RootAppWidget(viewModel: viewModel);
 
   @override
   RootConverter prepareConverter(BuildContext context, AppState state, Function dispatch) {
