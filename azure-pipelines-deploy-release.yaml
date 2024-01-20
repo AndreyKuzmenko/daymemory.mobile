@@ -100,7 +100,7 @@ jobs:
   # Flutter & Fastlane
   # =================================================================================
     - bash: |
-        git clone https://github.com/flutter/flutter.git -b 3.13.9
+        git clone https://github.com/flutter/flutter.git -b 3.16.1
         export PATH=`pwd`/flutter/bin:$PATH
         # flutter channel stable
         flutter doctor
