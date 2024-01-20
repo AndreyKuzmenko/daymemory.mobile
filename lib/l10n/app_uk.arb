@@ -97,9 +97,23 @@
 
     "sync_loading_data": "Скачування даних...",
     "sync_uploading_data": "Завантаження даних...",
-    "sync_loading_tags": "Завантаження тегів...",
-    "sync_loading_notebooks": "Завантаження блокнотів...",
-    "sync_loading_notes": "Завантаження нотаток. Залишилось: {count}",
+    "sync_uploading_new_data": "Завантаження нових даних. Залишилось: {count}",
+    "@sync_uploading_new_data": {
+        "type": "text",
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "sync_uploading_modified_data": "Завантаження модифікованих даних. Залишилось: {count}",
+    "@sync_uploading_modified_data": {
+        "type": "text",
+        "placeholders": {
+            "count": {}
+        }
+    },    
+    "sync_loading_tags": "Скачування тегів...",
+    "sync_loading_notebooks": "Скачування блокнотів...",
+    "sync_loading_notes": "Скачування нотаток. Залишилось: {count}",
         "@sync_loading_notes": {
         "type": "text",
         "placeholders": {

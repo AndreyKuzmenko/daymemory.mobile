@@ -97,10 +97,25 @@
 
     "sync_loading_data": "Loading data...",
     "sync_uploading_data": "Uploading data...",
+    "sync_uploading_new_data": "Uploading new data. Remaining: {count}",
+    "@sync_uploading_new_data": {
+        "type": "text",
+        "placeholders": {
+            "count": {}
+        }
+    },
+
+    "sync_uploading_modified_data": "Uploading modified data. Remaining: {count}",
+    "@sync_uploading_modified_data": {
+        "type": "text",
+        "placeholders": {
+            "count": {}
+        }
+    },
     "sync_loading_tags": "Loading tags...",
     "sync_loading_notebooks": "Loading notebooks...",
     "sync_loading_notes": "Loading notes. Remaining: {count}",
-        "@sync_loading_notes": {
+    "@sync_loading_notes": {
         "type": "text",
         "placeholders": {
             "count": {}

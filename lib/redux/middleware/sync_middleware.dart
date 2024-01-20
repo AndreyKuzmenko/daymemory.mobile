@@ -217,7 +217,9 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
     var isEncryptionEnabled = store.state.settingsState.encryptionKey != null && store.state.settingsState.encryptionKey!.isNotEmpty;
     //upload data
     var newNotes = await noteService.fetchNewNotes();
+    var i = 0;
     for (var item in newNotes) {
+      store.dispatch(SyncProgressStatusAction(message: _locale!.sync_uploading_new_data(newNotes.length - i++)));
       if (!store.state.settingsState.isSyncEnabled) {
         throw SyncStoppedException(message: "Sync stopped");
       }
@@ -253,10 +255,14 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
       }
     }
     var modifiedNotes = await noteService.fetchModifiedNotes();
+    i = 0;
     for (var item in modifiedNotes) {
       if (!store.state.settingsState.isSyncEnabled) {
         throw SyncStoppedException(message: "Sync stopped");
       }
+
+      store.dispatch(SyncProgressStatusAction(message: _locale!.sync_uploading_new_data(modifiedNotes.length - i++)));
+
       if (item.mediaFiles.isNotEmpty) {
         for (var file in item.mediaFiles) {
           var fileExist = await fileNetworkService.checkIfFileExists(file.id);
@@ -340,6 +346,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
         await notebookService.resetIsChangedFlag(item.id, notebook.modifiedDate);
       }
     }
+
     var modifiedItems = await notebookService.fetchModifiedNotebooks();
     for (var item in modifiedItems) {
       var notebook = await notebookNetworkService.update(
