@@ -52,7 +52,91 @@ class _ToolbarState extends State<Toolbar> {
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       //color: Colors.red,
-      child: QuillToolbarProvider(
+      child: QuillToolbar(
+        configurations: const QuillToolbarConfigurations(),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Wrap(
+            children: [
+              // IconButton(
+              //   onPressed: () => context.read<SettingsCubit>().updateSettings(state.copyWith(useCustomQuillToolbar: false)),
+              //   icon: const Icon(
+              //     Icons.width_normal,
+              //   ),
+              // ),
+              QuillToolbarHistoryButton(
+                isUndo: true,
+                controller: widget.quillController,
+              ),
+              QuillToolbarHistoryButton(
+                isUndo: false,
+                controller: widget.quillController,
+              ),
+              QuillToolbarToggleStyleButton(
+                options: const QuillToolbarToggleStyleButtonOptions(),
+                controller: widget.quillController,
+                attribute: Attribute.bold,
+              ),
+              QuillToolbarToggleStyleButton(
+                options: const QuillToolbarToggleStyleButtonOptions(),
+                controller: widget.quillController,
+                attribute: Attribute.italic,
+              ),
+              QuillToolbarToggleStyleButton(
+                controller: widget.quillController,
+                attribute: Attribute.underline,
+              ),
+              QuillToolbarClearFormatButton(
+                controller: widget.quillController,
+              ),
+              const VerticalDivider(),
+              const VerticalDivider(),
+              QuillToolbarColorButton(
+                controller: widget.quillController,
+                isBackground: false,
+              ),
+              QuillToolbarColorButton(
+                controller: widget.quillController,
+                isBackground: true,
+              ),
+              const VerticalDivider(),
+              QuillToolbarSelectHeaderStyleDropdownButton(
+                controller: widget.quillController,
+              ),
+              const VerticalDivider(),
+              QuillToolbarToggleCheckListButton(
+                controller: widget.quillController,
+              ),
+              QuillToolbarToggleStyleButton(
+                controller: widget.quillController,
+                attribute: Attribute.ol,
+              ),
+              QuillToolbarToggleStyleButton(
+                controller: widget.quillController,
+                attribute: Attribute.ul,
+              ),
+              QuillToolbarToggleStyleButton(
+                controller: widget.quillController,
+                attribute: Attribute.inlineCode,
+              ),
+              QuillToolbarToggleStyleButton(
+                controller: widget.quillController,
+                attribute: Attribute.blockQuote,
+              ),
+              QuillToolbarIndentButton(
+                controller: widget.quillController,
+                isIncrease: true,
+              ),
+              QuillToolbarIndentButton(
+                controller: widget.quillController,
+                isIncrease: false,
+              ),
+            ],
+          ),
+        ),
+      ),
+
+      /* QuillToolbarProvider(
         toolbarConfigurations: const QuillToolbarConfigurations(),
         child: QuillBaseToolbar(
           //toolbarSize: 50,
@@ -113,7 +197,7 @@ class _ToolbarState extends State<Toolbar> {
             },
           ),
         ),
-      ),
+      ),*/
     );
   }
 

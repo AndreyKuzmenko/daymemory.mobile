@@ -10,6 +10,7 @@ import 'package:daymemory/widget/note/toolbar.dart';
 import 'package:daymemory/widget/note/editnote_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter_quill/quill_delta.dart';
 import 'package:get_it/get_it.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -79,51 +80,35 @@ class _EditFormState extends State<EditNoteForm> {
   @override
   Widget build(BuildContext context) {
     if (widget.viewModel.showToolbarOnTop) {
-      return QuillProvider(
-        configurations: QuillConfigurations(
-          controller: _quillController,
-          sharedConfigurations: QuillSharedConfigurations(
-            animationConfigurations: QuillAnimationConfigurations.enableAll(),
-          ),
-        ),
-        child: Column(
-          children: [
-            //if (_hasFocus)
-            Container(
-              height: 50,
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                color: Colors.grey.withAlpha(50),
-              ),
-              child: _createToolbar(),
+      return Column(
+        children: [
+          //if (_hasFocus)
+          Container(
+            height: 50,
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              color: Colors.grey.withAlpha(50),
             ),
-            Expanded(child: _createEditForm()),
-          ],
-        ),
+            child: _createToolbar(),
+          ),
+          Expanded(child: _createEditForm()),
+        ],
       );
     }
-    return QuillProvider(
-      configurations: QuillConfigurations(
-        controller: _quillController,
-        sharedConfigurations: QuillSharedConfigurations(
-          animationConfigurations: QuillAnimationConfigurations.enableAll(),
-        ),
-      ),
-      child: KeyboardActions(
-        disableScroll: true,
-        bottomAvoiderScrollPhysics: const BouncingScrollPhysics(),
-        autoScroll: true,
-        config: _buildConfig(context),
-        keepFocusOnTappingNode: true,
-        child: GestureDetector(
-          onTap: () {
-            if (!_nodeText.hasFocus) {
-              _nodeText.requestFocus();
-            }
-          },
-          child: _createEditForm(),
-        ),
+    return KeyboardActions(
+      disableScroll: true,
+      bottomAvoiderScrollPhysics: const BouncingScrollPhysics(),
+      autoScroll: true,
+      config: _buildConfig(context),
+      keepFocusOnTappingNode: true,
+      child: GestureDetector(
+        onTap: () {
+          if (!_nodeText.hasFocus) {
+            _nodeText.requestFocus();
+          }
+        },
+        child: _createEditForm(),
       ),
     );
   }
@@ -166,11 +151,12 @@ class _EditFormState extends State<EditNoteForm> {
       focusNode: _nodeText,
       scrollController: _scrollController,
       configurations: QuillEditorConfigurations(
+        controller: _quillController,
+        placeholder: widget.viewModel.textPlaceholder,
         padding: const EdgeInsets.all(0),
         readOnly: false,
         scrollable: false,
         autoFocus: _isNew,
-        placeholder: widget.viewModel.textPlaceholder,
         enableInteractiveSelection: true,
         expands: false,
         scrollBottomInset: 150,
@@ -197,6 +183,37 @@ class _EditFormState extends State<EditNoteForm> {
                 const VerticalSpacing(0, 10),
                 const VerticalSpacing(0, 0),
                 null)),
+        // padding: const EdgeInsets.all(0),
+        // readOnly: false,
+        // scrollable: false,
+        // autoFocus: _isNew,
+        // placeholder: widget.viewModel.textPlaceholder,
+        // enableInteractiveSelection: true,
+        // expands: false,
+        // scrollBottomInset: 150,
+        // customStyles: DefaultStyles(
+        //     lists: DefaultListBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 5), const VerticalSpacing(10, 0), null, null),
+        //     paragraph: DefaultTextBlockStyle(baseStyle.copyWith(), const VerticalSpacing(0, 20), const VerticalSpacing(0, 0), null),
+        //     h2: DefaultTextBlockStyle(
+        //         defaultTextStyle.style.copyWith(
+        //           fontSize: 22,
+        //           color: Colors.black,
+        //           height: 1.5,
+        //           fontWeight: FontWeight.w700,
+        //         ),
+        //         const VerticalSpacing(5, 10),
+        //         const VerticalSpacing(0, 0),
+        //         null),
+        //     h3: DefaultTextBlockStyle(
+        //         defaultTextStyle.style.copyWith(
+        //           fontSize: 18,
+        //           color: Colors.black,
+        //           height: 1.5,
+        //           fontWeight: FontWeight.w700,
+        //         ),
+        //         const VerticalSpacing(0, 10),
+        //         const VerticalSpacing(0, 0),
+        //         null)),
       ),
     );
   }

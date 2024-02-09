@@ -8,9 +8,10 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_linux
   flutter_acrylic
   flutter_secure_storage_linux
-  pasteboard
+  irondash_engine_context
   screen_retriever
   sqlite3_flutter_libs
+  super_native_extensions
   system_theme
   url_launcher_linux
   window_manager

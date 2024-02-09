@@ -11,12 +11,13 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_secure_storage_windows
   gal
   geolocator_windows
+  irondash_engine_context
   local_auth_windows
-  pasteboard
   permission_handler_windows
   screen_retriever
   secure_application
   sqlite3_flutter_libs
+  super_native_extensions
   system_theme
   url_launcher_windows
   window_manager
