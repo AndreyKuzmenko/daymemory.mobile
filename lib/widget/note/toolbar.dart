@@ -58,146 +58,58 @@ class _ToolbarState extends State<Toolbar> {
           scrollDirection: Axis.horizontal,
           child: Wrap(
             children: [
-              // IconButton(
-              //   onPressed: () => context.read<SettingsCubit>().updateSettings(state.copyWith(useCustomQuillToolbar: false)),
-              //   icon: const Icon(
-              //     Icons.width_normal,
-              //   ),
-              // ),
-              QuillToolbarHistoryButton(
-                isUndo: true,
+              QuillToolbarToggleStyleButton(
+                attribute: Attribute.h3,
                 controller: widget.quillController,
-              ),
-              QuillToolbarHistoryButton(
-                isUndo: false,
-                controller: widget.quillController,
+                options: QuillToolbarToggleStyleButtonOptions(
+                  tooltip: "",
+                  iconData: Icons.title,
+                  fillColor: HexColor.fromHex("#D9D9D9"),
+                ),
               ),
               QuillToolbarToggleStyleButton(
-                options: const QuillToolbarToggleStyleButtonOptions(),
-                controller: widget.quillController,
                 attribute: Attribute.bold,
-              ),
-              QuillToolbarToggleStyleButton(
-                options: const QuillToolbarToggleStyleButtonOptions(),
                 controller: widget.quillController,
+                options: QuillToolbarToggleStyleButtonOptions(
+                  tooltip: "",
+                  iconData: Icons.format_bold,
+                  fillColor: HexColor.fromHex("#D9D9D9"),
+                ),
+              ),
+              const SizedBox(width: 0.6),
+              QuillToolbarToggleStyleButton(
                 attribute: Attribute.italic,
+                controller: widget.quillController,
+                options: QuillToolbarToggleStyleButtonOptions(
+                  tooltip: "",
+                  iconData: Icons.format_italic,
+                  fillColor: HexColor.fromHex("#D9D9D9"),
+                ),
               ),
+              const SizedBox(width: 0.6),
               QuillToolbarToggleStyleButton(
-                controller: widget.quillController,
-                attribute: Attribute.underline,
-              ),
-              QuillToolbarClearFormatButton(
-                controller: widget.quillController,
-              ),
-              const VerticalDivider(),
-              const VerticalDivider(),
-              QuillToolbarColorButton(
-                controller: widget.quillController,
-                isBackground: false,
-              ),
-              QuillToolbarColorButton(
-                controller: widget.quillController,
-                isBackground: true,
-              ),
-              const VerticalDivider(),
-              QuillToolbarSelectHeaderStyleDropdownButton(
-                controller: widget.quillController,
-              ),
-              const VerticalDivider(),
-              QuillToolbarToggleCheckListButton(
-                controller: widget.quillController,
-              ),
-              QuillToolbarToggleStyleButton(
-                controller: widget.quillController,
-                attribute: Attribute.ol,
-              ),
-              QuillToolbarToggleStyleButton(
-                controller: widget.quillController,
                 attribute: Attribute.ul,
+                controller: widget.quillController,
+                options: QuillToolbarToggleStyleButtonOptions(
+                  tooltip: "",
+                  iconData: Icons.format_list_bulleted_outlined,
+                  fillColor: HexColor.fromHex("#D9D9D9"),
+                ),
               ),
+              const SizedBox(width: 0.6),
               QuillToolbarToggleStyleButton(
+                attribute: Attribute.ol,
                 controller: widget.quillController,
-                attribute: Attribute.inlineCode,
-              ),
-              QuillToolbarToggleStyleButton(
-                controller: widget.quillController,
-                attribute: Attribute.blockQuote,
-              ),
-              QuillToolbarIndentButton(
-                controller: widget.quillController,
-                isIncrease: true,
-              ),
-              QuillToolbarIndentButton(
-                controller: widget.quillController,
-                isIncrease: false,
+                options: QuillToolbarToggleStyleButtonOptions(
+                  tooltip: "",
+                  iconData: Icons.format_list_numbered,
+                  fillColor: HexColor.fromHex("#D9D9D9"),
+                ),
               ),
             ],
           ),
         ),
       ),
-
-      /* QuillToolbarProvider(
-        toolbarConfigurations: const QuillToolbarConfigurations(),
-        child: QuillBaseToolbar(
-          //toolbarSize: 50,
-
-          configurations: QuillBaseToolbarConfigurations(
-            childrenBuilder: (context) {
-              return [
-                QuillToolbarToggleStyleButton(
-                  attribute: Attribute.h3,
-                  controller: widget.quillController,
-                  options: QuillToolbarToggleStyleButtonOptions(
-                    tooltip: "",
-                    iconData: Icons.title,
-                    fillColor: HexColor.fromHex("#D9D9D9"),
-                  ),
-                ),
-                const SizedBox(width: 0.6),
-                QuillToolbarToggleStyleButton(
-                  attribute: Attribute.bold,
-                  controller: widget.quillController,
-                  options: QuillToolbarToggleStyleButtonOptions(
-                    tooltip: "",
-                    iconData: Icons.format_bold,
-                    fillColor: HexColor.fromHex("#D9D9D9"),
-                  ),
-                ),
-                const SizedBox(width: 0.6),
-                QuillToolbarToggleStyleButton(
-                  attribute: Attribute.italic,
-                  controller: widget.quillController,
-                  options: QuillToolbarToggleStyleButtonOptions(
-                    tooltip: "",
-                    iconData: Icons.format_italic,
-                    fillColor: HexColor.fromHex("#D9D9D9"),
-                  ),
-                ),
-                const SizedBox(width: 0.6),
-                QuillToolbarToggleStyleButton(
-                  attribute: Attribute.ul,
-                  controller: widget.quillController,
-                  options: QuillToolbarToggleStyleButtonOptions(
-                    tooltip: "",
-                    iconData: Icons.format_list_bulleted_outlined,
-                    fillColor: HexColor.fromHex("#D9D9D9"),
-                  ),
-                ),
-                const SizedBox(width: 0.6),
-                QuillToolbarToggleStyleButton(
-                  attribute: Attribute.ol,
-                  controller: widget.quillController,
-                  options: QuillToolbarToggleStyleButtonOptions(
-                    tooltip: "",
-                    iconData: Icons.format_list_numbered,
-                    fillColor: HexColor.fromHex("#D9D9D9"),
-                  ),
-                ),
-              ];
-            },
-          ),
-        ),
-      ),*/
     );
   }
 
@@ -254,7 +166,7 @@ class _ToolbarState extends State<Toolbar> {
       children: [
         if (widget.onOptionsClicked != null)
           Container(
-            margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+            margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
             child: IconButton(
               icon: const Icon(
                 Icons.more_horiz,
@@ -279,7 +191,7 @@ class _ToolbarState extends State<Toolbar> {
         ),
         if (widget.isImageEnabled)
           Container(
-            margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+            margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
             child: IconButton(
               icon: const Icon(
                 Icons.photo_camera,
