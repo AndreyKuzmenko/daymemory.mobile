@@ -31,7 +31,7 @@ class NetworkFileService extends NetworkBaseService implements INetworkFileServi
     request.fields["fileId"] = fileId;
     request.fields["fileType"] = fileType.index.toString();
 
-    var response = await client.send(request);
+    var response = await client.send(request).timeout(const Duration(seconds: 60));
 
     var res = await response.stream.transform(utf8.decoder).first;
     if (response.statusCode == 200) {
