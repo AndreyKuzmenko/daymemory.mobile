@@ -231,7 +231,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             try {
               await fileNetworkService.uploadMediaFile(file.id, filePath, file.width, file.height, file.fileType);
             } catch (e) {
-              throw Exception('${e.toString()}\nnoteId: ${item.id}, fileId: ${file.id}\nnote: ${item.text}');
+              throw Exception('${e.toString()}\nnoteId: ${item.id}, fileId: ${file.id}\nnote: ${item.text}, size: ${file.fileSize}');
             }
           }
         }
@@ -278,7 +278,7 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
             try {
               await fileNetworkService.uploadMediaFile(file.id, filePath, file.width, file.height, file.fileType);
             } catch (e) {
-              throw Exception('${e.toString()}\nnoteId: ${item.id}, fileId: ${file.id}\nnote: ${item.text}');
+              throw Exception('${e.toString()}\nnoteId: ${item.id}, fileId: ${file.id}\nnote: ${item.text}, size: ${file.fileSize}');
             }
           }
         }
