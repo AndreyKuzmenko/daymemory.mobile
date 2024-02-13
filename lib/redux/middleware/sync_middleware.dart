@@ -225,11 +225,14 @@ class SyncMiddleware implements MiddlewareClass<AppState> {
       }
       if (item.mediaFiles.isNotEmpty) {
         for (var file in item.mediaFiles) {
-          var filePath = await fileService.getFilePath(file.id, file.name, true);
-          try {
-            await fileNetworkService.uploadMediaFile(file.id, filePath, file.width, file.height, file.fileType);
-          } catch (e) {
-            throw Exception('${e.toString()}\nnoteId: ${item.id}, fileId: ${file.id}\nnote: ${item.text}');
+          var fileExist = await fileNetworkService.checkIfFileExists(file.id);
+          if (!fileExist) {
+            var filePath = await fileService.getFilePath(file.id, file.name, true);
+            try {
+              await fileNetworkService.uploadMediaFile(file.id, filePath, file.width, file.height, file.fileType);
+            } catch (e) {
+              throw Exception('${e.toString()}\nnoteId: ${item.id}, fileId: ${file.id}\nnote: ${item.text}');
+            }
           }
         }
       }
