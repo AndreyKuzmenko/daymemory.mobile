@@ -23,6 +23,7 @@ abstract class RouteDirection {
   static const String answerQuestionList = 'answerQuestionList';
   static const String settings = 'settings';
   static const String languageSelector = 'language-selector';
+  static const String themeSelector = 'theme-mode-selector';
   static const String tags = 'tags';
   static const String tag = 'tag';
   static const String review = 'review';

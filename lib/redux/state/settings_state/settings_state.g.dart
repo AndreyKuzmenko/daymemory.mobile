@@ -18,6 +18,8 @@ class _$SettingsState extends SettingsState {
   @override
   final bool isPasscodeEnabled;
   @override
+  final int themeMode;
+  @override
   final StorageReviewSettings reviewSettings;
   @override
   final String language;
@@ -41,6 +43,7 @@ class _$SettingsState extends SettingsState {
       required this.isBiometricActive,
       required this.isBiometricAvailable,
       required this.isPasscodeEnabled,
+      required this.themeMode,
       required this.reviewSettings,
       required this.language,
       required this.passcodeRequireAfterSeconds,
@@ -59,6 +62,8 @@ class _$SettingsState extends SettingsState {
         isBiometricAvailable, r'SettingsState', 'isBiometricAvailable');
     BuiltValueNullFieldError.checkNotNull(
         isPasscodeEnabled, r'SettingsState', 'isPasscodeEnabled');
+    BuiltValueNullFieldError.checkNotNull(
+        themeMode, r'SettingsState', 'themeMode');
     BuiltValueNullFieldError.checkNotNull(
         reviewSettings, r'SettingsState', 'reviewSettings');
     BuiltValueNullFieldError.checkNotNull(
@@ -89,6 +94,7 @@ class _$SettingsState extends SettingsState {
         isBiometricActive == other.isBiometricActive &&
         isBiometricAvailable == other.isBiometricAvailable &&
         isPasscodeEnabled == other.isPasscodeEnabled &&
+        themeMode == other.themeMode &&
         reviewSettings == other.reviewSettings &&
         language == other.language &&
         passcodeRequireAfterSeconds == other.passcodeRequireAfterSeconds &&
@@ -106,6 +112,7 @@ class _$SettingsState extends SettingsState {
     _$hash = $jc(_$hash, isBiometricActive.hashCode);
     _$hash = $jc(_$hash, isBiometricAvailable.hashCode);
     _$hash = $jc(_$hash, isPasscodeEnabled.hashCode);
+    _$hash = $jc(_$hash, themeMode.hashCode);
     _$hash = $jc(_$hash, reviewSettings.hashCode);
     _$hash = $jc(_$hash, language.hashCode);
     _$hash = $jc(_$hash, passcodeRequireAfterSeconds.hashCode);
@@ -125,6 +132,7 @@ class _$SettingsState extends SettingsState {
           ..add('isBiometricActive', isBiometricActive)
           ..add('isBiometricAvailable', isBiometricAvailable)
           ..add('isPasscodeEnabled', isPasscodeEnabled)
+          ..add('themeMode', themeMode)
           ..add('reviewSettings', reviewSettings)
           ..add('language', language)
           ..add('passcodeRequireAfterSeconds', passcodeRequireAfterSeconds)
@@ -164,6 +172,10 @@ class SettingsStateBuilder
   bool? get isPasscodeEnabled => _$this._isPasscodeEnabled;
   set isPasscodeEnabled(bool? isPasscodeEnabled) =>
       _$this._isPasscodeEnabled = isPasscodeEnabled;
+
+  int? _themeMode;
+  int? get themeMode => _$this._themeMode;
+  set themeMode(int? themeMode) => _$this._themeMode = themeMode;
 
   StorageReviewSettings? _reviewSettings;
   StorageReviewSettings? get reviewSettings => _$this._reviewSettings;
@@ -209,6 +221,7 @@ class SettingsStateBuilder
       _isBiometricActive = $v.isBiometricActive;
       _isBiometricAvailable = $v.isBiometricAvailable;
       _isPasscodeEnabled = $v.isPasscodeEnabled;
+      _themeMode = $v.themeMode;
       _reviewSettings = $v.reviewSettings;
       _language = $v.language;
       _passcodeRequireAfterSeconds = $v.passcodeRequireAfterSeconds;
@@ -248,10 +261,11 @@ class SettingsStateBuilder
                 isBiometricAvailable, r'SettingsState', 'isBiometricAvailable'),
             isPasscodeEnabled: BuiltValueNullFieldError.checkNotNull(
                 isPasscodeEnabled, r'SettingsState', 'isPasscodeEnabled'),
+            themeMode: BuiltValueNullFieldError.checkNotNull(
+                themeMode, r'SettingsState', 'themeMode'),
             reviewSettings: BuiltValueNullFieldError.checkNotNull(
                 reviewSettings, r'SettingsState', 'reviewSettings'),
-            language: BuiltValueNullFieldError.checkNotNull(
-                language, r'SettingsState', 'language'),
+            language: BuiltValueNullFieldError.checkNotNull(language, r'SettingsState', 'language'),
             passcodeRequireAfterSeconds: BuiltValueNullFieldError.checkNotNull(passcodeRequireAfterSeconds, r'SettingsState', 'passcodeRequireAfterSeconds'),
             encryptionKey: encryptionKey,
             isSyncEnabled: BuiltValueNullFieldError.checkNotNull(isSyncEnabled, r'SettingsState', 'isSyncEnabled'),

@@ -35,6 +35,8 @@ abstract class INavigationService {
 
   Future<dynamic>? pushNamedLanguageSelector();
 
+  Future<dynamic>? pushNamedThemeModeSelector();
+
   Future<dynamic>? pushNamedTags();
 
   Future<dynamic>? pushNamedNewNote();

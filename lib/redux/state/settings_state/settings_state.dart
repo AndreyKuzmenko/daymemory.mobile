@@ -15,6 +15,8 @@ abstract class SettingsState implements Built<SettingsState, SettingsStateBuilde
 
   bool get isPasscodeEnabled;
 
+  int get themeMode;
+
   StorageReviewSettings get reviewSettings;
 
   String get language;
@@ -39,6 +41,7 @@ abstract class SettingsState implements Built<SettingsState, SettingsStateBuilde
     ..isBiometricActive = false
     ..isBiometricAvailable = false
     ..language = ""
+    ..themeMode = 0
     ..encryptionKey = null
     ..isSyncEnabled = false
     ..isEncryptionKeyLocked = false

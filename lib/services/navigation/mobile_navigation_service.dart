@@ -74,6 +74,9 @@ class MobileNavigationService extends INavigationService {
   Future<dynamic>? pushNamedLanguageSelector() => routeDefinitionService.key.currentState?.pushNamed(RouteDirection.languageSelector);
 
   @override
+  Future<dynamic>? pushNamedThemeModeSelector() => routeDefinitionService.key.currentState?.pushNamed(RouteDirection.themeSelector);
+
+  @override
   Future<dynamic>? pushNamedTags() => routeDefinitionService.key.currentState?.pushNamed(RouteDirection.tags);
 
   @override

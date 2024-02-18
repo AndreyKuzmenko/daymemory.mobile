@@ -60,6 +60,8 @@ class NavigationMiddleware implements MiddlewareClass<AppState> {
       await navigationService.pushNamedSettings();
     } else if (action is NavigateToLanguageSelectionAction) {
       await navigationService.pushNamedLanguageSelector();
+    } else if (action is NavigateToThemeModeAction) {
+      await navigationService.pushNamedThemeModeSelector();
     } else if (action is NavigateToTagsAction) {
       await navigationService.pushNamedTags();
     } else if (action is NavigateToNoteDetailAction) {

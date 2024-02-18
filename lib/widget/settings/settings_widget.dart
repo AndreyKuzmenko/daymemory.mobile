@@ -70,6 +70,31 @@ class SettingsWidget extends StatelessWidget {
                 ),
                 SettingsTile(
                   title: Text(
+                    viewModel.selectThemeTypeOptionTitle,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
+                  ),
+                  value: Row(
+                    children: [
+                      Text(
+                        viewModel.themeModeValue,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1),
+                      ),
+                      const SizedBox(width: 5),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 16,
+                      ),
+                    ],
+                  ),
+                  leading: const Icon(
+                    Icons.dark_mode_outlined,
+                  ),
+                  onPressed: (context) {
+                    viewModel.themeTypeSelectorCommand.command();
+                  },
+                ),
+                SettingsTile(
+                  title: Text(
                     viewModel.tagsOptionTitle,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),

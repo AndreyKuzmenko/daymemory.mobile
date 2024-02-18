@@ -66,6 +66,13 @@
     "settings_account_clear_data_explanation": "Make sure that your data is synced with the cloud before deleting it. Otherwise, you won't be able to restore it.",
     "settings_sync_error_title": "Synchronization failed",
     "settings_sync_error_generic_message": "Unknown error has occured. Please try again.",
+    "settings_select_theme_option": "Themes",
+
+    "settings_select_theme_title": "Select a theme",
+    "settings_theme_mode_system": "Auto",
+    "settings_theme_mode_light": "Light",
+    "settings_theme_mode_dark": "Dark",
+
 
     "settings_encryption_key_absent_error_title": "Encryption key is empty",
     "settings_encryption_key_absent_error_message": "Data encryption in your account is enabled, but the encryption key is empty. Please, enter the encryption key manually.",

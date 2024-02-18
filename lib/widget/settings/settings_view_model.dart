@@ -18,6 +18,12 @@ abstract class SettingsViewModel implements Built<SettingsViewModel, SettingsVie
 
   FunctionHolder get reviewPeriodCommand;
 
+  String get themeModeValue;
+
+  String get selectThemeTypeOptionTitle;
+
+  FunctionHolder get themeTypeSelectorCommand;
+
   FunctionHolder get languageSelectorCommand;
 
   FunctionHolder get showInReviewCommand;

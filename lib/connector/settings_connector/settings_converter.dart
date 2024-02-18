@@ -5,6 +5,7 @@ import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/settings_action.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/settings/settings_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
@@ -24,6 +25,7 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
   final String selectedLanguage;
   final String privacyPolicyUrl;
   final Locale languageLocale;
+  final ThemeMode selectedThemeMode;
   final bool isAuthenticated;
   final String? userName;
   final String appVersion;
@@ -32,6 +34,7 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       {required this.locale,
       required this.dispatch,
       required this.selectedLanguage,
+      required this.selectedThemeMode,
       required this.isBiometricEnabled,
       required this.isBiometricAvailable,
       required this.isLocationSavingEnabled,
@@ -91,6 +94,9 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       ..selectLanguageOptionTitle = locale.settings_language_option
       ..selectedLanguage = selectedLanguage
       ..languageSelectorCommand = FunctionHolder(() => dispatch((NavigateToLanguageSelectionAction())))
+      ..selectThemeTypeOptionTitle = locale.settings_select_theme_option
+      ..themeModeValue = _getThemeModeValue(selectedThemeMode)
+      ..themeTypeSelectorCommand = FunctionHolder(() => dispatch((NavigateToThemeModeAction())))
       ..showInReviewOptionTitle = locale.settings_show_in_review_option
       ..showInReviewCommand = FunctionHolder(() => dispatch((NavigateToShowInReviewAction())))
       ..reviewPeriodOptionTitle = locale.settings_review_period_option
@@ -117,6 +123,16 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       return locale.settings_sync_status_on;
     } else {
       return locale.settings_sync_status_off;
+    }
+  }
+
+  String _getThemeModeValue(ThemeMode themeMode) {
+    if (themeMode == ThemeMode.system) {
+      return locale.settings_theme_mode_system;
+    } else if (themeMode == ThemeMode.light) {
+      return locale.settings_theme_mode_light;
+    } else {
+      return locale.settings_theme_mode_dark;
     }
   }
 }

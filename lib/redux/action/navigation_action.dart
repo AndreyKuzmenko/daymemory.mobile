@@ -188,6 +188,13 @@ class NavigateToLanguageSelectionAction implements ILoggingAction {
   }
 }
 
+class NavigateToThemeModeAction implements ILoggingAction {
+  @override
+  String toLogString() {
+    return 'Navigate To Theme Mode Action';
+  }
+}
+
 class NavigateToTagsAction implements ILoggingAction {
   @override
   String toLogString() {

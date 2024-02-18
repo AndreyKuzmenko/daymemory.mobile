@@ -33,6 +33,7 @@ class SettingsConnector extends PageConnector<SettingsViewModel, SettingsConvert
         dispatch: dispatch,
         appVersion: deviceInfo.appVersionName,
         languageLocale: languageLocale,
+        selectedThemeMode: ThemeMode.values[state.settingsState.themeMode.toInt()],
         selectedLanguage: state.settingsState.availableLanguages.firstWhere((element) => element.code == state.settingsState.language).name,
         privacyPolicyUrl: config.privacyPolicyUrl,
         isBiometricActive: settingsState.isBiometricActive,

@@ -16,6 +16,7 @@ import 'package:daymemory/connector/edit_note_connector/edit_note_connector.dart
 import 'package:daymemory/connector/language_connector/language_connector.dart';
 import 'package:daymemory/connector/settings_connector/settings_connector.dart';
 import 'package:daymemory/connector/sync_settings_connector/sync_settings_connector.dart';
+import 'package:daymemory/connector/theme_connector/theme_connector.dart';
 import 'package:daymemory/services/navigation/interface_route_definition_service.dart';
 import 'package:daymemory/widget/common/splash/splash_widget.dart';
 import 'package:flutter/material.dart';
@@ -102,6 +103,9 @@ class MobileRouteDefinitionService extends IRouteDefinitionService {
 
       case RouteDirection.languageSelector:
         return MaterialPageRoute(builder: (context) => const LanguageConnector(), settings: settings);
+
+      case RouteDirection.themeSelector:
+        return MaterialPageRoute(builder: (context) => const ThemeConnector(), settings: settings);
 
       case RouteDirection.showInReview:
         return MaterialPageRoute(builder: (context) => const ShowNotebooksInReviewConnector(), settings: settings);

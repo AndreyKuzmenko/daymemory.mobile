@@ -1,5 +1,6 @@
 import 'package:daymemory/data/dtos/language_dto.dart';
 import 'package:daymemory/services/settings_service/storage_review_settings.dart';
+import 'package:flutter/material.dart';
 
 import 'common_action.dart';
 
@@ -58,6 +59,17 @@ class SettingsSelectLanguageAction implements ILoggingAction {
   @override
   String toLogString() {
     return 'Settings Select Language Action: $languageCode';
+  }
+}
+
+class SettingsSelectThemeModeAction implements ILoggingAction, ITrackAction {
+  final ThemeMode themeMode;
+
+  const SettingsSelectThemeModeAction({required this.themeMode});
+
+  @override
+  String toLogString() {
+    return 'Select Theme Mode Action: $themeMode';
   }
 }
 

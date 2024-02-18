@@ -22,6 +22,12 @@ class _$SettingsViewModel extends SettingsViewModel {
   @override
   final FunctionHolder reviewPeriodCommand;
   @override
+  final String themeModeValue;
+  @override
+  final String selectThemeTypeOptionTitle;
+  @override
+  final FunctionHolder themeTypeSelectorCommand;
+  @override
   final FunctionHolder languageSelectorCommand;
   @override
   final FunctionHolder showInReviewCommand;
@@ -94,6 +100,9 @@ class _$SettingsViewModel extends SettingsViewModel {
       required this.showInReviewOptionTitle,
       required this.reviewPeriodOptionTitle,
       required this.reviewPeriodCommand,
+      required this.themeModeValue,
+      required this.selectThemeTypeOptionTitle,
+      required this.themeTypeSelectorCommand,
       required this.languageSelectorCommand,
       required this.showInReviewCommand,
       required this.tagsOptionTitle,
@@ -138,6 +147,12 @@ class _$SettingsViewModel extends SettingsViewModel {
         r'SettingsViewModel', 'reviewPeriodOptionTitle');
     BuiltValueNullFieldError.checkNotNull(
         reviewPeriodCommand, r'SettingsViewModel', 'reviewPeriodCommand');
+    BuiltValueNullFieldError.checkNotNull(
+        themeModeValue, r'SettingsViewModel', 'themeModeValue');
+    BuiltValueNullFieldError.checkNotNull(selectThemeTypeOptionTitle,
+        r'SettingsViewModel', 'selectThemeTypeOptionTitle');
+    BuiltValueNullFieldError.checkNotNull(themeTypeSelectorCommand,
+        r'SettingsViewModel', 'themeTypeSelectorCommand');
     BuiltValueNullFieldError.checkNotNull(languageSelectorCommand,
         r'SettingsViewModel', 'languageSelectorCommand');
     BuiltValueNullFieldError.checkNotNull(
@@ -217,6 +232,9 @@ class _$SettingsViewModel extends SettingsViewModel {
         showInReviewOptionTitle == other.showInReviewOptionTitle &&
         reviewPeriodOptionTitle == other.reviewPeriodOptionTitle &&
         reviewPeriodCommand == other.reviewPeriodCommand &&
+        themeModeValue == other.themeModeValue &&
+        selectThemeTypeOptionTitle == other.selectThemeTypeOptionTitle &&
+        themeTypeSelectorCommand == other.themeTypeSelectorCommand &&
         languageSelectorCommand == other.languageSelectorCommand &&
         showInReviewCommand == other.showInReviewCommand &&
         tagsOptionTitle == other.tagsOptionTitle &&
@@ -259,6 +277,9 @@ class _$SettingsViewModel extends SettingsViewModel {
     _$hash = $jc(_$hash, showInReviewOptionTitle.hashCode);
     _$hash = $jc(_$hash, reviewPeriodOptionTitle.hashCode);
     _$hash = $jc(_$hash, reviewPeriodCommand.hashCode);
+    _$hash = $jc(_$hash, themeModeValue.hashCode);
+    _$hash = $jc(_$hash, selectThemeTypeOptionTitle.hashCode);
+    _$hash = $jc(_$hash, themeTypeSelectorCommand.hashCode);
     _$hash = $jc(_$hash, languageSelectorCommand.hashCode);
     _$hash = $jc(_$hash, showInReviewCommand.hashCode);
     _$hash = $jc(_$hash, tagsOptionTitle.hashCode);
@@ -303,6 +324,9 @@ class _$SettingsViewModel extends SettingsViewModel {
           ..add('showInReviewOptionTitle', showInReviewOptionTitle)
           ..add('reviewPeriodOptionTitle', reviewPeriodOptionTitle)
           ..add('reviewPeriodCommand', reviewPeriodCommand)
+          ..add('themeModeValue', themeModeValue)
+          ..add('selectThemeTypeOptionTitle', selectThemeTypeOptionTitle)
+          ..add('themeTypeSelectorCommand', themeTypeSelectorCommand)
           ..add('languageSelectorCommand', languageSelectorCommand)
           ..add('showInReviewCommand', showInReviewCommand)
           ..add('tagsOptionTitle', tagsOptionTitle)
@@ -373,6 +397,22 @@ class SettingsViewModelBuilder
   FunctionHolder? get reviewPeriodCommand => _$this._reviewPeriodCommand;
   set reviewPeriodCommand(FunctionHolder? reviewPeriodCommand) =>
       _$this._reviewPeriodCommand = reviewPeriodCommand;
+
+  String? _themeModeValue;
+  String? get themeModeValue => _$this._themeModeValue;
+  set themeModeValue(String? themeModeValue) =>
+      _$this._themeModeValue = themeModeValue;
+
+  String? _selectThemeTypeOptionTitle;
+  String? get selectThemeTypeOptionTitle => _$this._selectThemeTypeOptionTitle;
+  set selectThemeTypeOptionTitle(String? selectThemeTypeOptionTitle) =>
+      _$this._selectThemeTypeOptionTitle = selectThemeTypeOptionTitle;
+
+  FunctionHolder? _themeTypeSelectorCommand;
+  FunctionHolder? get themeTypeSelectorCommand =>
+      _$this._themeTypeSelectorCommand;
+  set themeTypeSelectorCommand(FunctionHolder? themeTypeSelectorCommand) =>
+      _$this._themeTypeSelectorCommand = themeTypeSelectorCommand;
 
   FunctionHolder? _languageSelectorCommand;
   FunctionHolder? get languageSelectorCommand =>
@@ -537,6 +577,9 @@ class SettingsViewModelBuilder
       _showInReviewOptionTitle = $v.showInReviewOptionTitle;
       _reviewPeriodOptionTitle = $v.reviewPeriodOptionTitle;
       _reviewPeriodCommand = $v.reviewPeriodCommand;
+      _themeModeValue = $v.themeModeValue;
+      _selectThemeTypeOptionTitle = $v.selectThemeTypeOptionTitle;
+      _themeTypeSelectorCommand = $v.themeTypeSelectorCommand;
       _languageSelectorCommand = $v.languageSelectorCommand;
       _showInReviewCommand = $v.showInReviewCommand;
       _tagsOptionTitle = $v.tagsOptionTitle;
@@ -603,6 +646,9 @@ class SettingsViewModelBuilder
                 reviewPeriodOptionTitle, r'SettingsViewModel', 'reviewPeriodOptionTitle'),
             reviewPeriodCommand: BuiltValueNullFieldError.checkNotNull(
                 reviewPeriodCommand, r'SettingsViewModel', 'reviewPeriodCommand'),
+            themeModeValue: BuiltValueNullFieldError.checkNotNull(themeModeValue, r'SettingsViewModel', 'themeModeValue'),
+            selectThemeTypeOptionTitle: BuiltValueNullFieldError.checkNotNull(selectThemeTypeOptionTitle, r'SettingsViewModel', 'selectThemeTypeOptionTitle'),
+            themeTypeSelectorCommand: BuiltValueNullFieldError.checkNotNull(themeTypeSelectorCommand, r'SettingsViewModel', 'themeTypeSelectorCommand'),
             languageSelectorCommand: BuiltValueNullFieldError.checkNotNull(languageSelectorCommand, r'SettingsViewModel', 'languageSelectorCommand'),
             showInReviewCommand: BuiltValueNullFieldError.checkNotNull(showInReviewCommand, r'SettingsViewModel', 'showInReviewCommand'),
             tagsOptionTitle: BuiltValueNullFieldError.checkNotNull(tagsOptionTitle, r'SettingsViewModel', 'tagsOptionTitle'),

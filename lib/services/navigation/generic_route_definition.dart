@@ -20,6 +20,7 @@ import 'package:daymemory/connector/language_connector/language_connector.dart';
 import 'package:daymemory/connector/settings_connector/settings_connector.dart';
 import 'package:daymemory/connector/sort_notebooks_connector/sort_notebooks_connector.dart';
 import 'package:daymemory/connector/sync_settings_connector/sync_settings_connector.dart';
+import 'package:daymemory/connector/theme_connector/theme_connector.dart';
 import 'package:daymemory/services/navigation/interface_route_definition_service.dart';
 import 'package:daymemory/services/navigation/route_direction.dart';
 import 'package:daymemory/widget/common/splash/splash_widget.dart';
@@ -130,6 +131,9 @@ class GenericRouteDefinitionService extends IRouteDefinitionService {
 
       case RouteDirection.languageSelector:
         return showDialogPopup(const LanguageConnector(), settings, Colors.transparent);
+
+      case RouteDirection.themeSelector:
+        return showDialogPopup(const ThemeConnector(), settings, Colors.transparent);
 
       //return showModalBottom(const ReviewConnector());
 
