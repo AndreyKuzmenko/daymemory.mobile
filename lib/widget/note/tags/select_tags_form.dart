@@ -1,5 +1,5 @@
 import 'package:daymemory/widget/note/tags/select_tags_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -10,8 +10,6 @@ class SelectTagsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return SettingsList(
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
@@ -22,7 +20,7 @@ class SelectTagsForm extends StatelessWidget {
               .map((x) => SettingsTile(
                     title: Text(
                       x.text,
-                      style: appTheme.settingsLabel,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                     ),
                     onPressed: (context) {
                       viewModel.toogleTagCommand.command(x.id);
@@ -38,7 +36,7 @@ class SelectTagsForm extends StatelessWidget {
             ..add(SettingsTile(
               title: Text(
                 viewModel.newTagMenuOption,
-                style: appTheme.settingsLabel,
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
               ),
               onPressed: (context) {
                 viewModel.newTagCommand.command();

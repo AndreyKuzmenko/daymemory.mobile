@@ -1,7 +1,7 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/common/version_settings_tile.dart';
 import 'package:daymemory/widget/settings/settings_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,13 +16,13 @@ class SettingsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
-        title: Text(viewModel.title, style: appTheme.navigationTitle),
+        title: Text(
+          viewModel.title,
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -37,7 +37,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.isAuthenticated ? viewModel.userName ?? "" : viewModel.signinOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.account_circle_outlined),
                   onPressed: (context) {
@@ -51,13 +51,13 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.selectLanguageOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: Row(
                     children: [
                       Text(
                         viewModel.selectedLanguage,
-                        style: appTheme.settingsValueLabel,
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                       ),
                       const SizedBox(width: 5),
                       const Icon(Icons.arrow_forward_ios, size: 16),
@@ -71,7 +71,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.tagsOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.tag),
                   value: const Icon(
@@ -86,7 +86,7 @@ class SettingsWidget extends StatelessWidget {
                   SettingsTile.switchTile(
                     title: Text(
                       viewModel.locationOptionTitle,
-                      style: appTheme.settingsLabel,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                     ),
                     onToggle: (value) async {
                       viewModel.locationToogleCommand.command();
@@ -97,7 +97,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.passcodeOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: const Icon(
                     Icons.arrow_forward_ios,
@@ -115,13 +115,19 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.syncOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: Row(
                     children: [
                       Text(
                         viewModel.syncStatus,
-                        style: appTheme.settingsValueLabel.copyWith(color: viewModel.hasSyncFailed ? appTheme.red : appTheme.black),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                              height: 1,
+                            )
+                            .copyWith(color: viewModel.hasSyncFailed ? Theme.of(context).colorScheme.error : Theme.of(context).colorScheme.primary),
                       ),
                       const SizedBox(width: 5),
                       const Icon(Icons.arrow_forward_ios, size: 16),
@@ -140,7 +146,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.showInReviewOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: const Icon(
                     Icons.arrow_forward_ios,
@@ -154,7 +160,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.reviewPeriodOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: const Icon(
                     Icons.arrow_forward_ios,
@@ -173,7 +179,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.clearDataOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.cleaning_services),
                   onPressed: (context) {
@@ -187,7 +193,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.privacyPolicyOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.shield_outlined),
                   onPressed: (context) {
@@ -197,7 +203,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.sendEmailToDevelopersTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.email_outlined),
                   onPressed: (context) {
@@ -207,7 +213,7 @@ class SettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.introOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.flag_outlined),
                   onPressed: (context) {

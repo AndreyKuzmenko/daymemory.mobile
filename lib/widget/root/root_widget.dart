@@ -6,7 +6,7 @@ import 'package:daymemory/services/service_locator.dart';
 import 'package:daymemory/services/store/store_service.dart';
 import 'package:daymemory/widget/root/two_sides_widget.dart';
 import 'package:daymemory/widget/root/root_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -124,8 +124,6 @@ class RootState<T extends RootAppWidget> extends State<T> with WidgetsBindingObs
   }
 
   void _invalidateDialogState() {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     if (widget.viewModel.dialog != null && !_dialogShown) {
       final dialog = widget.viewModel.dialog!;
       WidgetsBinding.instance.addPostFrameCallback(
@@ -139,7 +137,7 @@ class RootState<T extends RootAppWidget> extends State<T> with WidgetsBindingObs
                 child: Text(
                   dialog.positiveTitle!,
                   style: TextStyle(
-                    color: appTheme.colorAccent,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ),
@@ -149,7 +147,7 @@ class RootState<T extends RootAppWidget> extends State<T> with WidgetsBindingObs
                 child: Text(
                   dialog.negativeTitle!,
                   style: TextStyle(
-                    color: appTheme.red,
+                    color: Theme.of(context).colorScheme.error,
                   ),
                 ),
               )

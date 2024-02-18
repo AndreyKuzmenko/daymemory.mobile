@@ -1,5 +1,5 @@
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 
 class SocialSignUpButtonWidget extends StatelessWidget {
@@ -26,8 +26,6 @@ class SocialSignUpButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return ButtonTheme(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
@@ -43,7 +41,7 @@ class SocialSignUpButtonWidget extends StatelessWidget {
             color: borderColor ?? Colors.transparent,
           ),
           backgroundColor: backgroundColor,
-          disabledBackgroundColor: appTheme.secondaryTextColor,
+          disabledBackgroundColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
           padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
         ),
         child: Row(
@@ -62,12 +60,11 @@ class SocialSignUpButtonWidget extends StatelessWidget {
               ),
             ),
             if (text != null)
-              Text(
-                text!,
-                style: appTheme.semiBold16.copyWith(
-                  color: textColor,
-                ),
-              ),
+              Text(text!,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                  )),
           ],
         ),
       ),

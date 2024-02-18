@@ -1,5 +1,4 @@
 import 'package:daymemory/widget/common/loading_indicator/loading_indicator.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget {
@@ -9,13 +8,11 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return FractionallySizedBox(
       heightFactor: 0.9,
       alignment: Alignment.topCenter,
       child: LoadingIndicator(
         message: text,
-        brandingColor: appTheme.colorAccent,
       ),
     );
   }

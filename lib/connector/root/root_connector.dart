@@ -5,7 +5,7 @@ import 'package:daymemory/services/device_info_service/device_info_service.dart'
 import 'package:daymemory/services/navigation/interface_route_definition_service.dart';
 import 'package:daymemory/widget/root/root_view_model.dart';
 import 'package:daymemory/widget/root/root_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/app_configuration_widget.dart';
 import 'package:flutter/material.dart';
 
 class RootConnector extends PageConnector<RootViewModel, RootConverter> {
@@ -18,7 +18,7 @@ class RootConnector extends PageConnector<RootViewModel, RootConverter> {
 
   @override
   RootConverter prepareConverter(BuildContext context, AppState state, Function dispatch) {
-    final config = AppThemeWidget.getConfigurationSettings(context);
+    final config = AppConfigurationWidget.getConfigurationSettings(context);
 
     final dialogsState = state.dialogsState;
     return RootConverter(

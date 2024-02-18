@@ -1,10 +1,9 @@
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/onboarding/onboarding_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicators/circle_page_indicator.dart';
-
-import '../theme/app_theme_widget.dart';
 
 class OnboardingWidget extends StatefulWidget {
   final OnboardingViewModel viewModel;
@@ -24,7 +23,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppThemeWidget.getTheme(context);
     return Center(
       child: Container(
         constraints: const BoxConstraints(maxWidth: 500),
@@ -63,8 +61,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                     child: CirclePageIndicator(
                       itemCount: widget.viewModel.items.length,
                       currentPageNotifier: _currentPageNotifier,
-                      dotColor: theme.colorAccent.withOpacity(0.2),
-                      selectedDotColor: theme.colorAccent,
+                      dotColor: Theme.of(context).extension<ThemeColors>()!.accentColor!.withOpacity(0.2),
+                      selectedDotColor: Theme.of(context).extension<ThemeColors>()!.accentColor,
                     ),
                   ),
                   Expanded(
@@ -80,8 +78,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                   child: SimpleFilledButtonWidget(
                                     click: widget.viewModel.getStartedCommand,
                                     text: widget.viewModel.getStartedTitle,
-                                    textColor: theme.white,
-                                    backgroundColor: theme.colorAccent,
                                   ),
                                 )
                               : Row(
@@ -106,8 +102,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                           );
                                         }),
                                         text: widget.viewModel.nextTitle,
-                                        textColor: theme.white,
-                                        backgroundColor: theme.colorAccent,
                                       ),
                                     ),
                                   ],
@@ -161,7 +155,6 @@ class _PageViewItemState extends State<_PageViewItem> with SingleTickerProviderS
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppThemeWidget.getTheme(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -185,7 +178,7 @@ class _PageViewItemState extends State<_PageViewItem> with SingleTickerProviderS
         ),
         Text(
           widget.viewModel.titles[widget.index],
-          style: theme.semiBold24,
+          style: Theme.of(context).textTheme.headlineMedium, //TODO:theme
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -194,7 +187,7 @@ class _PageViewItemState extends State<_PageViewItem> with SingleTickerProviderS
         Text(
           widget.viewModel.subtitles[widget.index],
           textAlign: TextAlign.center,
-          style: theme.regular16.copyWith(color: theme.secondaryTextColor, height: 1.6),
+          //style: theme.regular16.copyWith(color: theme.secondaryTextColor, height: 1.6),//TODO:theme
         ),
         const SizedBox(
           height: 16,

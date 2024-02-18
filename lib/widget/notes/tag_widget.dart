@@ -1,6 +1,6 @@
 import 'package:daymemory/widget/notes/note_list_view.dart';
 import 'package:daymemory/widget/notes/notes_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +14,6 @@ class TagWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
       appBar: AppBar(
           // actions: [
@@ -45,8 +44,9 @@ class TagWidget extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(viewModel.title, style: appTheme.navigationTitle)),
-      backgroundColor: appTheme.bodyBackgroundColor,
+          title: Text(
+            viewModel.title,
+          )),
       body: SafeArea(
           bottom: false,
           top: false,

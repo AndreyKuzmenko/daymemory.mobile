@@ -1,7 +1,6 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/text_field/text_field_clear_widget.dart';
 import 'package:daymemory/widget/edit_notebook/edit_notebook_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -31,7 +30,6 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -64,12 +62,10 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
           centerTitle: true,
           title: Text(
             widget.viewModel.title,
-            style: appTheme.navigationTitle,
           ),
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        backgroundColor: appTheme.bodyBackgroundColor,
         body: SafeArea(
             bottom: false,
             top: false,
@@ -104,11 +100,11 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
                       SettingsTile(
                         title: Text(
                           widget.viewModel.sortByOption,
-                          style: appTheme.settingsLabel,
+                          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                         ),
                         value: Text(
                           widget.viewModel.sortByOptionValue,
-                          style: appTheme.settingsValueLabel,
+                          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                         ),
                         onPressed: (context) {
                           widget.viewModel.selectSortingTypeCommand.command();
@@ -123,7 +119,7 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
                           title: Text(
                             widget.viewModel.deleteButtonTitle,
                             textAlign: TextAlign.center,
-                            style: (appTheme.settingsLabel.copyWith(color: appTheme.red)),
+                            style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                           ),
                           onPressed: (context) {
                             widget.viewModel.deleteCommand.command();

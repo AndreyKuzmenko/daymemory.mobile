@@ -1,6 +1,6 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/passcode_settings_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -14,13 +14,13 @@ class PasscodeSettingsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
-        title: Text(viewModel.title, style: appTheme.navigationTitle),
+        title: Text(
+          viewModel.title,
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -36,7 +36,7 @@ class PasscodeSettingsWidget extends StatelessWidget {
                 SettingsTile.switchTile(
                   title: Text(
                     viewModel.screenBlockingOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   onToggle: (value) {
                     viewModel.screenBlockingToogleCommand.command();
@@ -48,13 +48,13 @@ class PasscodeSettingsWidget extends StatelessWidget {
                   SettingsTile(
                     title: Text(
                       viewModel.requireAfterOptionTitle,
-                      style: appTheme.settingsLabel,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                     ),
                     value: Row(
                       children: [
                         Text(
                           viewModel.requireAfterOptionValue,
-                          style: appTheme.settingsValueLabel,
+                          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                         ),
                         const SizedBox(width: 5),
                         const Icon(Icons.arrow_forward_ios, size: 16),
@@ -69,7 +69,7 @@ class PasscodeSettingsWidget extends StatelessWidget {
                   SettingsTile.switchTile(
                     title: Text(
                       viewModel.biometricOptionTitle,
-                      style: appTheme.settingsLabel,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                     ),
                     enabled: viewModel.isBiometricActive,
                     onToggle: (value) {

@@ -6,13 +6,15 @@ import 'package:daymemory/connector/root/root_connector.dart';
 import 'package:daymemory/firebase_options.dart';
 import 'package:daymemory/redux/state/states.dart';
 import 'package:daymemory/services/device_info_service/device_info_service.dart';
+import 'package:daymemory/services/navigation/interface_route_definition_service.dart';
 import 'package:daymemory/services/settings_service/settings_service.dart';
 import 'package:daymemory/services/service_locator.dart';
 import 'package:daymemory/services/store/store_service.dart';
-import 'package:daymemory/widget/common/locale_notifier.dart';
+import 'package:daymemory/widget/common/settings_notifier.dart';
 import 'package:daymemory/widget/common/splash/splash_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_impl.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/app_configuration_widget.dart';
+import 'package:daymemory/widget/theme/theme_color_options.dart';
+import 'package:daymemory/widget/theme/theme_initializer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,8 +41,16 @@ void runAppWithConfiguration(ConfigurationSettings settings) async {
 
   var settingsService = await SettingsService().init();
   var deviceInfoService = await DeviceInfoService().init();
-  var s = await settingsService.getSettings();
-  var language = s.language ?? deviceInfoService.localeName;
+  var userSettings = await settingsService.getSettings();
+  var lightThemeColors = await settingsService.getThemeColors(Brightness.light);
+  var darkThemeColors = await settingsService.getThemeColors(Brightness.dark);
+
+  if (userSettings.language == null) {
+    userSettings.language = deviceInfoService.localeName;
+    await settingsService.setSettings(userSettings);
+  }
+
+  var language = userSettings.language ?? deviceInfoService.localeName;
 
   final getIt = GetIt.I;
   var serviceLocator = ServiceLocator(
@@ -56,6 +66,9 @@ void runAppWithConfiguration(ConfigurationSettings settings) async {
     settings: settings,
     language: language,
     deviceType: deviceInfoService.deviceType,
+    themeMode: userSettings.themeMode,
+    darkThemeColors: darkThemeColors,
+    lightThemeColors: lightThemeColors,
   ));
 }
 
@@ -63,36 +76,47 @@ class DayMemoryApp extends StatelessWidget {
   final ConfigurationSettings settings;
   final String language;
   final DeviceType deviceType;
+  final ThemeMode themeMode;
+  final ThemeColorOptions darkThemeColors;
+  final ThemeColorOptions lightThemeColors;
 
-  const DayMemoryApp({super.key, required this.settings, required this.language, required this.deviceType});
+  const DayMemoryApp({
+    super.key,
+    required this.settings,
+    required this.language,
+    required this.deviceType,
+    required this.themeMode,
+    required this.darkThemeColors,
+    required this.lightThemeColors,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => LocaleNotifier(language),
+        create: (context) => SettingsNotifier(language, themeMode, lightThemeColors, darkThemeColors),
         builder: (context, state) {
-          final appLocaleProvider = Provider.of<LocaleNotifier>(context);
+          final appSettingsProvider = Provider.of<SettingsNotifier>(context);
+          final darkTheme = DefaultThemeInitializer(settings: settings, brightness: Brightness.dark, themeColorOptions: appSettingsProvider.darkThemeColors);
+          final lightTheme = DefaultThemeInitializer(settings: settings, brightness: Brightness.light, themeColorOptions: appSettingsProvider.lightThemeColors);
+          var routeType = deviceType == DeviceType.phone ? RouteType.mobile : RouteType.generic;
+
           return MaterialApp(
-            locale: appLocaleProvider.locale,
+            locale: appSettingsProvider.locale,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             builder: EasyLoading.init(),
-            theme: ThemeData(
-              scaffoldBackgroundColor: Colors.white,
-              fontFamily: settings.defaultFont,
-              appBarTheme: const AppBarTheme(
-                iconTheme: IconThemeData(color: Colors.black),
-              ),
-            ),
+            theme: lightTheme.getTheme(),
+            darkTheme: darkTheme.getTheme(),
+            themeMode: appSettingsProvider.themeMode,
             home: Scaffold(
               body: FutureBuilder(
                 future: ServiceLocator.getIt.allReady(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
-                    return AppThemeWidget(
-                      appTheme: AppTheme(),
+                    return AppConfigurationWidget(
                       configurationSettings: settings,
                       deviceInfoService: ServiceLocator.getIt.get(),
+                      navigationService: ServiceLocator.getIt.get(instanceName: routeType.toString()),
                       child: StoreProvider<AppState>(
                         store: ServiceLocator.getIt<IStoreService>().store,
                         child: RootConnector(deviceType: deviceType),

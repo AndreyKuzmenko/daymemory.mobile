@@ -4,7 +4,7 @@ import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/state/app_state.dart';
 import 'package:daymemory/widget/account/forgot_password/forgot_password_view_model.dart';
 import 'package:daymemory/widget/account/forgot_password/forgot_password_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/app_configuration_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,7 +27,7 @@ class ForgotPasswordConnector extends PageConnector<ForgotPasswordViewModel, For
 
   @override
   ForgotPasswordConverter prepareConverter(BuildContext context, AppState state, Function(dynamic) dispatch) {
-    final config = AppThemeWidget.getConfigurationSettings(context);
+    final config = AppConfigurationWidget.getConfigurationSettings(context);
 
     final converter = ForgotPasswordConverter(
       locale: AppLocalizations.of(context)!,

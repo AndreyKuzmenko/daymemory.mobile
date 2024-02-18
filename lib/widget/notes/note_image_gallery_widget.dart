@@ -2,7 +2,7 @@ import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/components/image_grid/gallery_photo.dart';
 import 'package:daymemory/widget/common/loading_indicator/loading_indicator.dart';
 import 'package:daymemory/widget/notes/note_image_gallery_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 
 class NoteImageGalleryWidget extends StatefulWidget {
@@ -29,10 +29,7 @@ class _NoteImageGalleryWidgetState extends State<NoteImageGalleryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
-      backgroundColor: appTheme.bodyBackgroundColor,
       body: SafeArea(
         bottom: false,
         top: false,
@@ -41,7 +38,7 @@ class _NoteImageGalleryWidgetState extends State<NoteImageGalleryWidget> {
             galleryItems: widget.viewModel.images,
             showNavigation: widget.viewModel.showImageNavigation,
             loadingBuilder: (context, event) {
-              return const LoadingIndicator(brandingColor: Colors.white);
+              return const LoadingIndicator();
             },
             backgroundDecoration: const BoxDecoration(
               color: Colors.black,

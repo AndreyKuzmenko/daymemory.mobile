@@ -1,9 +1,9 @@
 import 'package:daymemory/widget/account/signup/signup_view_model.dart';
+import 'package:daymemory/widget/common/button/link_button.dart';
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/common/text_field/text_field_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -58,17 +58,13 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: widget.viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
         title: Text(
           widget.viewModel.title,
-          style: theme.navigationTitle,
         ),
-        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: SafeArea(
@@ -169,8 +165,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     password: _passwordController.text,
                                   ));
                                 }),
-                          textColor: Colors.white,
-                          backgroundColor: theme.colorAccent,
                         ),
                       ),
                     ],
@@ -179,12 +173,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InkWell(
-                        child: Text(widget.viewModel.termsOfUseLabel,
-                            style: TextStyle(
-                              color: theme.colorAccent,
-                            )),
-                        onTap: () => launchUrl(Uri.parse(widget.viewModel.privacyPolicyLink))),
+                    LinkButton(
+                      click: FunctionHolder(() {
+                        launchUrl(Uri.parse(widget.viewModel.termsOfUseLink));
+                      }),
+                      isLarge: false,
+                      text: widget.viewModel.termsOfUseLabel,
+                    ),
                     Container(
                       margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                       child: Text(widget.viewModel.andSeparatorLabel,
@@ -192,12 +187,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                             color: Colors.black,
                           )),
                     ),
-                    InkWell(
-                        child: Text(widget.viewModel.privacyPolicyLabel,
-                            style: TextStyle(
-                              color: theme.colorAccent,
-                            )),
-                        onTap: () => launchUrl(Uri.parse(widget.viewModel.termsOfUseLink))),
+                    LinkButton(
+                      click: FunctionHolder(() {
+                        launchUrl(Uri.parse(widget.viewModel.privacyPolicyLink));
+                      }),
+                      isLarge: false,
+                      text: widget.viewModel.privacyPolicyLabel,
+                    ),
                   ],
                 ),
               ],

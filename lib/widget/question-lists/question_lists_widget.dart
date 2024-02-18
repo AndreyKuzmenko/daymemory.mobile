@@ -2,7 +2,7 @@ import 'package:daymemory/data/dtos/position_dto.dart';
 import 'package:daymemory/widget/common/loading_indicator/loading_indicator.dart';
 import 'package:daymemory/widget/question-lists/question_lists_view_model.dart';
 import 'package:daymemory/widget/question-lists/questions_list_item.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +16,6 @@ class QuestionListsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
       appBar: AppBar(
           iconTheme: const IconThemeData(color: Colors.black),
@@ -39,8 +38,9 @@ class QuestionListsWidget extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(viewModel.title, style: appTheme.navigationTitle)),
-      backgroundColor: appTheme.bodyBackgroundColor,
+          title: Text(
+            viewModel.title,
+          )),
       body: SafeArea(
           bottom: false,
           top: false,
@@ -80,14 +80,12 @@ class _StateBodyWidgetState extends State<_StateBodyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     if (widget.viewModel.isLoading) {
       return FractionallySizedBox(
         heightFactor: 0.9,
         alignment: Alignment.topCenter,
         child: LoadingIndicator(
           message: widget.viewModel.loadingTitle,
-          brandingColor: appTheme.colorAccent,
         ),
       );
     } else {

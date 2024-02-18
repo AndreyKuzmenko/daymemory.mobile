@@ -3,7 +3,7 @@ import 'package:daymemory/widget/common/components/loading_widget.dart';
 import 'package:daymemory/widget/common/loading_indicator/loading_indicator.dart';
 import 'package:daymemory/widget/notes/notes_list_item.dart';
 import 'package:daymemory/widget/notes/notes_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:scrolls_to_top/scrolls_to_top.dart';
 
@@ -45,7 +45,6 @@ class _NoteListViewState extends State<NoteListView> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     if (widget.viewModel.isLoading) {
       return LoadingWidget(text: widget.viewModel.loadingTitle);
     } else {
@@ -67,7 +66,7 @@ class _NoteListViewState extends State<NoteListView> {
                         //shrinkWrap: true,
                         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                         separatorBuilder: (context, index) {
-                          return Container(height: 1, color: appTheme.itemSeparatorColor);
+                          return Container(height: 1, color: Theme.of(context).dividerColor);
                         },
                         itemCount: _viewModel.isAllItemsLoaded ? _viewModel.noteList.length : _viewModel.noteList.length + 1,
                         controller: _scrollController,
@@ -75,7 +74,7 @@ class _NoteListViewState extends State<NoteListView> {
                           return index >= _viewModel.noteList.length
                               ? Container(
                                   margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                  child: LoadingIndicator(brandingColor: appTheme.colorAccent),
+                                  child: const LoadingIndicator(),
                                 )
                               : NotesListItem(
                                   key: Key(_viewModel.noteList[index].noteId),

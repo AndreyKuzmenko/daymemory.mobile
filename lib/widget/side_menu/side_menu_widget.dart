@@ -1,5 +1,5 @@
 import 'package:daymemory/widget/side_menu/side_menu_view_model/side_menu_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -13,8 +13,6 @@ class SideMenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return SettingsList(
       contentPadding: EdgeInsets.only(top: viewModel.isDesktop ? 20 : 60),
       applicationType: ApplicationType.cupertino,
@@ -30,7 +28,7 @@ class SideMenuWidget extends StatelessWidget {
               title: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(
                   viewModel.reviewMemoriesMenuOption,
-                  style: appTheme.settingsLabel,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                 ),
               ]),
               onPressed: (context) {
@@ -65,11 +63,24 @@ class SideMenuWidget extends StatelessWidget {
                 .map((x) => SettingsTile(
                       title: Text(
                         x.title,
-                        style: x.isSelected ? appTheme.settingsActiveLabel : appTheme.settingsLabel,
+                        style: x.isSelected
+                            ? Theme.of(context).textTheme.titleMedium!.copyWith(height: 1, fontWeight: FontWeight.bold)
+                            : Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  height: 1,
+                                ),
                       ),
                       value: Text(
                         x.notesCount.toString(),
-                        style: x.isSelected ? appTheme.settingsValueActiveLabel : appTheme.settingsValueLabel,
+                        style: x.isSelected
+                            ? Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  height: 1,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.secondary,
+                                )
+                            : Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  height: 1,
+                                  color: Theme.of(context).colorScheme.secondary,
+                                ),
                       ),
                       onPressed: (context) {
                         x.selectItemCommand.command();
@@ -79,7 +90,7 @@ class SideMenuWidget extends StatelessWidget {
               ..add(SettingsTile(
                 title: Text(
                   viewModel.newNotebookMenuOption,
-                  style: appTheme.settingsLabel,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                 ),
                 onPressed: (context) {
                   viewModel.newNotebookCommand.command();
@@ -91,12 +102,12 @@ class SideMenuWidget extends StatelessWidget {
             SettingsTile(
               title: Text(
                 viewModel.settingsMenuOption,
-                style: appTheme.settingsLabel,
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
               ),
               trailing: viewModel.hasError
                   ? Icon(
                       Icons.error_outline_outlined,
-                      color: appTheme.red,
+                      color: Theme.of(context).colorScheme.error,
                     )
                   : const SizedBox.shrink(),
               leading: const Icon(Icons.settings_outlined),

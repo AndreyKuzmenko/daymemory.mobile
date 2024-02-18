@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_theme_widget.dart';
-
 class KeyboardButtonWidget extends StatelessWidget {
   final String title;
   final Function(String) onTap;
@@ -16,7 +14,6 @@ class KeyboardButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return InkResponse(
       onTap: () => {onTap(title)},
       child: Container(
@@ -29,9 +26,9 @@ class KeyboardButtonWidget extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: appTheme.semiBold28.copyWith(
-              color: mainColor,
-            ),
+            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                  color: mainColor,
+                ),
           ),
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:daymemory/widget/access_denied/access_denied_view_model.dart';
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccessDeniedWidget extends StatelessWidget {
@@ -13,27 +12,21 @@ class AccessDeniedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
       body: Stack(
         children: [
           Container(
               decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: <Color>[
-                appTheme.blueGradientStart,
-                appTheme.blueGradientEnd,
-              ],
-            ),
+            color: Theme.of(context).colorScheme.secondary,
+            // gradient: LinearGradient(
+            //   begin: Alignment.bottomCenter,
+            //   end: Alignment.topCenter,
+            //   colors: <Color>[
+            //     appTheme.blueGradientStart,
+            //     appTheme.blueGradientEnd,
+            //   ],
+            // ),
           )),
-          // SvgPicture.asset(
-          //   Assets.svg.background,
-          //   height: double.infinity,
-          //   width: double.infinity,
-          //   fit: BoxFit.fill,
-          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -42,9 +35,7 @@ class AccessDeniedWidget extends StatelessWidget {
                 Text(
                   viewModel.title,
                   textAlign: TextAlign.center,
-                  style: appTheme.semiBold22.copyWith(
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(
                   height: 20,
@@ -52,9 +43,9 @@ class AccessDeniedWidget extends StatelessWidget {
                 Text(
                   viewModel.message,
                   textAlign: TextAlign.center,
-                  style: appTheme.regular16.copyWith(
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                        color: Theme.of(context).textTheme.headlineMedium!.color!.withAlpha(200),
+                      ),
                 ),
                 if (viewModel.buttonTitle != null)
                   Padding(
@@ -62,8 +53,6 @@ class AccessDeniedWidget extends StatelessWidget {
                     child: SimpleFilledButtonWidget(
                       text: viewModel.buttonTitle!,
                       click: viewModel.buttonCommand,
-                      textColor: Colors.white,
-                      backgroundColor: appTheme.colorAccent,
                     ),
                   )
               ],

@@ -5,7 +5,7 @@ import 'package:daymemory/redux/state/app_state.dart';
 import 'package:daymemory/services/device_info_service/device_info_service.dart';
 import 'package:daymemory/widget/notes/notes_view_model.dart';
 import 'package:daymemory/widget/notes/notes_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/app_configuration_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,7 +27,7 @@ class NotesConnector extends PageConnector<NotesViewModel, NotesConverter> {
     Locale locale = Localizations.localeOf(context);
     var loc = AppLocalizations.of(context)!;
     final tabsState = state.tabsState;
-    var settings = AppThemeWidget.getConfigurationSettings(context);
+    var settings = AppConfigurationWidget.getConfigurationSettings(context);
     //final theme = AppThemeWidget.getTheme(context);
     final converter = NotesConverter(
         tag: null,

@@ -1,12 +1,12 @@
 import 'package:daymemory/widget/account/login/login_view_model.dart';
+import 'package:daymemory/widget/common/button/link_button.dart';
 import 'package:daymemory/widget/common/button/simple_bordered_button_widget.dart';
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
 import 'package:daymemory/widget/common/button/social_sign_up_button_widget.dart';
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/common/text_field/text_field_widget.dart';
-import 'package:daymemory/widget/theme/app_theme.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -59,17 +59,13 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: widget.viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
         title: Text(
           widget.viewModel.title,
-          style: theme.navigationTitle,
         ),
-        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: SafeArea(
@@ -136,18 +132,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     password: _passwordController.text,
                                   ));
                                 }),
-                          textColor: Colors.white,
-                          backgroundColor: theme.colorAccent,
                         ),
                       ),
-                      MaterialButton(
-                        onPressed: () {
-                          widget.viewModel.forgotPassword.command();
-                        },
-                        child: Text(
-                          widget.viewModel.forgotPasswordLabel,
-                          style: TextStyle(color: theme.colorAccent, fontSize: 15),
-                        ),
+                      LinkButton(
+                        click: widget.viewModel.forgotPassword,
+                        text: widget.viewModel.forgotPasswordLabel,
+                        isLarge: true,
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -160,20 +150,21 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 ),
                 Container(
-                  color: theme.itemSeparatorColor,
+                  color: Theme.of(context).dividerColor,
                   margin: const EdgeInsets.fromLTRB(0, 30, 0, 30),
                   height: 1,
                 ),
-                if (widget.viewModel.showSocialButtons) _SocialButtons(viewModel: widget.viewModel, theme: theme),
+                if (widget.viewModel.showSocialButtons) _SocialButtons(viewModel: widget.viewModel),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InkWell(
-                        child: Text(widget.viewModel.termsOfUseLabel,
-                            style: TextStyle(
-                              color: theme.colorAccent,
-                            )),
-                        onTap: () => launchUrl(Uri.parse(widget.viewModel.privacyPolicyLink))),
+                    LinkButton(
+                      click: FunctionHolder(() {
+                        launchUrl(Uri.parse(widget.viewModel.termsOfUseLink));
+                      }),
+                      isLarge: false,
+                      text: widget.viewModel.termsOfUseLabel,
+                    ),
                     Container(
                       margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                       child: Text(widget.viewModel.andSeparatorLabel,
@@ -181,12 +172,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                             color: Colors.black,
                           )),
                     ),
-                    InkWell(
-                        child: Text(widget.viewModel.privacyPolicyLabel,
-                            style: TextStyle(
-                              color: theme.colorAccent,
-                            )),
-                        onTap: () => launchUrl(Uri.parse(widget.viewModel.termsOfUseLink))),
+                    LinkButton(
+                      click: FunctionHolder(() {
+                        launchUrl(Uri.parse(widget.viewModel.privacyPolicyLink));
+                      }),
+                      isLarge: false,
+                      text: widget.viewModel.privacyPolicyLabel,
+                    ),
                   ],
                 ),
               ],
@@ -201,11 +193,9 @@ class _LoginWidgetState extends State<LoginWidget> {
 class _SocialButtons extends StatelessWidget {
   const _SocialButtons({
     required this.viewModel,
-    required this.theme,
   });
 
   final LoginViewModel viewModel;
-  final IAppTheme theme;
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +211,7 @@ class _SocialButtons extends StatelessWidget {
               iconColor: Colors.white,
               click: viewModel.loginWithFacebook,
               textColor: Colors.white,
-              backgroundColor: theme.colorAccent,
+              backgroundColor: Theme.of(context).extension<ThemeColors>()!.accentColor,
             ),
           ),
           const SizedBox(

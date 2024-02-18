@@ -2,7 +2,7 @@ import 'package:daymemory/data/dtos/position_dto.dart';
 import 'package:daymemory/widget/common/edit_text_field.dart';
 import 'package:daymemory/widget/tags/tag_field_view_model.dart';
 import 'package:daymemory/widget/tags/tags_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +21,6 @@ class _TagsWidgetState extends State<TagsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -54,7 +53,9 @@ class _TagsWidgetState extends State<TagsWidget> {
               ),
             ),
           ],
-          title: Text(widget.viewModel.title, style: appTheme.navigationTitle),
+          title: Text(
+            widget.viewModel.title,
+          ),
           leading: GestureDetector(
               onTap: () {
                 widget.viewModel.closeCommand.command();
@@ -64,7 +65,6 @@ class _TagsWidgetState extends State<TagsWidget> {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        backgroundColor: appTheme.bodyBackgroundColor,
         body: SafeArea(
           bottom: false,
           top: false,

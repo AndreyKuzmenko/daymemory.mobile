@@ -1,5 +1,5 @@
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 
 class SimpleBorderedButtonWidget extends StatelessWidget {
@@ -16,27 +16,25 @@ class SimpleBorderedButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return ButtonTheme(
       height: height,
       minWidth: double.infinity,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
         side: BorderSide(
-          color: appTheme.colorAccent,
+          color: Theme.of(context).extension<ThemeColors>()!.accentColor!,
           width: 1,
           style: BorderStyle.solid,
         ),
       ),
       child: MaterialButton(
         onPressed: click?.command,
-        disabledColor: appTheme.secondaryTextColor,
-        child: Text(
-          text,
-          style: appTheme.semiBold16.copyWith(
-            color: appTheme.colorAccent,
-          ),
-        ),
+        disabledColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
+        child: Text(text,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+            )),
       ),
     );
   }

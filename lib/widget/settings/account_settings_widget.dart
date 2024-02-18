@@ -1,6 +1,6 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/account_settings_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -14,13 +14,13 @@ class AccountSettingsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
-        title: Text(viewModel.title, style: appTheme.navigationTitle),
+        title: Text(
+          viewModel.title,
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -36,21 +36,21 @@ class AccountSettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.nameOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: Text(
                     viewModel.nameOptionValue,
-                    style: appTheme.settingsValueLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                 ),
                 SettingsTile(
                   title: Text(
                     viewModel.emailOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   value: Text(
                     viewModel.emailOptionValue,
-                    style: appTheme.settingsValueLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                 ),
               ],
@@ -60,7 +60,7 @@ class AccountSettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.logoutOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   leading: const Icon(Icons.exit_to_app),
                   onPressed: (context) {

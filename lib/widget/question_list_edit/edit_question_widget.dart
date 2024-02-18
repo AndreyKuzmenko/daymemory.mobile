@@ -1,6 +1,6 @@
 import 'package:daymemory/widget/question_list_edit/question_list_edit_view_model.dart';
 import 'package:daymemory/widget/question_list_edit/question_list_view.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,7 +19,6 @@ class _EditQuestionWidgetState extends State<EditQuestionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -61,7 +60,6 @@ class _EditQuestionWidgetState extends State<EditQuestionWidget> {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        backgroundColor: appTheme.bodyBackgroundColor,
         body: SafeArea(
           bottom: false,
           top: false,

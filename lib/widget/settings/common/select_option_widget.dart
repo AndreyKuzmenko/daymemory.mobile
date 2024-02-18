@@ -1,7 +1,6 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/common/select_option_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -15,10 +14,11 @@ class SelectOptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppThemeWidget.getTheme(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(viewModel.title, style: theme.navigationTitle),
+        title: Text(
+          viewModel.title,
+        ),
         leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -29,20 +29,20 @@ class SelectOptionWidget extends StatelessWidget {
           applicationType: ApplicationType.cupertino,
           physics: const ClampingScrollPhysics(),
           platform: DevicePlatform.iOS,
-          sections: [_getOptions(theme)],
+          sections: [_getOptions(context)],
         ),
       ),
     );
   }
 
-  SettingsSection _getOptions(IAppTheme theme) {
+  SettingsSection _getOptions(BuildContext context) {
     var tiles = <AbstractSettingsTile>[];
 
     for (var option in viewModel.options) {
       var tile = SettingsTile(
         title: Text(
           option.value,
-          style: theme.settingsLabel,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
         ),
         onPressed: (context) {
           viewModel.optionSelectorCommand.command(option.key);

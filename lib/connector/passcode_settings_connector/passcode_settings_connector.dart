@@ -5,7 +5,7 @@ import 'package:daymemory/services/device_info_service/device_info_service.dart'
 import 'package:daymemory/services/text_localization.dart';
 import 'package:daymemory/widget/settings/passcode_settings_view_model.dart';
 import 'package:daymemory/widget/settings/passcode_settings_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/app_configuration_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -18,7 +18,7 @@ class PasscodeSettingsConnector extends PageConnector<PasscodeSettingsViewModel,
   @override
   PasscodeSettingsConverter prepareConverter(BuildContext context, AppState state, Function(dynamic) dispatch) {
     final settingsState = state.settingsState;
-    final config = AppThemeWidget.getConfigurationSettings(context);
+    final config = AppConfigurationWidget.getConfigurationSettings(context);
     Locale languageLocale = Localizations.localeOf(context);
 
     final converter = PasscodeSettingsConverter(

@@ -1,5 +1,5 @@
 import 'package:daymemory/widget/note/note_options_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -10,8 +10,6 @@ class NoteOptionsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return SettingsList(
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
@@ -36,12 +34,12 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.notebookLabel,
-                      style: appTheme.regular12,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                   Text(
                     viewModel.notebookTitle ?? "",
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                 ],
               ),
@@ -66,12 +64,12 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.tagsLabel,
-                      style: appTheme.regular12,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                   Text(
                     viewModel.tagsValue,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                 ],
               ),
@@ -96,12 +94,12 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.dateLabel,
-                      style: appTheme.regular12,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                   Text(
                     viewModel.formatedDate,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                 ],
               ),
@@ -131,12 +129,12 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.locationLabel,
-                      style: appTheme.regular12,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                   Text(
                     viewModel.location?.address ?? viewModel.nolocationText,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                 ],
               ),

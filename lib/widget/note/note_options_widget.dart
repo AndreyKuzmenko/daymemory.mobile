@@ -1,7 +1,7 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/note/note_options_form.dart';
 import 'package:daymemory/widget/note/note_options_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 
 class NoteOptionsWidget extends StatelessWidget {
@@ -11,7 +11,6 @@ class NoteOptionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
         appBar: AppBar(
           leading: const SizedBox.shrink(),
@@ -25,13 +24,11 @@ class NoteOptionsWidget extends StatelessWidget {
           ],
           title: Text(
             viewModel.title,
-            style: appTheme.navigationTitle,
           ),
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        backgroundColor: appTheme.bodyBackgroundColor,
         body: SafeArea(
           bottom: false,
           top: false,

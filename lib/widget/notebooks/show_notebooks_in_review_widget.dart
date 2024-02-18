@@ -1,7 +1,7 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/components/empty_widget.dart';
 import 'package:daymemory/widget/notebooks/show_notebooks_in_review_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -16,21 +16,22 @@ class ShowNotebooksInReviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
       appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.black),
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-            statusBarBrightness: Brightness.light, // For iOS (dark icons)
-          ),
-          centerTitle: true,
-          leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Text(viewModel.title, style: appTheme.navigationTitle)),
-      backgroundColor: appTheme.bodyBackgroundColor,
+        iconTheme: const IconThemeData(color: Colors.black),
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+          statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        ),
+        centerTitle: true,
+        leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          viewModel.title,
+        ),
+      ),
       body: SafeArea(
           bottom: false,
           top: false,
@@ -70,8 +71,6 @@ class _StateBodyWidgetState extends State<_StateBodyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     if (_viewModel.notebooks.isEmpty) {
       return EmptyWidget(
         text: _viewModel.noNotebooks,
@@ -85,7 +84,10 @@ class _StateBodyWidgetState extends State<_StateBodyWidget> {
         SettingsSection(
             tiles: _viewModel.notebooks
                 .map((x) => SettingsTile.switchTile(
-                      title: Text(x.notebookTitle, style: appTheme.settingsLabel),
+                      title: Text(
+                        x.notebookTitle,
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
+                      ),
                       onToggle: (value) {
                         x.switchShowInReviewCommand.command(value);
                       },

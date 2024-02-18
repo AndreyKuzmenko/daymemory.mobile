@@ -1,6 +1,6 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/sync_settings_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -15,13 +15,13 @@ class SyncSettingsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
-        title: Text(viewModel.title, style: appTheme.navigationTitle),
+        title: Text(
+          viewModel.title,
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -40,7 +40,7 @@ class SyncSettingsWidget extends StatelessWidget {
                       children: [
                         Text(
                           viewModel.syncOptionTitle,
-                          style: appTheme.settingsLabel,
+                          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                         ),
                         Container(
                           margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
@@ -71,7 +71,7 @@ class SyncSettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.syncStateOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   onPressed: (context) {
                     viewModel.syncStateCommand.command();
@@ -85,7 +85,7 @@ class SyncSettingsWidget extends StatelessWidget {
                 SettingsTile(
                   title: Text(
                     viewModel.enableEncryptionOptionTitle,
-                    style: appTheme.settingsLabel,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),
                   onPressed: (context) {
                     viewModel.encryptionCommand.command();

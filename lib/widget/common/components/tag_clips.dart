@@ -1,5 +1,4 @@
 import 'package:daymemory/data/dtos/tag_dto.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -12,7 +11,6 @@ class TagClips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Container(
       height: 40,
       padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
@@ -37,7 +35,6 @@ class TagClips extends StatelessWidget {
               child: Center(
                 child: Text(
                   "#${tags[index].text}",
-                  style: TextStyle(color: appTheme.colorAccent),
                 ),
               ),
             ),

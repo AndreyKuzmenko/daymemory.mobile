@@ -3,7 +3,8 @@ import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/notes/note_list_view.dart';
 import 'package:daymemory/widget/notes/notes_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -38,7 +39,6 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -85,7 +85,7 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
       floatingActionButton: widget.viewModel.newNoteCommand == null || widget.viewModel.notebookId == null
           ? null
           : FloatingActionButton(
-              backgroundColor: appTheme.colorAccent,
+              backgroundColor: Theme.of(context).extension<ThemeColors>()!.accentColor,
               child: const Icon(Icons.add, size: 28.0, color: Colors.white),
               onPressed: () {
                 widget.viewModel.newNoteCommand!.command();
@@ -98,7 +98,6 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
               child: SideMenuConnector(),
             )
           : null,
-      backgroundColor: appTheme.bodyBackgroundColor,
       body: SafeArea(
           bottom: false,
           top: false,

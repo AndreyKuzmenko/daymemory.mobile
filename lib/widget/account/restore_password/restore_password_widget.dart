@@ -3,7 +3,6 @@ import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart'
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/common/text_field/text_field_widget.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -53,17 +52,13 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: NavButtonWidget(onPressed: widget.viewModel.backCommand, icon: Icons.arrow_back_ios),
         centerTitle: true,
         title: Text(
           widget.viewModel.title,
-          style: theme.navigationTitle,
         ),
-        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: SafeArea(
@@ -85,7 +80,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                         child: Text(
                           widget.viewModel.instructionText,
-                          style: TextStyle(color: theme.black, fontSize: 16),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),
                       Container(
@@ -133,8 +128,6 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                     password: _passwordController.text,
                                   ));
                                 }),
-                          textColor: Colors.white,
-                          backgroundColor: theme.colorAccent,
                         ),
                       ),
                     ],

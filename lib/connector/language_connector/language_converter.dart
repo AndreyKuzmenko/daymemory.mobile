@@ -5,7 +5,7 @@ import 'package:daymemory/data/dtos/language_dto.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/settings_action.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/common/locale_notifier.dart';
+import 'package:daymemory/widget/common/settings_notifier.dart';
 import 'package:daymemory/widget/settings/common/select_option_view_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,14 +14,14 @@ class LanguageConverter extends ViewModelConverter<SelectOptionViewModel> {
   final Function(dynamic) dispatch;
   final List<LanguageDto> availableLanguages;
   final String selectedLanguageCode;
-  final LocaleNotifier appLocaleProvider;
+  final SettingsNotifier settingsNotifier;
 
   LanguageConverter({
     required this.locale,
     required this.dispatch,
     required this.selectedLanguageCode,
     required this.availableLanguages,
-    required this.appLocaleProvider,
+    required this.settingsNotifier,
   });
 
   @override
@@ -41,7 +41,7 @@ class LanguageConverter extends ViewModelConverter<SelectOptionViewModel> {
           (code) {
             dispatch(SettingsSelectLanguageAction(languageCode: code));
 
-            appLocaleProvider.setLocale(Locale(code));
+            settingsNotifier.setLocale(Locale(code));
           },
         ),
     );

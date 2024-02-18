@@ -1,7 +1,7 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/text_field/text_field_clear_widget.dart';
 import 'package:daymemory/widget/settings/encryption_key_settings_view_model.dart';
-import 'package:daymemory/widget/theme/app_theme_widget.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -28,7 +28,6 @@ class _EncryptionKeySettingsWidgetState extends State<EncryptionKeySettingsWidge
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -63,12 +62,10 @@ class _EncryptionKeySettingsWidgetState extends State<EncryptionKeySettingsWidge
           centerTitle: true,
           title: Text(
             widget.viewModel.title,
-            style: appTheme.navigationTitle,
           ),
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        backgroundColor: appTheme.bodyBackgroundColor,
         body: SafeArea(
             bottom: false,
             top: false,
@@ -105,7 +102,7 @@ class _EncryptionKeySettingsWidgetState extends State<EncryptionKeySettingsWidge
                         SettingsTile(
                           title: Text(
                             widget.viewModel.copyToClipboardOptionTitle,
-                            style: appTheme.settingsLabel,
+                            style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                           ),
                           onPressed: (context) {
                             widget.viewModel.copyToClipboardCommand.command(_titleController.text);

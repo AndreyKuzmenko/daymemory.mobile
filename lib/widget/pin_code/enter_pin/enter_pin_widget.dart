@@ -1,6 +1,7 @@
+import 'package:daymemory/extensions/hex_color_extension.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import '../../common/shake_widget/shake_widget.dart';
-import '../../theme/app_theme_widget.dart';
 import '../keyboard_rows.dart';
 import 'enter_pin_view_model.dart';
 
@@ -40,8 +41,6 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -49,8 +48,8 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: <Color>[
-              appTheme.blueGradientStart,
-              appTheme.blueGradientEnd,
+              Theme.of(context).extension<ThemeColors>()!.accentColor!,
+              HexColor.fromHex("004A97"),
             ],
           ),
         ),
@@ -71,9 +70,9 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
                     child: Text(
                       widget.viewModel.enteredPinTitle,
                       textAlign: TextAlign.center,
-                      style: appTheme.semiBold24.copyWith(
-                        color: appTheme.white,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                            color: Colors.white,
+                          ),
                     ),
                   ),
                   Padding(
@@ -98,7 +97,7 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
                                   color: _indicatorsColor(index < widget.viewModel.selectedEnteredIndicators),
                                   borderRadius: BorderRadius.circular(7),
                                   border: Border.all(
-                                    color: appTheme.white,
+                                    color: Colors.white,
                                     width: 2.0,
                                   )),
                             );
@@ -121,20 +120,20 @@ class _EnterPinWidgetState extends State<EnterPinWidget> {
                           KeyboardRowWidget(
                             values: const ['1', '2', '3'],
                             onTap: widget.viewModel.typingCommand.command,
-                            mainColor: appTheme.white,
+                            mainColor: Colors.white, //TODO:theme
                           ),
                           KeyboardRowWidget(
                             values: const ['4', '5', '6'],
-                            mainColor: appTheme.white,
+                            mainColor: Colors.white, //TODO:theme
                             onTap: widget.viewModel.typingCommand.command,
                           ),
                           KeyboardRowWidget(
                             values: const ['7', '8', '9'],
-                            mainColor: appTheme.white,
+                            mainColor: Colors.white, //TODO:theme
                             onTap: widget.viewModel.typingCommand.command,
                           ),
                           KeyboardLastRowWidget(
-                            mainColor: appTheme.white,
+                            mainColor: Colors.white, //TODO:theme
                             isBiometricsEnabled: widget.viewModel.isBiometricsEnabled,
                             onBiometricTap: widget.viewModel.biometricCommand.command,
                             onTap: widget.viewModel.typingCommand.command,

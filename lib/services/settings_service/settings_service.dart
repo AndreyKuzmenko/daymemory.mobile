@@ -4,6 +4,8 @@ import 'package:daymemory/data/dtos/language_dto.dart';
 import 'package:daymemory/services/async_service_initializer.dart';
 import 'package:daymemory/services/settings_service/storage_review_settings.dart';
 import 'package:daymemory/services/settings_service/storage_user_info.dart';
+import 'package:daymemory/widget/theme/theme_color_options.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -22,6 +24,8 @@ class UserSettings {
   String? refreshToken;
 
   bool isEncryptionKeyLocked = false;
+
+  ThemeMode themeMode = ThemeMode.system;
 
   String? pinCode;
 
@@ -60,6 +64,7 @@ class UserSettings {
     this.isBiometricEnabled = false,
     this.isPasscodeEnabled = false,
     this.language,
+    this.themeMode = ThemeMode.system,
     this.passcodeRequireAfterSeconds = 0,
     this.isSyncEnabled = false,
     this.isEncryptionEnabled = false,
@@ -79,6 +84,7 @@ class UserSettings {
       isBiometricEnabled: json['isBiometricEnabled'],
       isPasscodeEnabled: json['isPasscodeEnabled'],
       language: json['language'],
+      themeMode: json['theme'] != null ? ThemeMode.values[json['theme']] : ThemeMode.system,
       passcodeRequireAfterSeconds: json['passcodeRequireAfterSeconds'],
       isSyncEnabled: json['isSyncEnabled'],
       isEncryptionEnabled: json['isEncryptionEnabled'],
@@ -99,6 +105,7 @@ class UserSettings {
     json["isBiometricEnabled"] = isBiometricEnabled;
     json["isPasscodeEnabled"] = isPasscodeEnabled;
     json["language"] = language;
+    json["theme"] = themeMode.index;
     json["passcodeRequireAfterSeconds"] = passcodeRequireAfterSeconds;
     json["isSyncEnabled"] = isSyncEnabled;
     json["isEncryptionEnabled"] = isEncryptionEnabled;
@@ -111,6 +118,10 @@ abstract class ISettingsService {
   Future<StorageUserInfo?> getUserInfo();
 
   Future setUserInfo(StorageUserInfo data);
+
+  Future setThemeColors(ThemeColorOptions data, Brightness brightness);
+
+  Future<ThemeColorOptions> getThemeColors(Brightness brightness);
 
   Future<StorageReviewSettings> getReviewSettings();
 
@@ -140,6 +151,8 @@ class SettingsService implements ISettingsService, IAsyncServiceInitializer<ISet
   final reviewSettingsKey = 'REVIEW_MEMORIES_SETTINGS_KEY';
   final settingsKey = 'USER_SETTINGS_KEY';
   final isBiometricEnabledKey = 'BIOMETRIC_KEY';
+  final lightThemeKey = 'LIGHT_THEME_KEY';
+  final darkThemeKey = 'DARK_THEME_KEY';
 
   late SharedPreferences _prefs;
   late FlutterSecureStorage _storage;
@@ -174,6 +187,29 @@ class SettingsService implements ISettingsService, IAsyncServiceInitializer<ISet
 
   @override
   Future setEncryptionKey(String key) => _storage.write(key: encryptionKey, value: key);
+
+  @override
+  Future setThemeColors(ThemeColorOptions data, Brightness brightness) async {
+    var dic = data.toJson();
+    final jsonString = json.encode(dic);
+    if (brightness == Brightness.dark) {
+      await _prefs.setString(darkThemeKey, jsonString);
+    } else {
+      await _prefs.setString(lightThemeKey, jsonString);
+    }
+  }
+
+  @override
+  Future<ThemeColorOptions> getThemeColors(Brightness brightness) async {
+    return Future(() {
+      var str = brightness == Brightness.dark ? _prefs.getString(darkThemeKey) : _prefs.getString(lightThemeKey);
+      if (str != null && str.isNotEmpty) {
+        final parsed = json.decode(str).cast<String, dynamic>();
+        return ThemeColorOptions.fromJson(parsed);
+      }
+      return ThemeColorOptions.light();
+    });
+  }
 
   @override
   Future<StorageUserInfo?> getUserInfo() async {

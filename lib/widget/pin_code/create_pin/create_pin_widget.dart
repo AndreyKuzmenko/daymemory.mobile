@@ -3,7 +3,6 @@ import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:flutter/material.dart';
 import '../../common/shake_widget/shake_widget.dart';
-import '../../theme/app_theme_widget.dart';
 import '../keyboard_with_indicators_widget.dart';
 import 'create_pin_view_model.dart';
 
@@ -59,8 +58,6 @@ class _CreatePinWidgetState extends State<CreatePinWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppThemeWidget.getTheme(context);
-
     var pageIndex = widget.viewModel.createPinType == CreatePinType.create ? 0 : 1;
 
     return Scaffold(
@@ -77,7 +74,9 @@ class _CreatePinWidgetState extends State<CreatePinWidget> {
                 icon: Icons.arrow_back_ios)
             : const SizedBox.shrink(),
         centerTitle: true,
-        title: Text(widget.viewModel.titles[pageIndex.toInt()], style: appTheme.navigationTitle),
+        title: Text(
+          widget.viewModel.titles[pageIndex.toInt()],
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
