@@ -49,13 +49,13 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                 icon: Icons.menu,
               ),
         centerTitle: true,
-        backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        //backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         elevation: 0,
         title: Text(
           widget.viewModel.title,
         ),
       ),
-      backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+      //backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       drawer: widget.viewModel.showDrawerMenu
           ? const Drawer(
               elevation: 0,
@@ -113,7 +113,7 @@ class _ReviewCategoryList extends StatelessWidget {
                     ),
                     child: Text(
                       items[index].title,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).extension<ThemeColors>()!.textPrimaryColor),
                     )),
               ],
             ),

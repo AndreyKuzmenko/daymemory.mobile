@@ -71,7 +71,10 @@ class StorageSettingsWidget extends StatelessWidget {
                         ? const CupertinoActivityIndicator()
                         : viewModel.lastSyncStatusMessage == null
                             ? null
-                            : Text(viewModel.lastSyncStatusMessage!, style: const TextStyle(color: Colors.red)),
+                            : Text(
+                                viewModel.lastSyncStatusMessage!,
+                                style: TextStyle(color: Theme.of(context).extension<ThemeColors>()!.errorColor!),
+                              ),
                     leading: const Icon(Icons.sync),
                     onPressed: (context) {
                       if (!viewModel.isSyncing) {

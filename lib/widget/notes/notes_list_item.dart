@@ -3,6 +3,7 @@ import 'package:daymemory/widget/common/components/image_grid/media_files_grid.d
 import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/notes/note_tag_list.dart';
 import 'package:daymemory/widget/notes/note_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,11 @@ class NotesListItem extends StatelessWidget {
                               Expanded(
                                 child: Row(
                                   children: [
-                                    Text(viewModel.displayDate, style: const TextStyle(color: Colors.grey, fontSize: 14)),
+                                    Text(viewModel.displayDate,
+                                        style: TextStyle(
+                                          color: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
+                                          fontSize: 14,
+                                        )),
                                     if (viewModel.notebookName != null)
                                       const SizedBox(
                                         width: 10,
@@ -51,7 +56,10 @@ class NotesListItem extends StatelessWidget {
                                         child: Text(
                                           overflow: TextOverflow.ellipsis,
                                           viewModel.notebookName!,
-                                          style: const TextStyle(color: Colors.grey, fontSize: 14),
+                                          style: TextStyle(
+                                            color: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ),
                                   ],
@@ -183,16 +191,16 @@ class _LocationWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Icon(
+          Icon(
             Icons.location_on_outlined,
-            color: Colors.grey,
+            color: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
             size: 18,
           ),
           Flexible(
             child: Text(
               viewModel.location!.address!,
               style: TextStyle(
-                color: Colors.grey[500],
+                color: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
                 fontSize: 14,
               ),
               overflow: TextOverflow.ellipsis,

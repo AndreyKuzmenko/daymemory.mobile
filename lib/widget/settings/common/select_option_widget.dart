@@ -30,7 +30,6 @@ class SelectOptionWidget extends StatelessWidget {
         bottom: false,
         child: SettingsList(
           applicationType: ApplicationType.cupertino,
-          physics: const ClampingScrollPhysics(),
           platform: DevicePlatform.iOS,
           lightTheme: SettingsThemeData(
             settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
@@ -75,7 +74,7 @@ class SelectOptionWidget extends StatelessWidget {
 
     return SettingsSection(
       tiles: tiles,
-      title: Text(viewModel.explanation ?? ""),
+      title: viewModel.explanation == null || viewModel.explanation!.isEmpty ? null : Text(viewModel.explanation ?? ""),
     );
   }
 }

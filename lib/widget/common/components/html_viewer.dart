@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -98,6 +99,7 @@ class _HtmlViewerState extends State<HtmlViewer> {
         "a": Style(
           fontSize: FontSize(16 * widget.scaleFactor),
           textDecoration: TextDecoration.none,
+          color: Theme.of(context).extension<ThemeColors>()!.accentColor,
         ),
         "ol": Style(
           fontSize: FontSize(16 * widget.scaleFactor),

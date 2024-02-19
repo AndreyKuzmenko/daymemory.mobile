@@ -57,7 +57,7 @@ class _EditQuestionWidgetState extends State<EditQuestionWidget> {
               },
               child: const Icon(Icons.close, size: 28.0, color: Colors.black)),
           centerTitle: true,
-          backgroundColor: Colors.white,
+          //backgroundColor: Colors.white,
           elevation: 0,
         ),
         body: SafeArea(

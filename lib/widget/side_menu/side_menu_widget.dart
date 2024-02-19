@@ -61,10 +61,10 @@ class SideMenuWidget extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(right: 5),
                   child: GestureDetector(
-                    child: const Icon(
+                    child: Icon(
                       Icons.filter_list,
                       size: 24.0,
-                      color: Colors.black,
+                      color: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
                     ),
                     onTap: () {
                       viewModel.sortNotebooksCommand.command();

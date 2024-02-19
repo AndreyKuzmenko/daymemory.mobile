@@ -77,7 +77,7 @@ class _CreatePinWidgetState extends State<CreatePinWidget> {
         title: Text(
           widget.viewModel.titles[pageIndex.toInt()],
         ),
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: PageView.builder(

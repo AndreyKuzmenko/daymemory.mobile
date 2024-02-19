@@ -41,7 +41,10 @@ class KeyboardWithIndicatorsWidget extends StatelessWidget {
                       color: viewModel.createPinType == CreatePinType.create
                           ? _indicatorsColor(index < viewModel.selectedEnteredIndicators)
                           : _indicatorsColor(index < viewModel.selectedConfirmedIndicators),
-                      border: Border.all(color: Colors.black, width: 1.0),
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 1.0,
+                      ),
                       borderRadius: BorderRadius.circular(7),
                     ),
                   );
