@@ -42,8 +42,8 @@ void runAppWithConfiguration(ConfigurationSettings settings) async {
   var settingsService = await SettingsService().init();
   var deviceInfoService = await DeviceInfoService().init();
   var userSettings = await settingsService.getSettings();
-  var lightThemeColors = await settingsService.getThemeColors(Brightness.light);
-  var darkThemeColors = await settingsService.getThemeColors(Brightness.dark);
+  var lightThemeColors = ThemeColorOptions.light(); //await settingsService.getThemeColors(Brightness.light);
+  var darkThemeColors = ThemeColorOptions.dark(); //await settingsService.getThemeColors(Brightness.dark);
 
   if (userSettings.language == null) {
     userSettings.language = deviceInfoService.localeName;
