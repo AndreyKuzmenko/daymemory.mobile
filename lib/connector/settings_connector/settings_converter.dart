@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:daymemory/connector/view_model_converter.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/settings_action.dart';

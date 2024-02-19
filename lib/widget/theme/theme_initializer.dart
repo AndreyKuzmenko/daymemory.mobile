@@ -245,6 +245,12 @@ class DefaultThemeInitializer implements ITheme {
         //labelStyle: TextStyle(color: Colors.red),
         contentPadding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
       ),
+      iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+        iconColor: MaterialStateColor.resolveWith(
+          (states) => themeColorOptions.textPrimaryColor,
+        ),
+      )),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(

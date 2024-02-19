@@ -1,4 +1,3 @@
-import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/components/image_grid/gallery_photo.dart';
 import 'package:daymemory/widget/common/loading_indicator/loading_indicator.dart';
 import 'package:daymemory/widget/notes/note_image_gallery_view_model.dart';
@@ -56,9 +55,10 @@ class _NoteImageGalleryWidgetState extends State<NoteImageGalleryWidget> {
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 color: Colors.black.withAlpha(180),
               ),
-              child: NavButtonWidget(
-                onPressed: widget.viewModel.closeCommand,
-                icon: Icons.close,
+              child: CloseButton(
+                onPressed: () {
+                  widget.viewModel.closeCommand.command();
+                },
                 //color: Colors.white,
               ),
             ),

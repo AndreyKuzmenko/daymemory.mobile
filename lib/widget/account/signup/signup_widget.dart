@@ -181,12 +181,10 @@ class _SignupWidgetState extends State<SignupWidget> {
                       text: widget.viewModel.termsOfUseLabel,
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                      child: Text(widget.viewModel.andSeparatorLabel,
-                          style: const TextStyle(
-                            color: Colors.black,
-                          )),
-                    ),
+                        margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                        child: Text(
+                          widget.viewModel.andSeparatorLabel,
+                        )),
                     LinkButton(
                       click: FunctionHolder(() {
                         launchUrl(Uri.parse(widget.viewModel.privacyPolicyLink));

@@ -190,8 +190,10 @@ class WillPopScopeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: command,
+    return PopScope(
+      onPopInvoked: (didPop) {
+        command?.call();
+      },
       child: Navigator(
         key: routeKey,
         initialRoute: initialRoute,

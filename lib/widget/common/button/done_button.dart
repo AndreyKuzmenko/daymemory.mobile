@@ -30,7 +30,6 @@ class DoneButton extends StatelessWidget {
           elevation: 0,
           onPressed: click?.command,
           disabledColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
-          //color: backgroundColor,//TODO:theme
           child: Text(text,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.secondary,

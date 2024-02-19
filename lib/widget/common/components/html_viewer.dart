@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 

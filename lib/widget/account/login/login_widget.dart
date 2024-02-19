@@ -167,10 +167,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     Container(
                       margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                      child: Text(widget.viewModel.andSeparatorLabel,
-                          style: const TextStyle(
-                            color: Colors.black,
-                          )),
+                      child: Text(widget.viewModel.andSeparatorLabel),
                     ),
                     LinkButton(
                       click: FunctionHolder(() {

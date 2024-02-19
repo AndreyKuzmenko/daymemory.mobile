@@ -178,7 +178,7 @@ class _PageViewItemState extends State<_PageViewItem> with SingleTickerProviderS
         ),
         Text(
           widget.viewModel.titles[widget.index],
-          style: Theme.of(context).textTheme.headlineMedium, //TODO:theme
+          style: Theme.of(context).textTheme.headlineMedium,
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -187,7 +187,6 @@ class _PageViewItemState extends State<_PageViewItem> with SingleTickerProviderS
         Text(
           widget.viewModel.subtitles[widget.index],
           textAlign: TextAlign.center,
-          //style: theme.regular16.copyWith(color: theme.secondaryTextColor, height: 1.6),//TODO:theme
         ),
         const SizedBox(
           height: 16,
