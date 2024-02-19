@@ -55,6 +55,8 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
 
     if (action is ClearDeviceDataAction) {
       await _clearAllData(action, store.dispatch);
+    } else if (action is SettingsSelectThemeModeAction) {
+      await _selectThemeMode(store, action);
     }
     if (action is SendEmailToDevelopersAction) {
       await _sendEmailToDevelopers(store.dispatch);
@@ -85,6 +87,7 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
           passcodeRequireAfterSeconds: settings.passcodeRequireAfterSeconds,
           encryptionKey: encryptionKey,
           isEncryptionKeyLocked: isEncryptionKeyLocked,
+          themeMode: settings.themeMode,
           language: language));
 
       if (action.nextAction != null) {
@@ -211,6 +214,12 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
     await settingsService.setSettings(settings);
 
     store.dispatch(SettingsSyncStateChangedAction(isEnabled: isEnabled));
+  }
+
+  Future _selectThemeMode(Store<AppState> store, SettingsSelectThemeModeAction action) async {
+    var settings = await settingsService.getSettings();
+    settings.themeMode = action.themeMode;
+    await settingsService.setSettings(settings);
   }
 
   Future<void> _sendEmailToDevelopers(Function(dynamic action) dispatch) async {

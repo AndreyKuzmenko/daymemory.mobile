@@ -43,10 +43,10 @@ class _EditTextFieldState extends State<EditTextField> {
       },
       decoration: InputDecoration(
         labelText: null,
-        contentPadding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
+        //contentPadding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
         hintText: widget.placeholder,
-        enabledBorder: null,
-        focusedBorder: null,
+        //enabledBorder: null,
+        //focusedBorder: null,
       ),
     );
   }

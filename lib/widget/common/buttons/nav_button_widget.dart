@@ -4,29 +4,30 @@ import 'package:flutter/material.dart';
 class NavButtonWidget extends StatelessWidget {
   final FunctionHolder? onPressed;
   final IconData icon;
-  final Color? color;
 
   const NavButtonWidget({
     super.key,
     required this.onPressed,
     required this.icon,
-    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        icon,
-        size: 24.0,
-        color: color ?? Colors.black,
+    return Container(
+      padding: const EdgeInsets.all(0),
+      child: IconButton(
+        icon: Icon(
+          icon,
+          size: 24.0,
+          //color: color ?? Colors.black,
+        ),
+        splashRadius: 20,
+        onPressed: onPressed == null
+            ? null
+            : () {
+                onPressed!.command();
+              },
       ),
-      splashRadius: 20,
-      onPressed: onPressed == null
-          ? null
-          : () {
-              onPressed!.command();
-            },
     );
   }
 }

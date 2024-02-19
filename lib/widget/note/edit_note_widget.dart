@@ -15,6 +15,7 @@ class EditNoteWidget extends StatelessWidget {
       appBar: AppBar(
         actions: [
           DoneButton(
+            height: 40,
             padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 5),
             click: viewModel.isSaving ? null : viewModel.saveCommand,
             text: viewModel.doneButtonText,
@@ -31,7 +32,6 @@ class EditNoteWidget extends StatelessWidget {
                 child: Text(
                   overflow: TextOverflow.fade,
                   viewModel.notebookTitle,
-                  style: const TextStyle(color: Colors.black),
                 ),
               ),
               const Icon(Icons.expand_more)
@@ -43,7 +43,6 @@ class EditNoteWidget extends StatelessWidget {
           icon: Icons.close,
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: SafeArea(

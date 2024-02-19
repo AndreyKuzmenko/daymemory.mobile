@@ -120,6 +120,8 @@ class SettingsLoadedAction implements ILoggingAction {
 
   bool isEncryptionKeyLocked;
 
+  ThemeMode themeMode;
+
   SettingsLoadedAction(
       {required this.isLocationSavingEnabled,
       required this.isBiometricActive,
@@ -132,6 +134,7 @@ class SettingsLoadedAction implements ILoggingAction {
       required this.passcodeRequireAfterSeconds,
       required this.encryptionKey,
       required this.isEncryptionKeyLocked,
+      required this.themeMode,
       required this.language});
 
   @override

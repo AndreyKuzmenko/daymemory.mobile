@@ -10,10 +10,6 @@ class ThemeColorOptions {
   final Color backgroundPrimaryColor;
   final Color backgroundSecondaryColor;
   final Color cardColor;
-  final Color chipBackgroundColor;
-  final Color selectedChipBackgroundColor;
-  final Color chipTextColor;
-  final Color selectedChipTextColor;
 
   ThemeColorOptions({
     required this.accentColor,
@@ -24,10 +20,6 @@ class ThemeColorOptions {
     required this.backgroundPrimaryColor,
     required this.backgroundSecondaryColor,
     required this.cardColor,
-    required this.chipBackgroundColor,
-    required this.selectedChipBackgroundColor,
-    required this.chipTextColor,
-    required this.selectedChipTextColor,
   });
 
   factory ThemeColorOptions.fromJson(Map<String, dynamic> json) {
@@ -40,10 +32,6 @@ class ThemeColorOptions {
       backgroundPrimaryColor: HexColor.fromHex(json["backgroundPrimaryColor"]),
       backgroundSecondaryColor: HexColor.fromHex(json["backgroundSecondaryColor"]),
       cardColor: HexColor.fromHex(json["cardColor"]),
-      chipBackgroundColor: HexColor.fromHex(json["chipBackgroundColor"]),
-      selectedChipBackgroundColor: HexColor.fromHex(json["selectedChipBackgroundColor"]),
-      chipTextColor: HexColor.fromHex(json["chipTextColor"]),
-      selectedChipTextColor: HexColor.fromHex(json["selectedChipTextColor"]),
     );
   }
 
@@ -57,10 +45,6 @@ class ThemeColorOptions {
     json["backgroundPrimaryColor"] = backgroundPrimaryColor.toHex();
     json["backgroundSecondaryColor"] = backgroundSecondaryColor.toHex();
     json["cardColor"] = cardColor.toHex();
-    json["chipBackgroundColor"] = chipBackgroundColor.toHex();
-    json["selectedChipBackgroundColor"] = selectedChipBackgroundColor.toHex();
-    json["chipTextColor"] = chipTextColor.toHex();
-    json["selectedChipTextColor"] = selectedChipTextColor.toHex();
     return json;
   }
 
@@ -74,28 +58,19 @@ class ThemeColorOptions {
       backgroundPrimaryColor: HexColor.fromHex("#262E40"),
       backgroundSecondaryColor: HexColor.fromHex("#0C1017"),
       cardColor: HexColor.fromHex("#111927"),
-      chipBackgroundColor: HexColor.fromHex("#404C6A"),
-      selectedChipBackgroundColor: HexColor.fromHex("#6F7B98"),
-      chipTextColor: HexColor.fromHex("#FFFFFF"),
-      selectedChipTextColor: HexColor.fromHex("#FFFFFF"),
     );
   }
 
   static ThemeColorOptions light() {
     return ThemeColorOptions(
-      accentColor: HexColor.fromHex("#6466E9"),
-      textPrimaryColor: HexColor.fromHex("#111927"),
-      textSecondaryColor: HexColor.fromHex("#6C737F"),
-      buttonTextColor: HexColor.fromHex("#FFFFFF"),
-      errorColor: HexColor.fromHex("#E96464"),
-      backgroundPrimaryColor: HexColor.fromHex("#F5F6F7"),
-      backgroundSecondaryColor: HexColor.fromHex("#E0E8EF"),
-      cardColor: HexColor.fromHex("#FFFFFF"),
-      chipBackgroundColor: HexColor.fromHex("#BDCDDB"),
-      selectedChipBackgroundColor: HexColor.fromHex("#869EB4"),
-      chipTextColor: HexColor.fromHex("#111927"),
-      selectedChipTextColor: HexColor.fromHex("#FFFFFF"),
-    );
+        accentColor: HexColor.fromHex("#6466E9"),
+        textPrimaryColor: HexColor.fromHex("#111927"),
+        textSecondaryColor: HexColor.fromHex("#6C737F"),
+        buttonTextColor: HexColor.fromHex("#FFFFFF"),
+        errorColor: HexColor.fromHex("#E96464"),
+        backgroundPrimaryColor: HexColor.fromHex("#F5F6F7"),
+        backgroundSecondaryColor: HexColor.fromHex("#E0E8EF"),
+        cardColor: HexColor.fromHex("#FFFFFF"));
   }
 
   // static ThemeColorOptions dark() {

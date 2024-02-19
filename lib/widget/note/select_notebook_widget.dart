@@ -1,6 +1,7 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/note/select_notebook_form.dart';
 import 'package:daymemory/widget/note/select_notebook_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class SelectNotebookWidget extends StatelessWidget {
         appBar: AppBar(
           leading: const SizedBox.shrink(),
           centerTitle: true,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
           elevation: 0,
           title: Text(
             viewModel.title,
@@ -29,6 +30,7 @@ class SelectNotebookWidget extends StatelessWidget {
                 )),
           ],
         ),
+        backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         body: SafeArea(
           bottom: false,
           top: false,

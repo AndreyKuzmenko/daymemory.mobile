@@ -19,10 +19,6 @@
             "request": "launch",
             "type": "dart",
             "program": "lib/configuration/daymemory_desktop.dart",
-            "args": [
-                "--flavor",
-                "daymemoryDesktop"
-            ]
         },
         {
             "name": "DayMemory MacOS",

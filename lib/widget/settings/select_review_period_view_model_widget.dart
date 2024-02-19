@@ -1,9 +1,8 @@
 import 'package:daymemory/services/settings_service/storage_review_settings.dart';
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/select_review_period_view_model.dart';
-
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class SelectReviewPeriodWidget extends StatelessWidget {
@@ -18,19 +17,14 @@ class SelectReviewPeriodWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.black),
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-            statusBarBrightness: Brightness.light, // For iOS (dark icons)
-          ),
           centerTitle: true,
           leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
           elevation: 0,
           title: Text(
             viewModel.title,
           )),
+      backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       body: SafeArea(
           bottom: false,
           top: false,
@@ -73,6 +67,20 @@ class _StateBodyWidgetState extends State<_StateBodyWidget> {
     return SettingsList(
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
+      lightTheme: SettingsThemeData(
+        settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+        tileHighlightColor: Theme.of(context).highlightColor,
+        dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+      ),
+      darkTheme: SettingsThemeData(
+        settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+        tileHighlightColor: Theme.of(context).highlightColor,
+        dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+      ),
       sections: [
         SettingsSection(tiles: [
           SettingsTile.switchTile(

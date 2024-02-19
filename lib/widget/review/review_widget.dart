@@ -49,13 +49,13 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                 icon: Icons.menu,
               ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         elevation: 0,
         title: Text(
           widget.viewModel.title,
-          style: const TextStyle(color: Colors.black),
         ),
       ),
+      backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       drawer: widget.viewModel.showDrawerMenu
           ? const Drawer(
               elevation: 0,

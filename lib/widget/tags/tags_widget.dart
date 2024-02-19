@@ -1,7 +1,10 @@
 import 'package:daymemory/data/dtos/position_dto.dart';
+import 'package:daymemory/widget/common/button/done_button.dart';
 import 'package:daymemory/widget/common/edit_text_field.dart';
+import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/tags/tag_field_view_model.dart';
 import 'package:daymemory/widget/tags/tags_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,47 +27,35 @@ class _TagsWidgetState extends State<TagsWidget> {
     return Scaffold(
         appBar: AppBar(
           actions: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-              child: TextButton(
-                onPressed: widget.viewModel.isSaving
-                    ? null
-                    : () async {
-                        final isValid = _form.currentState!.validate();
-                        if (!isValid) {
-                          return;
-                        }
-                        widget.viewModel.saveCommand.command();
-                      },
-                child: Container(
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: !widget.viewModel.isSaving
-                      ? Text(
-                          AppLocalizations.of(context)!.done_nav_button,
-                          style: const TextStyle(color: Colors.white, fontSize: 15.0),
-                        )
-                      : const CupertinoActivityIndicator(),
-                ),
-              ),
+            DoneButton(
+              height: 40,
+              padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 5),
+              click: widget.viewModel.isSaving
+                  ? null
+                  : FunctionHolder(() {
+                      final isValid = _form.currentState!.validate();
+                      if (!isValid) {
+                        return;
+                      }
+                      widget.viewModel.saveCommand.command();
+                    }),
+              text: AppLocalizations.of(context)!.done_nav_button,
             ),
           ],
           title: Text(
             widget.viewModel.title,
           ),
           leading: GestureDetector(
-              onTap: () {
-                widget.viewModel.closeCommand.command();
-              },
-              child: const Icon(Icons.arrow_back_ios, color: Colors.black)),
+            onTap: () {
+              widget.viewModel.closeCommand.command();
+            },
+            child: const Icon(Icons.arrow_back_ios),
+          ),
           centerTitle: true,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
           elevation: 0,
         ),
+        backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         body: SafeArea(
           bottom: false,
           top: false,

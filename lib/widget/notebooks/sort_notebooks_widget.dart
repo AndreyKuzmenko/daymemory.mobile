@@ -3,9 +3,9 @@ import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/components/empty_widget.dart';
 import 'package:daymemory/widget/notebooks/sort_notebook_list_item.dart';
 import 'package:daymemory/widget/notebooks/sort_notebooks_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class SortNotebooksWidget extends StatelessWidget {
   final SortNotebooksViewModel viewModel;
@@ -19,20 +19,15 @@ class SortNotebooksWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          statusBarBrightness: Brightness.light, // For iOS (dark icons)
-        ),
         centerTitle: true,
         leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.close),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         elevation: 0,
         title: Text(
           viewModel.title,
         ),
       ),
+      backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       body: SafeArea(
           bottom: false,
           top: false,

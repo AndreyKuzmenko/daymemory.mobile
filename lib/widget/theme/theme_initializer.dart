@@ -34,10 +34,6 @@ class DefaultThemeInitializer implements ITheme {
           backgroundPrimaryColor: themeColorOptions.backgroundPrimaryColor,
           backgroundSecondaryColor: themeColorOptions.backgroundSecondaryColor,
           cardColor: themeColorOptions.cardColor,
-          chipBackgroundColor: themeColorOptions.chipBackgroundColor,
-          selectedChipBackgroundColor: themeColorOptions.selectedChipBackgroundColor,
-          chipTextColor: themeColorOptions.chipTextColor,
-          selectedChipTextColor: themeColorOptions.selectedChipTextColor,
         ),
       ],
       scaffoldBackgroundColor: themeColorOptions.backgroundPrimaryColor,
@@ -60,11 +56,18 @@ class DefaultThemeInitializer implements ITheme {
       appBarTheme: AppBarTheme(
         backgroundColor: themeColorOptions.backgroundPrimaryColor,
         foregroundColor: themeColorOptions.textPrimaryColor,
+        scrolledUnderElevation: 0,
         titleTextStyle: TextStyle(
           color: themeColorOptions.textPrimaryColor,
           height: 1,
           fontSize: 18,
           fontWeight: FontWeight.w400,
+        ),
+        iconTheme: IconThemeData(
+          color: themeColorOptions.textPrimaryColor,
+        ),
+        actionsIconTheme: IconThemeData(
+          color: themeColorOptions.textPrimaryColor,
         ),
       ),
       bottomAppBarTheme: BottomAppBarTheme(
@@ -187,8 +190,8 @@ class DefaultThemeInitializer implements ITheme {
       chipTheme: ChipThemeData(
         backgroundColor: themeColorOptions.backgroundPrimaryColor,
         padding: const EdgeInsets.all(12),
-        secondarySelectedColor: themeColorOptions.selectedChipBackgroundColor,
-        secondaryLabelStyle: TextStyle(color: themeColorOptions.selectedChipTextColor),
+        //secondarySelectedColor: themeColorOptions.selectedChipBackgroundColor,
+        //secondaryLabelStyle: TextStyle(color: themeColorOptions.selectedChipTextColor),
         labelStyle: TextStyle(
           color: themeColorOptions.textPrimaryColor,
           height: 1,

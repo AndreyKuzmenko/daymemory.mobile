@@ -4,9 +4,7 @@ import 'package:daymemory/widget/common/function_holder.dart';
 import 'package:daymemory/widget/notes/note_list_view.dart';
 import 'package:daymemory/widget/notes/notes_view_model.dart';
 import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class NotesWidget extends StatefulWidget {
   final NotesViewModel viewModel;
@@ -42,12 +40,12 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          statusBarBrightness: Brightness.light, // For iOS (dark icons)
-        ),
+        // iconTheme: const IconThemeData(color: Colors.black),
+        // systemOverlayStyle: const SystemUiOverlayStyle(
+        //   statusBarColor: Colors.transparent,
+        //   statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+        //   statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        // ),
         actions: [
           widget.viewModel.editNotebookCommand != null
               ? NavButtonWidget(
@@ -67,8 +65,8 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
                 icon: Icons.menu,
               ),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        //backgroundColor: Colors.transparent,
+        //elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -76,7 +74,6 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
               child: Text(
                 overflow: TextOverflow.fade,
                 widget.viewModel.title,
-                style: const TextStyle(color: Colors.black),
               ),
             ),
           ],
@@ -86,6 +83,7 @@ class _NotesWidgetState extends State<NotesWidget> with WidgetsBindingObserver {
           ? null
           : FloatingActionButton(
               backgroundColor: Theme.of(context).extension<ThemeColors>()!.accentColor,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
               child: const Icon(Icons.add, size: 28.0, color: Colors.white),
               onPressed: () {
                 widget.viewModel.newNoteCommand!.command();

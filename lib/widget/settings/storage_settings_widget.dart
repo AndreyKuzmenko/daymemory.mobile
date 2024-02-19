@@ -1,5 +1,6 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/settings/sync_settings_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,29 @@ class StorageSettingsWidget extends StatelessWidget {
         title: Text(
           viewModel.title,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         elevation: 0,
       ),
+      backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       body: SafeArea(
         bottom: false,
         child: SettingsList(
           applicationType: ApplicationType.cupertino,
           platform: DevicePlatform.iOS,
+          lightTheme: SettingsThemeData(
+            settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+            settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+            tileHighlightColor: Theme.of(context).highlightColor,
+            dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+            leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+          ),
+          darkTheme: SettingsThemeData(
+            settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+            settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+            tileHighlightColor: Theme.of(context).highlightColor,
+            dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+            leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+          ),
           sections: [
             if (viewModel.isSyncEnabled)
               SettingsSection(

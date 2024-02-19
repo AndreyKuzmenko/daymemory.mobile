@@ -62,7 +62,6 @@ class NotesListItem extends StatelessWidget {
                                 IconButton(
                                   icon: const Icon(
                                     Icons.more_horiz,
-                                    color: Colors.grey,
                                   ),
                                   splashRadius: 20,
                                   onPressed: () {
@@ -115,7 +114,6 @@ class NotesListItem extends StatelessWidget {
       splashRadius: 20,
       icon: const Icon(
         Icons.more_horiz,
-        color: Colors.grey,
       ),
       itemBuilder: (context) => [
         PopupMenuItem(

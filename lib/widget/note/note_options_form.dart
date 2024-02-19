@@ -1,4 +1,5 @@
 import 'package:daymemory/widget/note/note_options_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -13,6 +14,20 @@ class NoteOptionsForm extends StatelessWidget {
     return SettingsList(
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
+      lightTheme: SettingsThemeData(
+        settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+        tileHighlightColor: Theme.of(context).highlightColor,
+        dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+      ),
+      darkTheme: SettingsThemeData(
+        settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+        tileHighlightColor: Theme.of(context).highlightColor,
+        dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+      ),
       physics: const ClampingScrollPhysics(),
       sections: [
         SettingsSection(
@@ -20,7 +35,6 @@ class NoteOptionsForm extends StatelessWidget {
             SettingsTile(
               leading: const Icon(
                 Icons.bookmark_border,
-                color: Colors.black,
               ),
               value: const Icon(
                 Icons.arrow_forward_ios,
@@ -34,7 +48,9 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.notebookLabel,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                     ),
                   ),
                   Text(
@@ -50,7 +66,6 @@ class NoteOptionsForm extends StatelessWidget {
             SettingsTile(
               leading: const Icon(
                 Icons.tag_outlined,
-                color: Colors.black,
               ),
               value: const Icon(
                 Icons.arrow_forward_ios,
@@ -64,7 +79,9 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.tagsLabel,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                     ),
                   ),
                   Text(
@@ -80,7 +97,6 @@ class NoteOptionsForm extends StatelessWidget {
             SettingsTile(
               leading: const Icon(
                 Icons.calendar_month_outlined,
-                color: Colors.black,
               ),
               value: const Icon(
                 Icons.arrow_forward_ios,
@@ -94,12 +110,16 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.dateLabel,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                     ),
                   ),
                   Text(
                     viewModel.formatedDate,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          height: 1,
+                        ),
                   ),
                 ],
               ),
@@ -119,7 +139,6 @@ class NoteOptionsForm extends StatelessWidget {
             SettingsTile(
               leading: const Icon(
                 Icons.location_on_outlined,
-                color: Colors.black,
               ),
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -129,7 +148,9 @@ class NoteOptionsForm extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 7),
                     child: Text(
                       viewModel.locationLabel,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                     ),
                   ),
                   Text(

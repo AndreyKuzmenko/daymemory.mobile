@@ -170,7 +170,6 @@ class _ToolbarState extends State<Toolbar> {
             child: IconButton(
               icon: const Icon(
                 Icons.more_horiz,
-                color: Colors.black,
               ),
               splashRadius: 20,
               onPressed: () {
@@ -195,7 +194,6 @@ class _ToolbarState extends State<Toolbar> {
             child: IconButton(
               icon: const Icon(
                 Icons.photo_camera,
-                color: Colors.black,
               ),
               splashRadius: 20,
               onPressed: () {
@@ -223,7 +221,6 @@ class _ToolbarState extends State<Toolbar> {
             child: IconButton(
               icon: const Icon(
                 Icons.video_camera_back_outlined,
-                color: Colors.black,
               ),
               splashRadius: 20,
               onPressed: () {

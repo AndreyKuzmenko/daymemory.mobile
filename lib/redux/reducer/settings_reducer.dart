@@ -16,6 +16,7 @@ Reducer<SettingsState> get settingsReducer {
     TypedReducer(_settingsSyncStateChangedAction).call,
     TypedReducer(_encryptionKeyGeneratedAction).call,
     TypedReducer(_encryptionKeySetAction).call,
+    TypedReducer(_changeThemeModeAction).call,
   ]);
 }
 
@@ -44,6 +45,12 @@ SettingsState _settingsBiometricUnlockAction(SettingsState state, SettingsBiomet
   );
 }
 
+SettingsState _changeThemeModeAction(SettingsState state, SettingsSelectThemeModeAction action) {
+  return state.rebuild(
+    (b) => b..themeMode = action.themeMode.index,
+  );
+}
+
 SettingsState _settingsLoaded(SettingsState state, SettingsLoadedAction action) {
   return state.rebuild((b) => b
     ..isBiometricEnabled = action.isBiometricEnabled
@@ -57,6 +64,7 @@ SettingsState _settingsLoaded(SettingsState state, SettingsLoadedAction action) 
     ..isSyncEnabled = action.isSyncEnabled
     ..isEncryptionKeyLocked = action.isEncryptionKeyLocked
     ..encryptionKey = action.encryptionKey
+    ..themeMode = action.themeMode.index
     ..language = action.language);
 }
 

@@ -59,7 +59,7 @@ class _NoteImageGalleryWidgetState extends State<NoteImageGalleryWidget> {
               child: NavButtonWidget(
                 onPressed: widget.viewModel.closeCommand,
                 icon: Icons.close,
-                color: Colors.white,
+                //color: Colors.white,
               ),
             ),
           )

@@ -1,4 +1,5 @@
 import 'package:daymemory/widget/note/tags/select_tags_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -14,6 +15,20 @@ class SelectTagsForm extends StatelessWidget {
       applicationType: ApplicationType.cupertino,
       platform: DevicePlatform.iOS,
       physics: const ClampingScrollPhysics(),
+      lightTheme: SettingsThemeData(
+        settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+        tileHighlightColor: Theme.of(context).highlightColor,
+        dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+      ),
+      darkTheme: SettingsThemeData(
+        settingsListBackground: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        settingsSectionBackground: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
+        tileHighlightColor: Theme.of(context).highlightColor,
+        dividerColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
+        leadingIconsColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor,
+      ),
       sections: [
         SettingsSection(
           tiles: viewModel.tags
@@ -28,7 +43,6 @@ class SelectTagsForm extends StatelessWidget {
                     trailing: viewModel.selectedTags.any((element) => element == x.id)
                         ? const Icon(
                             Icons.done,
-                            color: Colors.black,
                           )
                         : null,
                   ))
