@@ -337,7 +337,7 @@ class _EditFormState extends State<EditNoteForm> {
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     var config = KeyboardActionsConfig(
       keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
-      keyboardBarColor: Colors.white,
+      keyboardBarColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       keyboardBarElevation: 20,
       nextFocus: true,
       defaultDoneWidget: Text.Text(AppLocalizations.of(context)!.done_nav_button),
