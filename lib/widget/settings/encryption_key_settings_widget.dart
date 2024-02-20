@@ -1,5 +1,5 @@
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
-import 'package:daymemory/widget/common/text_field/text_field_clear_widget.dart';
+import 'package:daymemory/widget/common/text_field/text_field_clear.dart';
 import 'package:daymemory/widget/settings/encryption_key_settings_view_model.dart';
 import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 
@@ -96,7 +96,7 @@ class _EncryptionKeySettingsWidgetState extends State<EncryptionKeySettingsWidge
                     title: Text(widget.viewModel.encryptionKeyExplanation),
                     tiles: <SettingsTile>[
                       SettingsTile(
-                        title: TextFieldClearWidget(
+                        title: TextFieldClear(
                           controller: _titleController,
                           readOnly: widget.viewModel.isEncryptionKeyLocked,
                           autofocus: widget.viewModel.encryptionKeyValue == null,

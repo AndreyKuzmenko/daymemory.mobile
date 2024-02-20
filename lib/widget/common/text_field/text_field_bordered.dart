@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class TextFieldBordered extends StatelessWidget {
   final String label;
   final String placeholder;
   final bool? obscureText;
@@ -8,7 +8,7 @@ class TextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
 
-  const TextFieldWidget({
+  const TextFieldBordered({
     super.key,
     required this.label,
     required this.placeholder,
@@ -29,7 +29,7 @@ class TextFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: label,
-        contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        contentPadding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         hintText: placeholder,
       ),
     );

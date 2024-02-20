@@ -2,7 +2,7 @@ import 'package:daymemory/widget/account/restore_password/restore_password_view_
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/common/text_field/text_field_widget.dart';
+import 'package:daymemory/widget/common/text_field/text_field_bordered.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -85,7 +85,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _codeController,
                           validator: (text) {
                             if (text == null || text.isEmpty) {
@@ -99,7 +99,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _passwordController,
                           obscureText: true,
                           label: widget.viewModel.passwordLabel,

@@ -2,7 +2,7 @@ import 'package:daymemory/widget/account/forgot_password/forgot_password_view_mo
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/common/text_field/text_field_widget.dart';
+import 'package:daymemory/widget/common/text_field/text_field_bordered.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -83,7 +83,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _emailController,
                           validator: (text) {
                             if (text == null || text.isEmpty) {

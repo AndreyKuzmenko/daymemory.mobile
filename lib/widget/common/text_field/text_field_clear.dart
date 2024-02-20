@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TextFieldClearWidget extends StatelessWidget {
+class TextFieldClear extends StatelessWidget {
   final String label;
   final String placeholder;
   final bool? obscureText;
@@ -9,7 +9,7 @@ class TextFieldClearWidget extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
 
-  const TextFieldClearWidget({
+  const TextFieldClear({
     super.key,
     required this.label,
     required this.placeholder,
@@ -23,6 +23,7 @@ class TextFieldClearWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //final appTheme = AppThemeWidget.getTheme(context);
+
     return TextFormField(
       controller: controller,
       validator: validator,
@@ -33,9 +34,10 @@ class TextFieldClearWidget extends StatelessWidget {
       decoration: InputDecoration(
         isDense: true,
         border: InputBorder.none,
+        enabledBorder: InputBorder.none,
         labelText: null,
-        focusedBorder: null,
-        contentPadding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+        focusedBorder: InputBorder.none,
+        contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         hintText: placeholder,
       ),
     );

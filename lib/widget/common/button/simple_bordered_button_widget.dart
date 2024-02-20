@@ -20,7 +20,7 @@ class SimpleBorderedButtonWidget extends StatelessWidget {
       height: height,
       minWidth: double.infinity,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4.0),
+        borderRadius: BorderRadius.circular(20.0),
         side: BorderSide(
           color: Theme.of(context).extension<ThemeColors>()!.accentColor!,
           width: 1,

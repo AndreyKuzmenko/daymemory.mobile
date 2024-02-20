@@ -3,7 +3,7 @@ import 'package:daymemory/widget/common/button/link_button.dart';
 import 'package:daymemory/widget/common/button/simple_filled_button_widget.dart';
 import 'package:daymemory/widget/common/buttons/nav_button_widget.dart';
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/common/text_field/text_field_widget.dart';
+import 'package:daymemory/widget/common/text_field/text_field_bordered.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -84,7 +84,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     children: [
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _firstNameController,
                           validator: (text) {
                             if (text == null || text.isEmpty) {
@@ -98,7 +98,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _lastNameController,
                           validator: (text) {
                             if (text == null || text.isEmpty) {
@@ -112,7 +112,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _emailController,
                           validator: (text) {
                             if (text == null || text.isEmpty) {
@@ -130,7 +130,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextFieldWidget(
+                        child: TextFieldBordered(
                           controller: _passwordController,
                           validator: (text) {
                             if (text == null || text.isEmpty) {

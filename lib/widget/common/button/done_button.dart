@@ -33,7 +33,7 @@ class DoneButton extends StatelessWidget {
           child: Text(text,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.secondary,
-                fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
               )),
         ),
       ),
