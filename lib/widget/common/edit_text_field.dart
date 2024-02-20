@@ -43,6 +43,7 @@ class _EditTextFieldState extends State<EditTextField> {
       },
       decoration: InputDecoration(
         labelText: null,
+        fillColor: Colors.transparent,
         //contentPadding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
         hintText: widget.placeholder,
         //enabledBorder: null,
