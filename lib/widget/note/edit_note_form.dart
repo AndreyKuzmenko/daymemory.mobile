@@ -8,6 +8,7 @@ import 'package:daymemory/widget/common/components/video/video_preview.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:daymemory/widget/note/toolbar.dart';
 import 'package:daymemory/widget/note/editnote_view_model.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill/quill_delta.dart';
@@ -88,7 +89,7 @@ class _EditFormState extends State<EditNoteForm> {
             margin: const EdgeInsets.only(left: 20, right: 20),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
-              color: Colors.grey.withAlpha(50),
+              color: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
             ),
             child: _createToolbar(),
           ),

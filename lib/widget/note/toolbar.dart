@@ -2,6 +2,7 @@ import 'package:daymemory/extensions/hex_color_extension.dart';
 import 'package:daymemory/widget/common/components/tag_clips.dart';
 import 'package:daymemory/data/dtos/tag_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
@@ -184,7 +185,7 @@ class _ToolbarState extends State<Toolbar> {
             child: Container(
               margin: const EdgeInsets.only(top: 10, bottom: 10),
               height: double.infinity,
-              color: Colors.grey.withAlpha(50),
+              color: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
             ),
           ),
         ),
@@ -211,7 +212,7 @@ class _ToolbarState extends State<Toolbar> {
               child: Container(
                 margin: const EdgeInsets.only(top: 10, bottom: 10),
                 height: double.infinity,
-                color: Colors.grey.withAlpha(50),
+                color: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
               ),
             ),
           ),
@@ -238,7 +239,7 @@ class _ToolbarState extends State<Toolbar> {
               child: Container(
                 margin: const EdgeInsets.only(top: 10, bottom: 10),
                 height: double.infinity,
-                color: Colors.grey.withAlpha(50),
+                color: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
               ),
             ),
           ),
