@@ -20,10 +20,25 @@ class SelectOptionWidget extends StatelessWidget {
         title: Text(
           viewModel.title,
         ),
-        leading: NavButtonWidget(onPressed: viewModel.backCommand, icon: Icons.arrow_back_ios),
+        leading: viewModel.navType == OptionNavType.close
+            ? const SizedBox.shrink()
+            : NavButtonWidget(
+                onPressed: viewModel.backCommand,
+                icon: Icons.arrow_back_ios,
+              ),
         centerTitle: true,
         backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
         elevation: 0,
+        actions: viewModel.navType == OptionNavType.back
+            ? []
+            : [
+                Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    child: NavButtonWidget(
+                      onPressed: viewModel.backCommand,
+                      icon: Icons.close,
+                    )),
+              ],
       ),
       backgroundColor: Theme.of(context).extension<ThemeColors>()!.backgroundSecondaryColor,
       body: SafeArea(

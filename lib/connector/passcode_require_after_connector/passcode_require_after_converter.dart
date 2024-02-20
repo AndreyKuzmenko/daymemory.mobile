@@ -26,6 +26,7 @@ class PasscodeRequireAfterConverter extends ViewModelConverter<SelectOptionViewM
         ..title = locale.settings_passcode_require_after_page_title
         ..selectedOptionId = selectedOption
         ..explanation = locale.settings_passcode_require_after_explanation
+        ..navType = OptionNavType.back
         ..options = availableOptions
             .map((e) => OptionViewModel(
                   key: e.seconds.toString(),

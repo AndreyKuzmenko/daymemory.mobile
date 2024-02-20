@@ -30,6 +30,7 @@ class LanguageConverter extends ViewModelConverter<SelectOptionViewModel> {
       (b) => b
         ..title = locale.settings_select_language_title
         ..selectedOptionId = selectedLanguageCode
+        ..navType = OptionNavType.back
         ..options = availableLanguages
             .map((e) => OptionViewModel(
                   key: e.code,

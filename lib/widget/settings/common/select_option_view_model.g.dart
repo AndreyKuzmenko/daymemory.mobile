@@ -14,6 +14,8 @@ class _$SelectOptionViewModel extends SelectOptionViewModel {
   @override
   final String? explanation;
   @override
+  final OptionNavType navType;
+  @override
   final List<OptionViewModel> options;
   @override
   final TypedFunctionHolder<String> optionSelectorCommand;
@@ -28,6 +30,7 @@ class _$SelectOptionViewModel extends SelectOptionViewModel {
       {required this.title,
       required this.selectedOptionId,
       this.explanation,
+      required this.navType,
       required this.options,
       required this.optionSelectorCommand,
       required this.backCommand})
@@ -36,6 +39,8 @@ class _$SelectOptionViewModel extends SelectOptionViewModel {
         title, r'SelectOptionViewModel', 'title');
     BuiltValueNullFieldError.checkNotNull(
         selectedOptionId, r'SelectOptionViewModel', 'selectedOptionId');
+    BuiltValueNullFieldError.checkNotNull(
+        navType, r'SelectOptionViewModel', 'navType');
     BuiltValueNullFieldError.checkNotNull(
         options, r'SelectOptionViewModel', 'options');
     BuiltValueNullFieldError.checkNotNull(optionSelectorCommand,
@@ -60,6 +65,7 @@ class _$SelectOptionViewModel extends SelectOptionViewModel {
         title == other.title &&
         selectedOptionId == other.selectedOptionId &&
         explanation == other.explanation &&
+        navType == other.navType &&
         options == other.options &&
         optionSelectorCommand == other.optionSelectorCommand &&
         backCommand == other.backCommand;
@@ -71,6 +77,7 @@ class _$SelectOptionViewModel extends SelectOptionViewModel {
     _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jc(_$hash, selectedOptionId.hashCode);
     _$hash = $jc(_$hash, explanation.hashCode);
+    _$hash = $jc(_$hash, navType.hashCode);
     _$hash = $jc(_$hash, options.hashCode);
     _$hash = $jc(_$hash, optionSelectorCommand.hashCode);
     _$hash = $jc(_$hash, backCommand.hashCode);
@@ -84,6 +91,7 @@ class _$SelectOptionViewModel extends SelectOptionViewModel {
           ..add('title', title)
           ..add('selectedOptionId', selectedOptionId)
           ..add('explanation', explanation)
+          ..add('navType', navType)
           ..add('options', options)
           ..add('optionSelectorCommand', optionSelectorCommand)
           ..add('backCommand', backCommand))
@@ -107,6 +115,10 @@ class SelectOptionViewModelBuilder
   String? _explanation;
   String? get explanation => _$this._explanation;
   set explanation(String? explanation) => _$this._explanation = explanation;
+
+  OptionNavType? _navType;
+  OptionNavType? get navType => _$this._navType;
+  set navType(OptionNavType? navType) => _$this._navType = navType;
 
   List<OptionViewModel>? _options;
   List<OptionViewModel>? get options => _$this._options;
@@ -132,6 +144,7 @@ class SelectOptionViewModelBuilder
       _title = $v.title;
       _selectedOptionId = $v.selectedOptionId;
       _explanation = $v.explanation;
+      _navType = $v.navType;
       _options = $v.options;
       _optionSelectorCommand = $v.optionSelectorCommand;
       _backCommand = $v.backCommand;
@@ -162,6 +175,8 @@ class SelectOptionViewModelBuilder
             selectedOptionId: BuiltValueNullFieldError.checkNotNull(
                 selectedOptionId, r'SelectOptionViewModel', 'selectedOptionId'),
             explanation: explanation,
+            navType: BuiltValueNullFieldError.checkNotNull(
+                navType, r'SelectOptionViewModel', 'navType'),
             options: BuiltValueNullFieldError.checkNotNull(
                 options, r'SelectOptionViewModel', 'options'),
             optionSelectorCommand: BuiltValueNullFieldError.checkNotNull(

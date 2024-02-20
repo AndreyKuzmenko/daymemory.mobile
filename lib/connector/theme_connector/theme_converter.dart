@@ -26,6 +26,7 @@ class ThemeConverter extends ViewModelConverter<SelectOptionViewModel> {
       (b) => b
         ..title = locale.settings_select_theme_title
         ..selectedOptionId = selectedThemeMode.index.toString()
+        ..navType = OptionNavType.back
         ..options = [
           OptionViewModel(key: ThemeMode.system.index.toString(), value: locale.settings_theme_mode_system),
           OptionViewModel(key: ThemeMode.light.index.toString(), value: locale.settings_theme_mode_light),

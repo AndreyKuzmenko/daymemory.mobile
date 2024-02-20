@@ -25,6 +25,7 @@ class EditNotebookSortingConverter extends ViewModelConverter<SelectOptionViewMo
       (b) => b
         ..title = locale.edit_notebook_sortby_title
         ..selectedOptionId = sortingType.index.toString()
+        ..navType = OptionNavType.close
         ..options = [
           OptionViewModel(
             key: SortingType.byCreatedDate.index.toString(),

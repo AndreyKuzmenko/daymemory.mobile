@@ -126,7 +126,10 @@ class _EditNotebookWidgetState extends State<EditNotebookWidget> {
                       title: Text(
                         widget.viewModel.deleteButtonTitle,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                              height: 1,
+                              color: Theme.of(context).extension<ThemeColors>()!.errorColor,
+                            ),
                       ),
                       onPressed: (context) {
                         widget.viewModel.deleteCommand.command();
