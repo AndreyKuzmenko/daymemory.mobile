@@ -113,7 +113,7 @@ class _ReviewCategoryList extends StatelessWidget {
                     ),
                     child: Text(
                       items[index].title,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).extension<ThemeColors>()!.textPrimaryColor),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
                     )),
               ],
             ),

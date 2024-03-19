@@ -56,6 +56,10 @@ class _NoteImageGalleryWidgetState extends State<NoteImageGalleryWidget> {
                 color: Colors.black.withAlpha(180),
               ),
               child: CloseButton(
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
+                  iconColor: MaterialStateProperty.all(Colors.white),
+                ),
                 onPressed: () {
                   widget.viewModel.closeCommand.command();
                 },
