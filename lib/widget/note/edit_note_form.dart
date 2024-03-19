@@ -167,7 +167,6 @@ class _EditFormState extends State<EditNoteForm> {
             h2: DefaultTextBlockStyle(
                 defaultTextStyle.style.copyWith(
                   fontSize: 22,
-                  color: Colors.black,
                   height: 1.5,
                   fontWeight: FontWeight.w700,
                 ),
@@ -177,7 +176,6 @@ class _EditFormState extends State<EditNoteForm> {
             h3: DefaultTextBlockStyle(
                 defaultTextStyle.style.copyWith(
                   fontSize: 18,
-                  color: Colors.black,
                   height: 1.5,
                   fontWeight: FontWeight.w700,
                 ),
