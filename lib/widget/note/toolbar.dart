@@ -1,4 +1,3 @@
-import 'package:daymemory/extensions/hex_color_extension.dart';
 import 'package:daymemory/widget/common/components/tag_clips.dart';
 import 'package:daymemory/data/dtos/tag_dto.dart';
 import 'package:daymemory/data/dtos/note_dto.dart';
@@ -50,64 +49,73 @@ class _ToolbarState extends State<Toolbar> {
   bool _isTagVisible = false;
 
   Widget _createToolbar() {
+    final themeData = Theme.of(context);
+
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       //color: Colors.red,
-      child: QuillToolbar(
-        configurations: const QuillToolbarConfigurations(),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Wrap(
-            children: [
-              QuillToolbarToggleStyleButton(
-                attribute: Attribute.h3,
-                controller: widget.quillController,
-                options: QuillToolbarToggleStyleButtonOptions(
-                  tooltip: "",
-                  iconData: Icons.title,
-                  fillColor: HexColor.fromHex("#D9D9D9"),
+      child: Theme(
+        data: themeData.copyWith(
+          colorScheme: themeData.colorScheme.copyWith(
+            primary: Theme.of(context).extension<ThemeColors>()!.accentColor,
+          ),
+        ),
+        child: QuillToolbar(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Wrap(
+              children: [
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.h3,
+                  controller: widget.quillController,
+                  options: QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.title,
+                    //fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
                 ),
-              ),
-              QuillToolbarToggleStyleButton(
-                attribute: Attribute.bold,
-                controller: widget.quillController,
-                options: QuillToolbarToggleStyleButtonOptions(
-                  tooltip: "",
-                  iconData: Icons.format_bold,
-                  fillColor: HexColor.fromHex("#D9D9D9"),
+                const SizedBox(width: 5),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.bold,
+                  controller: widget.quillController,
+                  options: const QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_bold,
+                    //fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 0.6),
-              QuillToolbarToggleStyleButton(
-                attribute: Attribute.italic,
-                controller: widget.quillController,
-                options: QuillToolbarToggleStyleButtonOptions(
-                  tooltip: "",
-                  iconData: Icons.format_italic,
-                  fillColor: HexColor.fromHex("#D9D9D9"),
+                const SizedBox(width: 5),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.italic,
+                  controller: widget.quillController,
+                  options: const QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_italic,
+                    //fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 0.6),
-              QuillToolbarToggleStyleButton(
-                attribute: Attribute.ul,
-                controller: widget.quillController,
-                options: QuillToolbarToggleStyleButtonOptions(
-                  tooltip: "",
-                  iconData: Icons.format_list_bulleted_outlined,
-                  fillColor: HexColor.fromHex("#D9D9D9"),
+                const SizedBox(width: 5),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.ul,
+                  controller: widget.quillController,
+                  options: const QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_list_bulleted_outlined,
+                    //fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 0.6),
-              QuillToolbarToggleStyleButton(
-                attribute: Attribute.ol,
-                controller: widget.quillController,
-                options: QuillToolbarToggleStyleButtonOptions(
-                  tooltip: "",
-                  iconData: Icons.format_list_numbered,
-                  fillColor: HexColor.fromHex("#D9D9D9"),
+                const SizedBox(width: 5),
+                QuillToolbarToggleStyleButton(
+                  attribute: Attribute.ol,
+                  controller: widget.quillController,
+                  options: const QuillToolbarToggleStyleButtonOptions(
+                    tooltip: "",
+                    iconData: Icons.format_list_numbered,
+                    //fillColor: HexColor.fromHex("#D9D9D9"),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

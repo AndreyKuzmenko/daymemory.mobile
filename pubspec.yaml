@@ -41,8 +41,8 @@ dependencies:
   wakelock_web: ^0.4.0
   flutter_inappwebview: ^5.8.0
   flutter_html: ^3.0.0-beta.2
-  flutter_quill: ^9.3.1
-  flutter_quill_extensions: ^9.2.12
+  flutter_quill: ^9.3.3
+  flutter_quill_extensions: ^9.3.3
   vsc_quill_delta_to_html: ^1.0.4
   #delta_markdown: ^0.8.0
   tuple: ^2.0.2
