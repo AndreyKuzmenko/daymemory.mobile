@@ -8,6 +8,8 @@ abstract class ReviewsState implements Built<ReviewsState, ReviewsStateBuilder> 
 
   bool get isLoading;
 
+  DateTime? get lastLoadDate;
+
   ReviewsState._();
 
   factory ReviewsState([void Function(ReviewsStateBuilder) updates]) = _$ReviewsState;
@@ -15,6 +17,7 @@ abstract class ReviewsState implements Built<ReviewsState, ReviewsStateBuilder> 
   factory ReviewsState.initial() => ReviewsState(
         (b) => b
           ..isLoading = false
+          ..lastLoadDate = null
           ..items = [],
       );
 }

@@ -23,7 +23,9 @@ class LoadReviewsAction implements ILoggingAction {
 class ReviewsLoadedAction implements ILoggingAction {
   final List<ReviewCategoryDto> items;
 
-  ReviewsLoadedAction(this.items);
+  final DateTime lastLoadDate;
+
+  ReviewsLoadedAction(this.items, this.lastLoadDate);
 
   @override
   String toLogString() {

@@ -1,4 +1,5 @@
 import 'package:daymemory/data/dtos/review_category_dto.dart';
+import 'package:daymemory/extensions/date_time.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/reviews_action.dart';
 import 'package:daymemory/redux/state/states.dart';
@@ -40,7 +41,9 @@ class ReviewsMiddleware implements MiddlewareClass<AppState> {
     if (action is LoadReviewsAction) {
       await _loadReviews(action, store.state.settingsState.reviewSettings, store.dispatch);
     } else if (action is AppResumedAction) {
-      await _loadReviews(action, store.state.settingsState.reviewSettings, store.dispatch);
+      if (store.state.reviewsState.lastLoadDate != null && !DateTime.now().toUtc().isSameDate(store.state.reviewsState.lastLoadDate!)) {
+        await _loadReviews(action, store.state.settingsState.reviewSettings, store.dispatch);
+      }
     }
   }
 
@@ -106,7 +109,7 @@ class ReviewsMiddleware implements MiddlewareClass<AppState> {
       }
     }
 
-    dispatch(ReviewsLoadedAction(result));
+    dispatch(ReviewsLoadedAction(result, DateTime.now().toUtc()));
     dispatch(const ReviewsIsLoadingAction(isLoading: false));
   }
 

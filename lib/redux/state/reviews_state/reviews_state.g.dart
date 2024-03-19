@@ -11,11 +11,15 @@ class _$ReviewsState extends ReviewsState {
   final List<ReviewCategoryDto> items;
   @override
   final bool isLoading;
+  @override
+  final DateTime? lastLoadDate;
 
   factory _$ReviewsState([void Function(ReviewsStateBuilder)? updates]) =>
       (new ReviewsStateBuilder()..update(updates))._build();
 
-  _$ReviewsState._({required this.items, required this.isLoading}) : super._() {
+  _$ReviewsState._(
+      {required this.items, required this.isLoading, this.lastLoadDate})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(items, r'ReviewsState', 'items');
     BuiltValueNullFieldError.checkNotNull(
         isLoading, r'ReviewsState', 'isLoading');
@@ -33,7 +37,8 @@ class _$ReviewsState extends ReviewsState {
     if (identical(other, this)) return true;
     return other is ReviewsState &&
         items == other.items &&
-        isLoading == other.isLoading;
+        isLoading == other.isLoading &&
+        lastLoadDate == other.lastLoadDate;
   }
 
   @override
@@ -41,6 +46,7 @@ class _$ReviewsState extends ReviewsState {
     var _$hash = 0;
     _$hash = $jc(_$hash, items.hashCode);
     _$hash = $jc(_$hash, isLoading.hashCode);
+    _$hash = $jc(_$hash, lastLoadDate.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -49,7 +55,8 @@ class _$ReviewsState extends ReviewsState {
   String toString() {
     return (newBuiltValueToStringHelper(r'ReviewsState')
           ..add('items', items)
-          ..add('isLoading', isLoading))
+          ..add('isLoading', isLoading)
+          ..add('lastLoadDate', lastLoadDate))
         .toString();
   }
 }
@@ -66,6 +73,11 @@ class ReviewsStateBuilder
   bool? get isLoading => _$this._isLoading;
   set isLoading(bool? isLoading) => _$this._isLoading = isLoading;
 
+  DateTime? _lastLoadDate;
+  DateTime? get lastLoadDate => _$this._lastLoadDate;
+  set lastLoadDate(DateTime? lastLoadDate) =>
+      _$this._lastLoadDate = lastLoadDate;
+
   ReviewsStateBuilder();
 
   ReviewsStateBuilder get _$this {
@@ -73,6 +85,7 @@ class ReviewsStateBuilder
     if ($v != null) {
       _items = $v.items;
       _isLoading = $v.isLoading;
+      _lastLoadDate = $v.lastLoadDate;
       _$v = null;
     }
     return this;
@@ -98,7 +111,8 @@ class ReviewsStateBuilder
             items: BuiltValueNullFieldError.checkNotNull(
                 items, r'ReviewsState', 'items'),
             isLoading: BuiltValueNullFieldError.checkNotNull(
-                isLoading, r'ReviewsState', 'isLoading'));
+                isLoading, r'ReviewsState', 'isLoading'),
+            lastLoadDate: lastLoadDate);
     replace(_$result);
     return _$result;
   }

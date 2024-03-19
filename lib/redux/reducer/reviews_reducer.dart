@@ -18,7 +18,9 @@ Reducer<ReviewsState> get reviewsReducer {
 
 ReviewsState _reviewsLoadedAction(ReviewsState state, ReviewsLoadedAction action) {
   return state.rebuild(
-    (b) => b..items = action.items,
+    (b) => b
+      ..items = action.items
+      ..lastLoadDate = action.lastLoadDate,
   );
 }
 
