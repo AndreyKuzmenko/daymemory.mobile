@@ -29,6 +29,7 @@ class EditTagsConverter extends ViewModelConverter<TagsViewModel> {
       ..addTagCommand = FunctionHolder(() {
         dispatch(AddTagAction());
       })
+      ..addTagButton = locale.edit_tags_add_tag
       ..saveCommand = FunctionHolder(() {
         dispatch(SaveTagsAction());
       })
@@ -53,7 +54,7 @@ class EditTagsConverter extends ViewModelConverter<TagsViewModel> {
           ..deleteCommand = FunctionHolder(() {
             dispatch(RemoveTagAction(tagId: item.id));
           })
-          ..placeholder = "Enter a tag"
+          ..placeholder = locale.edit_tags_placeholder
           ..textChangedCommand = TypedFunctionHolder<String>((data) {
             dispatch(ChangeTagAction(tagId: item.id, text: data));
           })))

@@ -13,6 +13,8 @@ abstract class TagsViewModel implements Built<TagsViewModel, TagsViewModelBuilde
 
   String get title;
 
+  String get addTagButton;
+
   BuiltList<TagFieldViewModel> get items;
 
   FunctionHolder get addTagCommand;

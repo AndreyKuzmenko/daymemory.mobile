@@ -135,6 +135,9 @@
     "settings_select_language_title": "Select a language",
 
     "edit_tags_title": "Tags",
+    "edit_tags_add_tag": "Add tag",
+    "edit_tags_placeholder": "Enter a tag",
+
     "tag_family": "Family",
     "tag_work": "Work",
     "tag_life": "Life",
@@ -167,6 +170,10 @@
     "edit_notebook_new_title": "New notebook",
     "edit_notebook_edit_title": "Edit notebook",
     "edit_notebook_title_placeholder": "Enter title",
+
+    "edit_tag_new_title": "New tag",
+    "edit_tag_edit_title": "Edit tag",
+    "edit_tag_title_placeholder": "Enter title",
 
     "edit_notebook_sortby_option": "Sort notes by",
     "edit_notebook_sortby_title": "Sort by",

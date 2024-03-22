@@ -218,6 +218,15 @@ class NavigateToNewNotebookAction implements ILoggingAction {
   }
 }
 
+class NavigateToNewTagAction implements ILoggingAction {
+  NavigateToNewTagAction();
+
+  @override
+  String toLogString() {
+    return 'Navigate To New Tag Action';
+  }
+}
+
 class NavigateToEditNotebookAction implements ILoggingAction {
   final String notebookId;
 

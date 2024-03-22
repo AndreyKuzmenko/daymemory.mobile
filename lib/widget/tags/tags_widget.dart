@@ -82,13 +82,19 @@ class _TagsWidgetState extends State<TagsWidget> {
           },
         ),
         Container(
-          alignment: Alignment.centerLeft,
-          child: TextButton(
+          margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+          alignment: Alignment.center,
+          child: TextButton.icon(
             onPressed: () async {
               FocusScope.of(context).unfocus();
               widget.viewModel.addTagCommand.command();
             },
-            child: Container(padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10), child: const Text("+ Add tag")),
+            icon: const Icon(Icons.add),
+            label: Text(widget.viewModel.addTagButton),
+            // child: Container(
+            //   padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            //   child: Text(widget.viewModel.addTagButton),
+            // ),
           ),
         ),
       ],

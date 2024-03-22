@@ -4,6 +4,7 @@ import 'package:daymemory/redux/state/account_state/account_state.dart';
 import 'package:daymemory/redux/state/answer_question_state/answer_question_state.dart';
 import 'package:daymemory/redux/state/device_state/device_state.dart';
 import 'package:daymemory/redux/state/edit_notebook_state/edit_notebook_state.dart';
+import 'package:daymemory/redux/state/edit_tag_state/edit_tag_state.dart';
 import 'package:daymemory/redux/state/face_id_state/biometric_auth_state.dart';
 import 'package:daymemory/redux/state/login_state/login_state.dart';
 import 'package:daymemory/redux/state/note_image_gallery_state/note_image_gallery_state.dart';
@@ -34,6 +35,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   NotebooksState get notebooksState;
 
   EditNotebookState get editNotebookState;
+
+  EditTagState get editTagState;
 
   SelectedMenuItemState get selectedMenuItemState;
 
@@ -93,6 +96,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..selectedMenuItemState = SelectedMenuItemState.initial().toBuilder()
     ..editNotebookState = EditNotebookState.initial().toBuilder()
     ..reviewsState = ReviewsState.initial().toBuilder()
+    ..editTagState = EditTagState.initial().toBuilder()
     ..noteState = NoteState.initial().toBuilder()
     ..createPinState = CreatePinState.initial().toBuilder()
     ..enterPinState = EnterPinState.initial().toBuilder()

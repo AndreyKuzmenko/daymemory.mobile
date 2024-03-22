@@ -18,6 +18,7 @@ abstract class RouteDirection {
   static const String newNotebook = 'newNotebook';
   static const String editNotebook = 'editNotebook';
   static const String selectNotebook = 'select-notebook';
+  static const String newTag = 'newTag';
   static const String newQuestionList = 'newQuestionList';
   static const String editQuestionList = 'editQuestionList';
   static const String answerQuestionList = 'answerQuestionList';

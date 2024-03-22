@@ -14,6 +14,8 @@ class _$TagsViewModel extends TagsViewModel {
   @override
   final String title;
   @override
+  final String addTagButton;
+  @override
   final BuiltList<TagFieldViewModel> items;
   @override
   final FunctionHolder addTagCommand;
@@ -31,6 +33,7 @@ class _$TagsViewModel extends TagsViewModel {
       {this.tagId,
       required this.isSaving,
       required this.title,
+      required this.addTagButton,
       required this.items,
       required this.addTagCommand,
       required this.reorderCommand,
@@ -40,6 +43,8 @@ class _$TagsViewModel extends TagsViewModel {
     BuiltValueNullFieldError.checkNotNull(
         isSaving, r'TagsViewModel', 'isSaving');
     BuiltValueNullFieldError.checkNotNull(title, r'TagsViewModel', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        addTagButton, r'TagsViewModel', 'addTagButton');
     BuiltValueNullFieldError.checkNotNull(items, r'TagsViewModel', 'items');
     BuiltValueNullFieldError.checkNotNull(
         addTagCommand, r'TagsViewModel', 'addTagCommand');
@@ -65,6 +70,7 @@ class _$TagsViewModel extends TagsViewModel {
         tagId == other.tagId &&
         isSaving == other.isSaving &&
         title == other.title &&
+        addTagButton == other.addTagButton &&
         items == other.items &&
         addTagCommand == other.addTagCommand &&
         reorderCommand == other.reorderCommand &&
@@ -78,6 +84,7 @@ class _$TagsViewModel extends TagsViewModel {
     _$hash = $jc(_$hash, tagId.hashCode);
     _$hash = $jc(_$hash, isSaving.hashCode);
     _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, addTagButton.hashCode);
     _$hash = $jc(_$hash, items.hashCode);
     _$hash = $jc(_$hash, addTagCommand.hashCode);
     _$hash = $jc(_$hash, reorderCommand.hashCode);
@@ -93,6 +100,7 @@ class _$TagsViewModel extends TagsViewModel {
           ..add('tagId', tagId)
           ..add('isSaving', isSaving)
           ..add('title', title)
+          ..add('addTagButton', addTagButton)
           ..add('items', items)
           ..add('addTagCommand', addTagCommand)
           ..add('reorderCommand', reorderCommand)
@@ -117,6 +125,10 @@ class TagsViewModelBuilder
   String? _title;
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
+
+  String? _addTagButton;
+  String? get addTagButton => _$this._addTagButton;
+  set addTagButton(String? addTagButton) => _$this._addTagButton = addTagButton;
 
   ListBuilder<TagFieldViewModel>? _items;
   ListBuilder<TagFieldViewModel> get items =>
@@ -152,6 +164,7 @@ class TagsViewModelBuilder
       _tagId = $v.tagId;
       _isSaving = $v.isSaving;
       _title = $v.title;
+      _addTagButton = $v.addTagButton;
       _items = $v.items.toBuilder();
       _addTagCommand = $v.addTagCommand;
       _reorderCommand = $v.reorderCommand;
@@ -186,6 +199,8 @@ class TagsViewModelBuilder
                   isSaving, r'TagsViewModel', 'isSaving'),
               title: BuiltValueNullFieldError.checkNotNull(
                   title, r'TagsViewModel', 'title'),
+              addTagButton: BuiltValueNullFieldError.checkNotNull(
+                  addTagButton, r'TagsViewModel', 'addTagButton'),
               items: items.build(),
               addTagCommand: BuiltValueNullFieldError.checkNotNull(
                   addTagCommand, r'TagsViewModel', 'addTagCommand'),

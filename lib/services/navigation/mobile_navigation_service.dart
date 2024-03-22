@@ -1,4 +1,5 @@
 import 'package:daymemory/connector/edit_notebook_sorting_connector/edit_notebook_sorting_connector.dart';
+import 'package:daymemory/connector/edit_tag_connector/edit_tag_connector.dart';
 import 'package:daymemory/connector/encrytion_key_settings_connector/encrytion_key_settings_connector.dart';
 import 'package:daymemory/connector/note_image_gallery_connector/note_image_gallery_connector.dart';
 import 'package:daymemory/connector/note_options_connector/note_options_connector.dart';
@@ -173,6 +174,15 @@ class MobileNavigationService extends INavigationService {
     showCupertinoModalBottomSheet(
       context: context!,
       builder: (context) => const EditNotebookConnector(notebookId: null),
+    );
+  }
+
+  @override
+  Future<dynamic>? pushNamedNewTag() async {
+    final context = routeDefinitionService.key.currentState?.context;
+    showCupertinoModalBottomSheet(
+      context: context!,
+      builder: (context) => const EditTagConnector(tagId: null),
     );
   }
 

@@ -133,6 +133,9 @@
     "settings_select_language_title": "Виберіть мову",
 
     "edit_tags_title": "Теги",
+    "edit_tags_add_tag": "Додати тег",
+    "edit_tags_placeholder": "Введіть назву",
+
     "tag_family": "Сім'я",
     "tag_work": "Робота",
     "tag_life": "Життя",
@@ -165,6 +168,10 @@
     "edit_notebook_new_title": "Новий блокнот",
     "edit_notebook_edit_title": "Редагування блокноту",
     "edit_notebook_title_placeholder": "Введіть заголовок",
+
+    "edit_tag_new_title": "Новий тег",
+    "edit_tag_edit_title": "Редагування тегу",
+    "edit_tag_title_placeholder": "Введіть назву",
 
     "edit_notebook_sortby_option": "Сортування нотаток",
     "edit_notebook_sortby_title": "Сортування нотаток",

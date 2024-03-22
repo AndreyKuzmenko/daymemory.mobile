@@ -5,6 +5,7 @@ import 'package:daymemory/connector/account/signup_connector.dart';
 import 'package:daymemory/connector/account_settings_connector/account_settings_connector.dart';
 import 'package:daymemory/connector/edit_notebook_connector/edit_notebook_connector.dart';
 import 'package:daymemory/connector/edit_notebook_sorting_connector/edit_notebook_sorting_connector.dart';
+import 'package:daymemory/connector/edit_tag_connector/edit_tag_connector.dart';
 import 'package:daymemory/connector/edit_tags_connector/edit_tags_connector.dart';
 import 'package:daymemory/connector/encrytion_key_settings_connector/encrytion_key_settings_connector.dart';
 import 'package:daymemory/connector/note_image_gallery_connector/note_image_gallery_connector.dart';
@@ -62,6 +63,9 @@ class GenericRouteDefinitionService extends IRouteDefinitionService {
 
       case RouteDirection.newNotebook:
         return showDialogPopup(const EditNotebookConnector(notebookId: null), settings, Colors.black.withAlpha(100));
+
+      case RouteDirection.newTag:
+        return showDialogPopup(const EditTagConnector(tagId: null), settings, Colors.black.withAlpha(100));
 
       case RouteDirection.selectNotebook:
         return showDialogPopup(const SelectNotebookConnector(), settings, Colors.black.withAlpha(100));

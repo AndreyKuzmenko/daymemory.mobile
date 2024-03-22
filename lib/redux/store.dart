@@ -6,6 +6,7 @@ import 'package:daymemory/redux/middleware/notebooks_middleware.dart';
 import 'package:daymemory/redux/middleware/reviews_middleware.dart';
 import 'package:daymemory/redux/middleware/sync_middleware.dart';
 import 'package:daymemory/redux/middleware/system_middleware.dart';
+import 'package:daymemory/redux/middleware/tag_middleware.dart';
 import 'package:daymemory/redux/middleware/tags_edit_middleware.dart';
 import 'package:daymemory/redux/middleware/tags_middleware.dart';
 import 'package:daymemory/redux/middleware/initialization_middleware.dart';
@@ -26,6 +27,7 @@ import 'package:daymemory/redux/reducer/notebooks_reducer.dart';
 import 'package:daymemory/redux/reducer/reviews_reducer.dart';
 import 'package:daymemory/redux/reducer/selected_menu_item_reducer.dart';
 import 'package:daymemory/redux/reducer/sync_reducer.dart';
+import 'package:daymemory/redux/reducer/tag_reducer.dart';
 import 'package:daymemory/redux/reducer/tags_reducer.dart';
 import 'package:daymemory/redux/reducer/note_reducers.dart';
 import 'package:daymemory/redux/reducer/notes_reducer.dart';
@@ -88,6 +90,10 @@ IStoreService initStore() {
           ).toBuilder()
           ..editNotebookState = notebookReducer(
             state.editNotebookState,
+            action,
+          ).toBuilder()
+          ..editTagState = tagReducer(
+            state.editTagState,
             action,
           ).toBuilder()
           ..selectedMenuItemState = selectedMenuItemReducer(
@@ -220,6 +226,13 @@ IStoreService initStore() {
         ).call,
         NotebookMiddleware(
           notebookService: ServiceLocator.getIt.get(),
+          dialogService: ServiceLocator.getIt.get(),
+          permissionService: ServiceLocator.getIt.get(),
+          contextService: ServiceLocator.getIt.get(),
+          settingsService: ServiceLocator.getIt.get(),
+        ).call,
+        TagMiddleware(
+          tagService: ServiceLocator.getIt.get(),
           dialogService: ServiceLocator.getIt.get(),
           permissionService: ServiceLocator.getIt.get(),
           contextService: ServiceLocator.getIt.get(),

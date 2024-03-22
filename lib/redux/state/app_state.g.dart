@@ -24,6 +24,8 @@ class _$AppState extends AppState {
   @override
   final EditNotebookState editNotebookState;
   @override
+  final EditTagState editTagState;
+  @override
   final SelectedMenuItemState selectedMenuItemState;
   @override
   final ReviewsState reviewsState;
@@ -72,6 +74,7 @@ class _$AppState extends AppState {
       required this.noteImageGalleryState,
       required this.notebooksState,
       required this.editNotebookState,
+      required this.editTagState,
       required this.selectedMenuItemState,
       required this.reviewsState,
       required this.questionListsState,
@@ -107,6 +110,8 @@ class _$AppState extends AppState {
         notebooksState, r'AppState', 'notebooksState');
     BuiltValueNullFieldError.checkNotNull(
         editNotebookState, r'AppState', 'editNotebookState');
+    BuiltValueNullFieldError.checkNotNull(
+        editTagState, r'AppState', 'editTagState');
     BuiltValueNullFieldError.checkNotNull(
         selectedMenuItemState, r'AppState', 'selectedMenuItemState');
     BuiltValueNullFieldError.checkNotNull(
@@ -158,6 +163,7 @@ class _$AppState extends AppState {
         noteImageGalleryState == other.noteImageGalleryState &&
         notebooksState == other.notebooksState &&
         editNotebookState == other.editNotebookState &&
+        editTagState == other.editTagState &&
         selectedMenuItemState == other.selectedMenuItemState &&
         reviewsState == other.reviewsState &&
         questionListsState == other.questionListsState &&
@@ -189,6 +195,7 @@ class _$AppState extends AppState {
     _$hash = $jc(_$hash, noteImageGalleryState.hashCode);
     _$hash = $jc(_$hash, notebooksState.hashCode);
     _$hash = $jc(_$hash, editNotebookState.hashCode);
+    _$hash = $jc(_$hash, editTagState.hashCode);
     _$hash = $jc(_$hash, selectedMenuItemState.hashCode);
     _$hash = $jc(_$hash, reviewsState.hashCode);
     _$hash = $jc(_$hash, questionListsState.hashCode);
@@ -222,6 +229,7 @@ class _$AppState extends AppState {
           ..add('noteImageGalleryState', noteImageGalleryState)
           ..add('notebooksState', notebooksState)
           ..add('editNotebookState', editNotebookState)
+          ..add('editTagState', editTagState)
           ..add('selectedMenuItemState', selectedMenuItemState)
           ..add('reviewsState', reviewsState)
           ..add('questionListsState', questionListsState)
@@ -295,6 +303,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$this._editNotebookState ??= new EditNotebookStateBuilder();
   set editNotebookState(EditNotebookStateBuilder? editNotebookState) =>
       _$this._editNotebookState = editNotebookState;
+
+  EditTagStateBuilder? _editTagState;
+  EditTagStateBuilder get editTagState =>
+      _$this._editTagState ??= new EditTagStateBuilder();
+  set editTagState(EditTagStateBuilder? editTagState) =>
+      _$this._editTagState = editTagState;
 
   SelectedMenuItemStateBuilder? _selectedMenuItemState;
   SelectedMenuItemStateBuilder get selectedMenuItemState =>
@@ -413,6 +427,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _noteImageGalleryState = $v.noteImageGalleryState.toBuilder();
       _notebooksState = $v.notebooksState.toBuilder();
       _editNotebookState = $v.editNotebookState.toBuilder();
+      _editTagState = $v.editTagState.toBuilder();
       _selectedMenuItemState = $v.selectedMenuItemState.toBuilder();
       _reviewsState = $v.reviewsState.toBuilder();
       _questionListsState = $v.questionListsState.toBuilder();
@@ -463,6 +478,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               noteImageGalleryState: noteImageGalleryState.build(),
               notebooksState: notebooksState.build(),
               editNotebookState: editNotebookState.build(),
+              editTagState: editTagState.build(),
               selectedMenuItemState: selectedMenuItemState.build(),
               reviewsState: reviewsState.build(),
               questionListsState: questionListsState.build(),
@@ -501,6 +517,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         notebooksState.build();
         _$failedField = 'editNotebookState';
         editNotebookState.build();
+        _$failedField = 'editTagState';
+        editTagState.build();
         _$failedField = 'selectedMenuItemState';
         selectedMenuItemState.build();
         _$failedField = 'reviewsState';

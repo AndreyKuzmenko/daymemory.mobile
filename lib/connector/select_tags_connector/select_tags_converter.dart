@@ -35,7 +35,7 @@ class SelectTagsConverter extends ViewModelConverter<SelectTagsViewModel> {
         }
       })
       ..newTagCommand = FunctionHolder(() {
-        //dispatch(NavigateToNewNotebookAction());
+        dispatch(NavigateToNewTagAction());
       })
       ..newTagMenuOption = locale.new_tag
       ..selectedTags = selectedTags
