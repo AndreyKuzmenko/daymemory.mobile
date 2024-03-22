@@ -89,6 +89,10 @@ class SettingsConverter extends ViewModelConverter<SettingsViewModel> {
       ..clearDataCommand = FunctionHolder(() {
         dispatch(ClearDeviceDataAction());
       })
+      ..clearCacheOptionTitle = locale.settings_clear_cache
+      ..clearCacheCommand = FunctionHolder(() {
+        dispatch(ClearCacheAction());
+      })
       ..selectLanguageOptionTitle = locale.settings_language_option
       ..selectedLanguage = selectedLanguage
       ..languageSelectorCommand = FunctionHolder(() => dispatch((NavigateToLanguageSelectionAction())))

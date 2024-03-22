@@ -48,6 +48,7 @@
     "settings_encryption_view_key": "View Encryption Key",
     "settings_encryption_create_key": "Enable Encryption",
     "settings_clear_data": "Clear all data",
+    "settings_clear_cache": "Clear cache",
     "settings_tags_option": "Tags",
     "settings_syncing_in_progress": "Syncing...",
     "settings_last_sync_time": "Last sync time:",
@@ -201,6 +202,9 @@
     "open_settings": "Open Settings",
     "locations_blocked_title": "Can't track location",
     "locations_blocked_message": "Please open Settings and allow usage of locations.",
+
+    "clear_cache_title": "Clear cache",
+    "clear_cache_message": "The cache has been cleared.",
     
     "biometric_blocked_title": "Can't use biometric",
     "biometric_blocked_message": "Please open Settings and allow usage of biometric.",

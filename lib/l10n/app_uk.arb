@@ -48,6 +48,7 @@
     "settings_encryption_view_key": "Переглянути ключ",
     "settings_encryption_create_key": "Включити шифрування",
     "settings_clear_data": "Видалити дані",
+    "settings_clear_cache": "Очистити кеш",
     "settings_tags_option": "Теги",
     "settings_syncing_in_progress": "Синхронізую...",
     "settings_last_sync_time": "Час останнього збереження:",
@@ -200,6 +201,9 @@
     "open_settings": "Відкрити налаштування",
     "locations_blocked_title": "Неможливо визначити локацію",
     "locations_blocked_message": "Відкрийте Налаштування та дозвольте використання локацій.",
+
+    "clear_cache_title": "Очистка кешу",
+    "clear_cache_message": "Кеш був успішно очищений",
     
     "biometric_blocked_title": "Неможливо використати біометрику",
     "biometric_blocked_message": "Відкрийте Налаштування та дозвольте використання біометрики.",

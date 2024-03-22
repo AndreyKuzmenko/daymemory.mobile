@@ -12,6 +12,13 @@ abstract class IDialogService {
     required String message,
   });
 
+  ShowInfoDialogAction openDialogAction(
+    Function(dynamic) dispatch, {
+    required Function() closeCommand,
+    required String title,
+    required String message,
+  });
+
   ShowInfoDialogAction prepareSomethingWentWrongDialogAction(
     Function(dynamic) dispatch, {
     String? errorMessage,
@@ -71,6 +78,29 @@ class DialogService implements IDialogService {
           () {
             dispatch(CloseDialogAction());
             navigateCommand.call();
+          },
+        ),
+    );
+    return ShowInfoDialogAction(dialog);
+  }
+
+  @override
+  ShowInfoDialogAction openDialogAction(
+    Function(dynamic) dispatch, {
+    required Function() closeCommand,
+    required String title,
+    required String message,
+  }) {
+    final dialog = DialogState(
+      (b) => b
+        ..title = title
+        ..reverseButtons = false
+        ..description = message
+        ..positiveTitle = _locale?.ok
+        ..positive = FunctionHolder(
+          () {
+            dispatch(CloseDialogAction());
+            closeCommand.call();
           },
         ),
     );

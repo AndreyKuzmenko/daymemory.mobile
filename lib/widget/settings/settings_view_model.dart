@@ -82,6 +82,10 @@ abstract class SettingsViewModel implements Built<SettingsViewModel, SettingsVie
 
   String get clearDataExplanation;
 
+  String get clearCacheOptionTitle;
+
+  FunctionHolder get clearCacheCommand;
+
   FunctionHolder get backCommand;
 
   SettingsViewModel._();

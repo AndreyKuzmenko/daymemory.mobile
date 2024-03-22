@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:daymemory/redux/action/account_action.dart';
 import 'package:daymemory/redux/action/actions.dart';
 import 'package:daymemory/redux/action/face_id_action.dart';
@@ -21,6 +23,7 @@ import 'package:permission_handler/permission_handler.dart';
 // ignore: depend_on_referenced_packages
 import 'package:redux/redux.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:video_compress/video_compress.dart';
 
 class SettingsMiddleware implements MiddlewareClass<AppState> {
   final ISettingsService settingsService;
@@ -55,6 +58,8 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
 
     if (action is ClearDeviceDataAction) {
       await _clearAllData(action, store.dispatch);
+    } else if (action is ClearCacheAction) {
+      await _clearCache(action, store.dispatch);
     } else if (action is SettingsSelectThemeModeAction) {
       await _selectThemeMode(store, action);
     }
@@ -224,6 +229,19 @@ class SettingsMiddleware implements MiddlewareClass<AppState> {
 
   Future<void> _sendEmailToDevelopers(Function(dynamic action) dispatch) async {
     await emailSenderService.sendEmail(configService.settings.devContactEmail, "Day Memory", "");
+  }
+
+  Future<void> _clearCache(ClearCacheAction action, Function(dynamic action) dispatch) async {
+    if (Platform.isIOS || Platform.isAndroid) {
+      await VideoCompress.deleteAllCache();
+    }
+
+    dispatch(dialogService.openDialogAction(
+      dispatch,
+      title: _locale!.clear_cache_title,
+      message: _locale!.clear_cache_message,
+      closeCommand: () async => {},
+    ));
   }
 
   Future<void> _clearAllData(ClearDeviceDataAction action, Function(dynamic action) dispatch) async {

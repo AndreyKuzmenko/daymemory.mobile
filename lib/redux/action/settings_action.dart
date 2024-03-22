@@ -150,6 +150,13 @@ class ClearDeviceDataAction implements ILoggingAction {
   }
 }
 
+class ClearCacheAction implements ILoggingAction {
+  @override
+  String toLogString() {
+    return 'Clear Cache Action';
+  }
+}
+
 class SendEmailToDevelopersAction implements ILoggingAction {
   @override
   String toLogString() {

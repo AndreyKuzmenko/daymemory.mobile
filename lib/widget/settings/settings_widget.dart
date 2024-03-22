@@ -233,6 +233,20 @@ class SettingsWidget extends StatelessWidget {
               tiles: <SettingsTile>[
                 SettingsTile(
                   title: Text(
+                    viewModel.clearCacheOptionTitle,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
+                  ),
+                  leading: const Icon(Icons.cached_outlined),
+                  onPressed: (context) {
+                    viewModel.clearCacheCommand.command();
+                  },
+                ),
+              ],
+            ),
+            SettingsSection(
+              tiles: <SettingsTile>[
+                SettingsTile(
+                  title: Text(
                     viewModel.privacyPolicyOptionTitle,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1),
                   ),

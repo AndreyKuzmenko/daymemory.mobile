@@ -86,6 +86,10 @@ class _$SettingsViewModel extends SettingsViewModel {
   @override
   final String clearDataExplanation;
   @override
+  final String clearCacheOptionTitle;
+  @override
+  final FunctionHolder clearCacheCommand;
+  @override
   final FunctionHolder backCommand;
 
   factory _$SettingsViewModel(
@@ -132,6 +136,8 @@ class _$SettingsViewModel extends SettingsViewModel {
       required this.clearDataOptionTitle,
       required this.clearDataCommand,
       required this.clearDataExplanation,
+      required this.clearCacheOptionTitle,
+      required this.clearCacheCommand,
       required this.backCommand})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(title, r'SettingsViewModel', 'title');
@@ -210,6 +216,10 @@ class _$SettingsViewModel extends SettingsViewModel {
     BuiltValueNullFieldError.checkNotNull(
         clearDataExplanation, r'SettingsViewModel', 'clearDataExplanation');
     BuiltValueNullFieldError.checkNotNull(
+        clearCacheOptionTitle, r'SettingsViewModel', 'clearCacheOptionTitle');
+    BuiltValueNullFieldError.checkNotNull(
+        clearCacheCommand, r'SettingsViewModel', 'clearCacheCommand');
+    BuiltValueNullFieldError.checkNotNull(
         backCommand, r'SettingsViewModel', 'backCommand');
   }
 
@@ -264,6 +274,8 @@ class _$SettingsViewModel extends SettingsViewModel {
         clearDataOptionTitle == other.clearDataOptionTitle &&
         clearDataCommand == other.clearDataCommand &&
         clearDataExplanation == other.clearDataExplanation &&
+        clearCacheOptionTitle == other.clearCacheOptionTitle &&
+        clearCacheCommand == other.clearCacheCommand &&
         backCommand == other.backCommand;
   }
 
@@ -309,6 +321,8 @@ class _$SettingsViewModel extends SettingsViewModel {
     _$hash = $jc(_$hash, clearDataOptionTitle.hashCode);
     _$hash = $jc(_$hash, clearDataCommand.hashCode);
     _$hash = $jc(_$hash, clearDataExplanation.hashCode);
+    _$hash = $jc(_$hash, clearCacheOptionTitle.hashCode);
+    _$hash = $jc(_$hash, clearCacheCommand.hashCode);
     _$hash = $jc(_$hash, backCommand.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -356,6 +370,8 @@ class _$SettingsViewModel extends SettingsViewModel {
           ..add('clearDataOptionTitle', clearDataOptionTitle)
           ..add('clearDataCommand', clearDataCommand)
           ..add('clearDataExplanation', clearDataExplanation)
+          ..add('clearCacheOptionTitle', clearCacheOptionTitle)
+          ..add('clearCacheCommand', clearCacheCommand)
           ..add('backCommand', backCommand))
         .toString();
   }
@@ -560,6 +576,16 @@ class SettingsViewModelBuilder
   set clearDataExplanation(String? clearDataExplanation) =>
       _$this._clearDataExplanation = clearDataExplanation;
 
+  String? _clearCacheOptionTitle;
+  String? get clearCacheOptionTitle => _$this._clearCacheOptionTitle;
+  set clearCacheOptionTitle(String? clearCacheOptionTitle) =>
+      _$this._clearCacheOptionTitle = clearCacheOptionTitle;
+
+  FunctionHolder? _clearCacheCommand;
+  FunctionHolder? get clearCacheCommand => _$this._clearCacheCommand;
+  set clearCacheCommand(FunctionHolder? clearCacheCommand) =>
+      _$this._clearCacheCommand = clearCacheCommand;
+
   FunctionHolder? _backCommand;
   FunctionHolder? get backCommand => _$this._backCommand;
   set backCommand(FunctionHolder? backCommand) =>
@@ -609,6 +635,8 @@ class SettingsViewModelBuilder
       _clearDataOptionTitle = $v.clearDataOptionTitle;
       _clearDataCommand = $v.clearDataCommand;
       _clearDataExplanation = $v.clearDataExplanation;
+      _clearCacheOptionTitle = $v.clearCacheOptionTitle;
+      _clearCacheCommand = $v.clearCacheCommand;
       _backCommand = $v.backCommand;
       _$v = null;
     }
@@ -678,6 +706,8 @@ class SettingsViewModelBuilder
             clearDataOptionTitle: BuiltValueNullFieldError.checkNotNull(clearDataOptionTitle, r'SettingsViewModel', 'clearDataOptionTitle'),
             clearDataCommand: BuiltValueNullFieldError.checkNotNull(clearDataCommand, r'SettingsViewModel', 'clearDataCommand'),
             clearDataExplanation: BuiltValueNullFieldError.checkNotNull(clearDataExplanation, r'SettingsViewModel', 'clearDataExplanation'),
+            clearCacheOptionTitle: BuiltValueNullFieldError.checkNotNull(clearCacheOptionTitle, r'SettingsViewModel', 'clearCacheOptionTitle'),
+            clearCacheCommand: BuiltValueNullFieldError.checkNotNull(clearCacheCommand, r'SettingsViewModel', 'clearCacheCommand'),
             backCommand: BuiltValueNullFieldError.checkNotNull(backCommand, r'SettingsViewModel', 'backCommand'));
     replace(_$result);
     return _$result;
