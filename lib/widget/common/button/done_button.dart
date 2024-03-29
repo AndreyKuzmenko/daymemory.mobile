@@ -1,5 +1,4 @@
 import 'package:daymemory/widget/common/function_holder.dart';
-import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 
 class DoneButton extends StatelessWidget {
@@ -29,12 +28,20 @@ class DoneButton extends StatelessWidget {
         child: MaterialButton(
           elevation: 0,
           onPressed: click?.command,
-          disabledColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
-          child: Text(text,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.secondary,
-                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-              )),
+          //disabledColor: Theme.of(context).extension<ThemeColors>()!.textSecondaryColor!,
+          child: click == null
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 3,
+                  ),
+                )
+              : Text(text,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                  )),
         ),
       ),
     );
