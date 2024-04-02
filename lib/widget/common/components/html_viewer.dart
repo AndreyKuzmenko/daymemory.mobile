@@ -89,7 +89,11 @@ class _HtmlViewerState extends State<HtmlViewer> {
           margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px),
         ),
         "h3": Style(
-            lineHeight: const LineHeight(1.3), fontWeight: FontWeight.w700, fontSize: FontSize(18 * widget.scaleFactor), margin: Margins.only(left: 0, right: 0, top: 10, bottom: 10, unit: Unit.px)),
+          lineHeight: const LineHeight(1.3),
+          fontWeight: FontWeight.w700,
+          fontSize: FontSize(20 * widget.scaleFactor),
+          margin: Margins.only(left: 0, right: 0, top: 15, bottom: 15, unit: Unit.px),
+        ),
         "li": Style(
           fontSize: FontSize(16 * widget.scaleFactor),
           padding: HtmlPaddings.only(left: 10, top: 0, bottom: 5, right: 0),
