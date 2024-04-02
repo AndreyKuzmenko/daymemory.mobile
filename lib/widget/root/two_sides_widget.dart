@@ -4,6 +4,7 @@ import 'package:daymemory/services/navigation/route_direction.dart';
 import 'package:daymemory/services/service_locator.dart';
 import 'package:daymemory/widget/root/root_view_model.dart';
 import 'package:daymemory/widget/root/root_widget.dart';
+import 'package:daymemory/widget/theme/theme_colors_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -21,7 +22,7 @@ class _TwoSidesState extends State<TwoSidesWidget> with WidgetsBindingObserver, 
   Widget build(BuildContext context) {
     final routeDefinition = ServiceLocator.getIt.get<IRouteDefinitionService>(instanceName: RouteType.frame.toString());
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).extension<ThemeColors>()!.backgroundPrimaryColor,
       //constraints: BoxConstraints(minWidth: 500, minHeight: 500),
       child: Column(
         children: [
