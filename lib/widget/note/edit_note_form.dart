@@ -164,15 +164,15 @@ class _EditFormState extends State<EditNoteForm> {
         customStyles: DefaultStyles(
             lists: DefaultListBlockStyle(
               baseStyle.copyWith(),
-              const VerticalSpacing(0, 5),
-              const VerticalSpacing(10, 0),
+              const VerticalSpacing(5, 5),
+              const VerticalSpacing(5, 5),
               null,
               null,
             ),
             paragraph: DefaultTextBlockStyle(
               baseStyle.copyWith(),
-              const VerticalSpacing(0, 15),
-              const VerticalSpacing(0, 0),
+              const VerticalSpacing(5, 5),
+              const VerticalSpacing(5, 5),
               null,
             ),
             h2: DefaultTextBlockStyle(
@@ -191,7 +191,7 @@ class _EditFormState extends State<EditNoteForm> {
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
-              const VerticalSpacing(5, 15),
+              const VerticalSpacing(10, 10),
               const VerticalSpacing(0, 0),
               null,
             )),
