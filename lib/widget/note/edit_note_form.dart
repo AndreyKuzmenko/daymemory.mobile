@@ -145,7 +145,7 @@ class _EditFormState extends State<EditNoteForm> {
     final defaultTextStyle = DefaultTextStyle.of(context);
     //const baseSpacing = Tuple2<double, double>(0, 0);
     final baseStyle = defaultTextStyle.style.copyWith(
-      fontSize: 16,
+      fontSize: 18,
       height: 1.3,
     );
     return QuillEditor(
@@ -177,7 +177,7 @@ class _EditFormState extends State<EditNoteForm> {
             ),
             h2: DefaultTextBlockStyle(
               defaultTextStyle.style.copyWith(
-                fontSize: 22,
+                fontSize: 24,
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
@@ -187,7 +187,7 @@ class _EditFormState extends State<EditNoteForm> {
             ),
             h3: DefaultTextBlockStyle(
               defaultTextStyle.style.copyWith(
-                fontSize: 20,
+                fontSize: 22,
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
