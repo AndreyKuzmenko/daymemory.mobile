@@ -9,7 +9,7 @@ jobs:
 - job: Deployment
   timeoutInMinutes: 60
   pool:
-    vmImage: 'macos-latest'
+    vmImage: 'macos-14'
 
   steps:
     - task: JavaToolInstaller@0
@@ -100,7 +100,7 @@ jobs:
   # Flutter & Fastlane
   # =================================================================================
     - bash: |
-        git clone https://github.com/flutter/flutter.git -b 3.19.0
+        git clone https://github.com/flutter/flutter.git -b 3.22.3
         export PATH=`pwd`/flutter/bin:$PATH
         # flutter channel stable
         flutter doctor

@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:dart_vlc/dart_vlc.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:daymemory/widget/common/file_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 
 class DesktopVideoFilePlayer extends StatefulWidget {
   final FileViewModel file;
@@ -14,15 +15,19 @@ class DesktopVideoFilePlayer extends StatefulWidget {
 }
 
 class DesktopVideoFilePlayerState extends State<DesktopVideoFilePlayer> {
-  final player = Player(id: Random().nextInt(100000000));
+  late final player = Player();
+  late final controller = VideoController(player);
 
   @override
   void initState() {
     super.initState();
-    player.open(
-      Media.file(File(widget.file.filePath)),
-      autoStart: true, // default
-    );
+
+    player.open(Media(widget.file.filePath), play: true);
+
+    // player.open(
+    //   Media.file(File(widget.file.filePath)),
+    //   autoStart: true, // default
+    // );
   }
 
   @override
@@ -45,16 +50,10 @@ class DesktopVideoFilePlayerState extends State<DesktopVideoFilePlayer> {
 
   StatelessWidget _getPlayer(double width, double height) {
     return GestureDetector(
-      child: Video(
-        player: player,
-        height: width,
-        width: height,
-        scale: 1.0, // default
-        showControls: false, // default
-      ),
+      child: Video(controller: controller),
       onTap: () {
         setState(() {
-          if (player.playback.isPlaying) {
+          if (controller.player.state.playing) {
             player.pause();
           } else {
             player.play();

@@ -18,7 +18,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ignore: implementation_imports, library_prefixes
 import 'package:flutter/src/widgets/text.dart' as Text;
 // ignore: implementation_imports
-import 'package:flutter_quill/src/models/documents/document.dart' as d;
+//import 'package:flutter_quill/src/models/documents/document.dart' as d;
 
 class EditNoteForm extends StatefulWidget {
   const EditNoteForm({super.key, required this.viewModel});
@@ -117,7 +117,7 @@ class _EditFormState extends State<EditNoteForm> {
   void _loadContent(String content) {
     try {
       var json = jsonDecode(content);
-      final doc = d.Document.fromJson(json);
+      final doc = Document.fromJson(json);
       setState(() {
         _quillController = QuillController(document: doc, selection: const TextSelection.collapsed(offset: 0));
       });
@@ -155,7 +155,6 @@ class _EditFormState extends State<EditNoteForm> {
         controller: _quillController,
         placeholder: widget.viewModel.textPlaceholder,
         padding: const EdgeInsets.all(0),
-        readOnly: false,
         scrollable: false,
         autoFocus: _isNew,
         enableInteractiveSelection: true,
@@ -164,6 +163,7 @@ class _EditFormState extends State<EditNoteForm> {
         customStyles: DefaultStyles(
             lists: DefaultListBlockStyle(
               baseStyle.copyWith(),
+              const HorizontalSpacing(5, 5),
               const VerticalSpacing(5, 5),
               const VerticalSpacing(5, 5),
               null,
@@ -171,6 +171,7 @@ class _EditFormState extends State<EditNoteForm> {
             ),
             paragraph: DefaultTextBlockStyle(
               baseStyle.copyWith(),
+              const HorizontalSpacing(5, 5),
               const VerticalSpacing(5, 5),
               const VerticalSpacing(5, 5),
               null,
@@ -181,8 +182,9 @@ class _EditFormState extends State<EditNoteForm> {
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
-              const VerticalSpacing(5, 10),
-              const VerticalSpacing(0, 0),
+              const HorizontalSpacing(5, 5),
+              const VerticalSpacing(5, 5),
+              const VerticalSpacing(5, 5),
               null,
             ),
             h3: DefaultTextBlockStyle(
@@ -191,8 +193,9 @@ class _EditFormState extends State<EditNoteForm> {
                 height: 1.5,
                 fontWeight: FontWeight.w700,
               ),
-              const VerticalSpacing(10, 10),
-              const VerticalSpacing(0, 0),
+              const HorizontalSpacing(5, 5),
+              const VerticalSpacing(5, 5),
+              const VerticalSpacing(5, 5),
               null,
             )),
         // padding: const EdgeInsets.all(0),

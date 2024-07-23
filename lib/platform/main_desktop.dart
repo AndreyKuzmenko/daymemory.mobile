@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dart_vlc/dart_vlc.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:daymemory/common/custom_http_overrides.dart';
 import 'package:daymemory/configuration/settings/configuration_settings.dart';
 import 'package:daymemory/platform/desktop/connectors/root_connector.dart';
@@ -78,7 +78,7 @@ void runAppWithConfiguration(ConfigurationSettings settings) async {
     dependencyResolver: DesktopPlatformDependencyResolver(getIt: getIt),
   );
   serviceLocator.initDependencies();
-  DartVLC.initialize();
+  MediaKit.ensureInitialized();
 
   runApp(DesktopApp(
     settings: settings,
