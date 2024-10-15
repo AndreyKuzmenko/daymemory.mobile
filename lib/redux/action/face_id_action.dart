@@ -42,14 +42,3 @@ class BiometricUsageAction implements ILoggingAction {
     return 'Biometric Usage Action';
   }
 }
-
-class BiometricNavigateAction implements ILoggingAction {
-  final AvailableBiometrics availableBiometrics;
-
-  BiometricNavigateAction({required this.availableBiometrics});
-
-  @override
-  String toLogString() {
-    return 'Biometric Navigate Action';
-  }
-}

@@ -34,7 +34,7 @@ class EnterPinConverter extends ViewModelConverter<EnterPinViewModel> {
         ..enteredPinTitle = locale.enter_pin_title
         ..selectedEnteredIndicators = selectedEnteredIndicators
         ..isRetry = isRetry
-        ..isBiometricsEnabled = _isBiometricsAllowed()
+        ..isBiometricsEnabled = _isBiometricsEnabled()
         ..typingCommand = TypedFunctionHolder<String>((char) {
           dispatch(CharEnteredPinAction(char: char));
           if (enteredPin.length == 3) {
@@ -43,7 +43,7 @@ class EnterPinConverter extends ViewModelConverter<EnterPinViewModel> {
         })
         ..clearCommand = FunctionHolder(() => dispatch((ClearEnteredPinAction())))
         ..biometricCommand = FunctionHolder(() {
-          if (_isBiometricsAllowed()) {
+          if (_isBiometricsEnabled()) {
             dispatch(
               AllowBiometricAction(
                 reason: locale.biometrics_auth_reason,
@@ -56,5 +56,5 @@ class EnterPinConverter extends ViewModelConverter<EnterPinViewModel> {
     );
   }
 
-  bool _isBiometricsAllowed() => availableBiometrics == AvailableBiometrics.faceOrFinger;
+  bool _isBiometricsEnabled() => availableBiometrics == AvailableBiometrics.faceOrFinger && isBiometricEnabled;
 }

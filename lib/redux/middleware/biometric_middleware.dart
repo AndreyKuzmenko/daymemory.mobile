@@ -51,8 +51,6 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
       await _checkBiometricsType(store.dispatch, action.nextAction);
     } else if (action is SkipBiometricAction) {
       await _saveBiometricResponse(store.dispatch, false, store.state.screenBlockingState.isTimerBlocking, BiometricsStoredConfigType.skipped);
-    } else if (action is BiometricNavigateAction) {
-      await _navigateToScreen(action.availableBiometrics, store.state.screenBlockingState.isTimerBlocking, store.dispatch);
     }
   }
 
@@ -88,6 +86,7 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
       if (hideWithoutRedirect) {
         return;
       }
+      //TODO: Redo this logic
       if (isTimerBlocking) {
         dispatch(PopBackStackAction());
       } else {
@@ -116,21 +115,5 @@ class BiometricMiddleware implements MiddlewareClass<AppState> {
       rethrow;
     }
     dispatch(action);
-  }
-
-  Future<void> _navigateToScreen(
-    AvailableBiometrics availableBiometrics,
-    bool isTimerBlocking,
-    Function(dynamic action) dispatch,
-  ) async {
-    if (availableBiometrics == AvailableBiometrics.unknown) {
-      if (isTimerBlocking) {
-        dispatch(PopBackStackAction());
-      } else {
-        dispatch(NavigateToRootAction());
-      }
-    } else if (availableBiometrics == AvailableBiometrics.faceOrFinger) {
-      dispatch(NavigateToBiometricAuthAction());
-    }
   }
 }

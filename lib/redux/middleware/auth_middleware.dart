@@ -195,23 +195,23 @@ class AuthMiddleware implements MiddlewareClass<AppState> {
     store.dispatch(const DelayedAction(nextAction: LoginIsLoadingAction(isSending: true), delay: 100));
 
     try {
-      var result = await networkUserService.signUpSocial(
-        userData.id,
-        userData.email,
-        userData.firstName,
-        userData.lastName,
-        userData.imageUrl,
-        provider,
-      );
-      store.dispatch(UserInfoLoadedAction(
-        email: result.email,
-        firstName: result.firstName,
-        lastName: result.lastName,
-        isEncryptionEnabled: result.isEncryptionEnabled,
-        isAuthenticated: true,
-        encryptedText: result.encryptedText,
-      ));
-      store.dispatch(loginInstruction(result));
+      // var result = await networkUserService.signUpSocial(
+      //   userData.id,
+      //   userData.email,
+      //   userData.firstName,
+      //   userData.lastName,
+      //   userData.imageUrl,
+      //   provider,
+      // );
+      // store.dispatch(UserInfoLoadedAction(
+      //   email: result.email,
+      //   firstName: result.firstName,
+      //   lastName: result.lastName,
+      //   isEncryptionEnabled: result.isEncryptionEnabled,
+      //   isAuthenticated: true,
+      //   encryptedText: result.encryptedText,
+      // ));
+      //store.dispatch(loginInstruction(result));
     } catch (e) {
       loggingService.logError(e);
       store.dispatch(dialogService.prepareSomethingWentWrongDialogAction(store.dispatch));
