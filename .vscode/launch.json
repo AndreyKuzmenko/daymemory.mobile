@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "DayMemory Prod",
+            "name": "DayMemory Mobile",
             "request": "launch",
             "type": "dart",
             "program": "lib/configuration/daymemory_prod.dart",
